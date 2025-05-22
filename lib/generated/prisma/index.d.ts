@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model TestProfile
+ * Model Product
  * 
  */
-export type TestProfile = $Result.DefaultSelection<Prisma.$TestProfilePayload>
+export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +26,8 @@ export type TestProfile = $Result.DefaultSelection<Prisma.$TestProfilePayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more TestProfiles
- * const testProfiles = await prisma.testProfile.findMany()
+ * // Fetch zero or more Products
+ * const products = await prisma.product.findMany()
  * ```
  *
  *
@@ -47,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more TestProfiles
-   * const testProfiles = await prisma.testProfile.findMany()
+   * // Fetch zero or more Products
+   * const products = await prisma.product.findMany()
    * ```
    *
    *
@@ -145,14 +145,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.testProfile`: Exposes CRUD operations for the **TestProfile** model.
+   * `prisma.product`: Exposes CRUD operations for the **Product** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more TestProfiles
-    * const testProfiles = await prisma.testProfile.findMany()
+    * // Fetch zero or more Products
+    * const products = await prisma.product.findMany()
     * ```
     */
-  get testProfile(): Prisma.TestProfileDelegate<ExtArgs, ClientOptions>;
+  get product(): Prisma.ProductDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    TestProfile: 'TestProfile'
+    Product: 'Product'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,81 +612,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "testProfile"
+      modelProps: "product"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      TestProfile: {
-        payload: Prisma.$TestProfilePayload<ExtArgs>
-        fields: Prisma.TestProfileFieldRefs
+      Product: {
+        payload: Prisma.$ProductPayload<ExtArgs>
+        fields: Prisma.ProductFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TestProfileFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload> | null
+            args: Prisma.ProductFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TestProfileFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           findFirst: {
-            args: Prisma.TestProfileFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload> | null
+            args: Prisma.ProductFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TestProfileFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           findMany: {
-            args: Prisma.TestProfileFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>[]
+            args: Prisma.ProductFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>[]
           }
           create: {
-            args: Prisma.TestProfileCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           createMany: {
-            args: Prisma.TestProfileCreateManyArgs<ExtArgs>
+            args: Prisma.ProductCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TestProfileCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>[]
+            args: Prisma.ProductCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>[]
           }
           delete: {
-            args: Prisma.TestProfileDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           update: {
-            args: Prisma.TestProfileUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           deleteMany: {
-            args: Prisma.TestProfileDeleteManyArgs<ExtArgs>
+            args: Prisma.ProductDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TestProfileUpdateManyArgs<ExtArgs>
+            args: Prisma.ProductUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TestProfileUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>[]
+            args: Prisma.ProductUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>[]
           }
           upsert: {
-            args: Prisma.TestProfileUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestProfilePayload>
+            args: Prisma.ProductUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProductPayload>
           }
           aggregate: {
-            args: Prisma.TestProfileAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTestProfile>
+            args: Prisma.ProductAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProduct>
           }
           groupBy: {
-            args: Prisma.TestProfileGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TestProfileGroupByOutputType>[]
+            args: Prisma.ProductGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProductGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TestProfileCountArgs<ExtArgs>
-            result: $Utils.Optional<TestProfileCountAggregateOutputType> | number
+            args: Prisma.ProductCountArgs<ExtArgs>
+            result: $Utils.Optional<ProductCountAggregateOutputType> | number
           }
         }
       }
@@ -774,7 +774,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    testProfile?: TestProfileOmit
+    product?: ProductOmit
   }
 
   /* Types for Logging */
@@ -870,288 +870,430 @@ export namespace Prisma {
    */
 
   /**
-   * Model TestProfile
+   * Model Product
    */
 
-  export type AggregateTestProfile = {
-    _count: TestProfileCountAggregateOutputType | null
-    _min: TestProfileMinAggregateOutputType | null
-    _max: TestProfileMaxAggregateOutputType | null
+  export type AggregateProduct = {
+    _count: ProductCountAggregateOutputType | null
+    _avg: ProductAvgAggregateOutputType | null
+    _sum: ProductSumAggregateOutputType | null
+    _min: ProductMinAggregateOutputType | null
+    _max: ProductMaxAggregateOutputType | null
   }
 
-  export type TestProfileMinAggregateOutputType = {
+  export type ProductAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type ProductSumAggregateOutputType = {
+    price: number | null
+  }
+
+  export type ProductMinAggregateOutputType = {
     id: string | null
+    name: string | null
+    company: string | null
+    description: string | null
+    featured: boolean | null
+    image: string | null
+    price: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    clerkId: string | null
   }
 
-  export type TestProfileMaxAggregateOutputType = {
+  export type ProductMaxAggregateOutputType = {
     id: string | null
+    name: string | null
+    company: string | null
+    description: string | null
+    featured: boolean | null
+    image: string | null
+    price: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    clerkId: string | null
   }
 
-  export type TestProfileCountAggregateOutputType = {
+  export type ProductCountAggregateOutputType = {
     id: number
+    name: number
+    company: number
+    description: number
+    featured: number
+    image: number
+    price: number
+    createdAt: number
+    updatedAt: number
+    clerkId: number
     _all: number
   }
 
 
-  export type TestProfileMinAggregateInputType = {
-    id?: true
+  export type ProductAvgAggregateInputType = {
+    price?: true
   }
 
-  export type TestProfileMaxAggregateInputType = {
-    id?: true
+  export type ProductSumAggregateInputType = {
+    price?: true
   }
 
-  export type TestProfileCountAggregateInputType = {
+  export type ProductMinAggregateInputType = {
     id?: true
+    name?: true
+    company?: true
+    description?: true
+    featured?: true
+    image?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+    clerkId?: true
+  }
+
+  export type ProductMaxAggregateInputType = {
+    id?: true
+    name?: true
+    company?: true
+    description?: true
+    featured?: true
+    image?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+    clerkId?: true
+  }
+
+  export type ProductCountAggregateInputType = {
+    id?: true
+    name?: true
+    company?: true
+    description?: true
+    featured?: true
+    image?: true
+    price?: true
+    createdAt?: true
+    updatedAt?: true
+    clerkId?: true
     _all?: true
   }
 
-  export type TestProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TestProfile to aggregate.
+     * Filter which Product to aggregate.
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestProfiles to fetch.
+     * Determine the order of Products to fetch.
      */
-    orderBy?: TestProfileOrderByWithRelationInput | TestProfileOrderByWithRelationInput[]
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TestProfileWhereUniqueInput
+    cursor?: ProductWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestProfiles from the position of the cursor.
+     * Take `±n` Products from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestProfiles.
+     * Skip the first `n` Products.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned TestProfiles
+     * Count returned Products
     **/
-    _count?: true | TestProfileCountAggregateInputType
+    _count?: true | ProductCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProductSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TestProfileMinAggregateInputType
+    _min?: ProductMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TestProfileMaxAggregateInputType
+    _max?: ProductMaxAggregateInputType
   }
 
-  export type GetTestProfileAggregateType<T extends TestProfileAggregateArgs> = {
-        [P in keyof T & keyof AggregateTestProfile]: P extends '_count' | 'count'
+  export type GetProductAggregateType<T extends ProductAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduct]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTestProfile[P]>
-      : GetScalarType<T[P], AggregateTestProfile[P]>
+        : GetScalarType<T[P], AggregateProduct[P]>
+      : GetScalarType<T[P], AggregateProduct[P]>
   }
 
 
 
 
-  export type TestProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestProfileWhereInput
-    orderBy?: TestProfileOrderByWithAggregationInput | TestProfileOrderByWithAggregationInput[]
-    by: TestProfileScalarFieldEnum[] | TestProfileScalarFieldEnum
-    having?: TestProfileScalarWhereWithAggregatesInput
+  export type ProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductWhereInput
+    orderBy?: ProductOrderByWithAggregationInput | ProductOrderByWithAggregationInput[]
+    by: ProductScalarFieldEnum[] | ProductScalarFieldEnum
+    having?: ProductScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TestProfileCountAggregateInputType | true
-    _min?: TestProfileMinAggregateInputType
-    _max?: TestProfileMaxAggregateInputType
+    _count?: ProductCountAggregateInputType | true
+    _avg?: ProductAvgAggregateInputType
+    _sum?: ProductSumAggregateInputType
+    _min?: ProductMinAggregateInputType
+    _max?: ProductMaxAggregateInputType
   }
 
-  export type TestProfileGroupByOutputType = {
+  export type ProductGroupByOutputType = {
     id: string
-    _count: TestProfileCountAggregateOutputType | null
-    _min: TestProfileMinAggregateOutputType | null
-    _max: TestProfileMaxAggregateOutputType | null
+    name: string
+    company: string
+    description: string
+    featured: boolean
+    image: string
+    price: number
+    createdAt: Date
+    updatedAt: Date
+    clerkId: string
+    _count: ProductCountAggregateOutputType | null
+    _avg: ProductAvgAggregateOutputType | null
+    _sum: ProductSumAggregateOutputType | null
+    _min: ProductMinAggregateOutputType | null
+    _max: ProductMaxAggregateOutputType | null
   }
 
-  type GetTestProfileGroupByPayload<T extends TestProfileGroupByArgs> = Prisma.PrismaPromise<
+  type GetProductGroupByPayload<T extends ProductGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TestProfileGroupByOutputType, T['by']> &
+      PickEnumerable<ProductGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TestProfileGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ProductGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TestProfileGroupByOutputType[P]>
-            : GetScalarType<T[P], TestProfileGroupByOutputType[P]>
+              : GetScalarType<T[P], ProductGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TestProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-  }, ExtArgs["result"]["testProfile"]>
+    name?: boolean
+    company?: boolean
+    description?: boolean
+    featured?: boolean
+    image?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    clerkId?: boolean
+  }, ExtArgs["result"]["product"]>
 
-  export type TestProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-  }, ExtArgs["result"]["testProfile"]>
+    name?: boolean
+    company?: boolean
+    description?: boolean
+    featured?: boolean
+    image?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    clerkId?: boolean
+  }, ExtArgs["result"]["product"]>
 
-  export type TestProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-  }, ExtArgs["result"]["testProfile"]>
+    name?: boolean
+    company?: boolean
+    description?: boolean
+    featured?: boolean
+    image?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    clerkId?: boolean
+  }, ExtArgs["result"]["product"]>
 
-  export type TestProfileSelectScalar = {
+  export type ProductSelectScalar = {
     id?: boolean
+    name?: boolean
+    company?: boolean
+    description?: boolean
+    featured?: boolean
+    image?: boolean
+    price?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    clerkId?: boolean
   }
 
-  export type TestProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["testProfile"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "company" | "description" | "featured" | "image" | "price" | "createdAt" | "updatedAt" | "clerkId", ExtArgs["result"]["product"]>
 
-  export type $TestProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "TestProfile"
+  export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Product"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-    }, ExtArgs["result"]["testProfile"]>
+      name: string
+      company: string
+      description: string
+      featured: boolean
+      image: string
+      price: number
+      createdAt: Date
+      updatedAt: Date
+      clerkId: string
+    }, ExtArgs["result"]["product"]>
     composites: {}
   }
 
-  type TestProfileGetPayload<S extends boolean | null | undefined | TestProfileDefaultArgs> = $Result.GetResult<Prisma.$TestProfilePayload, S>
+  type ProductGetPayload<S extends boolean | null | undefined | ProductDefaultArgs> = $Result.GetResult<Prisma.$ProductPayload, S>
 
-  type TestProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TestProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TestProfileCountAggregateInputType | true
+  type ProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductCountAggregateInputType | true
     }
 
-  export interface TestProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestProfile'], meta: { name: 'TestProfile' } }
+  export interface ProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Product'], meta: { name: 'Product' } }
     /**
-     * Find zero or one TestProfile that matches the filter.
-     * @param {TestProfileFindUniqueArgs} args - Arguments to find a TestProfile
+     * Find zero or one Product that matches the filter.
+     * @param {ProductFindUniqueArgs} args - Arguments to find a Product
      * @example
-     * // Get one TestProfile
-     * const testProfile = await prisma.testProfile.findUnique({
+     * // Get one Product
+     * const product = await prisma.product.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TestProfileFindUniqueArgs>(args: SelectSubset<T, TestProfileFindUniqueArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ProductFindUniqueArgs>(args: SelectSubset<T, ProductFindUniqueArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one TestProfile that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Product that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TestProfileFindUniqueOrThrowArgs} args - Arguments to find a TestProfile
+     * @param {ProductFindUniqueOrThrowArgs} args - Arguments to find a Product
      * @example
-     * // Get one TestProfile
-     * const testProfile = await prisma.testProfile.findUniqueOrThrow({
+     * // Get one Product
+     * const product = await prisma.product.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TestProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, TestProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ProductFindUniqueOrThrowArgs>(args: SelectSubset<T, ProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TestProfile that matches the filter.
+     * Find the first Product that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileFindFirstArgs} args - Arguments to find a TestProfile
+     * @param {ProductFindFirstArgs} args - Arguments to find a Product
      * @example
-     * // Get one TestProfile
-     * const testProfile = await prisma.testProfile.findFirst({
+     * // Get one Product
+     * const product = await prisma.product.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TestProfileFindFirstArgs>(args?: SelectSubset<T, TestProfileFindFirstArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ProductFindFirstArgs>(args?: SelectSubset<T, ProductFindFirstArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TestProfile that matches the filter or
+     * Find the first Product that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileFindFirstOrThrowArgs} args - Arguments to find a TestProfile
+     * @param {ProductFindFirstOrThrowArgs} args - Arguments to find a Product
      * @example
-     * // Get one TestProfile
-     * const testProfile = await prisma.testProfile.findFirstOrThrow({
+     * // Get one Product
+     * const product = await prisma.product.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TestProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, TestProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ProductFindFirstOrThrowArgs>(args?: SelectSubset<T, ProductFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more TestProfiles that matches the filter.
+     * Find zero or more Products that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ProductFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all TestProfiles
-     * const testProfiles = await prisma.testProfile.findMany()
+     * // Get all Products
+     * const products = await prisma.product.findMany()
      * 
-     * // Get first 10 TestProfiles
-     * const testProfiles = await prisma.testProfile.findMany({ take: 10 })
+     * // Get first 10 Products
+     * const products = await prisma.product.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const testProfileWithIdOnly = await prisma.testProfile.findMany({ select: { id: true } })
+     * const productWithIdOnly = await prisma.product.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TestProfileFindManyArgs>(args?: SelectSubset<T, TestProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ProductFindManyArgs>(args?: SelectSubset<T, ProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a TestProfile.
-     * @param {TestProfileCreateArgs} args - Arguments to create a TestProfile.
+     * Create a Product.
+     * @param {ProductCreateArgs} args - Arguments to create a Product.
      * @example
-     * // Create one TestProfile
-     * const TestProfile = await prisma.testProfile.create({
+     * // Create one Product
+     * const Product = await prisma.product.create({
      *   data: {
-     *     // ... data to create a TestProfile
+     *     // ... data to create a Product
      *   }
      * })
      * 
      */
-    create<T extends TestProfileCreateArgs>(args: SelectSubset<T, TestProfileCreateArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ProductCreateArgs>(args: SelectSubset<T, ProductCreateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many TestProfiles.
-     * @param {TestProfileCreateManyArgs} args - Arguments to create many TestProfiles.
+     * Create many Products.
+     * @param {ProductCreateManyArgs} args - Arguments to create many Products.
      * @example
-     * // Create many TestProfiles
-     * const testProfile = await prisma.testProfile.createMany({
+     * // Create many Products
+     * const product = await prisma.product.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TestProfileCreateManyArgs>(args?: SelectSubset<T, TestProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ProductCreateManyArgs>(args?: SelectSubset<T, ProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many TestProfiles and returns the data saved in the database.
-     * @param {TestProfileCreateManyAndReturnArgs} args - Arguments to create many TestProfiles.
+     * Create many Products and returns the data saved in the database.
+     * @param {ProductCreateManyAndReturnArgs} args - Arguments to create many Products.
      * @example
-     * // Create many TestProfiles
-     * const testProfile = await prisma.testProfile.createManyAndReturn({
+     * // Create many Products
+     * const product = await prisma.product.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many TestProfiles and only return the `id`
-     * const testProfileWithIdOnly = await prisma.testProfile.createManyAndReturn({
+     * // Create many Products and only return the `id`
+     * const productWithIdOnly = await prisma.product.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1161,28 +1303,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TestProfileCreateManyAndReturnArgs>(args?: SelectSubset<T, TestProfileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ProductCreateManyAndReturnArgs>(args?: SelectSubset<T, ProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a TestProfile.
-     * @param {TestProfileDeleteArgs} args - Arguments to delete one TestProfile.
+     * Delete a Product.
+     * @param {ProductDeleteArgs} args - Arguments to delete one Product.
      * @example
-     * // Delete one TestProfile
-     * const TestProfile = await prisma.testProfile.delete({
+     * // Delete one Product
+     * const Product = await prisma.product.delete({
      *   where: {
-     *     // ... filter to delete one TestProfile
+     *     // ... filter to delete one Product
      *   }
      * })
      * 
      */
-    delete<T extends TestProfileDeleteArgs>(args: SelectSubset<T, TestProfileDeleteArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ProductDeleteArgs>(args: SelectSubset<T, ProductDeleteArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one TestProfile.
-     * @param {TestProfileUpdateArgs} args - Arguments to update one TestProfile.
+     * Update one Product.
+     * @param {ProductUpdateArgs} args - Arguments to update one Product.
      * @example
-     * // Update one TestProfile
-     * const testProfile = await prisma.testProfile.update({
+     * // Update one Product
+     * const product = await prisma.product.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1192,30 +1334,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TestProfileUpdateArgs>(args: SelectSubset<T, TestProfileUpdateArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ProductUpdateArgs>(args: SelectSubset<T, ProductUpdateArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more TestProfiles.
-     * @param {TestProfileDeleteManyArgs} args - Arguments to filter TestProfiles to delete.
+     * Delete zero or more Products.
+     * @param {ProductDeleteManyArgs} args - Arguments to filter Products to delete.
      * @example
-     * // Delete a few TestProfiles
-     * const { count } = await prisma.testProfile.deleteMany({
+     * // Delete a few Products
+     * const { count } = await prisma.product.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TestProfileDeleteManyArgs>(args?: SelectSubset<T, TestProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ProductDeleteManyArgs>(args?: SelectSubset<T, ProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TestProfiles.
+     * Update zero or more Products.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ProductUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many TestProfiles
-     * const testProfile = await prisma.testProfile.updateMany({
+     * // Update many Products
+     * const product = await prisma.product.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1225,14 +1367,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TestProfileUpdateManyArgs>(args: SelectSubset<T, TestProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ProductUpdateManyArgs>(args: SelectSubset<T, ProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TestProfiles and returns the data updated in the database.
-     * @param {TestProfileUpdateManyAndReturnArgs} args - Arguments to update many TestProfiles.
+     * Update zero or more Products and returns the data updated in the database.
+     * @param {ProductUpdateManyAndReturnArgs} args - Arguments to update many Products.
      * @example
-     * // Update many TestProfiles
-     * const testProfile = await prisma.testProfile.updateManyAndReturn({
+     * // Update many Products
+     * const product = await prisma.product.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1241,8 +1383,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more TestProfiles and only return the `id`
-     * const testProfileWithIdOnly = await prisma.testProfile.updateManyAndReturn({
+     * // Update zero or more Products and only return the `id`
+     * const productWithIdOnly = await prisma.product.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1255,56 +1397,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TestProfileUpdateManyAndReturnArgs>(args: SelectSubset<T, TestProfileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ProductUpdateManyAndReturnArgs>(args: SelectSubset<T, ProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one TestProfile.
-     * @param {TestProfileUpsertArgs} args - Arguments to update or create a TestProfile.
+     * Create or update one Product.
+     * @param {ProductUpsertArgs} args - Arguments to update or create a Product.
      * @example
-     * // Update or create a TestProfile
-     * const testProfile = await prisma.testProfile.upsert({
+     * // Update or create a Product
+     * const product = await prisma.product.upsert({
      *   create: {
-     *     // ... data to create a TestProfile
+     *     // ... data to create a Product
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the TestProfile we want to update
+     *     // ... the filter for the Product we want to update
      *   }
      * })
      */
-    upsert<T extends TestProfileUpsertArgs>(args: SelectSubset<T, TestProfileUpsertArgs<ExtArgs>>): Prisma__TestProfileClient<$Result.GetResult<Prisma.$TestProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ProductUpsertArgs>(args: SelectSubset<T, ProductUpsertArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of TestProfiles.
+     * Count the number of Products.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileCountArgs} args - Arguments to filter TestProfiles to count.
+     * @param {ProductCountArgs} args - Arguments to filter Products to count.
      * @example
-     * // Count the number of TestProfiles
-     * const count = await prisma.testProfile.count({
+     * // Count the number of Products
+     * const count = await prisma.product.count({
      *   where: {
-     *     // ... the filter for the TestProfiles we want to count
+     *     // ... the filter for the Products we want to count
      *   }
      * })
     **/
-    count<T extends TestProfileCountArgs>(
-      args?: Subset<T, TestProfileCountArgs>,
+    count<T extends ProductCountArgs>(
+      args?: Subset<T, ProductCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TestProfileCountAggregateOutputType>
+          : GetScalarType<T['select'], ProductCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a TestProfile.
+     * Allows you to perform aggregations operations on a Product.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1324,13 +1466,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TestProfileAggregateArgs>(args: Subset<T, TestProfileAggregateArgs>): Prisma.PrismaPromise<GetTestProfileAggregateType<T>>
+    aggregate<T extends ProductAggregateArgs>(args: Subset<T, ProductAggregateArgs>): Prisma.PrismaPromise<GetProductAggregateType<T>>
 
     /**
-     * Group by TestProfile.
+     * Group by Product.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestProfileGroupByArgs} args - Group by arguments.
+     * @param {ProductGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1345,14 +1487,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TestProfileGroupByArgs,
+      T extends ProductGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TestProfileGroupByArgs['orderBy'] }
-        : { orderBy?: TestProfileGroupByArgs['orderBy'] },
+        ? { orderBy: ProductGroupByArgs['orderBy'] }
+        : { orderBy?: ProductGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1401,20 +1543,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TestProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the TestProfile model
+   * Fields of the Product model
    */
-  readonly fields: TestProfileFieldRefs;
+  readonly fields: ProductFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for TestProfile.
+   * The delegate class that acts as a "Promise-like" for Product.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TestProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1442,373 +1584,382 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the TestProfile model
+   * Fields of the Product model
    */
-  interface TestProfileFieldRefs {
-    readonly id: FieldRef<"TestProfile", 'String'>
+  interface ProductFieldRefs {
+    readonly id: FieldRef<"Product", 'String'>
+    readonly name: FieldRef<"Product", 'String'>
+    readonly company: FieldRef<"Product", 'String'>
+    readonly description: FieldRef<"Product", 'String'>
+    readonly featured: FieldRef<"Product", 'Boolean'>
+    readonly image: FieldRef<"Product", 'String'>
+    readonly price: FieldRef<"Product", 'Int'>
+    readonly createdAt: FieldRef<"Product", 'DateTime'>
+    readonly updatedAt: FieldRef<"Product", 'DateTime'>
+    readonly clerkId: FieldRef<"Product", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * TestProfile findUnique
+   * Product findUnique
    */
-  export type TestProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter, which TestProfile to fetch.
+     * Filter, which Product to fetch.
      */
-    where: TestProfileWhereUniqueInput
+    where: ProductWhereUniqueInput
   }
 
   /**
-   * TestProfile findUniqueOrThrow
+   * Product findUniqueOrThrow
    */
-  export type TestProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter, which TestProfile to fetch.
+     * Filter, which Product to fetch.
      */
-    where: TestProfileWhereUniqueInput
+    where: ProductWhereUniqueInput
   }
 
   /**
-   * TestProfile findFirst
+   * Product findFirst
    */
-  export type TestProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter, which TestProfile to fetch.
+     * Filter, which Product to fetch.
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestProfiles to fetch.
+     * Determine the order of Products to fetch.
      */
-    orderBy?: TestProfileOrderByWithRelationInput | TestProfileOrderByWithRelationInput[]
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TestProfiles.
+     * Sets the position for searching for Products.
      */
-    cursor?: TestProfileWhereUniqueInput
+    cursor?: ProductWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestProfiles from the position of the cursor.
+     * Take `±n` Products from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestProfiles.
+     * Skip the first `n` Products.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TestProfiles.
+     * Filter by unique combinations of Products.
      */
-    distinct?: TestProfileScalarFieldEnum | TestProfileScalarFieldEnum[]
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
   /**
-   * TestProfile findFirstOrThrow
+   * Product findFirstOrThrow
    */
-  export type TestProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter, which TestProfile to fetch.
+     * Filter, which Product to fetch.
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestProfiles to fetch.
+     * Determine the order of Products to fetch.
      */
-    orderBy?: TestProfileOrderByWithRelationInput | TestProfileOrderByWithRelationInput[]
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TestProfiles.
+     * Sets the position for searching for Products.
      */
-    cursor?: TestProfileWhereUniqueInput
+    cursor?: ProductWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestProfiles from the position of the cursor.
+     * Take `±n` Products from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestProfiles.
+     * Skip the first `n` Products.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TestProfiles.
+     * Filter by unique combinations of Products.
      */
-    distinct?: TestProfileScalarFieldEnum | TestProfileScalarFieldEnum[]
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
   /**
-   * TestProfile findMany
+   * Product findMany
    */
-  export type TestProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter, which TestProfiles to fetch.
+     * Filter, which Products to fetch.
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TestProfiles to fetch.
+     * Determine the order of Products to fetch.
      */
-    orderBy?: TestProfileOrderByWithRelationInput | TestProfileOrderByWithRelationInput[]
+    orderBy?: ProductOrderByWithRelationInput | ProductOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing TestProfiles.
+     * Sets the position for listing Products.
      */
-    cursor?: TestProfileWhereUniqueInput
+    cursor?: ProductWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TestProfiles from the position of the cursor.
+     * Take `±n` Products from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TestProfiles.
+     * Skip the first `n` Products.
      */
     skip?: number
-    distinct?: TestProfileScalarFieldEnum | TestProfileScalarFieldEnum[]
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
   }
 
   /**
-   * TestProfile create
+   * Product create
    */
-  export type TestProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * The data needed to create a TestProfile.
+     * The data needed to create a Product.
      */
-    data?: XOR<TestProfileCreateInput, TestProfileUncheckedCreateInput>
+    data: XOR<ProductCreateInput, ProductUncheckedCreateInput>
   }
 
   /**
-   * TestProfile createMany
+   * Product createMany
    */
-  export type TestProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many TestProfiles.
+     * The data used to create many Products.
      */
-    data: TestProfileCreateManyInput | TestProfileCreateManyInput[]
+    data: ProductCreateManyInput | ProductCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * TestProfile createManyAndReturn
+   * Product createManyAndReturn
    */
-  export type TestProfileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ProductSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * The data used to create many TestProfiles.
+     * The data used to create many Products.
      */
-    data: TestProfileCreateManyInput | TestProfileCreateManyInput[]
+    data: ProductCreateManyInput | ProductCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * TestProfile update
+   * Product update
    */
-  export type TestProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * The data needed to update a TestProfile.
+     * The data needed to update a Product.
      */
-    data: XOR<TestProfileUpdateInput, TestProfileUncheckedUpdateInput>
+    data: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
     /**
-     * Choose, which TestProfile to update.
+     * Choose, which Product to update.
      */
-    where: TestProfileWhereUniqueInput
+    where: ProductWhereUniqueInput
   }
 
   /**
-   * TestProfile updateMany
+   * Product updateMany
    */
-  export type TestProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update TestProfiles.
+     * The data used to update Products.
      */
-    data: XOR<TestProfileUpdateManyMutationInput, TestProfileUncheckedUpdateManyInput>
+    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
     /**
-     * Filter which TestProfiles to update
+     * Filter which Products to update
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
-     * Limit how many TestProfiles to update.
+     * Limit how many Products to update.
      */
     limit?: number
   }
 
   /**
-   * TestProfile updateManyAndReturn
+   * Product updateManyAndReturn
    */
-  export type TestProfileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ProductSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * The data used to update TestProfiles.
+     * The data used to update Products.
      */
-    data: XOR<TestProfileUpdateManyMutationInput, TestProfileUncheckedUpdateManyInput>
+    data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyInput>
     /**
-     * Filter which TestProfiles to update
+     * Filter which Products to update
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
-     * Limit how many TestProfiles to update.
+     * Limit how many Products to update.
      */
     limit?: number
   }
 
   /**
-   * TestProfile upsert
+   * Product upsert
    */
-  export type TestProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * The filter to search for the TestProfile to update in case it exists.
+     * The filter to search for the Product to update in case it exists.
      */
-    where: TestProfileWhereUniqueInput
+    where: ProductWhereUniqueInput
     /**
-     * In case the TestProfile found by the `where` argument doesn't exist, create a new TestProfile with this data.
+     * In case the Product found by the `where` argument doesn't exist, create a new Product with this data.
      */
-    create: XOR<TestProfileCreateInput, TestProfileUncheckedCreateInput>
+    create: XOR<ProductCreateInput, ProductUncheckedCreateInput>
     /**
-     * In case the TestProfile was found with the provided `where` argument, update it with this data.
+     * In case the Product was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TestProfileUpdateInput, TestProfileUncheckedUpdateInput>
+    update: XOR<ProductUpdateInput, ProductUncheckedUpdateInput>
   }
 
   /**
-   * TestProfile delete
+   * Product delete
    */
-  export type TestProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
     /**
-     * Filter which TestProfile to delete.
+     * Filter which Product to delete.
      */
-    where: TestProfileWhereUniqueInput
+    where: ProductWhereUniqueInput
   }
 
   /**
-   * TestProfile deleteMany
+   * Product deleteMany
    */
-  export type TestProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TestProfiles to delete
+     * Filter which Products to delete
      */
-    where?: TestProfileWhereInput
+    where?: ProductWhereInput
     /**
-     * Limit how many TestProfiles to delete.
+     * Limit how many Products to delete.
      */
     limit?: number
   }
 
   /**
-   * TestProfile without action
+   * Product without action
    */
-  export type TestProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TestProfile
+     * Select specific fields to fetch from the Product
      */
-    select?: TestProfileSelect<ExtArgs> | null
+    select?: ProductSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TestProfile
+     * Omit specific fields from the Product
      */
-    omit?: TestProfileOmit<ExtArgs> | null
+    omit?: ProductOmit<ExtArgs> | null
   }
 
 
@@ -1826,11 +1977,20 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const TestProfileScalarFieldEnum: {
-    id: 'id'
+  export const ProductScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    company: 'company',
+    description: 'description',
+    featured: 'featured',
+    image: 'image',
+    price: 'price',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    clerkId: 'clerkId'
   };
 
-  export type TestProfileScalarFieldEnum = (typeof TestProfileScalarFieldEnum)[keyof typeof TestProfileScalarFieldEnum]
+  export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1869,6 +2029,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1880,69 +2047,207 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
 
 
-  export type TestProfileWhereInput = {
-    AND?: TestProfileWhereInput | TestProfileWhereInput[]
-    OR?: TestProfileWhereInput[]
-    NOT?: TestProfileWhereInput | TestProfileWhereInput[]
-    id?: StringFilter<"TestProfile"> | string
+  export type ProductWhereInput = {
+    AND?: ProductWhereInput | ProductWhereInput[]
+    OR?: ProductWhereInput[]
+    NOT?: ProductWhereInput | ProductWhereInput[]
+    id?: StringFilter<"Product"> | string
+    name?: StringFilter<"Product"> | string
+    company?: StringFilter<"Product"> | string
+    description?: StringFilter<"Product"> | string
+    featured?: BoolFilter<"Product"> | boolean
+    image?: StringFilter<"Product"> | string
+    price?: IntFilter<"Product"> | number
+    createdAt?: DateTimeFilter<"Product"> | Date | string
+    updatedAt?: DateTimeFilter<"Product"> | Date | string
+    clerkId?: StringFilter<"Product"> | string
   }
 
-  export type TestProfileOrderByWithRelationInput = {
+  export type ProductOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrder
+    company?: SortOrder
+    description?: SortOrder
+    featured?: SortOrder
+    image?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    clerkId?: SortOrder
   }
 
-  export type TestProfileWhereUniqueInput = Prisma.AtLeast<{
+  export type ProductWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: TestProfileWhereInput | TestProfileWhereInput[]
-    OR?: TestProfileWhereInput[]
-    NOT?: TestProfileWhereInput | TestProfileWhereInput[]
+    AND?: ProductWhereInput | ProductWhereInput[]
+    OR?: ProductWhereInput[]
+    NOT?: ProductWhereInput | ProductWhereInput[]
+    name?: StringFilter<"Product"> | string
+    company?: StringFilter<"Product"> | string
+    description?: StringFilter<"Product"> | string
+    featured?: BoolFilter<"Product"> | boolean
+    image?: StringFilter<"Product"> | string
+    price?: IntFilter<"Product"> | number
+    createdAt?: DateTimeFilter<"Product"> | Date | string
+    updatedAt?: DateTimeFilter<"Product"> | Date | string
+    clerkId?: StringFilter<"Product"> | string
   }, "id">
 
-  export type TestProfileOrderByWithAggregationInput = {
+  export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
-    _count?: TestProfileCountOrderByAggregateInput
-    _max?: TestProfileMaxOrderByAggregateInput
-    _min?: TestProfileMinOrderByAggregateInput
+    name?: SortOrder
+    company?: SortOrder
+    description?: SortOrder
+    featured?: SortOrder
+    image?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    clerkId?: SortOrder
+    _count?: ProductCountOrderByAggregateInput
+    _avg?: ProductAvgOrderByAggregateInput
+    _max?: ProductMaxOrderByAggregateInput
+    _min?: ProductMinOrderByAggregateInput
+    _sum?: ProductSumOrderByAggregateInput
   }
 
-  export type TestProfileScalarWhereWithAggregatesInput = {
-    AND?: TestProfileScalarWhereWithAggregatesInput | TestProfileScalarWhereWithAggregatesInput[]
-    OR?: TestProfileScalarWhereWithAggregatesInput[]
-    NOT?: TestProfileScalarWhereWithAggregatesInput | TestProfileScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"TestProfile"> | string
+  export type ProductScalarWhereWithAggregatesInput = {
+    AND?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
+    OR?: ProductScalarWhereWithAggregatesInput[]
+    NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Product"> | string
+    name?: StringWithAggregatesFilter<"Product"> | string
+    company?: StringWithAggregatesFilter<"Product"> | string
+    description?: StringWithAggregatesFilter<"Product"> | string
+    featured?: BoolWithAggregatesFilter<"Product"> | boolean
+    image?: StringWithAggregatesFilter<"Product"> | string
+    price?: IntWithAggregatesFilter<"Product"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
+    clerkId?: StringWithAggregatesFilter<"Product"> | string
   }
 
-  export type TestProfileCreateInput = {
+  export type ProductCreateInput = {
     id?: string
+    name: string
+    company: string
+    description: string
+    featured: boolean
+    image: string
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clerkId: string
   }
 
-  export type TestProfileUncheckedCreateInput = {
+  export type ProductUncheckedCreateInput = {
     id?: string
+    name: string
+    company: string
+    description: string
+    featured: boolean
+    image: string
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clerkId: string
   }
 
-  export type TestProfileUpdateInput = {
+  export type ProductUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerkId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestProfileUncheckedUpdateInput = {
+  export type ProductUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerkId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestProfileCreateManyInput = {
+  export type ProductCreateManyInput = {
     id?: string
+    name: string
+    company: string
+    description: string
+    featured: boolean
+    image: string
+    price: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clerkId: string
   }
 
-  export type TestProfileUpdateManyMutationInput = {
+  export type ProductUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerkId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestProfileUncheckedUpdateManyInput = {
+  export type ProductUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    image?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerkId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -1960,16 +2265,78 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type TestProfileCountOrderByAggregateInput = {
-    id?: SortOrder
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type TestProfileMaxOrderByAggregateInput = {
-    id?: SortOrder
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type TestProfileMinOrderByAggregateInput = {
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
+    company?: SortOrder
+    description?: SortOrder
+    featured?: SortOrder
+    image?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    clerkId?: SortOrder
+  }
+
+  export type ProductAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type ProductMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    company?: SortOrder
+    description?: SortOrder
+    featured?: SortOrder
+    image?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    clerkId?: SortOrder
+  }
+
+  export type ProductMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    company?: SortOrder
+    description?: SortOrder
+    featured?: SortOrder
+    image?: SortOrder
+    price?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    clerkId?: SortOrder
+  }
+
+  export type ProductSumOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -1990,8 +2357,62 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2006,6 +2427,33 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2025,7 +2473,15 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -2033,7 +2489,37 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 
