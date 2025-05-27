@@ -18,11 +18,11 @@ function LinksDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="start" sideOffset={10}>
-        {navLinks.map((link) => {
+        {navLinks.map((navLink) => {
           return (
-            <DropdownMenuItem key={link.href}>
-              <Link className="capitalize" href={link.href}>
-                {link.label}
+            <DropdownMenuItem key={navLink.href}>
+              <Link className="capitalize" href={navLink.href}>
+                {navLink.label}
               </Link>
             </DropdownMenuItem>
           );
