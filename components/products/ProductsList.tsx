@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/formatCurrency";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { Product } from "@prisma/client";
+import { Product } from "@/lib/generated/prisma";
 import Image from "next/image";
 import FavoriteToggleButton from "./FavoriteToggleButton";
 
