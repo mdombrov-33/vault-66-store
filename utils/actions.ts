@@ -9,11 +9,16 @@ export const fetchFeaturedProducts = async () => {
   return products;
 };
 
-export const fetchAllProducts = async () => {
-  const products = await db.product.findMany({
+export const fetchAllProducts = ({ search = "" }: { search: string }) => {
+  return db.product.findMany({
+    where: {
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { company: { contains: search, mode: "insensitive" } },
+      ],
+    },
     orderBy: {
       createdAt: "desc",
     },
   });
-  return products;
 };
