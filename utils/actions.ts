@@ -31,4 +31,5 @@ export const fetchSingleProduct = async (productId: string) => {
     },
   });
   if (!product) redirect("/products");
+  return product;
 };
