@@ -7,4 +7,11 @@ export const navLinks: NavLinks[] = [
   { href: "/favorites", label: "favorites" },
   { href: "/cart", label: "cart" },
   { href: "/orders", label: "orders" },
+  { href: "/admin/sales", label: "dashboard" },
+];
+
+export const adminLinks: NavLinks[] = [
+  { href: "/admin/sales", label: "sales" },
+  { href: "/admin/products", label: "products" },
+  { href: "/admin/products/create", label: "create product" },
 ];
