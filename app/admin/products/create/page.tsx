@@ -1,7 +1,5 @@
 import FormInput from "@/components/form/FormInput";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { faker } from "@faker-js/faker"; // Importing faker for generating fake data
 
 const createProductAction = async (formData: FormData) => {
