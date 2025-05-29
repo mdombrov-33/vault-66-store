@@ -6,11 +6,13 @@ import { toast } from "sonner";
 
 function SignOutLink() {
   const handleLogout = () => {
-    toast.success("You have successfully logged out.");
+    toast.success("You have successfully logged out");
   };
   return (
     <SignOutButton>
-      <Link href="/" className="w-full text-left" onClick={handleLogout}></Link>
+      <Link href="/" className="w-full text-left" onClick={handleLogout}>
+        Logout
+      </Link>
     </SignOutButton>
   );
 }
