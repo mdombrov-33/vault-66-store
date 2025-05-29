@@ -21,3 +21,11 @@ export type CheckboxInputProps = {
   label: string;
   defaultChecked?: boolean;
 };
+
+export type ButtonSize = "default" | "lg" | "sm";
+
+export type SubmitButtonProps = {
+  className?: string;
+  text?: string;
+  size?: ButtonSize;
+};
