@@ -1,3 +1,4 @@
+import FormInput from "@/components/form/FormInput";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,10 +20,12 @@ function AdminCreateProductPage() {
       <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
       <div className="border p-8 rounded-md">
         <form action={createProductAction}>
-          <div className="mb-2">
-            <Label htmlFor="name">Product Name</Label>
-            <Input id="name" name="name" type="text" defaultValue={name} />
-          </div>
+          <FormInput
+            type="text"
+            name="name"
+            label="product name"
+            defaultValue={name}
+          />
           <Button type="submit" size="lg">
             Submit
           </Button>
