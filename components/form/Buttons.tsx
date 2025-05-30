@@ -8,7 +8,8 @@ import { SubmitButtonProps } from "@/types/form";
 import { IconButtonProps } from "@/types/buttonAction";
 import { SignInButton } from "@clerk/nextjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { LuTrash2, LuSquare } from "react-icons/lu";
+import { LuTrash2 } from "react-icons/lu";
+import { FiEdit2 } from "react-icons/fi";
 import { ButtonSize } from "@/types/form";
 
 export function SubmitButton({
@@ -43,7 +44,7 @@ export function IconButton({ actionType }: IconButtonProps) {
   const renderIcon = () => {
     switch (actionType) {
       case "edit":
-        return <LuSquare />;
+        return <FiEdit2 />;
       case "delete":
         return <LuTrash2 />;
       default:
