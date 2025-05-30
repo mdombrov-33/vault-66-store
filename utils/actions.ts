@@ -133,10 +133,12 @@ export const updateProductAction = async (
   formData: FormData
 ) => {
   await getAdminUser();
+
   try {
     const productId = formData.get("id") as string;
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateZodSchema(productSchema, rawData);
+
     await db.product.update({
       where: {
         id: productId,
@@ -145,17 +147,45 @@ export const updateProductAction = async (
         ...validatedFields,
       },
     });
+
     revalidatePath(`/admin/products/${productId}/edit`);
+
+    return { message: "Product updated successfully" };
   } catch (error) {
     return renderError(error);
   }
-  return { message: "Product updated successfully" };
 };
 
 //* Updates a product image in the database (admin panel only).
+//* After updating, we delete the old image from Supabase storage and revalidate the path to refresh the product edit page cache.
 export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: "Product Image updated successfully" };
+  await getAdminUser();
+
+  try {
+    const image = formData.get("image") as File;
+    const productId = formData.get("id") as string;
+    const oldImageUrl = formData.get("url") as string;
+    const validatedFile = validateZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedFile.image);
+
+    await deleteImage(oldImageUrl);
+
+    await db.product.update({
+      where: {
+        id: productId,
+      },
+      data: {
+        image: fullPath,
+      },
+    });
+
+    revalidatePath(`/admin/products/${productId}/edit`);
+
+    return { message: "Product image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
