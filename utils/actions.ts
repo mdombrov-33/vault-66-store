@@ -1,7 +1,10 @@
 "use server";
 import db from "@/utils//db";
 import { redirect } from "next/navigation";
+import { getAuthUser } from "./authUser";
+import { renderError } from "./renderError";
 
+//* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
   const products = await db.product.findMany({
     where: {
@@ -11,6 +14,7 @@ export const fetchFeaturedProducts = async () => {
   return products;
 };
 
+//* Fetches all products from the database with optional search functionality.
 export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
   return db.product.findMany({
     where: {
@@ -25,6 +29,7 @@ export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
   });
 };
 
+//* Fetches a single product by its ID from the database.
 export const fetchSingleProduct = async (productId: string) => {
   const product = await db.product.findUnique({
     where: {
@@ -35,9 +40,35 @@ export const fetchSingleProduct = async (productId: string) => {
   return product;
 };
 
+//* Creates a new product in the database(from the admin panel).
 export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  return { message: "Product created successfully!" };
+  const user = await getAuthUser();
+
+  try {
+    const name = formData.get("name") as string;
+    const company = formData.get("company") as string;
+    const price = Number(formData.get("price") as string);
+    const image = formData.get("image") as File;
+    const description = formData.get("description") as string;
+    const featured = Boolean(formData.get("featured") as string);
+
+    await db.product.create({
+      data: {
+        name,
+        company,
+        price,
+        image: "/images/product1.jpg",
+        description,
+        featured,
+        clerkId: user.id,
+      },
+    });
+
+    return { message: "Product created!" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
