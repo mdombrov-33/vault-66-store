@@ -30,6 +30,14 @@ export type SubmitButtonProps = {
   size?: ButtonSize;
 };
 
+export type ImageInputContainerProps = {
+  image: string;
+  name: string;
+  action: actionFunction;
+  text: string;
+  children?: React.ReactNode;
+};
+
 export type actionFunction = (
   prevState: any,
   formData: FormData
