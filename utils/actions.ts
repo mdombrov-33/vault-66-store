@@ -90,16 +90,22 @@ export const fetchAdminProducts = async () => {
   return products;
 };
 
-//* Delete a product from the database(from the admin panel).
+//* Deletes a product from the database (admin panel only).
+//* The `productId` comes from `prevState`, which is passed in from the form submission.
+//* `prevState` represents the latest form state and is manually passed using `.bind()` when setting up the action.
+//* After deleting, we call `revalidatePath()` to refresh the admin products page cache and update the UI.
 export const deleteProductAction = async (prevState: { productId: string }) => {
   const { productId } = prevState;
+
   await getAdminUser();
+
   try {
     await db.product.delete({
       where: {
         id: productId,
       },
     });
+
     revalidatePath("/admin/products");
     return { message: "Product deleted successfully" };
   } catch (error) {

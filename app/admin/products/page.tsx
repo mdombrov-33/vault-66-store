@@ -63,7 +63,12 @@ async function AdminProductsPage() {
 }
 
 function DeleteProduct({ productId }: { productId: string }) {
+  //* We bind the productId directly into the action function using .bind().
+  //* This creates a new version of deleteProductAction where productId is already included.
+  //* So when the form is submitted, Next.js passes that { productId } as prevState to the action.
+  //* This avoids using a hidden input field to send the ID manually.
   const deleteProduct = deleteProductAction.bind(null, { productId });
+
   return (
     <FormContainer action={deleteProduct}>
       <IconButton actionType="delete" />

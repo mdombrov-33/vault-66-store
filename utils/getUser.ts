@@ -8,7 +8,8 @@ export const getAuthUser = async () => {
   return user;
 };
 
-//* Helper function to get admin user. Extra check to restrict access to admin users only.
+//* Helper function to get admin user.
+//* We use this if we want to be 100% sure that the user is an admin before performing any action.
 export const getAdminUser = async () => {
   const user = await getAuthUser();
   if (user.id !== process.env.ADMIN_USER_ID) {
