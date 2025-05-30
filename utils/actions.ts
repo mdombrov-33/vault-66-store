@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getAuthUser } from "./authUser";
 import { renderError } from "./renderError";
 import { productSchema } from "./schemas";
+import { validateZodSchema } from "./validateZodSchema";
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -46,20 +47,24 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  // const user = await getAuthUser();
+  const user = await getAuthUser();
 
   try {
     const rawData = Object.fromEntries(formData);
     //* Easier approach to validate the form data using Zod schema.
-    //* If we need custom error messages, we use `safeParse` instead of `parse`.
     // const validatedFields = productSchema.parse(rawData);
+    //* If we need custom error messages, we use `safeParse` instead of `parse`.
+    //* Here, we are using custom helper function `validateZodSchema` to validate the data.
 
-    const validatedFields = productSchema.safeParse(rawData);
+    const validatedFields = validateZodSchema(productSchema, rawData);
 
-    if (!validatedFields.success) {
-      const errors = validatedFields.error.errors.map((error) => error.message);
-      throw new Error(errors.join(" "));
-    }
+    await db.product.create({
+      data: {
+        ...validatedFields,
+        image: "/images/product3.jpg",
+        clerkId: user.id,
+      },
+    });
 
     // await db.product.create({
     //   data: {

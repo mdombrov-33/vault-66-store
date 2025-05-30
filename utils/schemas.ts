@@ -1,4 +1,4 @@
-import { z, ZodSchema } from "zod";
+import { z } from "zod";
 
 //* This schema is used to validate the product form data.
 //* It ensures that the product name, company, price, description, and featured status are valid.
