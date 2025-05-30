@@ -1,7 +1,7 @@
 "use server";
 import db from "@/utils//db";
 import { redirect } from "next/navigation";
-import { getAuthUser } from "./authUser";
+import { getAuthUser } from "./getUser";
 import { renderError } from "./renderError";
 import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
