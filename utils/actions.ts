@@ -50,7 +50,16 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData);
-    const validatedFields = productSchema.parse(rawData);
+    //* Easier approach to validate the form data using Zod schema.
+    //* If we need custom error messages, we use `safeParse` instead of `parse`.
+    // const validatedFields = productSchema.parse(rawData);
+
+    const validatedFields = productSchema.safeParse(rawData);
+
+    if (!validatedFields.success) {
+      const errors = validatedFields.error.errors.map((error) => error.message);
+      throw new Error(errors.join(" "));
+    }
 
     // await db.product.create({
     //   data: {
