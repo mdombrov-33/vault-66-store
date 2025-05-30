@@ -7,3 +7,12 @@ export const getAuthUser = async () => {
   if (!user) redirect("/");
   return user;
 };
+
+//* Helper function to get admin user. Extra check to restrict access to admin users only.
+export const getAdminUser = async () => {
+  const user = await getAuthUser();
+  if (user.id !== process.env.ADMIN_USER_ID) {
+    redirect("/");
+  }
+  return user;
+};
