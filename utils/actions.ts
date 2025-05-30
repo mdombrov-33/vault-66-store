@@ -5,7 +5,7 @@ import { getAdminUser, getAuthUser } from "./getUser";
 import { renderError } from "./renderError";
 import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
-import { uploadImage } from "./supabase";
+import { deleteImage, uploadImage } from "./supabase";
 import { revalidatePath } from "next/cache";
 
 //* Fetches featured products from the database.
@@ -94,18 +94,19 @@ export const fetchAdminProducts = async () => {
 //* The `productId` comes from `prevState`, which is passed in from the form submission.
 //* `prevState` represents the latest form state and is manually passed using `.bind()` when setting up the action.
 //* After deleting, we call `revalidatePath()` to refresh the admin products page cache and update the UI.
+//* We also delete the image from the Supabase storage.
 export const deleteProductAction = async (prevState: { productId: string }) => {
   const { productId } = prevState;
 
   await getAdminUser();
 
   try {
-    await db.product.delete({
+    const product = await db.product.delete({
       where: {
         id: productId,
       },
     });
-
+    await deleteImage(product.image);
     revalidatePath("/admin/products");
     return { message: "Product deleted successfully" };
   } catch (error) {
