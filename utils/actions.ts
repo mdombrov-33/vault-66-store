@@ -1,7 +1,7 @@
 "use server";
 import db from "@/utils//db";
 import { redirect } from "next/navigation";
-import { getAuthUser } from "./getUser";
+import { getAdminUser, getAuthUser } from "./getUser";
 import { renderError } from "./renderError";
 import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
@@ -76,4 +76,14 @@ export const createProductAction = async (
     return renderError(error);
   }
   redirect("/admin/products");
+};
+
+export const fetchAdminProducts = async () => {
+  await getAdminUser();
+  const products = await db.product.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return products;
 };
