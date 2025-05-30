@@ -6,12 +6,12 @@ import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";
 
-type Props = {
-  params: { id: string };
-};
-
-async function SingleProductPage({ params }: Props) {
-  const id = params.id;
+async function SingleProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
 
   const product = await fetchSingleProduct(id);
   const { name, image, company, description, price } = product;
