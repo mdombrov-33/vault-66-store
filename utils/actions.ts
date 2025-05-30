@@ -3,6 +3,7 @@ import db from "@/utils//db";
 import { redirect } from "next/navigation";
 import { getAuthUser } from "./authUser";
 import { renderError } from "./renderError";
+import { productSchema } from "./schemas";
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -45,27 +46,23 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  const user = await getAuthUser();
+  // const user = await getAuthUser();
 
   try {
-    const name = formData.get("name") as string;
-    const company = formData.get("company") as string;
-    const price = Number(formData.get("price") as string);
-    const image = formData.get("image") as File;
-    const description = formData.get("description") as string;
-    const featured = Boolean(formData.get("featured") as string);
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = productSchema.parse(rawData);
 
-    await db.product.create({
-      data: {
-        name,
-        company,
-        price,
-        image: "/images/product1.jpg",
-        description,
-        featured,
-        clerkId: user.id,
-      },
-    });
+    // await db.product.create({
+    //   data: {
+    //     name,
+    //     company,
+    //     price,
+    //     image: "/images/product1.jpg",
+    //     description,
+    //     featured,
+    //     clerkId: user.id,
+    //   },
+    // });
 
     return { message: "Product created!" };
   } catch (error) {
