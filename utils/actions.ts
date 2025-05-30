@@ -3,7 +3,7 @@ import db from "@/utils//db";
 import { redirect } from "next/navigation";
 import { getAuthUser } from "./authUser";
 import { renderError } from "./renderError";
-import { productSchema } from "./schemas";
+import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
 
 //* Fetches featured products from the database.
@@ -51,12 +51,17 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData);
+    const file = formData.get("image") as File;
     //* Easier approach to validate the form data using Zod schema.
     // const validatedFields = productSchema.parse(rawData);
     //* If we need custom error messages, we use `safeParse` instead of `parse`.
     //* Here, we are using custom helper function `validateZodSchema` to validate the data.
 
     const validatedFields = validateZodSchema(productSchema, rawData);
+
+    //* Don't pass the file directly, pass it as an object with the key `image`.
+    //* If we pass it directly we will get an error: `image is not an instance of File`.
+    const validateFile = validateZodSchema(imageSchema, { image: file });
 
     await db.product.create({
       data: {
@@ -65,18 +70,6 @@ export const createProductAction = async (
         clerkId: user.id,
       },
     });
-
-    // await db.product.create({
-    //   data: {
-    //     name,
-    //     company,
-    //     price,
-    //     image: "/images/product1.jpg",
-    //     description,
-    //     featured,
-    //     clerkId: user.id,
-    //   },
-    // });
 
     return { message: "Product created!" };
   } catch (error) {

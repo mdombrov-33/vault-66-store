@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { validateImageFile } from "./validateImageFile";
 
 //* This schema is used to validate the product form data.
 //* It ensures that the product name, company, price, description, and featured status are valid.
@@ -27,4 +28,9 @@ export const productSchema = z.object({
       message: "Description must be between 10 and 1000 words.",
     }
   ),
+});
+
+//* This schema is used to separately validate images when creating a product.
+export const imageSchema = z.object({
+  image: validateImageFile(),
 });
