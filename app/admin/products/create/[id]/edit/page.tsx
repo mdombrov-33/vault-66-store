@@ -7,7 +7,7 @@ import { SubmitButton } from "@/components/form/Buttons";
 import CheckboxInput from "@/components/form/CheckboxInput";
 
 async function AdminEditProductPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+  const id = (await params).id;
   const product = await fetchAdminProductDetails(id);
   const { name, company, description, featured, price } = product;
   return (
