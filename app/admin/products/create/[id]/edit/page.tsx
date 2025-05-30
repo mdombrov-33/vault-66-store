@@ -12,7 +12,7 @@ import CheckboxInput from "@/components/form/CheckboxInput";
 import ImageInputContainer from "@/components/form/ImageInputContainer";
 
 async function AdminEditProductPage({ params }: { params: { id: string } }) {
-  const id = (await params).id;
+  const id = params.id;
   const product = await fetchAdminProductDetails(id);
   const { name, company, description, featured, price } = product;
   return (
