@@ -62,6 +62,7 @@ export const createProductAction = async (
     //* Don't pass the file directly, pass it as an object with the key `image`.
     //* If we pass it directly we will get an error: `image is not an instance of File`.
     const validateFile = validateZodSchema(imageSchema, { image: file });
+    console.log("validateFile", validateFile);
 
     await db.product.create({
       data: {
