@@ -1,4 +1,3 @@
-//*
 export const renderError = (error: unknown): { message: string } => {
   console.log("Error:", error);
   return {

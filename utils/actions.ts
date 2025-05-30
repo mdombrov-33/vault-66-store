@@ -6,6 +6,7 @@ import { renderError } from "./renderError";
 import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
 import { uploadImage } from "./supabase";
+import { revalidatePath } from "next/cache";
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -78,6 +79,7 @@ export const createProductAction = async (
   redirect("/admin/products");
 };
 
+//* Fetches all products(from the admin panel).
 export const fetchAdminProducts = async () => {
   await getAdminUser();
   const products = await db.product.findMany({
@@ -86,4 +88,21 @@ export const fetchAdminProducts = async () => {
     },
   });
   return products;
+};
+
+//* Delete a product from the database(from the admin panel).
+export const deleteProductAction = async (prevState: { productId: string }) => {
+  const { productId } = prevState;
+  await getAdminUser();
+  try {
+    await db.product.delete({
+      where: {
+        id: productId,
+      },
+    });
+    revalidatePath("/admin/products");
+    return { message: "Product deleted successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
