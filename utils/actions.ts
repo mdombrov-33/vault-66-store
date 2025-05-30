@@ -5,6 +5,7 @@ import { getAuthUser } from "./authUser";
 import { renderError } from "./renderError";
 import { imageSchema, productSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
+import { uploadImage } from "./supabase";
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -61,19 +62,18 @@ export const createProductAction = async (
 
     //* Don't pass the file directly, pass it as an object with the key `image`.
     //* If we pass it directly we will get an error: `image is not an instance of File`.
-    const validateFile = validateZodSchema(imageSchema, { image: file });
-    console.log("validateFile", validateFile);
+    const validatedFile = validateZodSchema(imageSchema, { image: file });
+    const fullPath = await uploadImage(validatedFile.image);
 
     await db.product.create({
       data: {
         ...validatedFields,
-        image: "/images/product3.jpg",
+        image: fullPath,
         clerkId: user.id,
       },
     });
-
-    return { message: "Product created!" };
   } catch (error) {
     return renderError(error);
   }
+  redirect("/admin/products");
 };
