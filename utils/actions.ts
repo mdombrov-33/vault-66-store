@@ -127,10 +127,28 @@ export const fetchAdminProductDetails = async (productId: string) => {
 };
 
 //* Updates a product in the database (admin panel only).
+//* After updating, we revalidate the path to refresh the product edit page cache and update the UI.
 export const updateProductAction = async (
   prevState: any,
   formData: FormData
 ) => {
+  await getAdminUser();
+  try {
+    const productId = formData.get("id") as string;
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateZodSchema(productSchema, rawData);
+    await db.product.update({
+      where: {
+        id: productId,
+      },
+      data: {
+        ...validatedFields,
+      },
+    });
+    revalidatePath(`/admin/products/${productId}/edit`);
+  } catch (error) {
+    return renderError(error);
+  }
   return { message: "Product updated successfully" };
 };
 
