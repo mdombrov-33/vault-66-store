@@ -189,3 +189,23 @@ export const updateProductImageAction = async (
     return renderError(error);
   }
 };
+
+//* Fetches the favorite ID for a product by its ID for the authenticated user.
+export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
+  const user = await getAuthUser();
+  const favorite = await db.favorite.findFirst({
+    where: {
+      productId: productId,
+      clerkId: user.id,
+    },
+    select: {
+      id: true,
+    },
+  });
+  return favorite?.id || null;
+};
+
+//* Toggles the favorite status of a product for the authenticated user.
+export const toggleFavoriteAction = async () => {
+  return { message: "Toggle favorite action executed" };
+};

@@ -11,6 +11,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { LuTrash2 } from "react-icons/lu";
 import { FiEdit2 } from "react-icons/fi";
 import { ButtonSize } from "@/types/form";
+import { getAuthUser } from "@/utils/getUser";
 
 export function SubmitButton({
   className = "",
