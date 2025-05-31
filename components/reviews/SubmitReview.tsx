@@ -20,7 +20,7 @@ function SubmitReview({ productId }: { productId: string }) {
       <Button
         size="lg"
         variant="outline"
-        className="capitalize"
+        className="capitalize mt-4"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
         leave review
