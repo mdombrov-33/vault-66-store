@@ -4,6 +4,8 @@ import SectionTitle from "@/components/global/SectionTitle";
 import FormContainer from "@/components/form/FormContainer";
 import { IconButton } from "@/components/form/Buttons";
 
+//! FIXME: We don't see toaster notifications in this page after removing reviews.
+//! Probably something to do with component unmounting or with using client components in a server component.
 async function ReviewsPage() {
   const reviews = await fetchProductReviewsByUser();
 
@@ -24,11 +26,22 @@ async function ReviewsPage() {
           };
 
           return (
-            <ReviewCard reviewInfo={reviewInfo} key={review.id}></ReviewCard>
+            <ReviewCard reviewInfo={reviewInfo} key={review.id}>
+              <DeleteReview reviewId={review.id} />
+            </ReviewCard>
           );
         })}
       </section>
     </>
+  );
+}
+
+function DeleteReview({ reviewId }: { reviewId: string }) {
+  const deleteReview = deleteReviewAction.bind(null, { reviewId });
+  return (
+    <FormContainer action={deleteReview}>
+      <IconButton actionType="delete" />
+    </FormContainer>
   );
 }
 
