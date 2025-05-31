@@ -1,7 +1,7 @@
 import BreadCrumbs from "@/components/single-product/BreadCrumbs";
 import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
 import Image from "next/image";
-import { formatCurrency } from "@/utils/formatCurrency";
+import { formatCurrency } from "@/utils/format-currency";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";

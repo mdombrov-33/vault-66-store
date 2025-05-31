@@ -1,5 +1,5 @@
 import { Product } from "@/lib/generated/prisma"; //grab type from prisma schema
-import { formatCurrency } from "@/utils/formatCurrency";
+import { formatCurrency } from "@/utils/format-currency";
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";

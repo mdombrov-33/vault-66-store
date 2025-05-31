@@ -1,10 +1,10 @@
 "use server";
 import db from "@/utils//db";
 import { redirect } from "next/navigation";
-import { getAdminUser, getAuthUser } from "./getUser";
-import { renderError } from "./renderError";
+import { getAdminUser, getAuthUser } from "./get-user";
+import { renderError } from "./render-error";
 import { imageSchema, productSchema, reviewSchema } from "./schemas";
-import { validateZodSchema } from "./validateZodSchema";
+import { validateZodSchema } from "./validate-zod-schema";
 import { deleteImage, uploadImage } from "./supabase";
 import { revalidatePath } from "next/cache";
 
