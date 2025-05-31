@@ -1,5 +1,5 @@
 import BreadCrumbs from "@/components/single-product/BreadCrumbs";
-import { fetchSingleProduct } from "@/utils/actions";
+import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
 import Image from "next/image";
 import { formatCurrency } from "@/utils/formatCurrency";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
@@ -8,17 +8,23 @@ import ProductRating from "@/components/single-product/ProductRating";
 import ShareButton from "@/components/single-product/ShareButton";
 import SubmitReview from "@/components/reviews/SubmitReview";
 import ProductReviews from "@/components/reviews/ProductReviews";
+import { auth } from "@clerk/nextjs/server";
 
 async function SingleProductPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const id = (await params).id;
+  const productId = (await params).id;
 
-  const product = await fetchSingleProduct(id);
+  const product = await fetchSingleProduct(productId);
   const { name, image, company, description, price } = product;
   const dollarsAmount = formatCurrency(price);
+
+  const { userId } = await auth();
+
+  const reviewDoesNotExist =
+    userId && !(await findExistingReview(userId, productId));
 
   return (
     <section>
@@ -41,21 +47,22 @@ async function SingleProductPage({
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
 
             <div className="flex items-center gap-x-2">
-              <FavoriteToggleButton productId={id} />
-              <ShareButton name={name} productId={id} />
+              <FavoriteToggleButton productId={productId} />
+              <ShareButton name={name} productId={productId} />
             </div>
           </div>
-          <ProductRating productId={id} />
+          <ProductRating productId={productId} />
           <h4 className="text-xl mt-2">{company}</h4>
           <p className="mt-3 text-md bg-muted inline-block p-2 rounded">
             {dollarsAmount}
           </p>
           <p className="mt-6 leading-8 text-muted-foreground">{description}</p>
-          <AddToCart productId={id} />
+          <AddToCart productId={productId} />
         </div>
       </div>
-      <ProductReviews productId={id} />
-      <SubmitReview productId={id} />
+      <ProductReviews productId={productId} />
+
+      {reviewDoesNotExist && <SubmitReview productId={productId} />}
     </section>
   );
 }
