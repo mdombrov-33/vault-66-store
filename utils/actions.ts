@@ -304,7 +304,7 @@ export const createReviewAction = async (
 
     revalidatePath(`/products/${validatedFields.productId}`);
 
-    return { message: "review submitted successfully" };
+    return { message: "Review submitted successfully" };
   } catch (error) {
     return renderError(error);
   }
