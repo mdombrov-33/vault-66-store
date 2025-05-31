@@ -38,6 +38,11 @@ export type ImageInputContainerProps = {
   children?: React.ReactNode;
 };
 
+export type FavoriteToggleFormProps = {
+  productId: string;
+  favoriteId: string | null;
+};
+
 export type actionFunction = (
   prevState: any,
   formData: FormData
