@@ -15,6 +15,7 @@ export const fetchFeaturedProducts = async () => {
       featured: true,
     },
   });
+
   return products;
 };
 
@@ -40,7 +41,9 @@ export const fetchSingleProduct = async (productId: string) => {
       id: productId,
     },
   });
+
   if (!product) redirect("/products");
+
   return product;
 };
 
@@ -82,11 +85,13 @@ export const createProductAction = async (
 //* Fetches all products(from the admin panel).
 export const fetchAdminProducts = async () => {
   await getAdminUser();
+
   const products = await db.product.findMany({
     orderBy: {
       createdAt: "desc",
     },
   });
+
   return products;
 };
 
@@ -106,8 +111,11 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
         id: productId,
       },
     });
+
     await deleteImage(product.image);
+
     revalidatePath("/admin/products");
+
     return { message: "Product deleted successfully" };
   } catch (error) {
     return renderError(error);
@@ -117,12 +125,15 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 //* Fetches product details for the admin panel.
 export const fetchAdminProductDetails = async (productId: string) => {
   await getAdminUser();
+
   const product = await db.product.findUnique({
     where: {
       id: productId,
     },
   });
+
   if (!product) redirect("/admin/products");
+
   return product;
 };
 
@@ -193,6 +204,7 @@ export const updateProductImageAction = async (
 //* Fetches the favorite ID for a product by its ID for the authenticated user.
 export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
   const user = await getAuthUser();
+
   const favorite = await db.favorite.findFirst({
     where: {
       productId: productId,
@@ -202,10 +214,12 @@ export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
       id: true,
     },
   });
+
   return favorite?.id || null;
 };
 
 //* Toggles the favorite status of a product for the authenticated user.
+//* If the product is already favorited, it removes it; otherwise, it adds it.
 export const toggleFavoriteAction = async (prevState: {
   productId: string;
   favoriteId: string | null;
@@ -231,10 +245,30 @@ export const toggleFavoriteAction = async (prevState: {
     }
 
     revalidatePath(pathName);
+
     return {
       message: favoriteId ? "Removed from favorites" : "Added to favorites",
     };
   } catch (error) {
     return renderError(error);
   }
+};
+
+//* Fetches all favorite products for the authenticated user.
+export const fetchUserFavorites = async () => {
+  const user = await getAuthUser();
+
+  const favorites = await db.favorite.findMany({
+    where: {
+      clerkId: user.id,
+    },
+    include: {
+      product: true, // Include product details in the response
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return favorites;
 };
