@@ -13,6 +13,7 @@ import { useUser } from "@clerk/nextjs"; //* using useUser because this is a cli
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
   const { user } = useUser();
+  console.log("user", user);
 
   return (
     <div>
@@ -33,7 +34,7 @@ function SubmitReview({ productId }: { productId: string }) {
               name="authorName"
               value={user?.firstName || "user"}
             />
-            <input type="hidden" name="authorImage" value={user?.imageUrl} />
+            <input type="hidden" name="authorImageUrl" value={user?.imageUrl} />
             <RatingInput name="rating" />
             <TextAreaInput
               name="comment"
