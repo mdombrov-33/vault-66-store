@@ -3,7 +3,7 @@ import db from "@/utils//db";
 import { redirect } from "next/navigation";
 import { getAdminUser, getAuthUser } from "./getUser";
 import { renderError } from "./renderError";
-import { imageSchema, productSchema } from "./schemas";
+import { imageSchema, productSchema, reviewSchema } from "./schemas";
 import { validateZodSchema } from "./validateZodSchema";
 import { deleteImage, uploadImage } from "./supabase";
 import { revalidatePath } from "next/cache";
@@ -284,11 +284,30 @@ export const fetchUserFavorites = async () => {
   return favorites;
 };
 
+//* Creates a new review for a product by the authenticated user.
 export const createReviewAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: "review submitted successfully" };
+  const user = await getAuthUser();
+
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateZodSchema(reviewSchema, rawData);
+
+    await db.review.create({
+      data: {
+        ...validatedFields,
+        clerkId: user.id,
+      },
+    });
+
+    revalidatePath(`/products/${validatedFields.productId}`);
+
+    return { message: "review submitted successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
 
 export const fetchProductReviews = async () => {};
