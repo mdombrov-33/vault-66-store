@@ -9,7 +9,7 @@ import { IconButton } from "@/components/form/Buttons";
 async function ReviewsPage() {
   const reviews = await fetchProductReviewsByUser();
 
-  if (!reviews) return <SectionTitle text="No reviews found" />;
+  if (reviews.length === 0) return <SectionTitle text="No reviews found" />;
 
   return (
     <>
