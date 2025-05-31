@@ -392,4 +392,13 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
   }
 };
 
-export const findExistingReview = async () => {};
+//* Finds an existing review for a product by the authenticated user
+//* (to restrict access to creating multiple reviews for the same product or prevent reviews from unsigned users).
+export const findExistingReview = async (userId: string, productId: string) => {
+  return db.review.findFirst({
+    where: {
+      clerkId: userId,
+      productId: productId,
+    },
+  });
+};
