@@ -206,6 +206,35 @@ export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
 };
 
 //* Toggles the favorite status of a product for the authenticated user.
-export const toggleFavoriteAction = async () => {
-  return { message: "Toggle favorite action executed" };
+export const toggleFavoriteAction = async (prevState: {
+  productId: string;
+  favoriteId: string | null;
+  pathName: string;
+}) => {
+  const user = await getAuthUser();
+  const { productId, favoriteId, pathName } = prevState;
+
+  try {
+    if (favoriteId) {
+      await db.favorite.delete({
+        where: {
+          id: favoriteId,
+        },
+      });
+    } else {
+      await db.favorite.create({
+        data: {
+          productId,
+          clerkId: user.id,
+        },
+      });
+    }
+
+    revalidatePath(pathName);
+    return {
+      message: favoriteId ? "Removed from favorites" : "Added to favorites",
+    };
+  } catch (error) {
+    return renderError(error);
+  }
 };
