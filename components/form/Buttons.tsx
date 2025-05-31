@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SubmitButtonProps } from "@/types/form";
 import { IconButtonProps } from "@/types/buttonAction";
-import { SignInButton } from "@clerk/nextjs";
+import { SignIn, SignInButton } from "@clerk/nextjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { LuTrash2 } from "react-icons/lu";
 import { FiEdit2 } from "react-icons/fi";
@@ -62,5 +62,21 @@ export function IconButton({ actionType }: IconButtonProps) {
     >
       {pending ? <ReloadIcon className="animate-spin" /> : renderIcon()}
     </Button>
+  );
+}
+
+export function CardSignInButton() {
+  return (
+    <SignInButton mode="modal">
+      <Button
+        type="button"
+        size="icon"
+        variant="outline"
+        className="p-2 cursor-pointer"
+        asChild
+      >
+        <FaRegHeart />
+      </Button>
+    </SignInButton>
   );
 }
