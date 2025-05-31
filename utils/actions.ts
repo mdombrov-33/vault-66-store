@@ -344,6 +344,32 @@ export const fetchProductRating = async (productId: string) => {
   };
 };
 
-export const fetchProductReviewsByUser = async () => {};
+//* Fetches all reviews made by the authenticated user.
+export const fetchProductReviewsByUser = async () => {
+  const user = await getAuthUser();
+
+  const reviews = await db.review.findMany({
+    where: {
+      clerkId: user.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      product: {
+        select: {
+          image: true,
+          name: true,
+        },
+      },
+    },
+  });
+
+  return reviews;
+};
+
 export const deleteReviewAction = async () => {};
 export const findExistingReview = async () => {};
