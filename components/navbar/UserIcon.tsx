@@ -10,7 +10,11 @@ async function UserIcon() {
 
   if (profileImage) {
     return (
-      <img src={profileImage} className="w-6 h-6 rounded-full object-cover" />
+      <img
+        src={profileImage}
+        alt="user avatar"
+        className="w-6 h-6 rounded-full object-cover"
+      />
     );
   }
 
