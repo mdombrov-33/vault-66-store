@@ -371,5 +371,25 @@ export const fetchProductReviewsByUser = async () => {
   return reviews;
 };
 
-export const deleteReviewAction = async () => {};
+//* Deletes a review by its ID.
+export const deleteReviewAction = async (prevState: { reviewId: string }) => {
+  const { reviewId } = prevState;
+  const user = await getAuthUser();
+
+  try {
+    await db.review.delete({
+      where: {
+        id: reviewId,
+        clerkId: user.id, // Ensure the user is authorized to delete this review
+      },
+    });
+
+    revalidatePath("/reviews");
+
+    return { message: "Review deleted successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
 export const findExistingReview = async () => {};
