@@ -26,6 +26,8 @@ export type SelectCartItemAmountProps = {
   isLoading: boolean;
 };
 
+//* Construct a new type that includes the product details for each cart item
+//* If we just use CartItem prisma type, it won't include product details
 export type CartItemWithProduct = Prisma.CartItemGetPayload<{
   include: { product: true };
 }>;

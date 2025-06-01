@@ -36,6 +36,6 @@ export function SecondColumn({
   );
 }
 
-export function ThirdColumn({ price }: { price: number }) {
+export function FourthColumn({ price }: { price: number }) {
   return <p className="font-medium md:ml-auto">{formatCurrency(price)}</p>;
 }
