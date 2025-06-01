@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { LucideShoppingCart } from "lucide-react";
+import { fetchCartItems } from "@/utils/actions";
 
 async function CartBtn() {
-  const numItemsInCart = 50;
+  const numItemsInCart = await fetchCartItems();
 
   return (
     <Button

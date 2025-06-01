@@ -7,6 +7,7 @@ import { imageSchema, productSchema, reviewSchema } from "./schemas";
 import { validateZodSchema } from "./validate-zod-schema";
 import { deleteImage, uploadImage } from "./supabase";
 import { revalidatePath } from "next/cache";
+import { auth } from "@clerk/nextjs/server";
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -403,7 +404,19 @@ export const findExistingReview = async (userId: string, productId: string) => {
   });
 };
 
-export const fetchCartItems = async () => {};
+//* Fetches the number of items in the user's cart.
+export const fetchCartItems = async () => {
+  const { userId } = await auth();
+  const cart = await db.cart.findFirst({
+    where: {
+      clerkId: userId ?? "",
+    },
+    select: {
+      numItemsInCart: true,
+    },
+  });
+  return cart?.numItemsInCart || 0;
+};
 
 const fetchProduct = async () => {};
 
