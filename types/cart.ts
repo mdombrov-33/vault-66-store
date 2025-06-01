@@ -18,7 +18,7 @@ export type CartState = {
   orderTotal: number;
 };
 
-type SelectCartItemAmountProps = {
+export type SelectCartItemAmountProps = {
   mode: Mode.CartItem;
   amount: number;
   setAmount: (value: number) => Promise<void>;

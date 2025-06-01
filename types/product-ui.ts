@@ -1,6 +1,6 @@
 import { Mode } from "./enums";
 
-type SelectProductAmountProps = {
+export type SelectProductAmountProps = {
   mode: Mode.SingleProduct;
   amount: number;
   setAmount: (value: number) => void;
