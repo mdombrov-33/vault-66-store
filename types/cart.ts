@@ -1,3 +1,5 @@
+import { Mode } from "./enums";
+
 export type CartItem = {
   productId: string;
   image: string;
@@ -14,4 +16,11 @@ export type CartState = {
   shipping: number;
   tax: number;
   orderTotal: number;
+};
+
+type SelectCartItemAmountProps = {
+  mode: Mode.CartItem;
+  amount: number;
+  setAmount: (value: number) => Promise<void>;
+  isLoading: boolean;
 };
