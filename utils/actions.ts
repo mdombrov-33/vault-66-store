@@ -407,6 +407,7 @@ export const findExistingReview = async (userId: string, productId: string) => {
 //* Fetches the number of items in the user's cart.
 export const fetchCartItems = async () => {
   const { userId } = await auth();
+
   const cart = await db.cart.findFirst({
     where: {
       clerkId: userId ?? "",
@@ -415,6 +416,7 @@ export const fetchCartItems = async () => {
       numItemsInCart: true,
     },
   });
+
   return cart?.numItemsInCart || 0;
 };
 
