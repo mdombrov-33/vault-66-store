@@ -1,4 +1,5 @@
-import { Mode } from "./enums";
+import { Prisma } from "@/lib/generated/prisma/client";
+import { Mode } from "@/types/enums";
 
 export type CartItem = {
   productId: string;
@@ -24,3 +25,7 @@ export type SelectCartItemAmountProps = {
   setAmount: (value: number) => Promise<void>;
   isLoading: boolean;
 };
+
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true };
+}>;
