@@ -489,6 +489,7 @@ export const fetchOrCreateCart = async ({
   return cart;
 };
 
+//* Updates or creates a cart item in the user's cart.
 const updateOrCreateCartItem = async ({
   productId,
   cartId,
@@ -520,6 +521,7 @@ const updateOrCreateCartItem = async ({
   }
 };
 
+//* Updates the cart with the latest cart items and calculates totals.
 export const updateCart = async (cart: Cart) => {
   const cartItems = await db.cartItem.findMany({
     where: {
