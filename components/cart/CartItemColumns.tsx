@@ -1,4 +1,3 @@
-import { formatCurrency } from "@/utils/format-currency";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,5 +36,5 @@ export function SecondColumn({
 }
 
 export function FourthColumn({ price }: { price: number }) {
-  return <p className="font-medium md:ml-auto">{formatCurrency(price)}</p>;
+  return <p className="font-medium md:ml-auto">{price} Caps</p>;
 }

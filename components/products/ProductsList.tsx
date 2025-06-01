@@ -1,4 +1,3 @@
-import { formatCurrency } from "@/utils/format-currency";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@/lib/generated/prisma";
@@ -10,7 +9,6 @@ function ProductsList({ products }: { products: Product[] }) {
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
         const { name, price, image, company } = product;
-        const dollarsAmount = formatCurrency(price);
         const productId = product.id;
 
         return (
@@ -33,7 +31,7 @@ function ProductsList({ products }: { products: Product[] }) {
                     <h4 className="text=muted-foreground">{company}</h4>
                   </div>
                   <p className="text-muted-foreground text-lg md:ml-auto">
-                    {dollarsAmount}
+                    {price} Caps
                   </p>
                 </CardContent>
               </Card>

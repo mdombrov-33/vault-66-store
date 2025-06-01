@@ -1,5 +1,4 @@
 import { Product } from "@/lib/generated/prisma"; //grab type from prisma schema
-import { formatCurrency } from "@/utils/format-currency";
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
@@ -11,7 +10,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
       {products.map((product) => {
         const { name, price, image } = product;
         const productId = product.id;
-        const dollarsAmount = formatCurrency(price);
+
         return (
           <article key={productId} className="group relative">
             <Link href={`/products/${productId}`}>
@@ -29,9 +28,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
                   </div>
                   <div className="mt-4 text-center">
                     <h2 className="text-lg capitalize">{name}</h2>
-                    <p className="text-muted-foreground mt-2">
-                      {dollarsAmount}
-                    </p>
+                    <p className="text-muted-foreground mt-2">{price} Caps</p>
                   </div>
                 </CardContent>
               </Card>

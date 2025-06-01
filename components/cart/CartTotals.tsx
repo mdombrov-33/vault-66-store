@@ -1,6 +1,5 @@
 import { Card, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { formatCurrency } from "@/utils/format-currency";
 import { createOrderAction } from "@/utils/actions";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton } from "@/components/form/Buttons";
@@ -12,9 +11,9 @@ function CartTotals({ cart }: { cart: Cart }) {
   return (
     <div>
       <Card className="p-8">
-        <CartTotalRow label="Subtotal" amount={cartTotal} />
-        <CartTotalRow label="Shipping" amount={shipping} />
-        <CartTotalRow label="Tax" amount={tax} />
+        <CartTotalRow label="Barter Base" amount={cartTotal} />
+        <CartTotalRow label="Courier Fee" amount={shipping} />
+        <CartTotalRow label="Scavenger's Tax" amount={tax} />
         <CardTitle className="mt-8">
           <CartTotalRow label="Total" amount={orderTotal} lastRow={true} />
         </CardTitle>
@@ -39,7 +38,7 @@ function CartTotalRow({
     <>
       <p className="flex justify-between text-sm">
         <span>{label}</span>
-        <span>{formatCurrency(amount)}</span>
+        <span>{amount} Caps</span>
       </p>
       {lastRow ? null : <Separator className="my-2" />}
     </>

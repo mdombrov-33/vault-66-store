@@ -1,7 +1,6 @@
 import BreadCrumbs from "@/components/single-product/BreadCrumbs";
 import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
 import Image from "next/image";
-import { formatCurrency } from "@/utils/format-currency";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";
@@ -19,7 +18,6 @@ async function SingleProductPage({
 
   const product = await fetchSingleProduct(productId);
   const { name, image, company, description, price } = product;
-  const dollarsAmount = formatCurrency(price);
 
   const { userId } = await auth();
 
@@ -54,7 +52,7 @@ async function SingleProductPage({
           <ProductRating productId={productId} />
           <h4 className="text-xl mt-2">{company}</h4>
           <p className="mt-3 text-md bg-muted inline-block p-2 rounded">
-            {dollarsAmount}
+            {price} Caps
           </p>
           <p className="mt-6 leading-8 text-muted-foreground">{description}</p>
           <AddToCart productId={productId} />

@@ -2,7 +2,6 @@ import EmptyList from "@/components/global/EmptyList";
 import { deleteProductAction, fetchAdminProducts } from "@/utils/actions";
 import Link from "next/link";
 
-import { formatCurrency } from "@/utils/format-currency";
 import {
   Table,
   TableBody,
@@ -46,7 +45,7 @@ async function AdminProductsPage() {
                   </Link>
                 </TableCell>
                 <TableCell>{company}</TableCell>
-                <TableCell>{formatCurrency(price)}</TableCell>
+                <TableCell>{price} Caps</TableCell>
                 <TableCell className="flex items-center gap-x-2">
                   <Link href={`/admin/products/${productId}/edit`}>
                     <IconButton actionType="edit" />
