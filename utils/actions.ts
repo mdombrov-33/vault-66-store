@@ -559,11 +559,33 @@ export const updateCart = async (cart: Cart) => {
   return currentCart;
 };
 
+//* Removes a cart item from the user's cart.
 export const removeCartItemAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: "Item removed from cart" };
+  const user = await getAuthUser();
+
+  try {
+    const cartItemId = formData.get("cartItemId") as string;
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    });
+
+    await db.cartItem.delete({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+    });
+
+    await updateCart(cart);
+    revalidatePath("/cart");
+    return { message: "Item removed from the cart" };
+  } catch (error) {
+    return renderError(error);
+  }
 };
 
 export const createOrderAction = async (prevState: any, formData: FormData) => {
