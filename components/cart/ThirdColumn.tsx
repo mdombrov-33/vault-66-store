@@ -15,9 +15,23 @@ function ThirdColumn({
   cartItemId: string;
 }) {
   const [amount, setAmount] = useState(quantity);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAmountChange = async (value: number) => {
+    setIsLoading(true);
+
+    toast.loading("Changing amount...");
+
+    const result = await updateCartItemAction({
+      amount: value,
+      cartItemId,
+    });
+
     setAmount(value);
+
+    toast.success(result.message);
+
+    setIsLoading(false);
   };
 
   return (
@@ -26,7 +40,7 @@ function ThirdColumn({
         amount={amount}
         setAmount={handleAmountChange}
         mode={Mode.CartItem}
-        isLoading={false}
+        isLoading={isLoading}
       />
       <FormContainer action={removeCartItemAction}>
         <input type="hidden" name="cartItemId" value={cartItemId} />

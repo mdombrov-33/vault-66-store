@@ -603,6 +603,25 @@ export const updateCartItemAction = async ({
   const user = await getAuthUser();
 
   try {
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    });
+
+    await db.cartItem.update({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+      data: {
+        amount,
+      },
+    });
+
+    await updateCart(cart);
+
+    revalidatePath("/cart");
+
     return { message: "Cart item updated" };
   } catch (error) {
     return renderError(error);
