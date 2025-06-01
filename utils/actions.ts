@@ -426,7 +426,7 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
 
   try {
     const productId = formData.get("productId") as string;
-    const amount = Number(formData.get("productId"));
+    const amount = Number(formData.get("amount"));
     await fetchProduct(productId);
     const cart = await fetchOrCreateCart({ userId: user.id });
   } catch (error) {
