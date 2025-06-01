@@ -118,7 +118,7 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 
     revalidatePath("/admin/products");
 
-    return { message: "Product deleted successfully" };
+    return { message: "Product deleted" };
   } catch (error) {
     return renderError(error);
   }
@@ -163,7 +163,7 @@ export const updateProductAction = async (
 
     revalidatePath(`/admin/products/${productId}/edit`);
 
-    return { message: "Product updated successfully" };
+    return { message: "Product updated" };
   } catch (error) {
     return renderError(error);
   }
@@ -197,7 +197,7 @@ export const updateProductImageAction = async (
 
     revalidatePath(`/admin/products/${productId}/edit`);
 
-    return { message: "Product image updated successfully" };
+    return { message: "Product image updated" };
   } catch (error) {
     return renderError(error);
   }
@@ -305,8 +305,7 @@ export const createReviewAction = async (
     });
 
     revalidatePath(`/products/${validatedFields.productId}`);
-
-    return { message: "Review submitted successfully" };
+    return { message: "Review submitted" };
   } catch (error) {
     return renderError(error);
   }
@@ -388,7 +387,7 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
 
     revalidatePath("/reviews");
 
-    return { message: "Review deleted successfully" };
+    return { message: "Review deleted" };
   } catch (error) {
     return renderError(error);
   }
@@ -432,10 +431,13 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
     const cart = await fetchOrCreateCart({ userId: user.id });
     await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
     await updateCart(cart);
+
+    revalidatePath(`/products/${productId}`);
+
+    return { message: "Product added to the cart" };
   } catch (error) {
     return renderError(error);
   }
-  redirect("/cart");
 };
 
 //* Fetches a product by its ID to ensure it exists before adding it to the cart.
@@ -590,6 +592,23 @@ export const removeCartItemAction = async (
   }
 };
 
+//* Updates the quantity of a cart item in the user's cart.
+export const updateCartItemAction = async ({
+  amount,
+  cartItemId,
+}: {
+  amount: number;
+  cartItemId: string;
+}) => {
+  const user = await getAuthUser();
+
+  try {
+    return { message: "Cart item updated" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
 export const createOrderAction = async (prevState: any, formData: FormData) => {
-  return { message: "Order created successfully" };
+  return { message: "Order created" };
 };
