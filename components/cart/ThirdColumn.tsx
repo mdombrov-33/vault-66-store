@@ -20,7 +20,7 @@ function ThirdColumn({
   const handleAmountChange = async (value: number) => {
     setIsLoading(true);
 
-    toast.loading("Changing amount...");
+    const toastId = toast.loading("Changing amount...");
 
     const result = await updateCartItemAction({
       amount: value,
@@ -29,7 +29,7 @@ function ThirdColumn({
 
     setAmount(value);
 
-    toast.success(result.message);
+    toast.success(result.message, { id: toastId });
 
     setIsLoading(false);
   };
