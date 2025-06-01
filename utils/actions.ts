@@ -559,9 +559,12 @@ export const updateCart = async (cart: Cart) => {
   return currentCart;
 };
 
-export const removeCartItemAction = async () => {};
-
-export const updateCartItemAction = async () => {};
+export const removeCartItemAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  return { message: "Item removed from cart" };
+};
 
 export const createOrderAction = async (prevState: any, formData: FormData) => {
   return { message: "Order created successfully" };
