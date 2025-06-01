@@ -5,6 +5,9 @@ import { fetchOrCreateCart, updateCart } from "@/utils/actions";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
+//! FIXME: We don't see toaster notifications in this page after removing products from the cart.
+//! Probably something to do with component unmounting or with using client components in a server component.
+
 async function CartPage() {
   const { userId } = await auth();
 

@@ -581,7 +581,9 @@ export const removeCartItemAction = async (
     });
 
     await updateCart(cart);
+
     revalidatePath("/cart");
+
     return { message: "Item removed from the cart" };
   } catch (error) {
     return renderError(error);
