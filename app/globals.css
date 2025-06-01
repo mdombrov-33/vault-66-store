@@ -158,22 +158,27 @@ input {
   font-size: 1.25rem;
 }
 
-a {
-  font-size: 1.25rem;
-}
-
 span {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 button {
   font-size: 1.5rem;
 }
 
+a {
+  font-size: 1.25rem;
+}
+
 p {
   font-family: var(--font-roboto-mono), monospace;
-  line-height: 1.5;
+  line-height: 1.8;
 }
+
+textarea {
+  font-size: 1.25rem;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
