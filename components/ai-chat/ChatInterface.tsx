@@ -1,26 +1,37 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { TypeAnimation } from "react-type-animation";
+import { useChatStorage } from "@/components/ai-chat/useChatStorage";
+import { useAutoScroll } from "@/components/ai-chat/useAutoScroll";
 
+//* Define the expiration time for chat messages in localStorage
 const EXPIRATION_MS = 1000 * 60 * 60; // 1 hour
 
-type Message = {
-  role: string;
-  content: string;
-  hasAnimated?: boolean;
-};
-
 function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useChatStorage("vault66-chat", EXPIRATION_MS);
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-  const justLoadedRef = useRef(true); // to detect first load
-  const lastMessageCountRef = useRef(0); // track messages count for new messages
 
+  useAutoScroll(
+    messagesContainerRef as React.RefObject<HTMLDivElement>,
+    isTyping,
+    messages,
+    isInitialLoad
+  );
+
+  useEffect(() => {
+    if (messages.length > 0 && isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  }, [messages, isInitialLoad]);
+
+  //* Handle sending a new message
+  //* This function sends the user's input to the server and updates the chat
   async function handleSend() {
     if (!input.trim()) return;
 
@@ -60,127 +71,6 @@ function ChatInterface() {
       setIsLoading(false);
     }
   }
-
-  //* Load chat and scroll position from localStorage on mount
-  useEffect(() => {
-    const savedChat = localStorage.getItem("vault66-chat");
-    const savedScroll = localStorage.getItem("vault66-chat-scroll");
-
-    if (savedChat) {
-      try {
-        const parsed = JSON.parse(savedChat);
-
-        if (Date.now() - parsed.timestamp < EXPIRATION_MS) {
-          // Mark loaded bot messages as already animated so they show instantly
-          const loadedMessages: Message[] = parsed.messages.map(
-            (msg: Message) =>
-              msg.role === "user" ? msg : { ...msg, hasAnimated: true }
-          );
-          setMessages(loadedMessages);
-        } else {
-          localStorage.removeItem("vault66-chat");
-        }
-      } catch (e) {
-        console.error("Failed to parse saved chat:", e);
-      }
-    }
-
-    if (savedScroll) {
-      // Save scroll position for later restore
-      scrollToSavedPosition(savedScroll);
-    }
-  }, []);
-
-  // Helper to scroll to saved position after mount and messages rendered
-  const scrollToSavedPosition = (savedScroll: string) => {
-    // Wait a tick for rendering
-    setTimeout(() => {
-      if (messagesContainerRef.current) {
-        const pos = parseInt(savedScroll, 10);
-        messagesContainerRef.current.scrollTo({ top: pos, behavior: "auto" });
-      }
-    }, 0);
-  };
-
-  //* Save chat to localStorage whenever messages change
-  useEffect(() => {
-    if (messages.length === 0) return;
-
-    // Save messages with timestamp
-    const saved = localStorage.getItem("vault66-chat");
-    let timestamp = Date.now();
-
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.timestamp) {
-          timestamp = parsed.timestamp; // reuse original timestamp
-        }
-      } catch (e) {
-        console.error("Failed to parse previous chat state:", e);
-      }
-    }
-
-    const payload = { messages, timestamp };
-    localStorage.setItem("vault66-chat", JSON.stringify(payload));
-  }, [messages]);
-
-  //* Save scroll position on user scroll
-  useEffect(() => {
-    const container = messagesContainerRef.current;
-    if (!container) return;
-
-    const onScroll = () => {
-      localStorage.setItem(
-        "vault66-chat-scroll",
-        container.scrollTop.toString()
-      );
-    };
-
-    container.addEventListener("scroll", onScroll);
-    return () => container.removeEventListener("scroll", onScroll);
-  }, []);
-
-  //* Handle scrolling behavior when messages or typing changes
-  useEffect(() => {
-    const container = messagesContainerRef.current;
-    if (!container) return;
-
-    // On first load, restore scroll position (already handled in effect above)
-    if (justLoadedRef.current) {
-      justLoadedRef.current = false;
-      lastMessageCountRef.current = messages.length;
-      return; // Don't scroll to bottom yet
-    }
-
-    // If new messages arrived (count increased) and not typing, scroll to bottom
-    if (messages.length > lastMessageCountRef.current && !isTyping) {
-      container.scrollTo({
-        top: container.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-
-    lastMessageCountRef.current = messages.length;
-  }, [messages, isTyping]);
-
-  //* While typing, keep scrolling down smoothly every frame
-  useEffect(() => {
-    if (!isTyping) return;
-
-    let refId: number;
-    const scroll = () => {
-      if (!messagesContainerRef.current) return;
-
-      const container = messagesContainerRef.current;
-      container.scrollBy({ top: 10, behavior: "smooth" });
-
-      refId = requestAnimationFrame(scroll);
-    };
-
-    refId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(refId);
-  }, [isTyping]);
 
   return (
     <section className="flex flex-col h-full overflow-hidden">
