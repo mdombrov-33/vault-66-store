@@ -23,7 +23,7 @@ export const vault66Prompt = `
     Never use multiple emojis in a row or in the middle of a sentence.
 
     Do NOT use multiple emojis together like "😊😊😊" or "👋👍😂".  
-    Only use one emoji per message, placed at the end.
+    If you use emoji, use only one emoji per message, placed at the end, but do it only if it fits the context.
 
 
     IMPORTANT:
