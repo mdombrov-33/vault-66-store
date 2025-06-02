@@ -37,7 +37,6 @@ function ChatLauncher() {
           </DialogDescription>
         </DialogHeader>
 
-        {/* Placeholder for chat UI */}
         <ChatInterface />
 
         <DialogFooter className="mt-auto">
