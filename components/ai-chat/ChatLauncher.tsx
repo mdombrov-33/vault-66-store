@@ -51,7 +51,7 @@ function ChatLauncher() {
 
       <DialogContent
         className="w-full max-w-[90vw] sm:max-w-4xl h-[60vh] flex flex-col sm:rounded-xl border
-        border-primary bg-black text-primary px-4 sm:px-8 mx-auto"
+        border-primary bg-black text-primary px-4 sm:px-8 mx-auto focus:outline-none"
       >
         <DialogHeader>
           <DialogTitle>Vault Assistant</DialogTitle>
