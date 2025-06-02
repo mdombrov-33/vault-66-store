@@ -64,7 +64,6 @@ export async function POST(req: Request) {
 
     If a customer asks about a product not listed, respond with: "I’m afraid we don’t have that item in stock at Vault-66.
     Please check back later or try another vendor. Remember, the Wasteland is full of surprises! or some kind of variation of that.
-
     
 `,
     };

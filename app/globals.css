@@ -178,6 +178,35 @@ textarea {
   font-size: 1.25rem;
 }
 
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px; /* thinner scrollbar */
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background); /* use theme background */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary); /* primary color from your theme */
+  border-radius: 3px;
+  border: 1.5px solid var(--background); /* to give some padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(
+    --color-primary-foreground
+  ); /* lighter or contrast color on hover */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--background);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
