@@ -25,7 +25,11 @@ function Hero() {
           speed={85}
         />
 
-        <Button asChild size="lg" className="mt-10">
+        <Button
+          asChild
+          size="lg"
+          className="mt-10 text-primary-foreground shadow-primary-glow hover:shadow-[0_0_15px_var(--shadow-glow-primary)] transition-shadow duration-100 ease-in-out hover:scale-105"
+        >
           <Link href="/products">Our Products</Link>
         </Button>
       </div>

@@ -1,0 +1,10 @@
+module.exports = {
+  theme: {
+    extend: {
+      boxShadow: {
+        "primary-glow":
+          "0 0 8px var(--shadow-glow-primary), 0 0 20px var(--shadow-glow-primary)",
+      },
+    },
+  },
+};

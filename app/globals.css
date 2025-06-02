@@ -86,6 +86,8 @@
   --sidebar-accent-foreground: rgb(30, 20, 10);
   --sidebar-border: rgba(0, 0, 0, 0.1);
   --sidebar-ring: rgb(229, 195, 70);
+
+  --shadow-glow-primary: rgba(50, 49, 43, 0.6);
 }
 
 .dark {
@@ -132,6 +134,8 @@
   --sidebar-accent-foreground: rgb(240, 255, 230);
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-ring: rgb(80, 150, 100);
+
+  --shadow-glow-primary: rgba(72, 177, 53, 0.7);
 }
 
 h1 {
