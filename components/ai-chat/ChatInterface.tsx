@@ -1,31 +1,21 @@
 import { useState, useRef, useEffect } from "react";
-import { useChatStorage } from "@/components/ai-chat/hooks/useChatStorage";
 import { useAutoScroll } from "@/components/ai-chat/hooks/useAutoScroll";
 import ChatMessages from "@/components/ai-chat/ChatMessages";
 import ChatInput from "@/components/ai-chat/ChatInput";
-import { sendMessage } from "@/components/ai-chat/send-message";
+import { ChatInterfaceProps } from "@/types/ai-chat";
 
-//* Define the expiration time for chat messages in localStorage
-const EXPIRATION_MS = 1000 * 60 * 60; // 1 hour
-
-function ChatInterface() {
-  const [messages, setMessages] = useChatStorage("vault66-chat", EXPIRATION_MS);
-  const [isLoading, setIsLoading] = useState(false);
-  const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
-
+function ChatInterface({
+  messages,
+  setMessages,
+  isLoading,
+  input,
+  setInput,
+  isTyping,
+  setIsTyping,
+  handleSend,
+}: ChatInterfaceProps) {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-
-  async function handleSend(): Promise<void> {
-    await sendMessage({
-      input,
-      setInput,
-      messages,
-      setMessages,
-      setIsLoading,
-    });
-  }
 
   useAutoScroll(
     messagesContainerRef as React.RefObject<HTMLDivElement>,

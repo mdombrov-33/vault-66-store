@@ -1,6 +1,5 @@
 import { ChatInputProps } from "@/types/ai-chat";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 
 function ChatInput({
   input,
@@ -22,9 +21,6 @@ function ChatInput({
         }
         disabled={isLoading || isTyping}
       />
-      <Button onClick={onSend} disabled={isLoading || isTyping}>
-        Send
-      </Button>
     </div>
   );
 }

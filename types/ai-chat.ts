@@ -1,3 +1,5 @@
+import React from "react";
+
 export type Message = {
   role: string;
   content: string;
@@ -10,6 +12,17 @@ export type SendMessageArgs = {
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type ChatInterfaceProps = {
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  isLoading: boolean;
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  isTyping: boolean;
+  setIsTyping: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSend: () => Promise<void>;
 };
 
 export interface ChatWindowProps {
