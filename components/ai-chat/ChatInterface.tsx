@@ -43,7 +43,7 @@ function ChatInterface() {
   return (
     <section className="flex flex-col h-full overflow-hidden">
       {/* Chat messages container */}
-      <div className="flex-1 overflow-y-auto border rounded p-2 space-y-2 bg-accent text-sm">
+      <div className="flex-1 overflow-y-auto overflow-x-auto border rounded whitespace-pre-wrap break-words p-2 space-y-2 bg-accent text-sm">
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -56,8 +56,8 @@ function ChatInterface() {
             {msg.content}
           </div>
         ))}
+        <div ref={bottomRef} />
       </div>
-      <div ref={bottomRef} />
 
       {/* Input area */}
       <div className="mt-4 flex items-center gap-2">
