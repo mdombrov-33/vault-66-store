@@ -3,12 +3,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useRef, useEffect } from "react";
+
+// inside your ChatInterface component
 
 function ChatInterface() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
   );
   const [input, setInput] = useState("");
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   async function handleSend() {
     if (!input.trim()) return;
@@ -29,6 +33,10 @@ function ChatInterface() {
     }
   }
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <section className="flex flex-col h-full overflow-hidden">
       {/* Chat messages container */}
@@ -46,6 +54,7 @@ function ChatInterface() {
           </div>
         ))}
       </div>
+      <div ref={bottomRef} />
 
       {/* Input area */}
       <div className="mt-4 flex items-center gap-2">
