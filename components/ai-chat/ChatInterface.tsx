@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { TypeAnimation } from "react-type-animation";
 
+const EXPIRATION_MS = 1000 * 60 * 60; // 1 hour
+
 function ChatInterface() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
@@ -47,6 +49,53 @@ function ChatInterface() {
       setIsLoading(false);
     }
   }
+
+  //* Load chat from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("vault66-chat");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+
+        if (Date.now() - parsed.timestamp < EXPIRATION_MS) {
+          setMessages(parsed.messages);
+        } else {
+          // Too old — clear it
+          localStorage.removeItem("vault66-chat");
+        }
+      } catch (e) {
+        console.error("Failed to parse saved chat:", e);
+      }
+    }
+  }, []);
+
+  //* Save chat to localStorage whenever messages change
+  useEffect(() => {
+    // Don't save empty messages
+    if (messages.length === 0) return;
+
+    // Try to load existing timestamp
+    const saved = localStorage.getItem("vault66-chat");
+    let timestamp = Date.now();
+
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed.timestamp) {
+          timestamp = parsed.timestamp; // Reuse original timestamp
+        }
+      } catch (e) {
+        console.error("Failed to parse previous chat state:", e);
+      }
+    }
+
+    const payload = {
+      messages,
+      timestamp,
+    };
+
+    localStorage.setItem("vault66-chat", JSON.stringify(payload));
+  }, [messages]);
 
   //* Scroll immediately to bottom when messages change, unless typing
   useEffect(() => {
