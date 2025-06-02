@@ -16,7 +16,7 @@ export function useChatStorage(key: string, expirationMs: number) {
   const [messages, setMessages] = useState<Message[]>([]);
 
   /**
-   * ✅ Load chat messages from localStorage on mount
+   *   Load chat messages from localStorage on mount
    *
    * - Tries to parse the saved object (must have `messages` and `timestamp`)
    * - If not expired, sets the messages state
@@ -46,7 +46,7 @@ export function useChatStorage(key: string, expirationMs: number) {
   }, [key, expirationMs]);
 
   /**
-   * ✅ Persist messages to localStorage on each update
+   *   Persist messages to localStorage on each update
    *
    * - Preserves the original timestamp if one already exists
    * - Prevents constant overwriting with a new timestamp on every keystroke
@@ -70,7 +70,7 @@ export function useChatStorage(key: string, expirationMs: number) {
   }, [messages, key]);
 
   /**
-   * ✅ Return messages and setter
+   *   Return messages and setter
    *
    * - Allows consumers to control chat messages while keeping them in sync with storage
    */

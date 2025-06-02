@@ -21,7 +21,7 @@ export function useAutoScroll(
   const hasRestoredRef = useRef(false); // prevents restoring scroll position more than once
 
   /**
-   * ✅ 1. Restore scroll position on initial load
+   *   1. Restore scroll position on initial load
    *
    * - Only runs once when the chat is first rendered
    * - Reads the saved scrollTop value from localStorage
@@ -43,7 +43,7 @@ export function useAutoScroll(
   }, [isInitialLoad, messages.length]); // re-run if message count changes while loading
 
   /**
-   * ✅ 2. Auto-scroll to bottom when a new message is added
+   *   2. Auto-scroll to bottom when a new message is added
    *
    * - Skips if we’re still in initial load or if typing is in progress
    * - Useful for snapping to new bot/user messages
@@ -59,7 +59,7 @@ export function useAutoScroll(
   }, [messages, isTyping, isInitialLoad]);
 
   /**
-   * ✅ 3. Smooth scrolling while typing animation plays
+   *   3. Smooth scrolling while typing animation plays
    *
    * - Triggers interval-based scroll syncing every 100ms
    * - Keeps view locked to bottom while bot types response character-by-character
@@ -83,7 +83,7 @@ export function useAutoScroll(
   }, [isTyping, isInitialLoad]);
 
   /**
-   * ✅ 4. Save scroll position on user scroll
+   *   4. Save scroll position on user scroll
    *
    * - Runs only when not typing (to avoid conflicts with auto scroll)
    * - Persists scrollTop to localStorage so we can restore it later
