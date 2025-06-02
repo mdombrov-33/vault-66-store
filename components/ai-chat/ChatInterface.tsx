@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 function ChatInterface() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
@@ -15,6 +15,7 @@ function ChatInterface() {
 
     const newMessages = [...messages, { role: "user", content: input }];
     setMessages(newMessages);
+
     setInput("");
 
     const res = await fetch("/api/chat", {
@@ -29,12 +30,13 @@ function ChatInterface() {
   }
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-auto border rounded p-2 space-y-2 bg-background text-sm">
+    <section className="flex flex-col h-full overflow-hidden">
+      {/* Chat messages container */}
+      <div className="flex-1 overflow-y-auto border rounded p-2 space-y-2 bg-accent text-sm">
         {messages.map((msg, i) => (
           <div
             key={i}
-            className={`p-2 rounded ${
+            className={`p-2 rounded text-2xl ${
               msg.role === "user"
                 ? "bg-primary text-primary-foreground self-end"
                 : "bg-muted self-start"
@@ -45,6 +47,7 @@ function ChatInterface() {
         ))}
       </div>
 
+      {/* Input area */}
       <div className="mt-4 flex items-center gap-2">
         <Textarea
           className="flex-1 resize-none"
@@ -55,7 +58,7 @@ function ChatInterface() {
         />
         <Button onClick={handleSend}>Send</Button>
       </div>
-    </div>
+    </section>
   );
 }
 
