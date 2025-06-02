@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { useAutoScroll } from "@/components/ai-chat/hooks/useAutoScroll";
+import { useRef } from "react";
 import ChatMessages from "@/components/ai-chat/ChatMessages";
 import ChatInput from "@/components/ai-chat/ChatInput";
 import { ChatInterfaceProps } from "@/types/ai-chat";
@@ -14,21 +13,7 @@ function ChatInterface({
   setIsTyping,
   handleSend,
 }: ChatInterfaceProps) {
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-
-  useAutoScroll(
-    messagesContainerRef as React.RefObject<HTMLDivElement>,
-    isTyping,
-    messages,
-    isInitialLoad
-  );
-
-  useEffect(() => {
-    if (messages.length > 0 && isInitialLoad) {
-      setIsInitialLoad(false);
-    }
-  }, [messages, isInitialLoad]);
 
   return (
     <section className="flex flex-col h-full overflow-hidden">

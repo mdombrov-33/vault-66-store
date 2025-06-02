@@ -1,12 +1,30 @@
 import { ChatWindowProps } from "@/types/ai-chat";
+import { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { useAutoScroll } from "./hooks/useAutoScroll";
 
 function ChatMessages({
   messages,
   setMessages,
   setIsTyping,
+  isTyping,
   messagesContainerRef,
 }: ChatWindowProps) {
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useAutoScroll(
+    messagesContainerRef as React.RefObject<HTMLDivElement>,
+    isTyping,
+    messages,
+    isInitialLoad
+  );
+
+  useEffect(() => {
+    if (messages.length > 0 && isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  }, [messages, isInitialLoad]);
+
   return (
     <section className="flex flex-col h-full overflow-hidden">
       {/* Chat messages container */}
