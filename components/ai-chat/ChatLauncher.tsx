@@ -21,10 +21,10 @@ function ChatLauncher() {
         <Button
           variant="default"
           size="default"
-          className="fixed bottom-4 right-4 z-50"
+          className="fixed bottom-4 right-4 z-50 flex items-center"
         >
           <TerminalIcon className="mr-2" />
-          Need Help?
+          <span className="hidden md:inline">Need Help?</span>
         </Button>
       </DialogTrigger>
 

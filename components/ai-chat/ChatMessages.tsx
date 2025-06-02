@@ -47,7 +47,7 @@ function ChatMessages({
                   100,
                   () => {
                     setIsTyping(false); // typing finished
-                    // Mark message as animated
+                    //* Mark message as animated
                     setMessages((prev) => {
                       const newMessages = [...prev];
                       if (newMessages[i]) {
