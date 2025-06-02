@@ -36,7 +36,7 @@ async function SingleProductPage({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
-            className="w-full rounded object-cover"
+            className="w-full rounded object-cover shadow-lg border border-accent"
           />
         </div>
         {/* PRODUCT INFO SECOND COL */}
