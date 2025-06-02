@@ -13,7 +13,6 @@ import { useUser } from "@clerk/nextjs"; //* using useUser because this is a cli
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
   const { user } = useUser();
-  console.log("user", user);
 
   return (
     <div>
