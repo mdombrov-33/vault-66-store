@@ -6,7 +6,7 @@ function Logo() {
     <Button
       size="lg"
       asChild
-      className="hidden sm:block sm:flex sm:items-center"
+      className="hidden sm:flex sm:items-center sm:justify-center"
     >
       <Link href="/">
         <span className="uppercase">vault 66</span>
