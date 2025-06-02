@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { IoLogoOctocat } from "react-icons/io5";
 import { Button } from "../ui/button";
 
 function Logo() {
   return (
-    <Button size="icon" asChild>
+    <Button size="lg" asChild className="hidden sm:block">
       <Link href="/">
-        <IoLogoOctocat className="w-6 h-6" />
+        <span className="uppercase">vault 66</span>
       </Link>
     </Button>
   );
