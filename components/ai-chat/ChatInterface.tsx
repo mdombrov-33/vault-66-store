@@ -29,7 +29,7 @@ function ChatInterface() {
     }
   }, [messages, isInitialLoad]);
 
-  async function handleSend() {
+  async function handleSend(): Promise<void> {
     if (!input.trim()) return;
 
     const newMessages = [...messages, { role: "user", content: input }];
