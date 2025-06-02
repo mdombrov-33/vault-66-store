@@ -60,7 +60,7 @@ function ChatMessages({
                     });
                   },
                 ]}
-                speed={85}
+                speed={95}
                 wrapper="div"
                 className="p-2 rounded text-2xl bg-muted self-start text-muted-foreground"
                 cursor={false}

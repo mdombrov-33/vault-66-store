@@ -28,7 +28,10 @@ function ChatLauncher() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="w-full max-w-4xl h-[60vh] flex flex-col sm:rounded-xl border border-primary bg-black text-primary">
+      <DialogContent
+        className="w-full max-w-[90vw] sm:max-w-4xl h-[60vh] flex flex-col sm:rounded-xl border
+        border-primary bg-black text-primary px-4 sm:px-8 mx-auto"
+      >
         <DialogHeader>
           <DialogTitle>Wasteland Assistant</DialogTitle>
           <DialogDescription>
