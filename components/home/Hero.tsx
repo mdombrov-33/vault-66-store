@@ -20,9 +20,9 @@ function Hero() {
           ]}
           wrapper="p"
           className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground uppercase"
-          cursor={true}
+          cursor={false}
           repeat={Infinity}
-          speed={80}
+          speed={85}
         />
 
         <Button asChild size="lg" className="mt-10">
