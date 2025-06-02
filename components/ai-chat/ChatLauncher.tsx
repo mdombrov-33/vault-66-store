@@ -33,7 +33,7 @@ function ChatLauncher() {
         border-primary bg-black text-primary px-4 sm:px-8 mx-auto"
       >
         <DialogHeader>
-          <DialogTitle>Wasteland Assistant</DialogTitle>
+          <DialogTitle>Vault Assistant</DialogTitle>
           <DialogDescription>
             How can I assist you? Ask me anything about our products, the Vault,
             or survival tips!
