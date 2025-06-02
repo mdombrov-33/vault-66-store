@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { TypeAnimation } from "react-type-animation";
-import { useChatStorage } from "@/components/ai-chat/useChatStorage";
-import { useAutoScroll } from "@/components/ai-chat/useAutoScroll";
+import { useChatStorage } from "@/components/ai-chat/hooks/useChatStorage";
+import { useAutoScroll } from "@/components/ai-chat/hooks/useAutoScroll";
 
 //* Define the expiration time for chat messages in localStorage
 const EXPIRATION_MS = 1000 * 60 * 60; // 1 hour

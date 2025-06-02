@@ -1,4 +1,4 @@
-import { vault66Prompt } from "@/components/ai-chat/vault66-prompt";
+import { vault66Prompt } from "@/components/ai-chat/prompt";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
