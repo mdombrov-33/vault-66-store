@@ -1,19 +1,36 @@
+// app/api/chat/route.ts
 import { NextResponse } from "next/server";
-import openai from "@/lib/openai";
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
-
   try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o", // or "gpt-3.5-turbo" if no GPT-4 access
-      messages,
-      max_tokens: 500,
-    });
+    const body = await req.json();
+    const { messages } = body;
 
-    return NextResponse.json({ message: completion.choices[0].message });
-  } catch (error) {
-    console.error("OpenAI error:", error);
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "mistralai/mistral-7b-instruct",
+          messages,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    return NextResponse.json({
+      message: data.choices?.[0]?.message || {
+        role: "assistant",
+        content: "Sorry, I couldn’t respond.",
+      },
+    });
+  } catch (err) {
+    console.error(err);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

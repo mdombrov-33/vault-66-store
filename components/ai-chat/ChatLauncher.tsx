@@ -1,6 +1,7 @@
 "use client";
 
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import ChatInterface from "@/components/ai-chat/ChatInterface";
 import { TerminalIcon } from "lucide-react";
 import {
   Dialog,
@@ -37,7 +38,7 @@ function ChatLauncher() {
         </DialogHeader>
 
         {/* Placeholder for chat UI */}
-        <div className="mt-4">Chat interface will be implemented here.</div>
+        <ChatInterface />
 
         <DialogFooter className="mt-auto">
           <DialogClose asChild>
