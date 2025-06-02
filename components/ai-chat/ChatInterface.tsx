@@ -57,7 +57,7 @@ function ChatInterface() {
                   : "bg-muted self-start text-muted-foreground"
               }`}
             >
-              {msg.content}
+              {msg.content.trim()}
             </div>
           );
         })}
