@@ -1,18 +1,15 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useRef, useEffect } from "react";
-
-// inside your ChatInterface component
 
 function ChatInterface() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
   );
+
   const [input, setInput] = useState("");
-  const bottomRef = useRef<HTMLDivElement>(null);
+
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   async function handleSend() {
     if (!input.trim()) return;
@@ -37,26 +34,33 @@ function ChatInterface() {
   }
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    //* Scroll the last message element (messagesEndRef) into view, aligned to top
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }, [messages]);
 
   return (
     <section className="flex flex-col h-full overflow-hidden">
       {/* Chat messages container */}
       <div className="flex-1 overflow-y-auto overflow-x-auto border rounded whitespace-pre-wrap break-words p-2 space-y-2 bg-accent text-sm">
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`p-2 rounded text-2xl ${
-              msg.role === "user"
-                ? "bg-primary text-primary-foreground self-end"
-                : "bg-muted self-start"
-            }`}
-          >
-            {msg.content}
-          </div>
-        ))}
-        <div ref={bottomRef} />
+        {messages.map((msg, i) => {
+          const isLast = i === messages.length - 1;
+          return (
+            <div
+              key={i}
+              ref={isLast ? messagesEndRef : null}
+              className={`p-2 rounded text-2xl ${
+                msg.role === "user"
+                  ? "bg-primary text-primary-foreground self-end"
+                  : "bg-muted self-start"
+              }`}
+            >
+              {msg.content}
+            </div>
+          );
+        })}
       </div>
 
       {/* Input area */}
