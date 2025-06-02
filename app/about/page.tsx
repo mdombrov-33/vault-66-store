@@ -5,20 +5,24 @@ function AboutPage() {
   return (
     <section className="max-w-4xl mx-auto p-8 space-y-16">
       <div>
-        <h2 className="text-3xl font-bold uppercase mb-4">Our Story</h2>
+        <h2 className="text-3xl font-bold uppercase mb-4">
+          Welcome to Vault 66
+        </h2>
         <p className="text-lg leading-relaxed text-muted-foreground">
-          After the bombs fell, Vault 66 became a beacon for survivors seeking
-          quality gear and trusted advice. We’re not just a store — we’re your
-          companions in the wasteland. Whether it’s Power Armor or Nuka-Cola,
-          we’ve got your back.
+          Vault 66 stands as a beacon of hope in the harsh wasteland, designed
+          to maintain trade and supplies with the outside world. Our mission is
+          simple: ensure the survival of our dwellers and provide trusted goods
+          for travelers brave enough to venture beyond the vault doors.
         </p>
       </div>
 
       <div>
-        <h2 className="text-3xl font-bold uppercase mb-4">Our Mission</h2>
+        <h2 className="text-3xl font-bold uppercase mb-4">Our Role</h2>
         <p className="text-lg leading-relaxed text-muted-foreground">
-          To provide authentic, lore-accurate, and quality vault-themed gear
-          that helps every survivor stand tall in the harsh wasteland.
+          As one of the few vaults maintaining open commerce with the Wasteland,
+          Vault 66 serves as a crucial hub for supplies, trade, and knowledge.
+          Our Overseer and dedicated dwellers work tirelessly to keep the vault
+          safe, stocked, and ready for whatever dangers lurk beyond.
         </p>
       </div>
 
@@ -35,8 +39,8 @@ function AboutPage() {
             />
             <h3 className="font-semibold">Commander Lee</h3>
             <p className="text-sm italic">
-              The no-nonsense leader making sure everything runs smooth in Vault
-              66.
+              Overseer of Vault 66, guiding our community through uncertain
+              times with steady leadership.
             </p>
           </div>
           <div className="p-4 bg-primary/20 rounded-lg text-center">
@@ -47,7 +51,8 @@ function AboutPage() {
             />
             <h3 className="font-semibold">Wanderer Kate</h3>
             <p className="text-sm italic">
-              Explorer and scavenger, always hunting down rare vault gear.
+              Scout and trader, keeping Vault 66 connected with the outside
+              world to ensure a steady flow of goods.
             </p>
           </div>
           <div className="p-4 bg-primary/20 rounded-lg text-center">
@@ -58,17 +63,16 @@ function AboutPage() {
             />
             <h3 className="font-semibold">Ironclad</h3>
             <p className="text-sm italic">
-              Power Armor specialist, makes sure you’re ready for anything out
-              there.
+              Power Armor expert, ready to defend the vault and lead expeditions
+              into the wasteland.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Call to Action */}
       <div className="text-center">
         <Button asChild size="lg">
-          <Link href="/products">Gear Up Now</Link>
+          <Link href="/products">Check Our Inventory</Link>
         </Button>
       </div>
     </section>
