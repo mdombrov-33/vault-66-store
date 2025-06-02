@@ -4,6 +4,14 @@ export type Message = {
   hasAnimated?: boolean;
 };
 
+export type SendMessageArgs = {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export interface ChatWindowProps {
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
