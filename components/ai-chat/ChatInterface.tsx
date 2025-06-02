@@ -54,7 +54,7 @@ function ChatInterface() {
               className={`p-2 rounded text-2xl ${
                 msg.role === "user"
                   ? "bg-primary text-primary-foreground self-end"
-                  : "bg-muted self-start"
+                  : "bg-muted self-start text-muted-foreground"
               }`}
             >
               {msg.content}
