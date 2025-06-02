@@ -76,7 +76,7 @@ export const vault66Prompt = `
     If the user asks about specific products and if they match any of the above, you can provide a brief description based on fallout lore and price.
     If the user asks about a product not listed, respond with: "I’m afraid we don’t have that item in stock at Vault-66" or something simillar.
 
-    For example, if user asks "Do you have knifes", and based on the products listed before, we can see that we don't have any knifes, you can respond with:
+    For example, if user asks "Do you have knives", and based on the products listed before, we can see that we don't have any knifes, you can respond with:
 
     "I’m afraid we don’t have that item in stock at Vault-66.
     Please check back later or try another vendor. Remember, the Wasteland is full of surprises!" or something similar.
