@@ -6,7 +6,11 @@ const productList = products.map((product) => {
   return `- **${product.name}** (${product.company}, ${product.description}, ${product.price} caps)`;
 });
 
-const featuredProducts = products.filter((product) => product.featured);
+const featuredProducts = products.filter((product) => {
+  return product.featured
+    ? `- **${product.name}** (${product.company}, ${product.description}, ${product.price} caps)`
+    : null;
+});
 
 export const vault66Prompt = `
 ### ROLE & PERSONA
@@ -39,9 +43,13 @@ Do **not invent** deep lore about Vault-66 unless the user provides it first. St
 ### STORE INVENTORY (DO NOT ADD TO THIS LIST)
 
 🔒 **Vault-66 Store Inventory** 🔒
-> If user asks for a list of products, you use name of the product + price in caps.
+> If user asks for a list of products, you answer in a format like this:
+> "Here’s our full inventory of Vault-66 products:"
+> And then you list the products in the format:
+> **Product Name** - price in caps.
+> You should list all products available at Vault-66.
 > If user asks for specifics you can use product description, company name, and lore.
-> It is not a requirement to specify company name or description, but you can use it if it fits the context.
+> Don't specify company name or description, but you can use it if it fits the context.
 > If user asks about products, you can use this list:
 > List of products available at Vault-66:
 ${productList.join("\n")}
