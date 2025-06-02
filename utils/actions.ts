@@ -1,5 +1,5 @@
 "use server";
-import db from "@/utils//db";
+import db from "@/utils/db";
 import { redirect } from "next/navigation";
 import { getAdminUser, getAuthUser } from "./get-user";
 import { renderError } from "./render-error";
