@@ -22,7 +22,7 @@ export async function POST(req: Request) {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "mistralai/mistral-7b-instruct",
+          model: "gpt-3.5-turbo",
           messages: fullMessages,
         }),
       }

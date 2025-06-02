@@ -61,7 +61,7 @@ function ChatInterface() {
         ...prev,
         {
           role: "system",
-          content: "Oops! Something went wrong. Please try again.",
+          content: "Uh-oh! The Vault's AI is glitching. Give it another shot.",
           hasAnimated: true,
         },
       ]);
