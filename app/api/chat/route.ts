@@ -112,6 +112,15 @@ export async function POST(req: Request) {
       }
     );
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("OpenRouter API error:", errorData);
+      return NextResponse.json(
+        { error: "Failed to fetch response from AI model" },
+        { status: 500 }
+      );
+    }
+
     const data = await response.json();
 
     return NextResponse.json({

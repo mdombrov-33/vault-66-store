@@ -6,6 +6,7 @@ function ChatInterface() {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const [input, setInput] = useState("");
 
@@ -19,17 +20,36 @@ function ChatInterface() {
 
     setInput("");
 
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ messages: newMessages }),
-    });
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messages: newMessages }),
+      });
 
-    const data = await res.json();
-    if (data.message) {
-      setMessages((prev) => [...prev, data.message]);
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.message) {
+        setMessages((prev) => [...prev, data.message]);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "system",
+          content: "Oops! Something went wrong. Please try again.",
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -62,6 +82,13 @@ function ChatInterface() {
           );
         })}
       </div>
+
+      {/* Loading response*/}
+      {isLoading && (
+        <div className="text-muted-foreground text-center p-2">
+          <span>Loading from the Vault’s archives... Almost there.</span>
+        </div>
+      )}
 
       {/* Input area */}
       <div className="mt-4 flex items-center gap-2">
