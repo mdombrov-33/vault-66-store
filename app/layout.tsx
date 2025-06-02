@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Container from "@/components/global/Container";
 import Providers from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import ChatLauncher from "@/components/ai-chat/ChatLauncher";
 
 const vt323 = VT323({
   variable: "--font-vt323",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <Container className="py-20">{children}</Container>
+            <ChatLauncher />
           </Providers>
         </body>
       </html>
