@@ -19,8 +19,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next Store",
-  description: "Store built with Next.js",
+  title: "Vault 66 Store",
+  description:
+    "Get your post-apocalyptic survival gear and Vault-themed collectibles. Prepare for the wasteland!",
 };
 
 export default function RootLayout({
