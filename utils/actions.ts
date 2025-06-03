@@ -631,6 +631,64 @@ export const updateCartItemAction = async ({
   }
 };
 
+//* Creates a new order from the user's cart.
 export const createOrderAction = async (prevState: any, formData: FormData) => {
-  return { message: "Order created" };
+  const user = await getAuthUser();
+
+  try {
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    });
+    const order = await db.order.create({
+      data: {
+        clerkId: user.id,
+        products: cart.numItemsInCart,
+        orderTotal: cart.orderTotal,
+        tax: cart.tax,
+        shipping: cart.shipping,
+        email: user.emailAddresses[0].emailAddress,
+      },
+    });
+
+    await db.cart.delete({
+      where: {
+        id: cart.id,
+      },
+    });
+  } catch (error) {
+    return renderError(error);
+  }
+  redirect("/orders");
+};
+
+//* Fetches all orders made by the authenticated user.
+export const fetchUserOrders = async () => {
+  const user = await getAuthUser();
+
+  const orders = await db.order.findMany({
+    where: {
+      clerkId: user.id,
+      isPaid: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return orders;
+};
+
+//* Fetches all orders for the admin panel.
+export const fetchAdminOrders = async () => {
+  await getAdminUser();
+
+  const orders = await db.order.findMany({
+    where: {
+      isPaid: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return orders;
 };
