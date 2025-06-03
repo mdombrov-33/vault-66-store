@@ -59,16 +59,16 @@ Test Admin Credentials:
 ## 🖼️ Screenshots
 
 ### 🏪 Home Page
-![Home Page](./public/showcase/home-screen.png)
+![Home Page](./public/images/showcase/home-screen.png)
 
 ### 📦 Product Page
-![Product Page](./public/showcase/single-product-screen.png)
+![Product Page](./public/images/showcase/single-product-screen.png)
 
 ### ⚙️ Admin Dashboard
-![Admin Dashboard](./public/showcase/dashboard-screen.png)
+![Admin Dashboard](./public/images/showcase/dashboard-screen.png)
 
 ### 🛒 Cart Page
-![Cart](./public/showcase/cart-screen.png)
+![Cart](./public/showcase/images/cart-screen.png)
 
 
 ---
