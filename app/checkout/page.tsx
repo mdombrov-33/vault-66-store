@@ -9,6 +9,16 @@ import {
 } from "@stripe/react-stripe-js";
 
 //* Flow: This page sends request to /api/payment => logic from /api/payment is send to stripe
+// +--------+    Fetch clientSecret    +--------+   Request        +---------+
+// | Client | -----------------------> | Server | ---------------> | Stripe  |
+// |        |                          |        |                  |  API    |
+// |        |                          |        | <--------------- |         |
+// |        | <----------------------- |        |   clientSecret   |         |
+// |        |  clientSecret response   |        |                  |         |
+// +--------+                          +--------+                  +---------+
+
+// Checkout.tsx                        payment/route.ts
+
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
 );

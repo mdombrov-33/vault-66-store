@@ -2,6 +2,16 @@ import Stripe from "stripe";
 import { type NextRequest } from "next/server";
 import db from "@/utils/db";
 
+// +--------+    Checkout Session ID   +--------+    redirect      +---------+
+// | Server | -----------------------> | Server | ---------------> | Orders  |
+// |        |                          |        |                  |         |
+// |        |                          |        |                  |         |
+// |        |                          |        |                  |         |
+// |        |                          |        |                  |         |
+// +--------+                          +--------+                  +---------+
+
+// payment/route.ts                    confirm/route.ts            orders page
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(req: NextRequest) {
