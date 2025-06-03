@@ -30,7 +30,7 @@ function NavSearch() {
   return (
     <Input
       type="search"
-      placeholder="search products..."
+      placeholder=":: SEARCHING DATABASE █"
       className="max-w-xs dark:bg-muted"
       value={search}
       onChange={(e) => {

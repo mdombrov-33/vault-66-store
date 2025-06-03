@@ -10,7 +10,7 @@ async function FeaturedProducts() {
 
   return (
     <section className="pt-24">
-      <SectionTitle text="featured products" />
+      <SectionTitle text="FEATURED STOCK" />
       <ProductsGrid products={products} />
     </section>
   );

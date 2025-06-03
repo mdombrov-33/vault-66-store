@@ -28,9 +28,9 @@ function Hero() {
         <Button
           asChild
           size="lg"
-          className="mt-10 text-primary-foreground shadow-primary-glow hover:shadow-[0_0_15px_var(--shadow-glow-primary)] transition-all duration-300 ease-in-out hover:scale-105"
+          className="mt-10 uppercase text-primary-foreground shadow-primary-glow hover:shadow-[0_0_15px_var(--shadow-glow-primary)] transition-all duration-300 ease-in-out hover:scale-105"
         >
-          <Link href="/products">Our Products</Link>
+          <Link href="/products">access inventory</Link>
         </Button>
       </div>
       <HeroCarousel />
