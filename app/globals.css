@@ -187,25 +187,23 @@ textarea {
 
 /* WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 6px; /* thinner scrollbar */
+  width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background); /* use theme background */
+  background: var(--background);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary); /* primary color from your theme */
+  background-color: var(--color-primary);
   border-radius: 3px;
-  border: 1.5px solid var(--background); /* to give some padding around thumb */
+  border: 1.5px solid var(--background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(
-    --color-primary-foreground
-  ); /* lighter or contrast color on hover */
+  background-color: var(--color-primary-foreground);
 }
 
 /* Firefox */
