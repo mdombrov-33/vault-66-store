@@ -28,6 +28,9 @@ Test Admin Credentials:
 - 🛒 **E-Commerce Functionality**
   - Browse, purchase, and view Fallout-themed products
   - Products priced in bottle caps for immersion
+  - Add items to Favorites (persisted per user)
+  - Leave Reviews on products
+  - Track Order History in the Profile section
 
 - 💳 **Stripe Integration**
   - Seamless checkout flow using Stripe
@@ -56,13 +59,16 @@ Test Admin Credentials:
 ## 🖼️ Screenshots
 
 ### 🏪 Home Page
-![Home Page](./public/screenshot-home.png)
+![Home Page](./public/showcase/home-screen.png)
 
-### 🛒 Product Page
+### 📦 Product Page
 ![Product Page](./public/showcase/single-product-screen.png)
 
 ### ⚙️ Admin Dashboard
-![Admin Dashboard](./public/screenshot-admin.png)
+![Admin Dashboard](./public/showcase/dashboard-screen.png)
+
+### 🛒 Cart Page
+![Cart](./public/showcase/cart-screen.png)
 
 
 ---
