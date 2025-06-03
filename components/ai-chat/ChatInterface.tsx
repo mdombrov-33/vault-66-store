@@ -26,7 +26,7 @@ function ChatInterface({
       />
 
       {isLoading && (
-        <div className="text-muted-foreground text-center p-2">
+        <div className="text-primary text-center p-2">
           <span>Loading from the Vault’s archives... Almost there.</span>
         </div>
       )}
