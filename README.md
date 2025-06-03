@@ -28,9 +28,9 @@ Test Admin Credentials:
 - 🛒 **E-Commerce Functionality**
   - Browse, purchase, and view Fallout-themed products
   - Products priced in bottle caps for immersion
-  - Add items to Favorites (persisted per user)
+  - Add items to Favorites
   - Leave Reviews on products
-  - Track Order History in the Profile section
+  - Track Order History
 
 - 💳 **Stripe Integration**
   - Seamless checkout flow using Stripe
@@ -116,7 +116,7 @@ npm run dev
 Make sure to fill in the following environment variables in your `.env` file:
 
 | Variable                                | Purpose                                                    |
-|-----------------------------------------|-------------------------------------------------------------|
+|-----------------------------------------|------------------------------------------------------------|
 | `SUPABASE_URL`                          | Supabase project URL for image storage                     |
 | `SUPABASE_KEY`                          | Supabase public API key                                    |
 | `DATABASE_URL` / `DIRECT_URL`           | PostgreSQL DB URLs (with password inserted)                |
@@ -128,5 +128,5 @@ Make sure to fill in the following environment variables in your `.env` file:
 | `OPENROUTER_API_KEY`                    | API key for GPT-based AI assistant via OpenRouter          |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`    | Stripe key for checkout UI                                 |
 | `STRIPE_SECRET_KEY`                     | Stripe secret key for server-side payment handling         |
-| `NEXT_PUBLIC_WEBSITE_URL`              | Deployed frontend URL (used in share links, etc.)          |
+| `NEXT_PUBLIC_WEBSITE_URL`               | Deployed frontend URL (used in share links, etc.)          |
 
