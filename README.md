@@ -5,7 +5,7 @@ A Fallout-inspired e-commerce store built with modern full-stack tools and a ret
 
 
 ## 🔴 Live Demo
-➡️ https://next-store-sigma-lilac.vercel.app/
+➡️ https://vault-66-store-maksym-dombrovs-projects.vercel.app/
 
 ![AI Assistant Demo](./public/vault-assistant.gif)
 
