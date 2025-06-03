@@ -68,7 +68,7 @@ Test Admin Credentials:
 ![Admin Dashboard](./public/images/showcase/dashboard-screen.png)
 
 ### 🛒 Cart Page
-![Cart](./public/showcase/images/cart-screen.png)
+![Cart](./public/images/showcase/cart-screen.png)
 
 
 ---
