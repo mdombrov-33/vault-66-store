@@ -1,7 +1,7 @@
 "use server";
 import db from "@/utils/db";
 import { redirect } from "next/navigation";
-import { getAdminUser, getAuthUser } from "./get-user";
+import { getAuthorizedAdminUser, getAuthUser } from "@/utils/get-user";
 import { renderError } from "./render-error";
 import { imageSchema, productSchema, reviewSchema } from "./schemas";
 import { validateZodSchema } from "./validate-zod-schema";
@@ -56,6 +56,8 @@ export const createProductAction = async (
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
 
+  const isTestAdminUser = user.id === process.env.TEST_ADMIN_USER_ID?.trim();
+
   try {
     const rawData = Object.fromEntries(formData);
     const file = formData.get("image") as File;
@@ -76,6 +78,7 @@ export const createProductAction = async (
         ...validatedFields,
         image: fullPath,
         clerkId: user.id,
+        isTestProduct: isTestAdminUser, //* Mark as test product if created by test admin
       },
     });
   } catch (error) {
@@ -86,7 +89,7 @@ export const createProductAction = async (
 
 //* Fetches all products(from the admin panel).
 export const fetchAdminProducts = async () => {
-  await getAdminUser();
+  await getAuthorizedAdminUser();
 
   const products = await db.product.findMany({
     orderBy: {
@@ -105,10 +108,25 @@ export const fetchAdminProducts = async () => {
 export const deleteProductAction = async (prevState: { productId: string }) => {
   const { productId } = prevState;
 
-  await getAdminUser();
+  const user = await getAuthorizedAdminUser();
+  const testAdminId = process.env.TEST_ADMIN_USER_ID?.trim();
 
   try {
-    const product = await db.product.delete({
+    const product = await db.product.findUnique({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    if (!product.isTestProduct && user.id === testAdminId) {
+      throw new Error("You cannot delete a product created by the main admin");
+    }
+
+    await db.product.delete({
       where: {
         id: productId,
       },
@@ -126,7 +144,7 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 
 //* Fetches product details for the admin panel.
 export const fetchAdminProductDetails = async (productId: string) => {
-  await getAdminUser();
+  await getAuthorizedAdminUser();
 
   const product = await db.product.findUnique({
     where: {
@@ -145,7 +163,7 @@ export const updateProductAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAdminUser();
+  await getAuthorizedAdminUser();
 
   try {
     const productId = formData.get("id") as string;
@@ -175,7 +193,7 @@ export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAdminUser();
+  await getAuthorizedAdminUser();
 
   try {
     const image = formData.get("image") as File;
@@ -688,7 +706,7 @@ export const fetchUserOrders = async () => {
 
 //* Fetches all orders for the admin panel.
 export const fetchAdminOrders = async () => {
-  await getAdminUser();
+  await getAuthorizedAdminUser();
 
   const orders = await db.order.findMany({
     where: {

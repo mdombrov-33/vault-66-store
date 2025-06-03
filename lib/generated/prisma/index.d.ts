@@ -1434,6 +1434,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     clerkId: string | null
+    isTestProduct: boolean | null
   }
 
   export type ProductMaxAggregateOutputType = {
@@ -1447,6 +1448,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     clerkId: string | null
+    isTestProduct: boolean | null
   }
 
   export type ProductCountAggregateOutputType = {
@@ -1460,6 +1462,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     clerkId: number
+    isTestProduct: number
     _all: number
   }
 
@@ -1483,6 +1486,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     clerkId?: true
+    isTestProduct?: true
   }
 
   export type ProductMaxAggregateInputType = {
@@ -1496,6 +1500,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     clerkId?: true
+    isTestProduct?: true
   }
 
   export type ProductCountAggregateInputType = {
@@ -1509,6 +1514,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     clerkId?: true
+    isTestProduct?: true
     _all?: true
   }
 
@@ -1609,6 +1615,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     clerkId: string
+    isTestProduct: boolean
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -1641,6 +1648,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     clerkId?: boolean
+    isTestProduct?: boolean
     favorites?: boolean | Product$favoritesArgs<ExtArgs>
     reviews?: boolean | Product$reviewsArgs<ExtArgs>
     cartItems?: boolean | Product$cartItemsArgs<ExtArgs>
@@ -1658,6 +1666,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     clerkId?: boolean
+    isTestProduct?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1671,6 +1680,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     clerkId?: boolean
+    isTestProduct?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
@@ -1684,9 +1694,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     clerkId?: boolean
+    isTestProduct?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "company" | "description" | "featured" | "image" | "price" | "createdAt" | "updatedAt" | "clerkId", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "company" | "description" | "featured" | "image" | "price" | "createdAt" | "updatedAt" | "clerkId" | "isTestProduct", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     favorites?: boolean | Product$favoritesArgs<ExtArgs>
     reviews?: boolean | Product$reviewsArgs<ExtArgs>
@@ -1714,6 +1725,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       clerkId: string
+      isTestProduct: boolean
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -2150,6 +2162,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
     readonly clerkId: FieldRef<"Product", 'String'>
+    readonly isTestProduct: FieldRef<"Product", 'Boolean'>
   }
     
 
@@ -8262,7 +8275,8 @@ export namespace Prisma {
     price: 'price',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    clerkId: 'clerkId'
+    clerkId: 'clerkId',
+    isTestProduct: 'isTestProduct'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -8439,6 +8453,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     clerkId?: StringFilter<"Product"> | string
+    isTestProduct?: BoolFilter<"Product"> | boolean
     favorites?: FavoriteListRelationFilter
     reviews?: ReviewListRelationFilter
     cartItems?: CartItemListRelationFilter
@@ -8455,6 +8470,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clerkId?: SortOrder
+    isTestProduct?: SortOrder
     favorites?: FavoriteOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     cartItems?: CartItemOrderByRelationAggregateInput
@@ -8474,6 +8490,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     clerkId?: StringFilter<"Product"> | string
+    isTestProduct?: BoolFilter<"Product"> | boolean
     favorites?: FavoriteListRelationFilter
     reviews?: ReviewListRelationFilter
     cartItems?: CartItemListRelationFilter
@@ -8490,6 +8507,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clerkId?: SortOrder
+    isTestProduct?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
@@ -8511,6 +8529,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     clerkId?: StringWithAggregatesFilter<"Product"> | string
+    isTestProduct?: BoolWithAggregatesFilter<"Product"> | boolean
   }
 
   export type FavoriteWhereInput = {
@@ -8882,6 +8901,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteCreateNestedManyWithoutProductInput
     reviews?: ReviewCreateNestedManyWithoutProductInput
     cartItems?: CartItemCreateNestedManyWithoutProductInput
@@ -8898,6 +8918,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteUncheckedCreateNestedManyWithoutProductInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutProductInput
     cartItems?: CartItemUncheckedCreateNestedManyWithoutProductInput
@@ -8914,6 +8935,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUpdateManyWithoutProductNestedInput
     reviews?: ReviewUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUpdateManyWithoutProductNestedInput
@@ -8930,6 +8952,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUncheckedUpdateManyWithoutProductNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUncheckedUpdateManyWithoutProductNestedInput
@@ -8946,6 +8969,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
   }
 
   export type ProductUpdateManyMutationInput = {
@@ -8959,6 +8983,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductUncheckedUpdateManyInput = {
@@ -8972,6 +8997,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FavoriteCreateInput = {
@@ -9442,6 +9468,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clerkId?: SortOrder
+    isTestProduct?: SortOrder
   }
 
   export type ProductAvgOrderByAggregateInput = {
@@ -9459,6 +9486,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clerkId?: SortOrder
+    isTestProduct?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
@@ -9472,6 +9500,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clerkId?: SortOrder
+    isTestProduct?: SortOrder
   }
 
   export type ProductSumOrderByAggregateInput = {
@@ -10338,6 +10367,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     reviews?: ReviewCreateNestedManyWithoutProductInput
     cartItems?: CartItemCreateNestedManyWithoutProductInput
   }
@@ -10353,6 +10383,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     reviews?: ReviewUncheckedCreateNestedManyWithoutProductInput
     cartItems?: CartItemUncheckedCreateNestedManyWithoutProductInput
   }
@@ -10384,6 +10415,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     reviews?: ReviewUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUpdateManyWithoutProductNestedInput
   }
@@ -10399,6 +10431,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     reviews?: ReviewUncheckedUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUncheckedUpdateManyWithoutProductNestedInput
   }
@@ -10414,6 +10447,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteCreateNestedManyWithoutProductInput
     cartItems?: CartItemCreateNestedManyWithoutProductInput
   }
@@ -10429,6 +10463,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteUncheckedCreateNestedManyWithoutProductInput
     cartItems?: CartItemUncheckedCreateNestedManyWithoutProductInput
   }
@@ -10460,6 +10495,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUpdateManyWithoutProductNestedInput
   }
@@ -10475,6 +10511,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUncheckedUpdateManyWithoutProductNestedInput
     cartItems?: CartItemUncheckedUpdateManyWithoutProductNestedInput
   }
@@ -10532,6 +10569,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteCreateNestedManyWithoutProductInput
     reviews?: ReviewCreateNestedManyWithoutProductInput
   }
@@ -10547,6 +10585,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clerkId: string
+    isTestProduct?: boolean
     favorites?: FavoriteUncheckedCreateNestedManyWithoutProductInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutProductInput
   }
@@ -10609,6 +10648,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUpdateManyWithoutProductNestedInput
     reviews?: ReviewUpdateManyWithoutProductNestedInput
   }
@@ -10624,6 +10664,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clerkId?: StringFieldUpdateOperationsInput | string
+    isTestProduct?: BoolFieldUpdateOperationsInput | boolean
     favorites?: FavoriteUncheckedUpdateManyWithoutProductNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutProductNestedInput
   }
