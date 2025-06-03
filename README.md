@@ -105,6 +105,9 @@ npm install
 ```bash
 cp .env.example .env
 ```
+Open .env and fill in your own API keys and secrets (e.g. for Clerk, Stripe, Supabase, OpenRouter, etc.).
+
+⚠️ Without valid credentials, some features like authentication, checkout, and AI chat won't work.
 
 ### Then run the development server:
 ```bash
