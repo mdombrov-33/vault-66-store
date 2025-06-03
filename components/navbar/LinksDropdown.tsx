@@ -17,6 +17,7 @@ import { auth } from "@clerk/nextjs/server";
 async function LinksDropdown() {
   const { userId } = await auth();
   const isAdmin = userId === process.env.ADMIN_USER_ID;
+  const isTestAdmin = userId === process.env.TEST_ADMIN_USER_ID?.trim();
 
   return (
     <DropdownMenu>
@@ -42,7 +43,8 @@ async function LinksDropdown() {
         </SignedOut>
         <SignedIn>
           {navLinks.map((navLink) => {
-            if (navLink.label === "admin dashboard" && !isAdmin) return null;
+            if (navLink.label === "admin dashboard" && !isAdmin && !isTestAdmin)
+              return null;
             return (
               <DropdownMenuItem key={navLink.href}>
                 <Link className="capitalize" href={navLink.href}>

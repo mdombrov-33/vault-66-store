@@ -12,7 +12,10 @@ export const getAuthUser = async () => {
 //* We use this if we want to be 100% sure that the user is an admin before performing any action.
 export const getAdminUser = async () => {
   const user = await getAuthUser();
-  if (user.id !== process.env.ADMIN_USER_ID) {
+  if (
+    user.id !== process.env.ADMIN_USER_ID?.trim() &&
+    user.id !== process.env.TEST_ADMIN_USER_ID?.trim()
+  ) {
     redirect("/");
   }
   return user;
