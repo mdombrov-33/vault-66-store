@@ -8,7 +8,7 @@ A Fallout-inspired e-commerce store built with modern full-stack tools and a ret
 
 ---
 
-## AI Assistant Showcase
+## 🤖  AI Assistant Showcase
 ![AI Assistant Demo](./public/vault-assistant.gif)
 
 ---
