@@ -22,8 +22,9 @@ export async function POST(req: Request) {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "gpt-4o-mini",
           messages: fullMessages,
+          max_tokens: 1000,
         }),
       }
     );

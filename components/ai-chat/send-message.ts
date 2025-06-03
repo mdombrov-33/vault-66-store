@@ -21,7 +21,22 @@ export async function sendMessage({
       body: JSON.stringify({ messages: newMessages }),
     });
 
-    if (!response.ok) throw new Error(`Server error: ${response.status}`);
+    if (!response.ok) {
+      const contentType = response.headers.get("Content-Type");
+      let errorBody;
+
+      if (contentType?.includes("application/json")) {
+        errorBody = await response.json();
+      } else {
+        errorBody = await response.text();
+      }
+
+      throw new Error(
+        `Server error: ${response.status}\nDetails: ${JSON.stringify(
+          errorBody
+        )}`
+      );
+    }
 
     const data = await response.json();
 
