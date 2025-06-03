@@ -42,7 +42,7 @@ async function LinksDropdown() {
         </SignedOut>
         <SignedIn>
           {navLinks.map((navLink) => {
-            if (navLink.label === "dashboard" && !isAdmin) return null;
+            if (navLink.label === "admin dashboard" && !isAdmin) return null;
             return (
               <DropdownMenuItem key={navLink.href}>
                 <Link className="capitalize" href={navLink.href}>
