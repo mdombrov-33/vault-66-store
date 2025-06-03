@@ -55,7 +55,7 @@ function ChatLauncher() {
       >
         <DialogHeader>
           <DialogTitle>Vault Assistant</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-muted-foreground">
             How can I assist you? Ask me anything about our products, the Vault,
             or survival tips!
           </DialogDescription>
