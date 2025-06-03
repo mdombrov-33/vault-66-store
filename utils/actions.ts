@@ -208,7 +208,8 @@ export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAuthorizedAdminUser();
+  const user = await getAuthorizedAdminUser();
+  const testAdminId = process.env.TEST_ADMIN_USER_ID?.trim();
 
   try {
     const image = formData.get("image") as File;
@@ -216,6 +217,16 @@ export const updateProductImageAction = async (
     const oldImageUrl = formData.get("url") as string;
     const validatedFile = validateZodSchema(imageSchema, { image });
     const fullPath = await uploadImage(validatedFile.image);
+
+    const product = await db.product.findUnique({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (!product?.isTestProduct && user.id === testAdminId) {
+      throw new Error("You cannot update a product created by the main admin");
+    }
 
     await deleteImage(oldImageUrl);
 
