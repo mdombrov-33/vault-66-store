@@ -163,12 +163,27 @@ export const updateProductAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAuthorizedAdminUser();
+  const user = await getAuthorizedAdminUser();
+  const testAdminId = process.env.TEST_ADMIN_USER_ID?.trim();
 
   try {
     const productId = formData.get("id") as string;
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateZodSchema(productSchema, rawData);
+
+    const product = await db.product.findUnique({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    if (!product.isTestProduct && user.id === testAdminId) {
+      throw new Error("You cannot update a product created by the main admin");
+    }
 
     await db.product.update({
       where: {
