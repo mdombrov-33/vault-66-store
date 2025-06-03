@@ -130,3 +130,7 @@ Make sure to fill in the following environment variables in your `.env` file:
 | `STRIPE_SECRET_KEY`                     | Stripe secret key for server-side payment handling         |
 | `NEXT_PUBLIC_WEBSITE_URL`               | Deployed frontend URL (used in share links, etc.)          |
 
+---
+
+Thank you for checking out Vault-66 Store!  
+Happy shopping in the Wasteland. ⚡️
