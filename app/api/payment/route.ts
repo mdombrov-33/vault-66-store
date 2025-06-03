@@ -6,11 +6,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(req: NextRequest) {
   try {
-    // console.log("✅ POST /api/payment called");
+    // console.log("POST /api/payment called");
 
     const origin = req.headers.get("origin");
     const { orderId, cartId } = await req.json();
-    // console.log("➡️ Received:", { orderId, cartId });
+    // console.log("Received:", { orderId, cartId });
 
     const order = await db.order.findUnique({ where: { id: orderId } });
     const cart = await db.cart.findUnique({
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!order || !cart) {
-      // console.log("❌ Order or cart not found");
+      // console.log("Order or cart not found");
       return Response.json(
         { error: "Order or cart not found" },
         { status: 404 }
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       };
     });
 
-    // console.log("📦 Line Items:", lineItems);
+    // console.log("Line Items:", lineItems);
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
       return_url: `${origin}/api/confirm?session_id={CHECKOUT_SESSION_ID}`,
     });
 
-    // console.log("✅ Stripe session created");
+    // console.log("Stripe session created");
     return Response.json({ clientSecret: session.client_secret });
   } catch (err: any) {
     console.error("💥 Error in /api/payment:", err.message, err);

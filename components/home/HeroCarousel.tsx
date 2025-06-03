@@ -29,7 +29,7 @@ function HeroCarousel() {
                       src={carouselImage}
                       alt="hero"
                       className="w-full h-[24rem] rounded-md object-cover"
-                    ></Image>
+                    />
                   </CardContent>
                 </Card>
               </CarouselItem>
