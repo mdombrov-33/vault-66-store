@@ -42,6 +42,7 @@
 }
 
 :root {
+  /* LIGHT THEME */
   --radius: 0.5rem;
   --background: rgb(243, 237, 227);
   --foreground: rgb(45, 35, 10);
@@ -91,6 +92,7 @@
 }
 
 .dark {
+  /* DARK THEME */
   --background: rgb(15, 19, 15);
   --foreground: rgb(7, 195, 82);
 
@@ -143,15 +145,15 @@ h1 {
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 h5 {
@@ -164,6 +166,7 @@ input {
 
 span {
   font-size: 1.5rem;
+  font-family: var(--font-vt323), monospace;
 }
 
 button {
