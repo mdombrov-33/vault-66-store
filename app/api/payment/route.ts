@@ -2,75 +2,53 @@ import Stripe from "stripe";
 import { type NextRequest } from "next/server";
 import db from "@/utils/db";
 
-// +--------+    Checkout Session ID   +--------+    redirect      +---------+
-// | Server | -----------------------> | Server | ---------------> | Orders  |
-// |        |                          |        |                  |         |
-// |        |                          |        |                  |         |
-// |        |                          |        |                  |         |
-// |        |                          |        |                  |         |
-// +--------+                          +--------+                  +---------+
-
-// payment/route.ts                    confirm/route.ts            orders page
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(req: NextRequest) {
-  const reqHeaders = req.headers;
-  const origin = reqHeaders.get("origin");
-
-  const { orderId, cartId } = await req.json();
-
-  const order = await db.order.findUnique({
-    where: { id: orderId },
-  });
-
-  const cart = await db.cart.findUnique({
-    where: { id: cartId },
-    include: {
-      cartItems: {
-        include: {
-          product: true,
-        },
-      },
-    },
-  });
-
-  if (!order || !cart) {
-    return Response.json(null, {
-      status: 404,
-      statusText: "Order or Cart not found",
-    });
-  }
-
-  //* Stripe special format for line items. Properties should have the exact this format:
-  //* Example is for one product in the cart, but we have an array
-  //   return {
-  //   quantity: 1,
-  //   price_data: {
-  //     currency: 'usd',
-  //     product_data: {
-  //       name: 'product name',
-  //       images: ['product image url'],
-  //     },
-  //     unit_amount: cartItem.product.price * 100, // price in cents
-  //   },
-  // };
-
-  const lineItems = cart.cartItems.map((cartItem) => {
-    return {
-      quantity: cartItem.amount,
-      price_data: {
-        currency: "usd",
-        product_data: {
-          name: cartItem.product.name,
-          images: [cartItem.product.image],
-        },
-        unit_amount: cartItem.product.price * 100, // price in cents
-      },
-    };
-  });
-
   try {
+    // console.log("✅ POST /api/payment called");
+
+    const origin = req.headers.get("origin");
+    const { orderId, cartId } = await req.json();
+    // console.log("➡️ Received:", { orderId, cartId });
+
+    const order = await db.order.findUnique({ where: { id: orderId } });
+    const cart = await db.cart.findUnique({
+      where: { id: cartId },
+      include: { cartItems: { include: { product: true } } },
+    });
+
+    if (!order || !cart) {
+      // console.log("❌ Order or cart not found");
+      return Response.json(
+        { error: "Order or cart not found" },
+        { status: 404 }
+      );
+    }
+
+    const lineItems = cart.cartItems.map((item) => {
+      const image = item.product.image;
+      const price = item.product.price;
+
+      if (!price || isNaN(price)) {
+        throw new Error("Invalid product price");
+      }
+
+      return {
+        quantity: item.amount,
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: item.product.name,
+            images: image ? [image] : [],
+          },
+          unit_amount: Math.round(price * 100),
+        },
+      };
+    });
+
+    // console.log("📦 Line Items:", lineItems);
+
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       metadata: {
@@ -81,14 +59,11 @@ export async function POST(req: NextRequest) {
       mode: "payment",
       return_url: `${origin}/api/confirm?session_id={CHECKOUT_SESSION_ID}`,
     });
-    return Response.json({
-      clientSecret: session.client_secret,
-    });
-  } catch (error) {
-    console.log(error);
-    return Response.json(null, {
-      status: 500,
-      statusText: "Internal Server Error",
-    });
+
+    // console.log("✅ Stripe session created");
+    return Response.json({ clientSecret: session.client_secret });
+  } catch (err: any) {
+    console.error("💥 Error in /api/payment:", err.message, err);
+    return Response.json({ error: err.message }, { status: 500 });
   }
 }

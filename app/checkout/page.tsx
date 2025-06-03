@@ -1,23 +1,14 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import React, { useCallback } from "react";
+import React, { useCallback, Suspense } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
-
-//* Flow: This page sends request to /api/payment => logic from /api/payment is send to stripe
-// +--------+    Fetch clientSecret    +--------+   Request        +---------+
-// | Client | -----------------------> | Server | ---------------> | Stripe  |
-// |        |                          |        |                  |  API    |
-// |        |                          |        | <--------------- |         |
-// |        | <----------------------- |        |   clientSecret   |         |
-// |        |  clientSecret response   |        |                  |         |
-// +--------+                          +--------+                  +---------+
-
-// Checkout.tsx                        payment/route.ts
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -25,8 +16,6 @@ const stripePromise = loadStripe(
 
 function CheckoutPage() {
   const searchParams = useSearchParams();
-
-  //* From action createOrderAction
   const orderId = searchParams.get("orderId");
   const cartId = searchParams.get("cartId");
 
@@ -43,9 +32,11 @@ function CheckoutPage() {
   return (
     <section>
       <div id="checkout">
-        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-          <EmbeddedCheckout />
-        </EmbeddedCheckoutProvider>
+        <Suspense fallback={<p>Loading checkout...</p>}>
+          <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+            <EmbeddedCheckout />
+          </EmbeddedCheckoutProvider>
+        </Suspense>
       </div>
     </section>
   );
