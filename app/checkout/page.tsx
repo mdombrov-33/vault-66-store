@@ -26,7 +26,7 @@ function CheckoutPage() {
       cartId,
     });
     return response.data.clientSecret;
-  }, []);
+  }, [orderId, cartId]);
 
   const options = { fetchClientSecret };
 
