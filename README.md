@@ -72,4 +72,61 @@ Test Admin Credentials:
 
 
 ---
-    
+
+## 🧪 Tech Stack
+
+| Tech           | What It's Used For |
+|----------------|--------------------|
+| **Next.js 15** | Core of the app — routing, server-side logic, and rendering |
+| **Tailwind CSS** | Fast and flexible styling using utility classes |
+| **ShadCN UI** | Reusable, accessible components |
+| **Prisma + PostgreSQL** | Database layer for managing products, cart, reviews, orders |
+| **Clerk** | Handles authentication and user roles (regular users, admins) |
+| **Stripe** | Checkout and payments — supports test cards out of the box |
+| **Supabase** | Stores and serves product images via bucket storage |
+| **Zod** | Validates forms and inputs to keep everything type-safe |
+| **OpenRouter** | Powers the in-universe AI assistant (uses GPT-4o mini) |
+
+---
+
+## 🛠️ Getting Started
+
+To run this project locally, follow these steps:
+
+### Clone the repository and install dependencies:
+```bash
+git clone https://github.com/mdombrov-33/vault-66-store.git
+cd vault-66-store
+npm install
+```
+### Create a .env file from the example
+```bash
+cp .env.example .env
+```
+
+### Then run the development server:
+```bash
+npm run dev
+```
+
+---
+
+## 🌐 Environment Variables
+
+Make sure to fill in the following environment variables in your `.env` file:
+
+| Variable                                | Purpose                                                    |
+|-----------------------------------------|-------------------------------------------------------------|
+| `SUPABASE_URL`                          | Supabase project URL for image storage                     |
+| `SUPABASE_KEY`                          | Supabase public API key                                    |
+| `DATABASE_URL` / `DIRECT_URL`           | PostgreSQL DB URLs (with password inserted)                |
+| `DBPASSWORD`                            | Raw Supabase DB password (used in connection strings)      |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`     | Clerk public key for frontend auth                         |
+| `CLERK_SECRET_KEY`                      | Clerk secret key for server-side auth                      |
+| `ADMIN_USER_ID`                         | Main admin Clerk user ID                                   |
+| `TEST_ADMIN_USER_ID`                    | Test admin Clerk user ID (has limited permissions)         |
+| `OPENROUTER_API_KEY`                    | API key for GPT-based AI assistant via OpenRouter          |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`    | Stripe key for checkout UI                                 |
+| `STRIPE_SECRET_KEY`                     | Stripe secret key for server-side payment handling         |
+| `NEXT_PUBLIC_WEBSITE_URL`              | Deployed frontend URL (used in share links, etc.)          |
+
