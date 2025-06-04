@@ -1,44 +1,46 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Radio } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { RADIO_STATIONS } from "@/data/nav";
+import { Radio, Loader } from "lucide-react";
 import { useState } from "react";
 
+const radioUrl = "https://fallout.fm:8444/falloutfm1.ogg";
+
 function RadioBtn() {
-  const [station, setStation] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    if (!isPlaying) {
+      setIsLoading(true);
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+      setIsLoading(false);
+    }
+  };
+
+  //* fired when audio is ready to play
+  const handleCanPlay = () => {
+    setIsLoading(false);
+  };
 
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon">
-            <Radio className="h-5 w-5" />
-            <span className="sr-only">Radio Station</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          {RADIO_STATIONS.map((station) => {
-            return (
-              <DropdownMenuItem
-                onClick={() => setStation(station.url)}
-                key={station.id}
-              >
-                {station.label}
-              </DropdownMenuItem>
-            );
-          })}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <Button
+        variant={isPlaying ? "default" : "outline"}
+        size="icon"
+        onClick={handleClick}
+      >
+        {isLoading ? (
+          <Loader className="h-5 w-5 animate-spin" />
+        ) : (
+          <Radio className="h-5 w-5" />
+        )}
+        <span className="sr-only">Radio Station</span>
+      </Button>
 
-      {station && <iframe src={station} />}
+      {isPlaying && <audio src={radioUrl} autoPlay onPlaying={handleCanPlay} />}
     </>
   );
 }
