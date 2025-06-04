@@ -48,6 +48,10 @@ Test Admin Credentials:
 - 🌗 **Theming**
   - Toggle between Fallout 3–style green and New Vegas–style amber
   - Accessible right from the navbar
+ 
+- 📻 Fallout.FM Radio Integration
+  - Immerse yourself in the world of Fallout with a live-streamed in-universe radio station  
+  - Accessible via the navbar for ambient Wasteland vibes while you shop
 
 - 🖼️ **Supabase Storage**
   - Securely upload and manage product images via Supabase bucket
