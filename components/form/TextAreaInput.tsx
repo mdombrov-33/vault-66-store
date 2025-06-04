@@ -5,7 +5,7 @@ import { TextAreaInputProps } from "@/types/form";
 function TextAreaInput({ name, labelText }: TextAreaInputProps) {
   return (
     <div className="mb-2">
-      <Label htmlFor={name} className="capitalize text-3xl">
+      <Label htmlFor={name} className="capitalize text-xl">
         {labelText || name}
       </Label>
       <Textarea
@@ -13,7 +13,7 @@ function TextAreaInput({ name, labelText }: TextAreaInputProps) {
         name={name}
         rows={5}
         required
-        className="leading-loose text-2xl font-[roboto]"
+        className="leading-loose text-xl font-[roboto]"
       />
     </div>
   );

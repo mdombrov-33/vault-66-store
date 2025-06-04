@@ -9,7 +9,7 @@ const name = "price";
 function PriceInput({ defaultValue }: FormInputNumberProps) {
   return (
     <div className="mb-2">
-      <Label htmlFor={name} className="capitalize text-3xl">
+      <Label htmlFor={name} className="capitalize text-xl">
         Price (Caps)
       </Label>
       <Input

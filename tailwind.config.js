@@ -7,6 +7,7 @@ module.exports = {
       },
       fontFamily: {
         roboto: ["var(--font-roboto-mono)", "monospace"],
+        vt323: ["--font-vt323"],
       },
     },
   },

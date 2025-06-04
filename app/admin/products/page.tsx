@@ -20,7 +20,7 @@ async function AdminProductsPage() {
   return (
     <section>
       <Table>
-        <TableCaption className="capitalize">
+        <TableCaption className="capitalize text-xl">
           total products: {items.length}
         </TableCaption>
         <TableHeader>

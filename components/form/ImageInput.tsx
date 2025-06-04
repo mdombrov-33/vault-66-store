@@ -5,7 +5,7 @@ function ImageInput() {
   const name = "image";
   return (
     <div className="mb-2">
-      <Label htmlFor={name} className="capitalize text-3xl">
+      <Label htmlFor={name} className="capitalize text-xl">
         Image
       </Label>
       <Input id={name} name={name} type="file" required accept="image/*" />
