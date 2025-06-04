@@ -42,7 +42,7 @@ function ChatLauncher() {
         <Button
           variant="default"
           size="default"
-          className="fixed bottom-4 right-4 z-50 flex items-center"
+          className="fixed bottom-4 text-3xl right-4 z-50 flex items-center"
         >
           <TerminalIcon className="mr-2" />
           <span className="hidden md:inline">Need Help?</span>
@@ -54,8 +54,8 @@ function ChatLauncher() {
         border-primary bg-black text-primary px-4 sm:px-8 mx-auto focus:outline-none"
       >
         <DialogHeader>
-          <DialogTitle>Vault Assistant</DialogTitle>
-          <DialogDescription className="text-muted-foreground">
+          <DialogTitle className="text-3xl">Vault Assistant</DialogTitle>
+          <DialogDescription className="text-muted-foreground text-2xl">
             How can I assist you? Ask me anything about our products, the Vault,
             or survival tips!
           </DialogDescription>
@@ -74,9 +74,15 @@ function ChatLauncher() {
 
         <DialogFooter className="mt-auto">
           <DialogClose asChild>
-            <Button variant="secondary">Close</Button>
+            <Button variant="secondary" className="text-2xl">
+              Close
+            </Button>
           </DialogClose>
-          <Button onClick={handleSend} disabled={isLoading || isTyping}>
+          <Button
+            className="text-3xl"
+            onClick={handleSend}
+            disabled={isLoading || isTyping}
+          >
             Send
           </Button>
         </DialogFooter>

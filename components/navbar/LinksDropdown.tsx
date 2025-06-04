@@ -47,7 +47,7 @@ async function LinksDropdown() {
               return null;
             return (
               <DropdownMenuItem key={navLink.href}>
-                <Link className="capitalize" href={navLink.href}>
+                <Link className="capitalize text-xl" href={navLink.href}>
                   {navLink.label}
                 </Link>
               </DropdownMenuItem>

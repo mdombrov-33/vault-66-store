@@ -24,11 +24,13 @@ function ProductsGrid({ products }: { products: Product[] }) {
                       sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                       priority
                       className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    ></Image>
+                    />
                   </div>
                   <div className="mt-4 text-center">
-                    <h2 className="text-lg capitalize">{name}</h2>
-                    <p className="text-muted-foreground mt-2">{price} Caps</p>
+                    <h2 className="text-3xl capitalize">{name}</h2>
+                    <p className="text-muted-foreground mt-2 text-3xl">
+                      {price} Caps
+                    </p>
                   </div>
                 </CardContent>
               </Card>

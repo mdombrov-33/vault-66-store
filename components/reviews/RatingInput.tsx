@@ -21,16 +21,16 @@ function RatingInput({
 
   return (
     <div className="mb-2 max-w-xs">
-      <Label htmlFor={name} className="capitalize">
+      <Label htmlFor={name} className="capitalize text-3xl">
         {labelText || name}
       </Label>
       <Select defaultValue={numbers[0]} name={name} required>
-        <SelectTrigger>
+        <SelectTrigger className="text-2xl">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="text-2xl">
           {numbers.map((number) => (
-            <SelectItem key={number} value={number}>
+            <SelectItem key={number} value={number} className="text-2xl">
               {number}
             </SelectItem>
           ))}

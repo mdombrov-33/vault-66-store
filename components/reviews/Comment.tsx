@@ -16,10 +16,10 @@ function Comment({ comment }: { comment: string }) {
 
   return (
     <div>
-      <p className="text-sm">{displayComment}</p>
+      <p className="text-2xl font-[roboto]">{displayComment}</p>
       {longComment && (
         <Button
-          className="text-muted-foreground pl-0"
+          className="text-muted-foreground pl-0 text-2xl"
           onClick={toggleExpanded}
           variant="link"
         >

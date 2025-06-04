@@ -5,7 +5,7 @@ import { TextAreaInputProps } from "@/types/form";
 function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
   return (
     <div className="mb-2">
-      <Label htmlFor={name} className="capitalize">
+      <Label htmlFor={name} className="capitalize text-3xl">
         {labelText || name}
       </Label>
       <Textarea
