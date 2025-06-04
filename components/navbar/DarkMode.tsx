@@ -25,13 +25,19 @@ export default function DarkMode() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem
+          className="text-2xl"
+          onClick={() => setTheme("light")}
+        >
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem className="text-2xl" onClick={() => setTheme("dark")}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem
+          className="text-2xl"
+          onClick={() => setTheme("system")}
+        >
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

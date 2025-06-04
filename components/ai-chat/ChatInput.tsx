@@ -11,7 +11,7 @@ function ChatInput({
   return (
     <div className="mt-4 flex items-center gap-2">
       <Textarea
-        className="flex-1 resize-none !text-2xl"
+        className="flex-1 resize-none text-2xl"
         rows={2}
         placeholder="Awaiting command input..."
         value={input}

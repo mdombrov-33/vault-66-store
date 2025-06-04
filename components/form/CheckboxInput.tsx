@@ -13,7 +13,7 @@ function CheckboxInput({
       <Checkbox id={name} name={name} defaultChecked={defaultChecked} />
       <label
         htmlFor={name}
-        className="text-sm leading-none capitalize peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="text-xl leading-none capitalize peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         {label}
       </label>

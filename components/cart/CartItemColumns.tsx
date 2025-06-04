@@ -28,13 +28,19 @@ export function SecondColumn({
   return (
     <div className="sm:w-48">
       <Link href={`/products/${productId}`}>
-        <h3 className="capitalize font-medium hover-underline">{name}</h3>
+        <h3 className="capitalize font-medium hover-underline text-lg">
+          {name}
+        </h3>
       </Link>
-      <h4 className="mt-2 capitalize text-xs">{company}</h4>
+      <h4 className="mt-2 capitalize text-md">{company}</h4>
     </div>
   );
 }
 
 export function FourthColumn({ price }: { price: number }) {
-  return <p className="font-medium md:ml-auto">{price} Caps</p>;
+  return (
+    <p className="font-medium md:ml-auto text-3xl font-[roboto]">
+      {price} Caps
+    </p>
+  );
 }

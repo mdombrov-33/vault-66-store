@@ -52,7 +52,7 @@ async function SingleProductPage({
             </div>
           </div>
           <ProductRating productId={productId} />
-          <h4 className="text-2xl mt-2">{company}</h4>
+          <h4 className="text-3xl mt-2">{company}</h4>
           <p className="mt-3 text-3xl bg-muted inline-block p-2 rounded font-[roboto]">
             {price} Caps
           </p>

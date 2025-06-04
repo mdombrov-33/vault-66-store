@@ -21,7 +21,6 @@ function RadioBtn() {
     }
   };
 
-  //* fired when audio is ready to play
   const handleCanPlay = () => {
     setIsLoading(false);
   };

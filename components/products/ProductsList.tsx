@@ -27,10 +27,14 @@ function ProductsList({ products }: { products: Product[] }) {
                     />
                   </div>
                   <div>
-                    <h2 className="text-xl font-semibold capitalize">{name}</h2>
-                    <h4 className="text=muted-foreground">{company}</h4>
+                    <h2 className="text-4xl font-semibold capitalize">
+                      {name}
+                    </h2>
+                    <h4 className="text=muted-foreground text-3xl">
+                      {company}
+                    </h4>
                   </div>
-                  <p className="text-muted-foreground text-lg md:ml-auto">
+                  <p className="text-muted-foreground text-4xl md:ml-auto font-[roboto]">
                     {price} Caps
                   </p>
                 </CardContent>

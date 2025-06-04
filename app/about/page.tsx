@@ -8,7 +8,7 @@ function AboutPage() {
         <h2 className="text-4xl font-bold uppercase mb-4">
           Welcome to Vault 66
         </h2>
-        <p className="text-2xl leading-relaxed text-muted-foreground">
+        <p className="text-2xl leading-relaxed text-muted-foreground font-[roboto]">
           Vault 66 stands as a beacon of hope in the harsh wasteland, designed
           to maintain trade and supplies with the outside world. Our mission is
           simple: ensure the survival of our dwellers and provide trusted goods
@@ -18,7 +18,7 @@ function AboutPage() {
 
       <div>
         <h2 className="text-4xl font-bold uppercase mb-4">Our Role</h2>
-        <p className="text-2xl leading-relaxed text-muted-foreground">
+        <p className="text-2xl leading-relaxed text-muted-foreground font-[roboto]">
           As one of the few vaults maintaining open commerce with the Wasteland,
           Vault 66 serves as a crucial hub for supplies, trade, and knowledge.
           Our Overseer and dedicated dwellers work tirelessly to keep the vault
@@ -38,7 +38,7 @@ function AboutPage() {
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Commander Lee</h3>
-            <p className="text-lg italic">
+            <p className="text-lg italic font-[roboto]">
               Overseer of Vault 66, guiding our community through uncertain
               times with steady leadership.
             </p>
@@ -50,7 +50,7 @@ function AboutPage() {
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Wanderer Kate</h3>
-            <p className="text-lg italic">
+            <p className="text-lg italic font-[roboto]">
               Scout and trader, keeping Vault 66 connected with the outside
               world to ensure a steady flow of goods.
             </p>
@@ -62,7 +62,7 @@ function AboutPage() {
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Ironclad</h3>
-            <p className="text-lg italic">
+            <p className="text-lg italic font-[roboto]">
               Power Armor expert, ready to defend the vault and lead expeditions
               into the wasteland.
             </p>

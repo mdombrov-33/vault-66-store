@@ -22,7 +22,7 @@ async function ProductsContainer({
       {/* HEADER */}
       <section>
         <div className="flex justify-between items-center">
-          <h4 className="font-medium text-lg">
+          <h4 className="font-medium text-2xl">
             {totalProducts} product{totalProducts > 1 && "s"} found
           </h4>
           <div className="flex gap-x-4">
@@ -52,7 +52,7 @@ async function ProductsContainer({
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
-          <h5 className="text-2xl mt-16">
+          <h5 className="text-4xl mt-16">
             Sorry, no products matched your search
           </h5>
         ) : layout === "grid" ? (
