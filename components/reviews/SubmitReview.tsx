@@ -18,8 +18,8 @@ function SubmitReview({ productId }: { productId: string }) {
     <div>
       <Button
         size="lg"
-        variant="outline"
-        className="capitalize mt-4"
+        variant="default"
+        className="capitalize mt-4 text-2xl"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
         leave review
@@ -35,12 +35,8 @@ function SubmitReview({ productId }: { productId: string }) {
             />
             <input type="hidden" name="authorImageUrl" value={user?.imageUrl} />
             <RatingInput name="rating" />
-            <TextAreaInput
-              name="comment"
-              labelText="feedback"
-              defaultValue="Great Product!"
-            />
-            <SubmitButton className="mt-4" />
+            <TextAreaInput name="comment" labelText="feedback" />
+            <SubmitButton className="mt-4 text-3xl" />
           </FormContainer>
         </Card>
       )}

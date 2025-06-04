@@ -44,7 +44,7 @@ function ThirdColumn({
       />
       <FormContainer action={removeCartItemAction}>
         <input type="hidden" name="cartItemId" value={cartItemId} />
-        <SubmitButton size="sm" className="mt-4" text="remove" />
+        <SubmitButton size="sm" className="mt-4 text-2xl" text="remove" />
       </FormContainer>
     </div>
   );

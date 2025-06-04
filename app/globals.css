@@ -57,7 +57,7 @@
   --primary-foreground: rgb(30, 20, 5);
 
   --muted: rgb(235, 225, 200);
-  --muted-foreground: rgb(120, 100, 60);
+  --muted-foreground: rgb(88, 75, 50);
 
   --border: rgba(0, 0, 0, 0.1);
   --input: rgba(115, 117, 59, 0.716);
@@ -140,51 +140,6 @@
   --shadow-glow-primary: rgba(72, 177, 53, 0.7);
 }
 
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 1.8rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h4 {
-  font-size: 1.4rem;
-}
-
-h5 {
-  font-size: 1.4rem;
-}
-
-input {
-  font-size: 1.25rem;
-}
-
-span {
-  font-size: 1.5rem;
-  font-family: var(--font-vt323), monospace;
-}
-
-button {
-  font-size: 1.5rem;
-}
-
-a {
-  font-size: 1.25rem;
-}
-
-p {
-  font-family: var(--font-roboto-mono), monospace;
-}
-
-textarea {
-  font-size: 1.25rem;
-}
-
 /* WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 6px;
@@ -210,17 +165,6 @@ textarea {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) var(--background);
-}
-
-@keyframes blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  50.01%,
-  100% {
-    opacity: 0;
-  }
 }
 
 @layer base {

@@ -9,7 +9,7 @@ function Logo() {
       className="hidden sm:flex sm:items-center sm:justify-center"
     >
       <Link href="/">
-        <span className="uppercase">vault 66</span>
+        <span className="uppercase text-3xl">vault 66</span>
       </Link>
     </Button>
   );

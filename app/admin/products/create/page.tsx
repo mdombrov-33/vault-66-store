@@ -15,8 +15,8 @@ function AdminCreateProductPage() {
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
-      <div className="border p-8 rounded-md">
+      <h1 className="text-4xl font-semibold mb-8 capitalize">create product</h1>
+      <div className="border p-6 rounded-md">
         <FormContainer action={createProductAction}>
           <div className="grid gap-4 md:grid-cols-2 my-4">
             <FormInput
@@ -42,7 +42,7 @@ function AdminCreateProductPage() {
           <div className="mt-6">
             <CheckboxInput name="featured" label="featured" />
           </div>
-          <SubmitButton text="create product" className="mt-8" />
+          <SubmitButton text="create product" className="mt-8 text-3xl" />
         </FormContainer>
       </div>
     </section>

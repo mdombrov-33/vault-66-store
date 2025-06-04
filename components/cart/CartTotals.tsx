@@ -19,7 +19,7 @@ function CartTotals({ cart }: { cart: Cart }) {
         </CardTitle>
       </Card>
       <FormContainer action={createOrderAction}>
-        <SubmitButton text="Place order" className="mt-8 w-full" />
+        <SubmitButton text="Place order" className="mt-8 w-full text-3xl" />
       </FormContainer>
     </div>
   );
@@ -36,9 +36,9 @@ function CartTotalRow({
 }) {
   return (
     <>
-      <p className="flex justify-between text-sm">
+      <p className="flex justify-between text-3xl">
         <span>{label}</span>
-        <span>{amount} Caps</span>
+        <span className="font-[roboto]">{amount} Caps</span>
       </p>
       {lastRow ? null : <Separator className="my-2" />}
     </>

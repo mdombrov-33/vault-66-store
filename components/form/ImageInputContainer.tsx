@@ -24,6 +24,7 @@ function ImageInputContainer(props: ImageInputContainerProps) {
       <Button
         variant="outline"
         size="sm"
+        className="text-xl"
         onClick={() => setIsUpdateFormVisible((prev) => !prev)}
       >
         {text}
@@ -33,7 +34,7 @@ function ImageInputContainer(props: ImageInputContainerProps) {
           <FormContainer action={action}>
             {props.children}
             <ImageInput />
-            <SubmitButton size="sm" text={text} />
+            <SubmitButton size="sm" text={text} className="text-2xl mt-2" />
           </FormContainer>
         </div>
       )}

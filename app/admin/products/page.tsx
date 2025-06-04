@@ -20,15 +20,15 @@ async function AdminProductsPage() {
   return (
     <section>
       <Table>
-        <TableCaption className="capitalize">
+        <TableCaption className="capitalize text-xl">
           total products: {items.length}
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Product Name</TableHead>
-            <TableHead>Company</TableHead>
-            <TableHead>Price</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className="text-xl">Product Name</TableHead>
+            <TableHead className="text-xl">Company</TableHead>
+            <TableHead className="text-xl">Price</TableHead>
+            <TableHead className="text-xl">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -39,13 +39,13 @@ async function AdminProductsPage() {
                 <TableCell>
                   <Link
                     href={`/products/${productId}`}
-                    className="underline text-muted-foreground tracking-wide capitalize"
+                    className="underline text-muted-foreground tracking-wide capitalize text-lg"
                   >
                     {name}
                   </Link>
                 </TableCell>
-                <TableCell>{company}</TableCell>
-                <TableCell>{price} Caps</TableCell>
+                <TableCell className="text-lg">{company}</TableCell>
+                <TableCell className="text-lg">{price} Caps</TableCell>
                 <TableCell className="flex items-center gap-x-2">
                   <Link href={`/admin/products/${productId}/edit`}>
                     <IconButton actionType="edit" />
