@@ -32,7 +32,7 @@ function Hero() {
             sequence={[
               "vault 66 online. initiating supply catalog...",
               4000,
-              "remember: a prepared dweller is a safe dweller",
+              "remember: a prepared survivor is a safe survivor",
               3000,
               "all products approved by vault-tec",
               3000,
@@ -44,7 +44,7 @@ function Hero() {
               },
             ]}
             wrapper="p"
-            className="mt-8 min-h-16 max-w-xl text-lg leading-8 text-muted-foreground uppercase"
+            className="mt-8 min-h-16 max-w-xl text-2xl leading-8 text-muted-foreground uppercase"
             repeat={0}
             speed={90}
             cursor={false}
