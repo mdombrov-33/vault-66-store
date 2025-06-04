@@ -2,7 +2,7 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { TextAreaInputProps } from "@/types/form";
 
-function TextAreaInput({ name, labelText }: TextAreaInputProps) {
+function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
   return (
     <div className="mb-2">
       <Label htmlFor={name} className="capitalize text-xl">
@@ -14,6 +14,7 @@ function TextAreaInput({ name, labelText }: TextAreaInputProps) {
         rows={5}
         required
         className="leading-loose text-xl font-[roboto]"
+        defaultValue={defaultValue}
       />
     </div>
   );
