@@ -24,37 +24,37 @@ Test Admin Credentials:
 ## ✨ Features
 
 - 🔐 **Clerk Auth Integration**
-  - Role-based access: regular users, main admin, test admin
-  - Route protection using `clerkMiddleware`
+  - Role-based access with users, main admin, and a test admin
+  - Route protection handled via clerkMiddleware
 
 - 🛒 **E-Commerce Functionality**
-  - Browse, purchase, and view Fallout-themed products
-  - Products priced in bottle caps for immersion
+  - Fallout-themed product catalog with immersive bottle cap pricing
   - Add items to Favorites
-  - Leave Reviews on products
-  - Track Order History
+  - Leave reviews and check your order history
+  - Full browse → checkout → track flow
 
 - 💳 **Stripe Integration**
-  - Seamless checkout flow using Stripe
-  - Test payment supported
+  - Integrated with Stripe for secure payments
+  - Test mode supported for development/demo
 
 - 🧠 **AI Assistant**
-  - Powered by OpenRouter API using GPT-4o mini model
-  - Fallout-style terminal UI with smart in-universe responses
+  - Fallout-style terminal UI powered by GPT-4o mini via OpenRouter API
+  - Provides smart, lore-friendly in-universe responses
 
 - 📦 **Admin Dashboard**
-  - Add, edit, and delete products
-  - Test admin account restricted from modifying real products
+  - Create, edit, and delete products with secure access
+  - Test admin role is restricted from modifying products they didn’t create
 
 - 🌗 **Theming**
-  - Supports Fallout 3–style green theme and New Vegas–style amber theme
-  - Toggle themes from navbar
+  - Toggle between Fallout 3–style green and New Vegas–style amber
+  - Accessible right from the navbar
 
 - 🖼️ **Supabase Storage**
-  - Upload and manage product images securely via storage bucket
+  - Securely upload and manage product images via Supabase bucket
 
 - 🛡️ **Form Validation with Zod**
-  - Reusable input components and schema-safe validation
+  - Schema-safe forms with reusable components
+  - Built with Zod for consistent client/server validation
 
 ---
 
@@ -105,6 +105,9 @@ npm install
 ```bash
 cp .env.example .env
 ```
+Open .env and fill in your own API keys and secrets (e.g. for Clerk, Stripe, Supabase, OpenRouter, etc.).
+
+⚠️ Without valid credentials, some features like authentication, checkout, and AI chat won't work.
 
 ### Then run the development server:
 ```bash
@@ -134,5 +137,5 @@ Make sure to fill in the following environment variables in your `.env` file:
 
 ---
 
-Thank you for checking out Vault-66 Store!  
-Happy shopping in the Wasteland. ⚡️
+Thank you for checking out Vault 66 Store!  
+Happy shopping in the Wasteland. 💚
