@@ -15,7 +15,7 @@ import { formatDate } from "@/utils/format";
 async function OrdersPage() {
   const orders = await fetchUserOrders();
   if (!orders || orders.length === 0) {
-    return <SectionTitle text="you have no active orders" />;
+    return <SectionTitle text="your orders list is empty" />;
   }
 
   return (
