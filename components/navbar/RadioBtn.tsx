@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Radio, Loader } from "lucide-react";
 import { useState } from "react";
+import { VscLoading } from "react-icons/vsc";
 
 const radioUrl = "https://fallout.fm:8444/falloutfm1.ogg";
 
@@ -28,15 +29,11 @@ function RadioBtn() {
   return (
     <>
       <Button
-        variant={isPlaying ? "default" : "outline"}
+        variant={isPlaying && !isLoading ? "default" : "outline"}
         size="icon"
         onClick={handleClick}
       >
-        {isLoading ? (
-          <Loader className="h-5 w-5 animate-spin" />
-        ) : (
-          <Radio className="h-5 w-5" />
-        )}
+        {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
         <span className="sr-only">Radio Station</span>
       </Button>
 
