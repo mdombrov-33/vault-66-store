@@ -10,11 +10,11 @@ import { LuShare2 } from "react-icons/lu";
 
 import {
   TwitterShareButton,
-  EmailShareButton,
-  LinkedinShareButton,
   TwitterIcon,
-  EmailIcon,
-  LinkedinIcon,
+  ViberShareButton,
+  ViberIcon,
+  TelegramShareButton,
+  TelegramIcon,
 } from "react-share";
 
 function ShareButton({ productId, name }: { productId: string; name: string }) {
@@ -36,12 +36,12 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
         <TwitterShareButton url={sharedLink} title={name}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
-        <LinkedinShareButton url={sharedLink} title={name}>
-          <LinkedinIcon size={32} round />
-        </LinkedinShareButton>
-        <EmailShareButton url={sharedLink} title={name}>
-          <EmailIcon size={32} round />
-        </EmailShareButton>
+        <TelegramShareButton url={sharedLink} title={name}>
+          <TelegramIcon size={32} round />
+        </TelegramShareButton>
+        <ViberShareButton url={sharedLink} title={name}>
+          <ViberIcon size={32} round />
+        </ViberShareButton>
       </PopoverContent>
     </Popover>
   );
