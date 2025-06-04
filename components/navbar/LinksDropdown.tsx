@@ -8,7 +8,7 @@ import {
 import { LuAlignLeft } from "react-icons/lu";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { navLinks } from "@/data/nav";
+import { NAV_LINKS } from "@/data/nav";
 import UserIcon from "./UserIcon";
 import { SignInButton, SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import SignOutLink from "./SignOutLink";
@@ -42,7 +42,7 @@ async function LinksDropdown() {
           </DropdownMenuItem>
         </SignedOut>
         <SignedIn>
-          {navLinks.map((navLink) => {
+          {NAV_LINKS.map((navLink) => {
             if (navLink.label === "admin dashboard" && !isAdmin && !isTestAdmin)
               return null;
             return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { adminLinks } from "@/data/nav";
+import { ADMIN_LINKS } from "@/data/nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ function Sidebar() {
 
   return (
     <aside>
-      {adminLinks.map((adminLink) => {
+      {ADMIN_LINKS.map((adminLink) => {
         const isActivePage = pathname === adminLink.href;
         const variant = isActivePage ? "default" : "ghost";
         return (
