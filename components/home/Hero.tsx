@@ -10,7 +10,7 @@ function Hero() {
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <div>
         <h1 className="max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl uppercase">
-          Welcome to Vault-66 — Your Post-Apocalyptic Marketplace
+          Welcome to Vault 66 — Your Post-Apocalyptic Marketplace
         </h1>
 
         <TypeAnimation
