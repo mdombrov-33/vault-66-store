@@ -13,7 +13,7 @@ function ChatInput({
       <Textarea
         className="flex-1 resize-none"
         rows={2}
-        placeholder="Type your question..."
+        placeholder="Awaiting command input..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) =>

@@ -4,26 +4,52 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import HeroCarousel from "./HeroCarousel";
 import { TypeAnimation } from "react-type-animation";
+import { useState, useEffect } from "react";
 
 function Hero() {
+  const [isAnimationPlayed, setIsAnimationPlayed] = useState(false);
+
+  useEffect(() => {
+    const isPlayed = sessionStorage.getItem("heroAnimationPlayed");
+    if (isPlayed) setIsAnimationPlayed(true);
+  }, []);
+
+  const finalSentence = "surface conditions: unknown. stock up accordingly";
+
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <div>
-        <h1 className="max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl uppercase">
+        <h1 className="max-w-2xl font-bold text-2xl tracking-tight sm:text-6xl uppercase">
           Welcome to Vault 66 — Your Post-Apocalyptic Marketplace
         </h1>
 
-        <TypeAnimation
-          sequence={[
-            `EXPLORE UNIQUE VAULT-THEMED PRODUCTS FROM THE POST-APOCALYPTIC WORLD. GEAR UP FOR THE WASTELAND WITH EXCLUSIVE ITEMS YOU WON’T FIND ANYWHERE ELSE. WHETHER YOU’RE A SEASONED SURVIVOR OR NEW TO THE WASTELAND, WE’VE GOT YOU COVERED.`,
-            3000,
-          ]}
-          wrapper="p"
-          className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground uppercase"
-          cursor={false}
-          repeat={Infinity}
-          speed={85}
-        />
+        {isAnimationPlayed ? (
+          <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground uppercase min-h-16">
+            {finalSentence}
+          </p>
+        ) : (
+          <TypeAnimation
+            sequence={[
+              "vault 66 online. initiating supply catalog...",
+              4000,
+              "remember: a prepared dweller is a safe dweller",
+              3000,
+              "all products approved by vault-tec",
+              3000,
+              finalSentence,
+              3000,
+              () => {
+                setIsAnimationPlayed(true);
+                sessionStorage.setItem("heroAnimationPlayed", "true");
+              },
+            ]}
+            wrapper="p"
+            className="mt-8 min-h-16 max-w-xl text-lg leading-8 text-muted-foreground uppercase"
+            repeat={0}
+            speed={90}
+            cursor={false}
+          />
+        )}
 
         <Button
           asChild

@@ -212,6 +212,17 @@ textarea {
   scrollbar-color: var(--color-primary) var(--background);
 }
 
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
