@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Radio, Loader } from "lucide-react";
+import { Radio } from "lucide-react";
 import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 
