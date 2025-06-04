@@ -11,8 +11,8 @@ import { LuShare2 } from "react-icons/lu";
 import {
   TwitterShareButton,
   TwitterIcon,
-  ViberShareButton,
-  ViberIcon,
+  FacebookShareButton,
+  FacebookIcon,
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
@@ -39,9 +39,9 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
         <TelegramShareButton url={sharedLink} title={name}>
           <TelegramIcon size={32} round />
         </TelegramShareButton>
-        <ViberShareButton url={sharedLink} title={name}>
-          <ViberIcon size={32} round />
-        </ViberShareButton>
+        <FacebookShareButton url={sharedLink} title={name}>
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
       </PopoverContent>
     </Popover>
   );
