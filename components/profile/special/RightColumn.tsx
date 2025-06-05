@@ -1,16 +1,7 @@
 "use client";
 
-import StrengthIcon from "@/public/images/special/strength.png";
+import { specialData } from "@/data/profile/special";
 import Image from "next/image";
-
-const specialData = [
-  {
-    name: "strength",
-    description:
-      "A measure of physical power and ability to carry heavy loads.",
-    icon: StrengthIcon,
-  },
-];
 
 function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
   const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
@@ -30,7 +21,7 @@ function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
           <h2 className="text-7xl uppercase font-bold text-primary tracking-wider">
             {currentSpecial.name}
           </h2>
-          <p className="text-muted-foreground text-3xl mt-2 font-[roboto]">
+          <p className="text-muted-foreground text-2xl mt-2 font-[roboto]">
             {currentSpecial.description}
           </p>
         </div>
