@@ -31,7 +31,7 @@ function SpecialInput({
     >
       <label
         htmlFor={name}
-        className="w-28 text-lg sm:w-32 sm:text-3xl uppercase text-muted-foreground"
+        className="w-28 text-2xl sm:w-32 sm:text-3xl uppercase text-muted-foreground"
       >
         <span className="text-primary">{label.charAt(0)}</span>
         {label.slice(1)}

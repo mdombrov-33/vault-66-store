@@ -1,5 +1,5 @@
 function MapPage() {
-  return <div>map</div>;
+  return <p>Not implemented</p>;
 }
 
 export default MapPage;

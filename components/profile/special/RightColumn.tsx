@@ -9,7 +9,7 @@ function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
   return (
     <div className="p-4">
       {currentSpecial ? (
-        <div className="flex flex-col items-center -mt-6">
+        <div className="flex flex-col items-center -mt-14">
           <Image
             src={currentSpecial.icon}
             className="mb-2"

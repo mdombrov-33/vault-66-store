@@ -1,5 +1,5 @@
 function GoatPage() {
-  return <div>goat</div>;
+  return <p>Not implemented</p>;
 }
 
 export default GoatPage;

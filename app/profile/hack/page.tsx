@@ -1,7 +1,7 @@
 import React from "react";
 
 function HackPage() {
-  return <div>hack</div>;
+  return <p>Not implemented</p>;
 }
 
 export default HackPage;
