@@ -6,13 +6,11 @@ function ProfileLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SectionTitle text="your profile" />
-      <section className="grid grid-cols-4 gap-8 p-8">
-        {/* PROFILE SECTIONS */}
-        <div>
+      <section className="grid lg:grid-cols-12 gap-12 mt-12">
+        <div className="lg:col-span-2">
           <ProfileSidebar />
         </div>
-        {/* PROFILE CONTENT */}
-        <div className="col-span-3">{children}</div>
+        <div className="lg:col-span-10 px-4">{children}</div>
       </section>
     </>
   );
