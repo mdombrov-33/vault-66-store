@@ -62,24 +62,57 @@ export const reviewSchema = z.object({
 //* This schema is used to validate user's special attributes.
 export const specialSchema = z
   .object({
-    strength: z.coerce.number().int().min(1).max(10),
-    perception: z.coerce.number().int().min(1).max(10),
-    endurance: z.coerce.number().int().min(1).max(10),
-    charisma: z.coerce.number().int().min(1).max(10),
-    intelligence: z.coerce.number().int().min(1).max(10),
-    agility: z.coerce.number().int().min(1).max(10),
-    luck: z.coerce.number().int().min(1).max(10),
+    strength: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Strength must be at least 1." })
+      .max(10, { message: "Strength cannot exceed 10." }),
+    perception: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Perception must be at least 1." })
+      .max(10, { message: "Perception cannot exceed 10." }),
+    endurance: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Endurance must be at least 1." })
+      .max(10, { message: "Endurance cannot exceed 10." }),
+    charisma: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Charisma must be at least 1." })
+      .max(10, { message: "Charisma cannot exceed 10." }),
+    intelligence: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Intelligence must be at least 1." })
+      .max(10, { message: "Intelligence cannot exceed 10." }),
+    agility: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Agility must be at least 1." })
+      .max(10, { message: "Agility cannot exceed 10." }),
+    luck: z.coerce
+      .number()
+      .int()
+      .min(1, { message: "Luck must be at least 1." })
+      .max(10, { message: "Luck cannot exceed 10." }),
   })
-  .refine((data) => {
-    const basePoints = 7;
-    const allocatedPoints =
-      data.strength +
-      data.perception +
-      data.endurance +
-      data.charisma +
-      data.intelligence +
-      data.agility +
-      data.luck -
-      basePoints;
-    return allocatedPoints <= 21;
-  });
+  .refine(
+    (data) => {
+      const basePoints = 7;
+      const allocated =
+        data.strength +
+        data.perception +
+        data.endurance +
+        data.charisma +
+        data.intelligence +
+        data.agility +
+        data.luck -
+        basePoints;
+      return allocated <= 21;
+    },
+    {
+      message: "You can only allocate 21 points above the base value of 7.",
+    }
+  );
