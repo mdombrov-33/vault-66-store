@@ -167,63 +167,74 @@
   scrollbar-color: var(--color-primary) var(--background);
 }
 
-/* Apply this to <body class="crt-mode dark"> or conditionally in dark mode */
-/* === Vertical sweep line that moves slowly from top to bottom === */
+/* 🔧 CRT EFFECT FOR FALLOUT THEME ===================================== */
+/* Apply this to <body class="crt-mode dark"> or only when dark mode is on */
+
+/* ✅ Sweep Line — vertical bar that moves down the screen */
 body.crt-mode::before {
-  content: "";
-  position: fixed;
-  top: -30%; /* Start above the screen */
-  left: 0;
-  width: 100%;
-  height: 20px; /* Thickness of the sweep line */
-  pointer-events: none;
+  content: ""; /* Required to render pseudo-element */
+  position: fixed; /* Keep the line fixed to the viewport */
+  top: -30%; /* Start above the screen (start position of animation) */
+  left: 0; /* Stretch from the left edge */
+  width: 100%; /* Full screen width */
+  height: 80px; /* 🔧 Thickness of the sweep line — increase for a fatter line, decrease for thinner */
+  pointer-events: none; /* Allows clicking through it */
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    /* Top of the line fades out */ rgba(0, 0, 0, 0.25) 45%,
-    /* Dark center - start */ rgba(0, 0, 0, 0.35) 50%,
-    /* Dark center - peak */ rgba(0, 0, 0, 0.25) 55%,
-    /* Dark center - end */ transparent 100% /* Bottom of the line fades out */
+    /* 🔧 Fades in from nothing at the top */ rgba(0, 0, 0, 0.4) 40%,
+    /* 🔧 First dark edge — lower alpha for more subtle fade */
+      rgba(0, 0, 0, 0.6) 50%,
+    /* 🔧 Center of the line — higher alpha = darker, more visible */
+      rgba(8, 8, 8, 0.5) 50%,
+    /* 🔧 Optional darker center line detail */ transparent 100%
+      /* 🔧 Fades out to nothing at bottom */
   );
-  animation: sweep-line 8s linear infinite; /* Slow animation loop */
-  z-index: 9999; /* On top of everything */
-  filter: blur(2px); /* Makes the line soft and smooth */
+  animation: sweep-line 10s linear infinite; /* 🔧 Speed of sweep — lower = faster, higher = slower */
+  z-index: 9999; /* Show above everything else */
+  filter: blur(
+    1.5px
+  ); /* 🔧 Makes the line softer — increase blur for glowier effect, lower for sharper */
 }
 
-/* === Moves the line from top to bottom === */
+/* 🌀 Sweep Animation — moves the line from top to bottom */
 @keyframes sweep-line {
   0% {
-    top: -30%; /* Start above screen */
+    top: -30%; /* Start above the screen */
   }
   100% {
-    top: 130%; /* Move all the way down */
+    top: 130%; /* End far below the screen — ensures smooth exit */
   }
 }
 
-/* === Horizontal scanlines overlay (very subtle green lines) === */
+/* ✅ Scanlines — horizontal repeating green lines overlay */
 body.crt-mode::after {
-  content: "";
-  position: fixed;
-  inset: 0; /* Covers the whole screen */
-  pointer-events: none;
+  content: ""; /* Required to render pseudo-element */
+  position: fixed; /* Lock it to the screen */
+  inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0 */
+  pointer-events: none; /* Let users click through it */
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(0, 255, 128, 0.015) 0px,
-    /* Green line starts */ rgba(0, 255, 128, 0.015) 1px,
-    /* Green line is 1px thick */ transparent 2px,
-    /* Gap between lines */ transparent 3px /* Total space per line: 3px */
+    rgba(91, 179, 135, 0.035) 0px,
+    /* 🔧 First green line — alpha controls visibility */
+      rgba(21, 227, 124, 0.121) 1px,
+    /* 🔧 Line thickness — higher alpha = more visible */ transparent 2px,
+    /* 🔧 First part of gap between lines */ transparent 3px
+      /* 🔧 End of each line block — 3px total spacing per line */
   );
-  z-index: 9998; /* Just under the sweep line */
+  z-index: 9998; /* Below the sweep line */
+  mix-blend-mode: screen; /* 🔧 Blends green lines with background better — use `overlay` or `multiply` to test alternatives */
 }
 
-/* === Green glow effect for screen elements or text === */
+/* ✅ CRT Green Glow — for glowing green text or UI elements */
 .crt-glow {
-  box-shadow: 0 0 4px rgba(0, 255, 128, 0.15),
-    /* Soft green glow */ 0 0 8px rgba(0, 255, 128, 0.1),
-    /* Medium green glow */ 0 0 12px rgba(0, 255, 128, 0.05); /* Faint outer glow */
-  color: #00ff88; /* Fallout green text */
+  box-shadow: 0 0 6px rgba(0, 255, 128, 0.25),
+    /* 🔧 Inner glow — increase alpha to make brighter */ 0 0 12px
+      rgba(0, 255, 128, 0.15),
+    /* 🔧 Middle glow — adjust radius for size */ 0 0 20px
+      rgba(0, 255, 128, 0.1); /* 🔧 Outer glow — subtle, increases depth */
+  color: #00ff88; /* 🔧 Text color — iconic Fallout green */
 }
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
