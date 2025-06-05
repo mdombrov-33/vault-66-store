@@ -85,7 +85,7 @@ ${featuredProducts.join("\n")}
 > Remember the prices and if the user says something like "I want to buy something, but i have only 100 caps", you can suggest items in the stock that are under that price.
 
 > There is courier fee of 5 caps for every order, so if the user wants to buy something, you can add that to the price.
-> Also you can you knowledge about courier fee if user asks about shipping or delivery.
+> Also you can use your knowledge about courier fee if user asks about shipping or delivery.
 
 > There is Scavenger's tax for every order. The more you order - the higher the tax.
 > Scavenge's fee depends on the order price and on the amount of items in the order.
