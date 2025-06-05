@@ -167,10 +167,10 @@
   scrollbar-color: var(--color-primary) var(--background);
 }
 
-/* 🔧 CRT EFFECT FOR FALLOUT THEME ===================================== */
-/* Apply this to <body class="crt-mode dark"> or only when dark mode is on */
+/*! 🔧 CRT EFFECT ===================================== */
+/** Apply this to <body class="crt-mode dark"> or only when dark mode is on */
 
-/* ✅ Sweep Line — vertical bar that moves down the screen */
+/** Sweep Line — vertical bar that moves down the screen */
 body.crt-mode::before {
   content: ""; /* Required to render pseudo-element */
   position: fixed; /* Keep the line fixed to the viewport */
@@ -197,7 +197,7 @@ body.crt-mode::before {
   ); /* 🔧 Makes the line softer — increase blur for glowier effect, lower for sharper */
 }
 
-/* 🌀 Sweep Animation — moves the line from top to bottom */
+/** Sweep Animation — moves the line from top to bottom */
 @keyframes sweep-line {
   0% {
     top: -30%; /* Start above the screen */
@@ -207,7 +207,7 @@ body.crt-mode::before {
   }
 }
 
-/* ✅ Scanlines — horizontal repeating green lines overlay */
+/**  Scanlines — horizontal repeating green lines overlay */
 body.crt-mode::after {
   content: ""; /* Required to render pseudo-element */
   position: fixed; /* Lock it to the screen */
@@ -226,7 +226,7 @@ body.crt-mode::after {
   mix-blend-mode: screen; /* 🔧 Blends green lines with background better — use `overlay` or `multiply` to test alternatives */
 }
 
-/* ✅ CRT Green Glow — for glowing green text or UI elements */
+/** CRT Green Glow — for glowing green text or UI elements */
 .crt-glow {
   box-shadow: 0 0 6px rgba(0, 255, 128, 0.25),
     /* 🔧 Inner glow — increase alpha to make brighter */ 0 0 12px

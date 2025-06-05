@@ -7,20 +7,20 @@ export function useCrtMode() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check dark mode by looking for 'dark' class on <html>
+    //* Check dark mode by looking for 'dark' class on <html>
     function checkDarkMode() {
       return document.documentElement.classList.contains("dark");
     }
 
-    // Initial set
+    //* Initial set
     setIsDarkMode(checkDarkMode());
 
-    // Observe dark mode class changes
+    //* Observe dark mode class changes
     const observer = new MutationObserver(() => {
       const dark = checkDarkMode();
       setIsDarkMode(dark);
 
-      // If dark mode is turned off, force CRT mode off and remove class
+      //* If dark mode is turned off, force CRT mode off and remove class
       if (!dark) {
         setIsEnabled(false);
         document.body.classList.remove("crt-mode");
@@ -35,7 +35,7 @@ export function useCrtMode() {
     return () => observer.disconnect();
   }, []);
 
-  // Side effect to add/remove crt-mode class when isEnabled or isDarkMode changes
+  //* Side effect to add/remove crt-mode class when isEnabled or isDarkMode changes
   useEffect(() => {
     if (isEnabled && isDarkMode) {
       document.body.classList.add("crt-mode");

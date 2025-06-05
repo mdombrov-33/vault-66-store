@@ -1,13 +1,12 @@
 "use client";
 
 import { useCrtMode } from "@/components/navbar/hooks/useCrtMode";
-import { Button } from "../ui/button";
-import { MonitorIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TvIcon } from "lucide-react";
 
 function CrtMode() {
   const { toggle, isEnabled, isDarkMode } = useCrtMode();
 
-  // Only render the button if dark mode is active
   if (!isDarkMode) return null;
 
   return (
@@ -19,7 +18,7 @@ function CrtMode() {
       aria-label="Toggle CRT Mode"
     >
       <span className="sr-only">CRT Mode Toggle</span>
-      <MonitorIcon />
+      <TvIcon />
     </Button>
   );
 }
