@@ -167,6 +167,36 @@
   scrollbar-color: var(--color-primary) var(--background);
 }
 
+body.crt-mode::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(0, 255, 0) 0,
+    rgb(0, 255, 0) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: crt-scan 10s linear infinite;
+  z-index: 9999;
+  opacity: 0.2;
+}
+
+@keyframes crt-scan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+body.crt-mode {
+  box-shadow: inset 0 0 40px rgba(106, 200, 106, 0.845);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

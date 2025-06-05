@@ -5,6 +5,7 @@ import LinksDropdown from "@/components/navbar/LinksDropdown";
 import Logo from "@/components/navbar/Logo";
 import NavSearch from "@/components/navbar/NavSearch";
 import RadioBtn from "@/components/navbar/RadioBtn";
+import CrtMode from "@/components/navbar/CrtMode";
 import { Suspense } from "react";
 
 function Navbar() {
@@ -22,6 +23,7 @@ function Navbar() {
           <CartBtn />
           <DarkMode />
           <RadioBtn />
+          <CrtMode />
           <LinksDropdown />
         </div>
       </Container>
