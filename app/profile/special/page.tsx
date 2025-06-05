@@ -9,7 +9,10 @@ function SpecialPage() {
       <FormContainer action={createSpecialAction}>
         <LeftColumn />
         <div className="flex justify-center md:items-start">
-          <SubmitButton text="register" className="text-xl sm:text-2xl mt-12" />
+          <SubmitButton
+            text="register"
+            className="text-xl sm:text-2xl mt-12 uppercase"
+          />
         </div>
       </FormContainer>
     </div>

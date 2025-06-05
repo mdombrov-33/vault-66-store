@@ -9503,7 +9503,6 @@ export namespace Prisma {
     intelligence: number | null
     agility: number | null
     luck: number | null
-    remainingPoints: number | null
   }
 
   export type SpecialSumAggregateOutputType = {
@@ -9514,7 +9513,6 @@ export namespace Prisma {
     intelligence: number | null
     agility: number | null
     luck: number | null
-    remainingPoints: number | null
   }
 
   export type SpecialMinAggregateOutputType = {
@@ -9527,7 +9525,6 @@ export namespace Prisma {
     agility: number | null
     luck: number | null
     isAllocated: boolean | null
-    remainingPoints: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -9543,7 +9540,6 @@ export namespace Prisma {
     agility: number | null
     luck: number | null
     isAllocated: boolean | null
-    remainingPoints: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -9559,7 +9555,6 @@ export namespace Prisma {
     agility: number
     luck: number
     isAllocated: number
-    remainingPoints: number
     createdAt: number
     updatedAt: number
     userId: number
@@ -9575,7 +9570,6 @@ export namespace Prisma {
     intelligence?: true
     agility?: true
     luck?: true
-    remainingPoints?: true
   }
 
   export type SpecialSumAggregateInputType = {
@@ -9586,7 +9580,6 @@ export namespace Prisma {
     intelligence?: true
     agility?: true
     luck?: true
-    remainingPoints?: true
   }
 
   export type SpecialMinAggregateInputType = {
@@ -9599,7 +9592,6 @@ export namespace Prisma {
     agility?: true
     luck?: true
     isAllocated?: true
-    remainingPoints?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -9615,7 +9607,6 @@ export namespace Prisma {
     agility?: true
     luck?: true
     isAllocated?: true
-    remainingPoints?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -9631,7 +9622,6 @@ export namespace Prisma {
     agility?: true
     luck?: true
     isAllocated?: true
-    remainingPoints?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -9734,7 +9724,6 @@ export namespace Prisma {
     agility: number
     luck: number
     isAllocated: boolean
-    remainingPoints: number
     createdAt: Date
     updatedAt: Date
     userId: string
@@ -9769,7 +9758,6 @@ export namespace Prisma {
     agility?: boolean
     luck?: boolean
     isAllocated?: boolean
-    remainingPoints?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -9786,7 +9774,6 @@ export namespace Prisma {
     agility?: boolean
     luck?: boolean
     isAllocated?: boolean
-    remainingPoints?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -9803,7 +9790,6 @@ export namespace Prisma {
     agility?: boolean
     luck?: boolean
     isAllocated?: boolean
-    remainingPoints?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
@@ -9820,13 +9806,12 @@ export namespace Prisma {
     agility?: boolean
     luck?: boolean
     isAllocated?: boolean
-    remainingPoints?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
   }
 
-  export type SpecialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "strength" | "perception" | "endurance" | "charisma" | "intelligence" | "agility" | "luck" | "isAllocated" | "remainingPoints" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["special"]>
+  export type SpecialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "strength" | "perception" | "endurance" | "charisma" | "intelligence" | "agility" | "luck" | "isAllocated" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["special"]>
   export type SpecialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -9852,7 +9837,6 @@ export namespace Prisma {
       agility: number
       luck: number
       isAllocated: boolean
-      remainingPoints: number
       createdAt: Date
       updatedAt: Date
       userId: string
@@ -10289,7 +10273,6 @@ export namespace Prisma {
     readonly agility: FieldRef<"Special", 'Int'>
     readonly luck: FieldRef<"Special", 'Int'>
     readonly isAllocated: FieldRef<"Special", 'Boolean'>
-    readonly remainingPoints: FieldRef<"Special", 'Int'>
     readonly createdAt: FieldRef<"Special", 'DateTime'>
     readonly updatedAt: FieldRef<"Special", 'DateTime'>
     readonly userId: FieldRef<"Special", 'String'>
@@ -10828,7 +10811,6 @@ export namespace Prisma {
     agility: 'agility',
     luck: 'luck',
     isAllocated: 'isAllocated',
-    remainingPoints: 'remainingPoints',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId'
@@ -11396,14 +11378,14 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    clerkId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    clerkId?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     special?: XOR<SpecialNullableScalarRelationFilter, SpecialWhereInput> | null
-  }, "id">
+  }, "id" | "clerkId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11438,7 +11420,6 @@ export namespace Prisma {
     agility?: IntFilter<"Special"> | number
     luck?: IntFilter<"Special"> | number
     isAllocated?: BoolFilter<"Special"> | boolean
-    remainingPoints?: IntFilter<"Special"> | number
     createdAt?: DateTimeFilter<"Special"> | Date | string
     updatedAt?: DateTimeFilter<"Special"> | Date | string
     userId?: StringFilter<"Special"> | string
@@ -11455,7 +11436,6 @@ export namespace Prisma {
     agility?: SortOrder
     luck?: SortOrder
     isAllocated?: SortOrder
-    remainingPoints?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -11476,7 +11456,6 @@ export namespace Prisma {
     agility?: IntFilter<"Special"> | number
     luck?: IntFilter<"Special"> | number
     isAllocated?: BoolFilter<"Special"> | boolean
-    remainingPoints?: IntFilter<"Special"> | number
     createdAt?: DateTimeFilter<"Special"> | Date | string
     updatedAt?: DateTimeFilter<"Special"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -11492,7 +11471,6 @@ export namespace Prisma {
     agility?: SortOrder
     luck?: SortOrder
     isAllocated?: SortOrder
-    remainingPoints?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -11516,7 +11494,6 @@ export namespace Prisma {
     agility?: IntWithAggregatesFilter<"Special"> | number
     luck?: IntWithAggregatesFilter<"Special"> | number
     isAllocated?: BoolWithAggregatesFilter<"Special"> | boolean
-    remainingPoints?: IntWithAggregatesFilter<"Special"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Special"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Special"> | Date | string
     userId?: StringWithAggregatesFilter<"Special"> | string
@@ -12080,7 +12057,6 @@ export namespace Prisma {
     agility?: number
     luck?: number
     isAllocated?: boolean
-    remainingPoints?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSpecialInput
@@ -12096,7 +12072,6 @@ export namespace Prisma {
     agility?: number
     luck?: number
     isAllocated?: boolean
-    remainingPoints?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -12112,7 +12087,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSpecialNestedInput
@@ -12128,7 +12102,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -12144,7 +12117,6 @@ export namespace Prisma {
     agility?: number
     luck?: number
     isAllocated?: boolean
-    remainingPoints?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -12160,7 +12132,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12175,7 +12146,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -12650,7 +12620,6 @@ export namespace Prisma {
     agility?: SortOrder
     luck?: SortOrder
     isAllocated?: SortOrder
-    remainingPoints?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -12664,7 +12633,6 @@ export namespace Prisma {
     intelligence?: SortOrder
     agility?: SortOrder
     luck?: SortOrder
-    remainingPoints?: SortOrder
   }
 
   export type SpecialMaxOrderByAggregateInput = {
@@ -12677,7 +12645,6 @@ export namespace Prisma {
     agility?: SortOrder
     luck?: SortOrder
     isAllocated?: SortOrder
-    remainingPoints?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -12693,7 +12660,6 @@ export namespace Prisma {
     agility?: SortOrder
     luck?: SortOrder
     isAllocated?: SortOrder
-    remainingPoints?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -12707,7 +12673,6 @@ export namespace Prisma {
     intelligence?: SortOrder
     agility?: SortOrder
     luck?: SortOrder
-    remainingPoints?: SortOrder
   }
 
   export type FavoriteCreateNestedManyWithoutProductInput = {
@@ -13659,7 +13624,6 @@ export namespace Prisma {
     agility?: number
     luck?: number
     isAllocated?: boolean
-    remainingPoints?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13674,7 +13638,6 @@ export namespace Prisma {
     agility?: number
     luck?: number
     isAllocated?: boolean
-    remainingPoints?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13705,7 +13668,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13720,7 +13682,6 @@ export namespace Prisma {
     agility?: IntFieldUpdateOperationsInput | number
     luck?: IntFieldUpdateOperationsInput | number
     isAllocated?: BoolFieldUpdateOperationsInput | boolean
-    remainingPoints?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -94,7 +94,7 @@ model Order{
 
 model User {
   id String @id @default(uuid())
-  clerkId String
+  clerkId String @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   special Special?
