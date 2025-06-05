@@ -12,16 +12,15 @@ function SpecialPageWrapper() {
 
   return (
     <>
-      <h2 className="text-5xl -mt-6 text-center">
+      <h2 className="md:text-5xl text-3xl -mt-6 text-center">
         Welcome to Your S.P.E.C.I.A.L. Profile
       </h2>
-      <p className="md:text-lg text-sm  max-w-2xl mx-auto mt-2 font-[roboto] text-muted-foreground">
-        Out here, everyone&#39;s got a role to play. Assign your S.P.E.C.I.A.L.
-        stats and prove your worth — then take the G.O.A.T. Test to see where
-        you fit in Vault 66’s trading network.
+      <p className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mx-auto mt-2 px-4 text-center">
+        Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock
+        the G.O.A.T. Test and find your place in Vault 66’s trading network.
       </p>
 
-      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8l mt-12 mx-auto">
+      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8l mt-12">
         <FormContainer action={createSpecialAction}>
           <div className="md:self-start">
             <LeftColumn
