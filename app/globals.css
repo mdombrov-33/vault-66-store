@@ -167,44 +167,61 @@
   scrollbar-color: var(--color-primary) var(--background);
 }
 
+/* Apply this to <body class="crt-mode dark"> or conditionally in dark mode */
+/* === Vertical sweep line that moves slowly from top to bottom === */
 body.crt-mode::before {
   content: "";
   position: fixed;
-  top: -100%;
+  top: -30%; /* Start above the screen */
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 20px; /* Thickness of the sweep line */
   pointer-events: none;
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(0, 255, 0, 0.15) 50%,
-    transparent 100%
+    /* Top of the line fades out */ rgba(0, 0, 0, 0.25) 45%,
+    /* Dark center - start */ rgba(0, 0, 0, 0.35) 50%,
+    /* Dark center - peak */ rgba(0, 0, 0, 0.25) 55%,
+    /* Dark center - end */ transparent 100% /* Bottom of the line fades out */
   );
-  animation: sweep-line 6s linear infinite;
-  z-index: 9999;
+  animation: sweep-line 8s linear infinite; /* Slow animation loop */
+  z-index: 9999; /* On top of everything */
+  filter: blur(2px); /* Makes the line soft and smooth */
 }
 
+/* === Moves the line from top to bottom === */
 @keyframes sweep-line {
   0% {
-    top: -100%;
+    top: -30%; /* Start above screen */
   }
   100% {
-    top: 100%;
+    top: 130%; /* Move all the way down */
   }
 }
 
-@keyframes crt-scan {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
+/* === Horizontal scanlines overlay (very subtle green lines) === */
+body.crt-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0; /* Covers the whole screen */
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 128, 0.015) 0px,
+    /* Green line starts */ rgba(0, 255, 128, 0.015) 1px,
+    /* Green line is 1px thick */ transparent 2px,
+    /* Gap between lines */ transparent 3px /* Total space per line: 3px */
+  );
+  z-index: 9998; /* Just under the sweep line */
 }
 
-body.crt-mode {
-  box-shadow: inset 0 0 40px rgba(106, 200, 106, 0.845);
+/* === Green glow effect for screen elements or text === */
+.crt-glow {
+  box-shadow: 0 0 4px rgba(0, 255, 128, 0.15),
+    /* Soft green glow */ 0 0 8px rgba(0, 255, 128, 0.1),
+    /* Medium green glow */ 0 0 12px rgba(0, 255, 128, 0.05); /* Faint outer glow */
+  color: #00ff88; /* Fallout green text */
 }
 
 @layer base {
