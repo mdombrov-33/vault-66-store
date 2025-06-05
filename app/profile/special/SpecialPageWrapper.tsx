@@ -14,10 +14,12 @@ function SpecialPageWrapper() {
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8 h-full">
         <FormContainer action={createSpecialAction}>
-          <LeftColumn
-            onHoverChange={setHoveredStat}
-            hoveredStat={hoveredStat}
-          />
+          <div className="md:self-start">
+            <LeftColumn
+              onHoverChange={setHoveredStat}
+              hoveredStat={hoveredStat}
+            />
+          </div>
           <div className="flex items-center justify-center ">
             <SubmitButton
               text="register"

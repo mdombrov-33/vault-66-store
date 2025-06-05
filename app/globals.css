@@ -70,8 +70,8 @@
   --accent: rgb(255, 220, 100);
   --accent-foreground: rgb(30, 20, 5);
 
-  --destructive: rgb(170, 50, 50); /* Red alert */
-  --destructive-foreground: rgb(255, 255, 255); /* White on red */
+  --destructive: rgb(170, 50, 50);
+  --destructive-foreground: rgb(255, 255, 255);
 
   --chart-1: rgb(255, 200, 100);
   --chart-2: rgb(240, 180, 60);

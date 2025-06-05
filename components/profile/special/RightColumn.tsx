@@ -9,14 +9,14 @@ function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
   return (
     <div className="p-4">
       {currentSpecial ? (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center -mt-6">
           <Image
             src={currentSpecial.icon}
             className="mb-2"
             width={200}
             height={200}
             alt={`${currentSpecial.name} icon`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(min-width: 768px) 50vw"
           />
           <h2 className="text-7xl uppercase font-bold text-primary tracking-wider">
             {currentSpecial.name}
@@ -26,7 +26,9 @@ function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
           </p>
         </div>
       ) : (
-        <p className="text-gray-500">Hover over a stat to see details.</p>
+        <p className="text-muted-foreground text-2xl">
+          Hover over a stat to see details.
+        </p>
       )}
     </div>
   );

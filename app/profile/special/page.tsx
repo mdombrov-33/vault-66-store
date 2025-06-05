@@ -1,23 +1,15 @@
-import db from "@/utils/db";
-import { auth } from "@clerk/nextjs/server";
+import { getSpecialRecord } from "@/utils/profile";
 import SpecialPageWrapper from "./SpecialPageWrapper";
 
 async function SpecialPage() {
-  const { userId } = await auth();
-
-  const specialRecord = await db.special.findUnique({
-    where: {
-      clerkId: userId as string,
-    },
-  });
+  const specialRecord = await getSpecialRecord();
 
   if (!specialRecord) {
     return <SpecialPageWrapper />;
   }
 
+  //* LOGIC if stats were allocated
   return <p>you already registred</p>;
 }
-
-//* LOGIC FOR ALLOCATED STATS
 
 export default SpecialPage;
