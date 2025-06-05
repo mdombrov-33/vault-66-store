@@ -15,13 +15,14 @@ export function SubmitButton({
   className = "",
   text = "submit",
   size = "lg",
+  disabled = false,
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
     <Button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className={cn("capitalize", className)}
       size={size}
     >

@@ -755,38 +755,32 @@ export const createSpecialAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  const user = await getAuthUser();
-
   try {
-    let dbUser = await db.user.findUnique({
-      where: { clerkId: user.id },
-    });
-
-    if (!dbUser) {
-      dbUser = await db.user.create({
-        data: { clerkId: user.id },
-      });
-    }
-
-    const recordIsFound = await db.special.findUnique({
-      where: { userId: dbUser.id },
-    });
-
-    if (recordIsFound) {
-      return { message: "You have already allocated your SPECIAL attributes" };
-    }
+    const user = await getAuthUser();
 
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateZodSchema(specialSchema, rawData);
 
-    await db.special.create({
-      data: {
-        ...validatedFields,
-        userId: dbUser.id,
+    const isAllocated = await db.special.findFirst({
+      where: {
+        clerkId: user.id,
         isAllocated: true,
       },
     });
 
+    if (isAllocated) {
+      throw new Error("You already allocated your SPECIAL attributes");
+    }
+
+    await db.special.create({
+      data: {
+        ...validatedFields,
+        clerkId: user.id,
+        isAllocated: true,
+      },
+    });
+
+    revalidatePath("/profile/special");
     return { message: "Thanks! Nice to meet you" };
   } catch (error) {
     return renderError(error);
