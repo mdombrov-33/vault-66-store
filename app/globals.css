@@ -235,6 +235,7 @@ body.crt-mode::after {
       rgba(0, 255, 128, 0.1); /* 🔧 Outer glow — subtle, increases depth */
   color: #00ff88; /* 🔧 Text color — iconic Fallout green */
 }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
