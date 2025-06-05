@@ -58,3 +58,28 @@ export const reviewSchema = z.object({
     .min(5, { message: "Comment must be at least 5 characters long" })
     .max(2000, { message: "Comment must be at most 2000 characters long" }),
 });
+
+//* This schema is used to validate user's special attributes.
+export const specialSchema = z
+  .object({
+    strength: z.coerce.number().int().min(1).max(10),
+    perception: z.coerce.number().int().min(1).max(10),
+    endurance: z.coerce.number().int().min(1).max(10),
+    charisma: z.coerce.number().int().min(1).max(10),
+    intelligence: z.coerce.number().int().min(1).max(10),
+    agility: z.coerce.number().int().min(1).max(10),
+    luck: z.coerce.number().int().min(1).max(10),
+  })
+  .refine((data) => {
+    const basePoints = 7;
+    const allocatedPoints =
+      data.strength +
+      data.perception +
+      data.endurance +
+      data.charisma +
+      data.intelligence +
+      data.agility +
+      data.luck -
+      basePoints;
+    return allocatedPoints <= 21;
+  });
