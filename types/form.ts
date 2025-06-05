@@ -54,4 +54,5 @@ export type FormSpecialProps = {
   label: string;
   min?: number;
   max?: number;
+  onHoverChange: (stat: string | null) => void;
 };

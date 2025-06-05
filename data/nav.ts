@@ -19,7 +19,7 @@ export const ADMIN_LINKS: NavLink[] = [
 ];
 
 export const PROFILE_LINKS: NavLink[] = [
-  { href: "/profile/special", label: "special" },
+  { href: "/profile/special", label: "SPECIAL" },
   { href: "/profile/goat", label: "g.o.a.t." },
   { href: "/profile/map", label: "map" },
   { href: "/profile/hack", label: "hack" },

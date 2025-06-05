@@ -6,14 +6,24 @@ import { Input } from "@/components/ui/input";
 import { FormSpecialProps } from "@/types/form";
 import { Minus, Plus } from "lucide-react";
 
-function SpecialInput({ name, label, min = 1, max = 10 }: FormSpecialProps) {
+function SpecialInput({
+  name,
+  label,
+  min = 1,
+  max = 10,
+  onHoverChange,
+}: FormSpecialProps) {
   const [value, setValue] = useState(1);
 
   const decrement = () => setValue((v) => Math.max(min, v - 1));
   const increment = () => setValue((v) => Math.min(max, v + 1));
 
   return (
-    <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+    <div
+      className="flex flex-wrap items-center gap-2 sm:gap-4"
+      onMouseEnter={() => onHoverChange?.(name)}
+      onMouseLeave={() => onHoverChange?.(null)}
+    >
       <label
         htmlFor={name}
         className="w-28 text-lg sm:w-32 sm:text-3xl uppercase text-muted-foreground"
