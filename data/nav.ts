@@ -8,6 +8,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: "/reviews", label: "reviews" },
   { href: "/cart", label: "cart (stash)" },
   { href: "/orders", label: "orders (purchases)" },
+  { href: "/profile", label: "profile" },
   { href: "/admin/sales", label: "admin dashboard" },
 ];
 

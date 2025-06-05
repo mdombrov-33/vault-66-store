@@ -8,6 +8,7 @@ function SignOutLink() {
   const handleLogout = () => {
     toast.success("You have successfully logged out");
   };
+
   return (
     <SignOutButton>
       <Link
