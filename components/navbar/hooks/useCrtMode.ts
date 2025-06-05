@@ -1,41 +1,16 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function useCrtMode() {
+  const { theme, resolvedTheme } = useTheme();
   const [isEnabled, setIsEnabled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
-    //* Check dark mode by looking for 'dark' class on <html>
-    function checkDarkMode() {
-      return document.documentElement.classList.contains("dark");
-    }
+  // Determine if current theme is dark (taking system fallback into account)
+  const isDarkMode = (theme === "system" ? resolvedTheme : theme) === "dark";
 
-    //* Initial set
-    setIsDarkMode(checkDarkMode());
-
-    //* Observe dark mode class changes
-    const observer = new MutationObserver(() => {
-      const dark = checkDarkMode();
-      setIsDarkMode(dark);
-
-      //* If dark mode is turned off, force CRT mode off and remove class
-      if (!dark) {
-        setIsEnabled(false);
-        document.body.classList.remove("crt-mode");
-      }
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  //* Side effect to add/remove crt-mode class when isEnabled or isDarkMode changes
+  // Sync crt-mode class with state
   useEffect(() => {
     if (isEnabled && isDarkMode) {
       document.body.classList.add("crt-mode");
@@ -43,6 +18,13 @@ export function useCrtMode() {
       document.body.classList.remove("crt-mode");
     }
   }, [isEnabled, isDarkMode]);
+
+  // If dark mode turns off, disable CRT mode automatically
+  useEffect(() => {
+    if (!isDarkMode) {
+      setIsEnabled(false);
+    }
+  }, [isDarkMode]);
 
   return { isEnabled, toggle: () => setIsEnabled((prev) => !prev), isDarkMode };
 }

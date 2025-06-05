@@ -238,9 +238,9 @@ body.crt-mode::after {
 /* Light theme yellow glow */
 .crt-glow-light {
   box-shadow: 0 0 6px rgba(219, 170, 0, 0.3),
-    /* inner glow — warm and close */ 0 0 12px rgba(255, 220, 100, 0.2),
+    /* inner glow — warm and close */ 0 0 12px rgb(98, 81, 26),
     /* middle glow — softer and spread */ 0 0 20px rgba(255, 220, 100, 0.1); /* outer subtle glow — faint and wide */
-  color: rgb(255, 220, 100); /* warm yellow text color */
+  color: rgb(55, 48, 25); /* warm yellow text color */
 }
 
 @layer base {

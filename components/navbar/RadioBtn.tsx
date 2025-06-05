@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Radio } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 
@@ -10,6 +11,7 @@ const radioUrl = "https://fallout.fm:8444/falloutfm1.ogg";
 function RadioBtn() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { theme } = useTheme();
 
   const handleClick = () => {
     if (!isPlaying) {
@@ -25,12 +27,23 @@ function RadioBtn() {
     setIsLoading(false);
   };
 
+  const isRadioPlaying = isPlaying && !isLoading;
+  const isDarkTheme = theme === "dark";
+  console.log("Current theme:", theme);
+
+  const glowClass = isRadioPlaying
+    ? isDarkTheme
+      ? "crt-glow-dark"
+      : "crt-glow-light"
+    : "";
+
   return (
     <>
       <Button
-        variant={isPlaying && !isLoading ? "default" : "outline"}
+        variant="outline"
         size="icon"
         onClick={handleClick}
+        className={glowClass}
       >
         {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
         <span className="sr-only">Radio Station</span>
