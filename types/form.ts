@@ -49,10 +49,11 @@ export type actionFunction = (
   formData: FormData
 ) => Promise<{ message: string }>;
 
-export type FormSpecialProps = {
+export type FormSpecialInput = {
   name: string;
   label: string;
   min?: number;
   max?: number;
   onHoverChange: (stat: string | null) => void;
+  hoveredStat?: string | null;
 };

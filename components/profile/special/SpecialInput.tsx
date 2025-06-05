@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormSpecialProps } from "@/types/form";
+import { FormSpecialInput } from "@/types/form";
 import { Minus, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 function SpecialInput({
   name,
@@ -12,7 +13,8 @@ function SpecialInput({
   min = 1,
   max = 10,
   onHoverChange,
-}: FormSpecialProps) {
+  hoveredStat,
+}: FormSpecialInput) {
   const [value, setValue] = useState(1);
 
   const decrement = () => setValue((v) => Math.max(min, v - 1));
@@ -20,7 +22,10 @@ function SpecialInput({
 
   return (
     <div
-      className="flex flex-wrap items-center gap-2 sm:gap-4"
+      className={cn(
+        "flex flex-wrap items-center gap-2 sm:gap-4",
+        hoveredStat === name && "bg-primary/20 rounded-md"
+      )}
       onMouseEnter={() => onHoverChange?.(name)}
       onMouseLeave={() => onHoverChange?.(null)}
     >

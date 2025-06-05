@@ -12,17 +12,23 @@ function SpecialPageWrapper() {
 
   return (
     <>
-      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8">
+      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8 h-full">
         <FormContainer action={createSpecialAction}>
-          <LeftColumn onHoverChange={setHoveredStat} />
-          <div className="flex justify-center md:items-start">
+          <LeftColumn
+            onHoverChange={setHoveredStat}
+            hoveredStat={hoveredStat}
+          />
+          <div className="flex items-center justify-center ">
             <SubmitButton
               text="register"
               className="text-xl sm:text-2xl mt-12 uppercase"
             />
           </div>
         </FormContainer>
-        <RightColumn hoveredStat={hoveredStat} />
+
+        <div className="hidden md:block">
+          <RightColumn hoveredStat={hoveredStat} />
+        </div>
       </div>
     </>
   );

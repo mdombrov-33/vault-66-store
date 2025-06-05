@@ -1,16 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import SpecialInput from "./SpecialInput";
-import StrengthDude from "@/public/special/strength.png";
+import StrengthIcon from "@/public/images/special/strength.png";
+import Image from "next/image";
+
+const specialData = [
+  {
+    name: "strength",
+    description:
+      "A measure of physical power and ability to carry heavy loads.",
+    icon: StrengthIcon,
+  },
+];
 
 function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
+  const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
+
   return (
     <div className="p-4">
-      {hoveredStat ? (
-        <p>Hovering over: {hoveredStat}</p>
+      {currentSpecial ? (
+        <div className="flex flex-col items-center">
+          <Image
+            src={currentSpecial.icon}
+            className="mb-2"
+            width={200}
+            height={200}
+            alt={`${currentSpecial.name} icon`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <h2 className="text-7xl uppercase font-bold text-primary tracking-wider">
+            {currentSpecial.name}
+          </h2>
+          <p className="text-muted-foreground text-3xl mt-2 font-[roboto]">
+            {currentSpecial.description}
+          </p>
+        </div>
       ) : (
-        <p>Hover over a stat</p>
+        <p className="text-gray-500">Hover over a stat to see details.</p>
       )}
     </div>
   );

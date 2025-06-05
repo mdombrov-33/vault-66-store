@@ -14,6 +14,8 @@ async function SpecialPage() {
   if (!specialRecord) {
     return <SpecialPageWrapper />;
   }
+
+  return <p>you already registred</p>;
 }
 
 //* LOGIC FOR ALLOCATED STATS
