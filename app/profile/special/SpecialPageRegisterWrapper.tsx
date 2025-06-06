@@ -46,7 +46,7 @@ function SpecialPageWrapper() {
           </div>
           <div className="flex items-center justify-center ">
             <SubmitButton
-              text="register"
+              text="Submit S.P.E.C.I.A.L."
               className="text-xl sm:text-2xl mt-12 uppercase"
             />
           </div>
