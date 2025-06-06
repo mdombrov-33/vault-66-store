@@ -32,7 +32,7 @@ Key values to tweak:
 
 4. .crt-glow class
 
-- Applies greenish glow to text or elements to fit Fallout/CRT theme.
+- Applies greenish or yellowish glow to text or elements to fit Fallout/CRT theme.
 
 - Key values:
 
@@ -46,7 +46,7 @@ Key values to tweak:
 
 - Ensures CRT effect only runs in dark mode.
 
-Quick Tweaking Tips
+Quick Tweaking Tips:
 
 - Increase sweep line height for thicker line
 
