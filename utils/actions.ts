@@ -157,7 +157,7 @@ export const fetchAdminProductDetails = async (productId: string) => {
     },
   });
 
-  if (!product) redirect("/admin/products");
+  if (!product) redirect("/admin/items");
 
   return product;
 };

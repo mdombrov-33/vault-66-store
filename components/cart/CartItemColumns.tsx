@@ -27,7 +27,7 @@ export function SecondColumn({
 }) {
   return (
     <div className="sm:w-48">
-      <Link href={`/products/${productId}`}>
+      <Link href={`/items/${productId}`}>
         <h3 className="capitalize font-medium hover-underline text-lg">
           {name}
         </h3>

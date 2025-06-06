@@ -18,7 +18,7 @@ function NavSearch() {
     } else {
       params.delete("search");
     }
-    replace(`/products?${params.toString()}`);
+    replace(`/items?${params.toString()}`);
   }, 300);
 
   useEffect(() => {

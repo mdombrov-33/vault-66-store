@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 //* It allows public access to specific routes(listed in the array) and protects all others.
 const isPublicRoute = createRouteMatcher([
   "/",
-  "/products(.*)",
+  "/items(.*)",
   "/about",
   "/api/chat",
 ]);

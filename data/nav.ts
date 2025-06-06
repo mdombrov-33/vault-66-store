@@ -9,7 +9,7 @@ export const NAV_LINKS: NavLink[] = [
   { href: "/supply-bin", label: "supply bin" },
   { href: "/supply-history", label: "supply history" },
   { href: "/profile/special", label: "profile" },
-  { href: "/admin/sales", label: "admin dashboard" },
+  { href: "/admin/sales", label: "admin panel" },
 ];
 
 export const ADMIN_LINKS: NavLink[] = [

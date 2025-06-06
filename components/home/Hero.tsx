@@ -56,7 +56,7 @@ function Hero() {
           size="lg"
           className="mt-10 text-2xl uppercase text-primary-foreground shadow-primary-glow hover:shadow-[0_0_15px_var(--shadow-glow-primary)] transition-all duration-300 ease-in-out "
         >
-          <Link href="/products">access inventory</Link>
+          <Link href="/items">access inventory</Link>
         </Button>
       </div>
       <HeroCarousel />

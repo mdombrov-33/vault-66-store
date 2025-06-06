@@ -25,7 +25,7 @@ async function AdminProductsPage() {
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="text-xl">Product Name</TableHead>
+            <TableHead className="text-xl">Item Name</TableHead>
             <TableHead className="text-xl">Company</TableHead>
             <TableHead className="text-xl">Price</TableHead>
             <TableHead className="text-xl">Actions</TableHead>
@@ -38,7 +38,7 @@ async function AdminProductsPage() {
               <TableRow key={productId}>
                 <TableCell>
                   <Link
-                    href={`/products/${productId}`}
+                    href={`/items/${productId}`}
                     className="underline text-muted-foreground tracking-wide capitalize text-lg"
                   >
                     {name}
@@ -47,7 +47,7 @@ async function AdminProductsPage() {
                 <TableCell className="text-lg">{company}</TableCell>
                 <TableCell className="text-lg">{price} Caps</TableCell>
                 <TableCell className="flex items-center gap-x-2">
-                  <Link href={`/admin/products/${productId}/edit`}>
+                  <Link href={`/admin/items/${productId}/edit`}>
                     <IconButton actionType="edit" />
                   </Link>
                   <DeleteProduct productId={productId} />

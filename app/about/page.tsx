@@ -72,7 +72,7 @@ function AboutPage() {
 
       <div className="text-center">
         <Button asChild size="lg" className="text-2xl">
-          <Link href="/products">Check Our Inventory</Link>
+          <Link href="/items">Check Our Inventory</Link>
         </Button>
       </div>
     </section>

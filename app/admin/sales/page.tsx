@@ -33,11 +33,13 @@ async function SalesPage() {
             Items
           </TableHead>
           <TableHead className="text-lg md:text-2xl xl:text-3xl">
-            Order Total
+            Total
           </TableHead>
-          <TableHead className="text-lg md:text-2xl xl:text-3xl">Tax</TableHead>
           <TableHead className="text-lg md:text-2xl xl:text-3xl">
-            Shipping
+            Scavenger&#39;s Tax
+          </TableHead>
+          <TableHead className="text-lg md:text-2xl xl:text-3xl">
+            Courier Fee
           </TableHead>
           <TableHead className="text-lg md:text-2xl xl:text-3xl">
             Date
