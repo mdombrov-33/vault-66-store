@@ -8,6 +8,8 @@ import { useGlowClass } from "./hooks/useGlowClass";
 
 function CrtMode() {
   const { toggle, isEnabled, resolvedTheme } = useCrtMode();
+  console.log("isEnabled:", isEnabled);
+  console.log("resolvedTheme:", resolvedTheme);
 
   const glowClass = useGlowClass(isEnabled);
 

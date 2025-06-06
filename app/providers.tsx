@@ -1,6 +1,7 @@
 "use client";
 import { ThemeProvider } from "./theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { NavbarProvider } from "@/components/navbar/context/NavbarContext";
 
 import React from "react";
 
@@ -14,7 +15,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <NavbarProvider>{children}</NavbarProvider>
       </ThemeProvider>
     </>
   );

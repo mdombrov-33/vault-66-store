@@ -6,19 +6,20 @@ import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
 import { useGlowClass } from "./hooks/useGlowClass";
+import { useNavbarContext } from "./context/NavbarContext";
 
 const RADIO_SOURCE = "https://fallout.fm:8444/falloutfm1.ogg";
 
 function RadioBtn() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isRadioEnabled, setIsRadioEnabled } = useNavbarContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
-    if (!isPlaying) {
+    if (!isRadioEnabled) {
       setIsLoading(true);
-      setIsPlaying(true);
+      setIsRadioEnabled(true);
     } else {
-      setIsPlaying(false);
+      setIsRadioEnabled(false);
       setIsLoading(false);
     }
   };
@@ -27,9 +28,8 @@ function RadioBtn() {
     setIsLoading(false);
   };
 
-  const isRadioPlaying = isPlaying && !isLoading;
-  const glowClass = useGlowClass(isRadioPlaying);
-
+  const isRadioOn = isRadioEnabled && !isLoading;
+  const glowClass = useGlowClass(isRadioOn);
   return (
     <>
       <Button
@@ -37,19 +37,19 @@ function RadioBtn() {
         size="icon"
         onClick={handleClick}
         className={cn(glowClass)}
-        aria-pressed={isRadioPlaying}
+        aria-pressed={isRadioEnabled}
         aria-label="Toggle Radio"
       >
         {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
       </Button>
 
-      {isPlaying && (
+      {isRadioEnabled && (
         <audio
           src={RADIO_SOURCE}
           autoPlay
           onPlaying={handleCanPlay}
           onError={() => {
-            setIsPlaying(false);
+            setIsRadioEnabled(false);
             setIsLoading(false);
           }}
         />
