@@ -1,4 +1,8 @@
-function SpecialRegisterHeader() {
+import { SpecialRegisterHeaderProps } from "@/types/profile";
+
+function SpecialRegisterHeader({
+  remainingPoints,
+}: SpecialRegisterHeaderProps) {
   return (
     <div className="flex flex-col items-center text-center gap-2 px-4">
       <h2 className="md:text-5xl text-3xl -mt-6">
@@ -10,7 +14,7 @@ function SpecialRegisterHeader() {
         the G.O.A.T. Test and find your place in Vault 66’s trading network.
       </p>
 
-      <h3 className="text-8xl">21</h3>
+      <h3 className="text-8xl">{remainingPoints}</h3>
       <p className="text-2xl uppercase text-muted-foreground">
         points available
       </p>

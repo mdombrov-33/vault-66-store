@@ -113,6 +113,6 @@ export const specialSchema = z
       return allocated <= 21;
     },
     {
-      message: "You can only allocate 21 points above the base value of 7.",
+      message: "You can only allocate 21 points above the base value of 7",
     }
   );
