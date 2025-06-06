@@ -12,3 +12,8 @@ export interface SpecialRecord {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export type HoverSpecialProps = {
+  hoveredStat: string | null;
+  onHoverChange: (stat: string | null) => void;
+};

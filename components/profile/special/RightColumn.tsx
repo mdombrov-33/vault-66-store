@@ -1,9 +1,10 @@
 "use client";
 
 import { specialData } from "@/data/profile/special";
+import { HoverSpecialProps } from "@/types/profile";
 import Image from "next/image";
 
-function RightColumn({ hoveredStat }: { hoveredStat: string | null }) {
+function RightColumn({ hoveredStat }: HoverSpecialProps) {
   const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
 
   return (
