@@ -1,5 +1,3 @@
-//* Get special record for the user
-
 import db from "@/utils/db";
 import { currentUser } from "@clerk/nextjs/server";
 

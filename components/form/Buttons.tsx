@@ -104,7 +104,7 @@ export function CardSubmitButton({ isFavorite }: { isFavorite: boolean }) {
 export function ProductSignInButton() {
   return (
     <SignInButton mode="modal">
-      <Button type="button" className="mt-8 capitalize">
+      <Button type="button" className="mt-8 capitalize text-2xl">
         sign in
       </Button>
     </SignInButton>

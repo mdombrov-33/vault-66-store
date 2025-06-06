@@ -19,7 +19,7 @@ function ProfileSidebar({
       {PROFILE_LINKS.map((profileLink) => {
         const isActivePage = pathname === profileLink.href;
         const variant = isActivePage ? "default" : "ghost";
-        const isDisabledSidebar =
+        const isDisabledGoat =
           !specialRecord && profileLink.href === "/profile/goat";
 
         return (
@@ -27,16 +27,16 @@ function ProfileSidebar({
             asChild
             className={cn(
               "w-full mb-2 capitalize font-normal justify-start text-xl",
-              isDisabledSidebar &&
+              isDisabledGoat &&
                 "opacity-50 cursor-not-allowed bg-muted-foreground text-card pointer-events-none"
             )}
             variant={variant}
             key={profileLink.href}
-            disabled={isDisabledSidebar}
+            disabled={isDisabledGoat}
           >
             <Link
               onClick={(e) => {
-                if (isDisabledSidebar) {
+                if (isDisabledGoat) {
                   e.preventDefault();
                 }
               }}

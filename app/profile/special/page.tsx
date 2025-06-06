@@ -1,11 +1,11 @@
 import { getSpecialRecord } from "@/utils/profile";
-import SpecialPageWrapper from "./SpecialPageWrapper";
+import SpecialPageRegisterWrapper from "./SpecialPageRegisterWrapper";
 
 async function SpecialPage() {
   const specialRecord = await getSpecialRecord();
 
   if (!specialRecord) {
-    return <SpecialPageWrapper />;
+    return <SpecialPageRegisterWrapper />;
   }
 
   //* LOGIC if stats were allocated

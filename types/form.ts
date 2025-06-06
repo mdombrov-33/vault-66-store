@@ -49,7 +49,7 @@ export type actionFunction = (
   formData: FormData
 ) => Promise<{ message: string }>;
 
-export type FormSpecialInput = {
+export type FormSpecialRegisterInput = {
   name: string;
   label: string;
   min?: number;

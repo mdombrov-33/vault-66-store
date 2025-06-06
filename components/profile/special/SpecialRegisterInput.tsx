@@ -3,18 +3,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormSpecialInput } from "@/types/form";
+import { FormSpecialRegisterInput } from "@/types/form";
 import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-function SpecialInput({
+function SpecialRegisterInput({
   name,
   label,
   min = 1,
   max = 10,
   onHoverChange,
   hoveredStat,
-}: FormSpecialInput) {
+}: FormSpecialRegisterInput) {
   const [value, setValue] = useState(1);
 
   const decrement = () => setValue((v) => Math.max(min, v - 1));
@@ -59,4 +59,4 @@ function SpecialInput({
   );
 }
 
-export default SpecialInput;
+export default SpecialRegisterInput;
