@@ -8,7 +8,7 @@ function Footer() {
     <footer className="flex">
       <Button
         asChild
-        className="fixed bottom-5 left-5 hidden 2xl:block"
+        className="fixed bottom-5 left-5 hidden lg:flex items-center justify-center"
         size={"icon"}
       >
         <Link href="https://github.com/mdombrov-33/vault-66-store">

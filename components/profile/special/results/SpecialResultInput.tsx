@@ -12,14 +12,14 @@ function SpecialResultInput({ name, label, value }: SpecialResultInputProps) {
         {label.slice(1)}
       </label>
 
-      <div className="w-16 h-16 rounded-full border border-primary ml-16 flex items-center justify-center">
+      <div className="w-14 h-14 rounded-full border border-primary ml-16 flex items-center justify-center">
         <Input
           type="number"
           name={name}
           id={name}
           readOnly
           value={value}
-          className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-primary box-border px-1 text-center text-lg sm:text-2xl leading-none font-[roboto-mono] bg-transparent focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0 outline-none"
+          className="w-14 h-14  rounded-full border border-primary box-border px-1 text-center text-lg sm:text-2xl leading-none font-[roboto-mono] bg-transparent focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0 outline-none"
         />
       </div>
     </div>
