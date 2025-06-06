@@ -43,6 +43,6 @@ export interface FormSpecialRegisterInput {
   value: number;
   onIncrement: (name: SpecialStatsKeys) => void;
   onDecrement: (name: SpecialStatsKeys) => void;
-  onHoverChange: (stat: keyof SpecialStats | null) => void;
+  onHoverChange: (stat: SpecialStatsKeys | null) => void;
   hoveredStat?: SpecialStatsKeys | null;
 }
