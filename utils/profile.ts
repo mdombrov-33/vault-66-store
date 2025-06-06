@@ -1,3 +1,4 @@
+import { SpecialRecord } from "@/types/profile";
 import db from "@/utils/db";
 import { currentUser } from "@clerk/nextjs/server";
 
@@ -67,4 +68,54 @@ export const getLuckText = (value: number) => {
   if (value >= 3)
     return "You might find a bottlecap or two, but not much else.";
   return "You once found a three-legged Brahmin and thought it was lucky.";
+};
+
+export const getCombinedSpecialText = (special: SpecialRecord) => {
+  const {
+    strength,
+    perception,
+    endurance,
+    charisma,
+    intelligence,
+    agility,
+    luck,
+  } = special;
+
+  if (strength >= 8 && perception >= 8) {
+    return "You’re a powerhouse who can spot threats before they even get close.";
+  }
+
+  if (endurance >= 9 && luck <= 3) {
+    return "You can take a beating, but the Wasteland isn’t kind to the unlucky.";
+  }
+
+  if (charisma >= 9 && intelligence <= 3) {
+    return "You might not be the brightest, but you sure know how to make friends.";
+  }
+
+  if (agility >= 9 && luck >= 9) {
+    return "You’re quick and lucky—like a feral ghoul in a Nuka-Cola factory.";
+  }
+
+  if (intelligence >= 7 && charisma >= 7) {
+    return "With both brains and charm, you're a smooth-talking strategist.";
+  }
+
+  if (agility >= 8 && perception >= 8) {
+    return "You move like a ghost and strike before they even see you.";
+  }
+
+  if (luck >= 9 && intelligence <= 3) {
+    return "You're dumb as a radroach, but somehow everything just works out.";
+  }
+
+  if (strength >= 8 && endurance >= 8) {
+    return "You’re a walking tank. Subtlety isn’t your style.";
+  }
+
+  if (luck <= 3 && charisma <= 3) {
+    return "Neither charming nor lucky—you should probably stay at home.";
+  }
+
+  return null;
 };

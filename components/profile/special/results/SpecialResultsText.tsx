@@ -2,6 +2,7 @@ import { SpecialPageResultsProps } from "@/types/profile";
 import {
   getAgilityText,
   getCharismaText,
+  getCombinedSpecialText,
   getEnduranceText,
   getIntelligenceText,
   getLuckText,
@@ -38,6 +39,13 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
           {getAgilityText(agility)}
           <br />
           {getLuckText(luck)}
+          <br />
+          {getCombinedSpecialText(specialRecord) && (
+            <>
+              <br />
+              {getCombinedSpecialText(specialRecord)}
+            </>
+          )}
         </p>
       </div>
 

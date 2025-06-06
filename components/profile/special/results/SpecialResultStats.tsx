@@ -3,8 +3,8 @@ import SpecialResultInput from "./SpecialResultInput";
 
 const specialStatsLabels: { [key in SpecialStatsKeys]: string } = {
   strength: "Strength",
-  endurance: "Endurance",
   perception: "Perception",
+  endurance: "Endurance",
   charisma: "Charisma",
   intelligence: "Intelligence",
   agility: "Agility",
