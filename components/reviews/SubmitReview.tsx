@@ -36,7 +36,11 @@ function SubmitReview({ productId }: { productId: string }) {
             <input type="hidden" name="authorImageUrl" value={user?.imageUrl} />
             <RatingInput name="rating" />
             <TextAreaInput name="comment" labelText="feedback" />
-            <SubmitButton className="mt-4 text-3xl" />
+            <SubmitButton
+              className="mt-4 text-3xl"
+              text="Submit Field Report"
+              loadingText="Transmitting Review..."
+            />
           </FormContainer>
         </Card>
       )}

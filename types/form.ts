@@ -29,6 +29,7 @@ export type SubmitButtonProps = {
   text?: string;
   size?: ButtonSize;
   disabled?: boolean;
+  loadingText?: string;
 };
 
 export type ImageInputContainerProps = {

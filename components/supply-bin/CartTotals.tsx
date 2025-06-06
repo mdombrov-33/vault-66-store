@@ -22,6 +22,7 @@ function CartTotals({ cart }: { cart: Cart }) {
         <SubmitButton
           text="Send Barter Request"
           className="mt-8 w-full text-3xl"
+          loadingText="Initiating Trade Protocol..."
         />
       </FormContainer>
     </div>

@@ -23,7 +23,11 @@ function AddToCart({ productId }: { productId: string }) {
         <FormContainer action={addToCartAction}>
           <input type="hidden" name="productId" value={productId} />
           <input type="hidden" name="amount" value={amount} />
-          <SubmitButton text="add to cart" className="mt-8 text-3xl" />
+          <SubmitButton
+            text="add to supply bin"
+            loadingText="adding to the supply bin..."
+            className="mt-8 text-3xl"
+          />
         </FormContainer>
       ) : (
         <ProductSignInButton />

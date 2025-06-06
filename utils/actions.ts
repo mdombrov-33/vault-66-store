@@ -483,7 +483,7 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
 
     revalidatePath(`/items/${productId}`);
 
-    return { message: `${product.name} added to the cart` };
+    return { message: `${product.name} added to the bin` };
   } catch (error) {
     return renderError(error);
   }

@@ -42,7 +42,11 @@ function AdminCreateProductPage() {
           <div className="mt-6">
             <CheckboxInput name="featured" label="featured" />
           </div>
-          <SubmitButton text="create item" className="mt-8 text-3xl" />
+          <SubmitButton
+            text="create item"
+            loadingText="Registering New Item..."
+            className="mt-8 text-3xl"
+          />
         </FormContainer>
       </div>
     </section>

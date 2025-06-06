@@ -16,6 +16,7 @@ export function SubmitButton({
   text = "submit",
   size = "lg",
   disabled = false,
+  loadingText = "Please wait...",
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
@@ -29,7 +30,7 @@ export function SubmitButton({
       {pending ? (
         <>
           <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-          Please wait...
+          {loadingText}
         </>
       ) : (
         text

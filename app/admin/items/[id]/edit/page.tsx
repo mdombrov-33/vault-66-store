@@ -61,8 +61,9 @@ async function AdminEditProductPage({
             </div>
             <SubmitButton
               size="sm"
-              text="update product"
+              text="update item"
               className="mt-8 text-2xl"
+              loadingText="Updating Inventory Record..."
             />
           </FormContainer>
         </div>
