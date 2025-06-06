@@ -26,5 +26,10 @@ export function useCrtMode() {
     }
   }, [isDarkMode]);
 
-  return { isEnabled, toggle: () => setIsEnabled((prev) => !prev), isDarkMode };
+  return {
+    isEnabled,
+    toggle: () => setIsEnabled((prev) => !prev),
+    isDarkMode,
+    resolvedTheme,
+  };
 }

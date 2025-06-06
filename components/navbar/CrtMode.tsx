@@ -3,20 +3,15 @@
 import { useCrtMode } from "@/components/navbar/hooks/useCrtMode";
 import { Button } from "@/components/ui/button";
 import { TvIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { useGlowClass } from "./hooks/useGlowClass";
 
 function CrtMode() {
-  const { toggle, isEnabled, isDarkMode } = useCrtMode();
-  const [mounted, setMounted] = useState(false);
+  const { toggle, isEnabled, resolvedTheme } = useCrtMode();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const glowClass = useGlowClass(isEnabled);
 
-  if (!mounted) return null;
-  if (!isDarkMode) return null;
-
-  if (!mounted)
+  if (resolvedTheme === "dark") {
     return (
       <Button
         onClick={toggle}
@@ -24,14 +19,15 @@ function CrtMode() {
         variant="outline"
         aria-pressed={isEnabled}
         aria-label="Toggle CRT Mode"
-        className={
-          isEnabled ? (isDarkMode ? "crt-glow-dark" : "crt-glow-light") : ""
-        }
+        className={cn(glowClass)}
       >
         <span className="sr-only">CRT Mode Toggle</span>
         <TvIcon />
       </Button>
     );
+  }
+
+  return null;
 }
 
 export default CrtMode;

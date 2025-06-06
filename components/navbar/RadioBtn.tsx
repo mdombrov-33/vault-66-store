@@ -2,16 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import { Radio } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
+import { cn } from "@/lib/utils";
+import { useGlowClass } from "./hooks/useGlowClass";
 
 const radioUrl = "https://fallout.fm:8444/falloutfm1.ogg";
 
 function RadioBtn() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { theme } = useTheme();
 
   const handleClick = () => {
     if (!isPlaying) {
@@ -28,13 +28,7 @@ function RadioBtn() {
   };
 
   const isRadioPlaying = isPlaying && !isLoading;
-  const isDarkTheme = theme === "dark";
-
-  const glowClass = isRadioPlaying
-    ? isDarkTheme
-      ? "crt-glow-dark"
-      : "crt-glow-light"
-    : "";
+  const glowClass = useGlowClass(isRadioPlaying);
 
   return (
     <>
@@ -42,13 +36,25 @@ function RadioBtn() {
         variant="outline"
         size="icon"
         onClick={handleClick}
-        className={glowClass}
+        className={cn(glowClass)}
+        aria-pressed={isRadioPlaying}
+        aria-label="Toggle Radio"
       >
         {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
         <span className="sr-only">Radio Station</span>
       </Button>
 
-      {isPlaying && <audio src={radioUrl} autoPlay onPlaying={handleCanPlay} />}
+      {isPlaying && (
+        <audio
+          src={radioUrl}
+          autoPlay
+          onPlaying={handleCanPlay}
+          onError={() => {
+            setIsPlaying(false);
+            setIsLoading(false);
+          }}
+        />
+      )}
     </>
   );
 }
