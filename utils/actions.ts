@@ -660,6 +660,20 @@ export const updateCartItemAction = async ({
       errorOnFailure: true,
     });
 
+    const itemName = await db.cartItem.findUnique({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+      select: {
+        product: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+
     await db.cartItem.update({
       where: {
         id: cartItemId,
@@ -674,7 +688,7 @@ export const updateCartItemAction = async ({
 
     revalidatePath("/supply-bin");
 
-    return { message: "bin item updated" };
+    return { message: "Amount is updated" };
   } catch (error) {
     return renderError(error);
   }
