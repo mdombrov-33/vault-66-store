@@ -15,29 +15,29 @@ import { formatDate } from "@/utils/format";
 async function OrdersPage() {
   const orders = await fetchUserOrders();
   if (!orders || orders.length === 0) {
-    return <SectionTitle text="your orders list is empty" />;
+    return <SectionTitle text="your supply History list is empty" />;
   }
 
   return (
     <>
-      <SectionTitle text="Your Orders" />
+      <SectionTitle text="your supply history" />
       <Table>
         <TableCaption className="text-md md:text-xl">
-          Total Orders: {orders.length}
+          Logged Transactions: {orders.length}
         </TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-xl md:text-2xl xl:text-3xl">
-              Products
+              Items
             </TableHead>
             <TableHead className="text-xl md:text-2xl xl:text-3xl">
-              Order Total
+              Total Caps Spent
             </TableHead>
             <TableHead className="text-xl md:text-2xl xl:text-3xl">
-              Tax
+              Scavenger&#39;s Tax
             </TableHead>
             <TableHead className="text-xl md:text-2xl xl:text-3xl">
-              Shipping
+              Courier Fee
             </TableHead>
             <TableHead className="text-xl md:text-2xl xl:text-3xl">
               Date

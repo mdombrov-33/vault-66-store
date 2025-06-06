@@ -19,7 +19,7 @@ function BreadCrumbs({ name }: { name: string }) {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink href="/products" className="capitalize text-2xl">
-            products
+            items
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />

@@ -223,7 +223,7 @@ body.crt-mode::after {
     to bottom,
     rgba(91, 179, 135, 0.035) 0px,
     /* 🔧 First green line — alpha controls visibility */
-      rgba(30, 179, 107, 0.184) 1px,
+      rgba(29, 95, 63, 0.275) 1px,
     /* 🔧 Line thickness — higher alpha = more visible */ transparent 5px,
     /* 🔧 First part of gap between lines */ transparent 3px
       /* 🔧 End of each line block — 3px total spacing per line */

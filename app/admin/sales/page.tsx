@@ -22,7 +22,7 @@ async function SalesPage() {
   return (
     <Table>
       <TableCaption className="text-md md:text-xl">
-        Total Orders: {orders.length}
+        Total Items: {orders.length}
       </TableCaption>
       <TableHeader>
         <TableRow>

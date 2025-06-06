@@ -3,11 +3,11 @@ import { NavLink } from "../types/nav";
 export const NAV_LINKS: NavLink[] = [
   { href: "/", label: "home" },
   { href: "/about", label: "about" },
-  { href: "/products", label: "products" },
+  { href: "/products", label: "items" },
   { href: "/favorites", label: "favorites" },
   { href: "/reviews", label: "reviews" },
-  { href: "/cart", label: "cart (stash)" },
-  { href: "/orders", label: "orders (purchases)" },
+  { href: "/cart", label: "supply bin" },
+  { href: "/orders", label: "supply history" },
   { href: "/profile/special", label: "profile" },
   { href: "/admin/sales", label: "admin dashboard" },
 ];
