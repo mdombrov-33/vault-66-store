@@ -19,7 +19,10 @@ function CartTotals({ cart }: { cart: Cart }) {
         </CardTitle>
       </Card>
       <FormContainer action={createOrderAction}>
-        <SubmitButton text="Place order" className="mt-8 w-full text-3xl" />
+        <SubmitButton
+          text="Send Barter Request"
+          className="mt-8 w-full text-3xl"
+        />
       </FormContainer>
     </div>
   );

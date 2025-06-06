@@ -128,7 +128,7 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
     }
 
     if (!product.isTestProduct && user.id === testAdminId) {
-      throw new Error("You cannot delete a item created by the main admin");
+      throw new Error("You cannot delete an item created by the main admin");
     }
 
     await db.product.delete({
@@ -430,7 +430,7 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
     await db.review.delete({
       where: {
         id: reviewId,
-        clerkId: user.id, // Ensure the user is authorized to delete this review
+        clerkId: user.id,
       },
     });
 
@@ -638,7 +638,7 @@ export const removeCartItemAction = async (
 
     revalidatePath("/supply-bin");
 
-    return { message: "Item removed from the cart" };
+    return { message: "Item removed from bin" };
   } catch (error) {
     return renderError(error);
   }
@@ -674,7 +674,7 @@ export const updateCartItemAction = async ({
 
     revalidatePath("/supply-bin");
 
-    return { message: "Cart item updated" };
+    return { message: "bin item updated" };
   } catch (error) {
     return renderError(error);
   }
