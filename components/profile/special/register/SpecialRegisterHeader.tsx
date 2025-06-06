@@ -22,7 +22,7 @@ function SpecialRegisterHeader({
       <TypeAnimation
         sequence={[
           2000, //* wait for h1 to finish (match timing)
-          "Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network.",
+          "Out here,  a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network.",
         ]}
         wrapper="p"
         speed={75}
