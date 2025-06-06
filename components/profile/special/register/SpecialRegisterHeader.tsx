@@ -19,17 +19,6 @@ function SpecialRegisterHeader({
         cursor={false}
       />
 
-      <TypeAnimation
-        sequence={[
-          2000, //* wait for h1 to finish (match timing)
-          "Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network.",
-        ]}
-        wrapper="p"
-        speed={75}
-        repeat={0}
-        className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2"
-      />
-
       <p className="text-8xl" id="remaining-points-label">
         {remainingPoints}
       </p>
