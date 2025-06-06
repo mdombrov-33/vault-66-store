@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SelectProductAmount from "@/components/single-product/SelectProductAmount";
+import SelectProductAmount from "@/components/single-item/SelectProductAmount";
 import { Mode } from "@/types/enums";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton, ProductSignInButton } from "@/components/form/Buttons";

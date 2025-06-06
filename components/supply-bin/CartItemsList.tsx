@@ -5,8 +5,8 @@ import {
   FirstColumn,
   SecondColumn,
   FourthColumn,
-} from "@/components/cart/CartItemColumns";
-import ThirdColumn from "@/components/cart/ThirdColumn";
+} from "@/components/supply-bin/CartItemColumns";
+import ThirdColumn from "@/components/supply-bin/ThirdColumn";
 import { CartItemWithProduct } from "@/types/cart";
 
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {

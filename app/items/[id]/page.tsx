@@ -1,10 +1,10 @@
-import BreadCrumbs from "@/components/single-product/BreadCrumbs";
+import BreadCrumbs from "@/components/single-item/BreadCrumbs";
 import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
 import Image from "next/image";
-import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
-import AddToCart from "@/components/single-product/AddToCart";
-import ProductRating from "@/components/single-product/ProductRating";
-import ShareButton from "@/components/single-product/ShareButton";
+import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
+import AddToCart from "@/components/single-item/AddToCart";
+import ProductRating from "@/components/single-item/ProductRating";
+import ShareButton from "@/components/single-item/ShareButton";
 import SubmitReview from "@/components/reviews/SubmitReview";
 import ProductReviews from "@/components/reviews/ProductReviews";
 import { auth } from "@clerk/nextjs/server";

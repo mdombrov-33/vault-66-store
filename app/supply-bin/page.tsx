@@ -1,5 +1,5 @@
-import CartItemsList from "@/components/cart/CartItemsList";
-import CartTotals from "@/components/cart/CartTotals";
+import CartItemsList from "@/components/supply-bin/CartItemsList";
+import CartTotals from "@/components/supply-bin/CartTotals";
 import SectionTitle from "@/components/global/SectionTitle";
 import { fetchOrCreateCart, updateCart } from "@/utils/actions";
 import { auth } from "@clerk/nextjs/server";

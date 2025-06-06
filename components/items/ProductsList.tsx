@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@/lib/generated/prisma";
 import Image from "next/image";
-import FavoriteToggleButton from "./FavoriteToggleButton";
+import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
 
 function ProductsList({ products }: { products: Product[] }) {
   return (

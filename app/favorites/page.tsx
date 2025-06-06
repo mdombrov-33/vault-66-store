@@ -1,5 +1,5 @@
 import SectionTitle from "@/components/global/SectionTitle";
-import ProductsGrid from "@/components/products/ProductsGrid";
+import ProductsGrid from "@/components/items/ProductsGrid";
 import { fetchUserFavorites } from "@/utils/actions";
 
 //! FIXME: We don't see toaster notifications in this page after adding/removing favorites.

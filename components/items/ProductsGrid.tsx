@@ -2,7 +2,7 @@ import { Product } from "@/lib/generated/prisma"; //grab type from prisma schema
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
-import FavoriteToggleButton from "./FavoriteToggleButton";
+import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
 
 function ProductsGrid({ products }: { products: Product[] }) {
   return (
