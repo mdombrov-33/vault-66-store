@@ -6,15 +6,15 @@ export type Message = {
   hasAnimated?: boolean;
 };
 
-export type SendMessageArgs = {
+export interface SendMessageArgs {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
-export type ChatInterfaceProps = {
+export interface ChatInterfaceProps {
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   isLoading: boolean;
@@ -23,7 +23,7 @@ export type ChatInterfaceProps = {
   isTyping: boolean;
   setIsTyping: React.Dispatch<React.SetStateAction<boolean>>;
   handleSend: () => Promise<void>;
-};
+}
 
 export interface ChatWindowProps {
   messages: Message[];

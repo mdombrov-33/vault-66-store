@@ -29,7 +29,6 @@ function RadioBtn() {
 
   const isRadioPlaying = isPlaying && !isLoading;
   const isDarkTheme = theme === "dark";
-  console.log("Current theme:", theme);
 
   const glowClass = isRadioPlaying
     ? isDarkTheme
