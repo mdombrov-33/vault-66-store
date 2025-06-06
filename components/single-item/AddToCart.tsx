@@ -5,7 +5,7 @@ import SelectProductAmount from "@/components/single-item/SelectProductAmount";
 import { Mode } from "@/types/enums";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton, ProductSignInButton } from "@/components/form/Buttons";
-import { addToCartAction } from "@/utils/actions";
+import { addToCartAction } from "@/utils/actions/cart";
 import { useAuth } from "@clerk/nextjs";
 
 function AddToCart({ productId }: { productId: string }) {

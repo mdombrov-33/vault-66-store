@@ -1,5 +1,6 @@
 import BreadCrumbs from "@/components/single-item/BreadCrumbs";
-import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
+import { findExistingReview } from "@/utils/actions/review";
+import { fetchSingleProduct } from "@/utils/actions/product";
 import Image from "next/image";
 import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
 import AddToCart from "@/components/single-item/AddToCart";

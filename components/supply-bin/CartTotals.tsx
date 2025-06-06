@@ -1,6 +1,6 @@
 import { Card, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { createOrderAction } from "@/utils/actions";
+import { createOrderAction } from "@/utils/actions/order";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton } from "@/components/form/Buttons";
 import { Cart } from "@/lib/generated/prisma/client";

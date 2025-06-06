@@ -1,7 +1,7 @@
 import CartItemsList from "@/components/supply-bin/CartItemsList";
 import CartTotals from "@/components/supply-bin/CartTotals";
 import SectionTitle from "@/components/global/SectionTitle";
-import { fetchOrCreateCart, updateCart } from "@/utils/actions";
+import { fetchOrCreateCart, updateCart } from "@/utils/actions/cart";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 

@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/global/SectionTitle";
 import ProductsGrid from "@/components/items/ProductsGrid";
-import { fetchUserFavorites } from "@/utils/actions";
+import { fetchUserFavorites } from "@/utils/actions/favorite";
 
 //! FIXME: We don't see toaster notifications in this page after adding/removing favorites.
 //! Probably something to do with component unmounting or with using client components in a server component.

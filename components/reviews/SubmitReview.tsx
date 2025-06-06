@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import RatingInput from "@/components/reviews/RatingInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { Button } from "@/components/ui/button";
-import { createReviewAction } from "@/utils/actions";
+import { createReviewAction } from "@/utils/actions/review";
 import { useUser } from "@clerk/nextjs"; //* using useUser because this is a client component
 
 function SubmitReview({ productId }: { productId: string }) {

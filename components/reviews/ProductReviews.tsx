@@ -1,4 +1,4 @@
-import { fetchProductReviews } from "@/utils/actions";
+import { fetchProductReviews } from "@/utils/actions/review";
 import SectionTitle from "@/components/global/SectionTitle";
 import ReviewCard from "./ReviewCard";
 

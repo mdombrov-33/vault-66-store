@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { fetchAdminOrders } from "@/utils/actions";
+import { fetchAdminOrders } from "@/utils/actions/admin";
 import { formatDate } from "@/utils/format";
 
 async function SalesPage() {

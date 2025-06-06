@@ -1,7 +1,7 @@
 "use server";
 
 import { currentUser } from "@clerk/nextjs/server";
-import db from "@/utils/db/db";
+import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { renderError } from "@/utils/render-error";
 import { validateZodSchema } from "@/utils/validation/validate-zod-schema";

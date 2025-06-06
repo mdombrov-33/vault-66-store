@@ -4,7 +4,10 @@ import SelectProductAmount from "@/components/single-item/SelectProductAmount";
 import { Mode } from "@/types/enums";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton } from "@/components/form/Buttons";
-import { removeCartItemAction, updateCartItemAction } from "@/utils/actions";
+import {
+  removeCartItemAction,
+  updateCartItemAction,
+} from "@/utils/actions/cart";
 import { toast } from "sonner";
 
 function ThirdColumn({

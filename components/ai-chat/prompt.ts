@@ -1,4 +1,4 @@
-import { fetchAllProducts } from "@/utils/actions";
+import { fetchAllProducts } from "@/utils/actions/product";
 
 export const products = await fetchAllProducts({ search: "" });
 
