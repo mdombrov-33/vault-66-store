@@ -48,12 +48,3 @@ export type actionFunction = (
   prevState: any,
   formData: FormData
 ) => Promise<{ message: string }>;
-
-export type FormSpecialRegisterInput = {
-  name: string;
-  label: string;
-  min?: number;
-  max?: number;
-  onHoverChange: (stat: string | null) => void;
-  hoveredStat?: string | null;
-};

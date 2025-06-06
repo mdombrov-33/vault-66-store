@@ -1,54 +1,97 @@
 import React from "react";
 import SpecialRegisterInput from "@/components/profile/special/SpecialRegisterInput";
-import { SpecialRegisterLeftColumnProps } from "@/types/profile";
+import {
+  SpecialRegisterLeftColumnProps,
+  SpecialStats,
+  SpecialStatsKeys,
+} from "@/types/profile";
 
 function SpecialRegisterLeftColumn({
   onHoverChange,
   hoveredStat,
+  specialStats,
+  setSpecialStats,
+  remainingPoints,
 }: SpecialRegisterLeftColumnProps) {
+  const handleIncrement = (name: keyof SpecialStats) => {
+    if (remainingPoints <= 0) return;
+    setSpecialStats((prev) => ({
+      ...prev,
+      [name]: Math.min(prev[name] + 1, 10),
+    }));
+  };
+
+  const handleDecrement = (name: SpecialStatsKeys) => {
+    setSpecialStats((prev) => ({
+      ...prev,
+      [name]: Math.max(prev[name] - 1, 1),
+    }));
+  };
+
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
       <SpecialRegisterInput
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
         name="strength"
-        label="strength"
-      />
-      <SpecialRegisterInput
+        label="Strength"
+        value={specialStats.strength}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="perception"
-        label="perception"
-      />
-      <SpecialRegisterInput
+        label="Perception"
+        value={specialStats.perception}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="endurance"
-        label="endurance"
-      />
-      <SpecialRegisterInput
+        label="Endurance"
+        value={specialStats.endurance}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="charisma"
-        label="charisma"
-      />
-      <SpecialRegisterInput
+        label="Charisma"
+        value={specialStats.charisma}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="intelligence"
-        label="intelligence"
-      />
-      <SpecialRegisterInput
+        label="Intelligence"
+        value={specialStats.intelligence}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="agility"
-        label="agility"
-      />
-      <SpecialRegisterInput
+        label="Agility"
+        value={specialStats.agility}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
         onHoverChange={onHoverChange}
         hoveredStat={hoveredStat}
+      />
+      <SpecialRegisterInput
         name="luck"
-        label="luck"
+        label="Luck"
+        value={specialStats.luck}
+        onIncrement={handleIncrement}
+        onDecrement={handleDecrement}
+        onHoverChange={onHoverChange}
+        hoveredStat={hoveredStat}
       />
     </div>
   );

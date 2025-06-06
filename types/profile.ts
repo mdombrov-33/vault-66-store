@@ -17,19 +17,32 @@ export interface SpecialRecord {
 }
 
 export type SpecialStats = z.infer<typeof specialSchema>;
+export type SpecialStatsKeys = keyof SpecialStats;
 
 export interface SpecialRegisterRightColumnProps {
-  hoveredStat: string | null;
+  hoveredStat: SpecialStatsKeys | null;
 }
 
 export interface SpecialRegisterLeftColumnProps
   extends SpecialRegisterRightColumnProps {
-  onHoverChange: (stat: string | null) => void;
-  specialStats: SpecialStats;
+  onHoverChange: (stat: SpecialStatsKeys | null) => void;
   setSpecialStats: React.Dispatch<React.SetStateAction<SpecialStats>>;
+  specialStats: SpecialStats;
   remainingPoints: number;
 }
 
 export interface SpecialRegisterHeaderProps {
   remainingPoints: number;
+}
+
+export interface FormSpecialRegisterInput {
+  name: SpecialStatsKeys;
+  label: string;
+  min?: number;
+  max?: number;
+  value: number;
+  onIncrement: (name: SpecialStatsKeys) => void;
+  onDecrement: (name: SpecialStatsKeys) => void;
+  onHoverChange: (stat: keyof SpecialStats | null) => void;
+  hoveredStat?: SpecialStatsKeys | null;
 }
