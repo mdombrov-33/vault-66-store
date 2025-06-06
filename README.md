@@ -38,7 +38,7 @@ Test Admin Credentials:
   - Test mode supported for development/demo
 
 - 🧠 **AI Assistant**
-  - Fallout-style terminal UI powered by GPT-4o mini via OpenRouter API
+  - Fallout-style terminal UI powered via OpenRouter API
   - Provides smart, lore-friendly in-universe responses
 
 - 📦 **Admin Dashboard**
