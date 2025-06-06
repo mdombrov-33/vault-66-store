@@ -1,15 +1,6 @@
 import { ChatInputProps } from "@/types/ai-chat";
 import { Textarea } from "@/components/ui/textarea";
-import { useRef } from "react";
-
-const typingSounds = [
-  "/sounds/typing1.wav",
-  "/sounds/typing2.wav",
-  "/sounds/typing3.wav",
-  "/sounds/typing4.wav",
-  "/sounds/typing5.wav",
-  "/sounds/typing6.wav",
-];
+import { useTypingSounds } from "./hooks/useTypingSounds";
 
 function ChatInput({
   input,
@@ -18,15 +9,8 @@ function ChatInput({
   isTyping,
   onSend,
 }: ChatInputProps) {
-  const soundIndex = useRef(0);
-
-  function playTypingSound() {
-    const audio = new Audio(typingSounds[soundIndex.current]);
-    audio.volume = 0.4;
-    audio.play();
-
-    soundIndex.current = (soundIndex.current + 1) % typingSounds.length;
-  }
+  const { playTypingSound, playEnterSound, playSpacebarSound } =
+    useTypingSounds();
 
   return (
     <div className="mt-4 flex items-center gap-2">
@@ -39,9 +23,15 @@ function ChatInput({
           setInput(e.target.value);
           playTypingSound();
         }}
-        onKeyDown={(e) =>
-          e.key === "Enter" && !e.shiftKey && (e.preventDefault(), onSend())
-        }
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            playEnterSound();
+            onSend();
+          } else if (e.key === " ") {
+            playSpacebarSound();
+          }
+        }}
         disabled={isLoading || isTyping}
       />
     </div>
