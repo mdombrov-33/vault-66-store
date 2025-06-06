@@ -48,7 +48,7 @@ function SpecialRegisterInput({
         id={name}
         readOnly
         value={value}
-        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-primary box-border px-1 text-center text-lg sm:text-2xl leading-none font-mono bg-transparent"
+        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-primary box-border px-1 text-center text-lg sm:text-2xl leading-none font-[roboto-mono] bg-transparent"
       />
 
       <Button

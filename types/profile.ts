@@ -1,7 +1,7 @@
 import { specialSchema } from "@/utils/schemas";
 import { z } from "zod";
 
-export interface SpecialRecord {
+export type SpecialRecord = {
   id: string;
   strength: number;
   endurance: number;
@@ -14,6 +14,16 @@ export interface SpecialRecord {
   isAllocated?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
+};
+
+export interface SpecialPageResultsProps {
+  specialRecord: SpecialRecord;
+}
+
+export interface SpecialResultInputProps {
+  name: string;
+  value: number;
+  label: string;
 }
 
 export type SpecialStats = z.infer<typeof specialSchema>;
@@ -45,4 +55,12 @@ export interface FormSpecialRegisterInput {
   onDecrement: (name: SpecialStatsKeys) => void;
   onHoverChange: (stat: SpecialStatsKeys | null) => void;
   hoveredStat?: SpecialStatsKeys | null;
+}
+
+export interface SpecialResultStatProps {
+  name: SpecialStatsKeys;
+  label: string;
+  value: number;
+  hoveredStat?: SpecialStatsKeys | null;
+  onHoverChange?: (stat: SpecialStatsKeys | null) => void;
 }
