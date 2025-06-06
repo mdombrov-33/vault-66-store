@@ -14,7 +14,7 @@ function SpecialPageResults({ specialRecord }: SpecialPageResultsProps) {
       </div>
 
       {/* Right Column: Flavor Text */}
-      <SpecialResultText />
+      <SpecialResultText specialRecord={specialRecord} />
     </section>
   );
 }

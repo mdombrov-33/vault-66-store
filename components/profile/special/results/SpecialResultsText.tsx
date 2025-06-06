@@ -1,16 +1,43 @@
-import React from "react";
+import { SpecialPageResultsProps } from "@/types/profile";
+import {
+  getAgilityText,
+  getCharismaText,
+  getEnduranceText,
+  getIntelligenceText,
+  getLuckText,
+  getPerceptionText,
+  getStrengthText,
+} from "@/utils/profile";
 
-function SpecialResultText() {
+function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
+  const {
+    strength,
+    perception,
+    endurance,
+    charisma,
+    intelligence,
+    agility,
+    luck,
+  } = specialRecord;
+
   return (
     <div className="flex flex-col justify-between gap-6">
       <div className="border rounded-md p-4">
-        {/* This will be your dynamic flavor text */}
+        {/* Dynamic text based on SPECIAL */}
         <p className="text-lg sm:text-xl font-[roboto-mono] leading-10">
-          Your stats suggest high survivability in post-apocalyptic
-          environments... Your stats suggest high survivability in
-          post-apocalyptic environments... Your stats suggest high survivability
-          in post-apocalyptic environments... Your stats suggest high
-          survivability in post-apocalyptic environments...
+          {getStrengthText(strength)}
+          <br />
+          {getPerceptionText(perception)}
+          <br />
+          {getEnduranceText(endurance)}
+          <br />
+          {getCharismaText(charisma)}
+          <br />
+          {getIntelligenceText(intelligence)}
+          <br />
+          {getAgilityText(agility)}
+          <br />
+          {getLuckText(luck)}
         </p>
       </div>
 
