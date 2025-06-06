@@ -7,7 +7,7 @@ import { VscLoading } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
 import { useGlowClass } from "./hooks/useGlowClass";
 
-const radioUrl = "https://fallout.fm:8444/falloutfm1.ogg";
+const RADIO_SOURCE = "https://fallout.fm:8444/falloutfm1.ogg";
 
 function RadioBtn() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -46,7 +46,7 @@ function RadioBtn() {
 
       {isPlaying && (
         <audio
-          src={radioUrl}
+          src={RADIO_SOURCE}
           autoPlay
           onPlaying={handleCanPlay}
           onError={() => {
