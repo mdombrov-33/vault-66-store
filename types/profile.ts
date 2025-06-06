@@ -13,10 +13,11 @@ export interface SpecialRecord {
   updatedAt?: Date;
 }
 
-export interface SpecialRightColumnProps {
+export interface SpecialRegisterRightColumnProps {
   hoveredStat: string | null;
 }
 
-export interface SpecialLeftColumnProps extends SpecialRightColumnProps {
+export interface SpecialRegisterLeftColumnProps
+  extends SpecialRegisterRightColumnProps {
   onHoverChange: (stat: string | null) => void;
 }

@@ -1,10 +1,12 @@
 "use client";
 
 import { specialData } from "@/data/profile/special";
-import { SpecialRightColumnProps } from "@/types/profile";
+import { SpecialRegisterRightColumnProps } from "@/types/profile";
 import Image from "next/image";
 
-function RightColumn({ hoveredStat }: SpecialRightColumnProps) {
+function SpecialRegisterRightColumn({
+  hoveredStat,
+}: SpecialRegisterRightColumnProps) {
   const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
 
   return (
@@ -35,4 +37,4 @@ function RightColumn({ hoveredStat }: SpecialRightColumnProps) {
   );
 }
 
-export default RightColumn;
+export default SpecialRegisterRightColumn;

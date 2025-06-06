@@ -1,8 +1,11 @@
 import React from "react";
 import SpecialRegisterInput from "@/components/profile/special/SpecialRegisterInput";
-import { SpecialLeftColumnProps } from "@/types/profile";
+import { SpecialRegisterLeftColumnProps } from "@/types/profile";
 
-function LeftColumn({ onHoverChange, hoveredStat }: SpecialLeftColumnProps) {
+function SpecialRegisterLeftColumn({
+  onHoverChange,
+  hoveredStat,
+}: SpecialRegisterLeftColumnProps) {
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
       <SpecialRegisterInput
@@ -51,4 +54,4 @@ function LeftColumn({ onHoverChange, hoveredStat }: SpecialLeftColumnProps) {
   );
 }
 
-export default LeftColumn;
+export default SpecialRegisterLeftColumn;

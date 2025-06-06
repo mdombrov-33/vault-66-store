@@ -2,8 +2,8 @@
 
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
-import LeftColumn from "@/components/profile/special/LeftColumn";
-import RightColumn from "@/components/profile/special/RightColumn";
+import SpecialRegisterLeftColumn from "@/components/profile/special/SpecialRegisterLeftColumn";
+import SpecialRegisterRightColumn from "@/components/profile/special/SpecialRegisterRightColumn";
 import SpecialRegisterHeader from "@/components/profile/special/SpecialRegisterHeader";
 import { createSpecialAction } from "@/utils/actions";
 import { useState } from "react";
@@ -17,7 +17,7 @@ function SpecialPageWrapper() {
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8l mt-12">
         <FormContainer action={createSpecialAction}>
           <div className="md:self-start">
-            <LeftColumn
+            <SpecialRegisterLeftColumn
               onHoverChange={setHoveredStat}
               hoveredStat={hoveredStat}
             />
@@ -30,7 +30,7 @@ function SpecialPageWrapper() {
           </div>
         </FormContainer>
         <div className="hidden md:block">
-          <RightColumn hoveredStat={hoveredStat} />
+          <SpecialRegisterRightColumn hoveredStat={hoveredStat} />
         </div>
       </div>
     </>
