@@ -13,7 +13,10 @@ export interface SpecialRecord {
   updatedAt?: Date;
 }
 
-export type HoverSpecialProps = {
+export interface SpecialRightColumnProps {
   hoveredStat: string | null;
+}
+
+export interface SpecialLeftColumnProps extends SpecialRightColumnProps {
   onHoverChange: (stat: string | null) => void;
-};
+}

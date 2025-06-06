@@ -1,16 +1,16 @@
 "use client";
 
 import { specialData } from "@/data/profile/special";
-import { HoverSpecialProps } from "@/types/profile";
+import { SpecialRightColumnProps } from "@/types/profile";
 import Image from "next/image";
 
-function RightColumn({ hoveredStat }: HoverSpecialProps) {
+function RightColumn({ hoveredStat }: SpecialRightColumnProps) {
   const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
 
   return (
     <div className="p-4">
       {currentSpecial ? (
-        <div className="flex flex-col items-center -mt-14">
+        <div className="flex flex-col items-center">
           <Image
             src={currentSpecial.icon}
             className="mb-2"

@@ -1,8 +1,8 @@
 import React from "react";
 import SpecialInput from "@/components/profile/special/SpecialInput";
-import { HoverSpecialProps } from "@/types/profile";
+import { SpecialLeftColumnProps } from "@/types/profile";
 
-function LeftColumn({ onHoverChange, hoveredStat }: HoverSpecialProps) {
+function LeftColumn({ onHoverChange, hoveredStat }: SpecialLeftColumnProps) {
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
       <SpecialInput
