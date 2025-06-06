@@ -65,7 +65,7 @@
   --ring: rgb(229, 195, 70);
 
   --secondary: rgb(230, 215, 180);
-  --secondary-foreground: rgb(30, 20, 10);
+  --secondary-foreground: rgb(255, 255, 255);
 
   --accent: rgb(255, 220, 100);
   --accent-foreground: rgb(30, 20, 5);
@@ -82,13 +82,16 @@
   --sidebar: rgb(245, 235, 215);
   --sidebar-foreground: rgb(50, 40, 20);
   --sidebar-primary: rgb(255, 215, 100);
-  --sidebar-primary-foreground: rgb(30, 20, 5);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
   --sidebar-accent: rgb(235, 205, 90);
   --sidebar-accent-foreground: rgb(30, 20, 10);
   --sidebar-border: rgba(0, 0, 0, 0.1);
   --sidebar-ring: rgb(229, 195, 70);
 
   --shadow-glow-primary: rgba(50, 49, 43, 0.6);
+
+  --sidebar-disabled-muted: rgb(217, 207, 182);
+  --sidebar-disabled-muted-foreground: rgb(88, 75, 50);
 }
 
 .dark {
@@ -131,13 +134,16 @@
   --sidebar: rgb(30, 40, 30);
   --sidebar-foreground: rgb(200, 255, 200);
   --sidebar-primary: rgb(80, 150, 100);
-  --sidebar-primary-foreground: rgb(240, 255, 230);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
   --sidebar-accent: rgb(60, 90, 60);
   --sidebar-accent-foreground: rgb(240, 255, 230);
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-ring: rgb(80, 150, 100);
 
   --shadow-glow-primary: rgba(72, 177, 53, 0.7);
+
+  --sidebar-disabled-muted: rgb(23, 41, 20);
+  --sidebar-disabled-muted-foreground: (78, 161, 114);
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */

@@ -25,6 +25,7 @@ function SelectProductAmount(
         disabled={cartItem ? props.isLoading : false}
       >
         <SelectTrigger
+          aria-label={`Select amount, currently ${amount}`}
           className={`${cartItem ? "w-[100px]" : "w-[150px]"} text-2xl`}
         >
           <SelectValue className="text-lg" placeholder={amount} />

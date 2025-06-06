@@ -41,7 +41,6 @@ function RadioBtn() {
         aria-label="Toggle Radio"
       >
         {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
-        <span className="sr-only">Radio Station</span>
       </Button>
 
       {isPlaying && (

@@ -28,7 +28,7 @@ function ProfileSidebar({
             className={cn(
               "w-full mb-2 capitalize font-normal justify-start text-xl",
               isDisabledGoat &&
-                "opacity-50 cursor-not-allowed bg-muted-foreground text-card pointer-events-none"
+                "cursor-not-allowed pointer-events-none bg-[var(--sidebar-disabled-muted)] text-[var(--sidebar-disabled-muted-foreground)]"
             )}
             variant={variant}
             key={profileLink.href}

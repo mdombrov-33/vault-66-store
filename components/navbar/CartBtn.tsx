@@ -13,9 +13,18 @@ async function CartBtn() {
       size="icon"
       className="flex justify-center items-center relative"
     >
-      <Link href="/cart">
+      <Link
+        href="/cart"
+        aria-label={`Cart with ${numItemsInCart} item${
+          numItemsInCart !== 1 ? "s" : ""
+        }`}
+      >
         <LucideShoppingCart />
-        <span className="absolute -top-3 -right-3 bg-primary text-white rounded-full h-6 w-6 flex items-center justify-center text-2xl">
+
+        <span
+          aria-hidden="true"
+          className="absolute -top-3 -right-3 bg-primary text-white rounded-full h-6 w-6 flex items-center justify-center text-2xl"
+        >
           {numItemsInCart}
         </span>
       </Link>

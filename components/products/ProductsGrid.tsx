@@ -27,7 +27,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
                     />
                   </div>
                   <div className="mt-4 text-center">
-                    <h2 className="text-3xl capitalize">{name}</h2>
+                    <h3 className="text-3xl capitalize">{name}</h3>
                     <p className="text-muted-foreground mt-2 text-3xl font-[roboto]">
                       {price} Caps
                     </p>

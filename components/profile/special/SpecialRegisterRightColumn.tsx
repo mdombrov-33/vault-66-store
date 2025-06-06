@@ -21,9 +21,9 @@ function SpecialRegisterRightColumn({
             alt={`${currentSpecial.name} icon`}
             sizes="(min-width: 768px) 50vw"
           />
-          <h2 className="text-7xl uppercase font-bold text-primary tracking-wider">
+          <h3 className="text-7xl uppercase font-bold text-primary tracking-wider">
             {currentSpecial.name}
-          </h2>
+          </h3>
           <p className="text-muted-foreground text-2xl mt-2 font-[roboto]">
             {currentSpecial.description}
           </p>
