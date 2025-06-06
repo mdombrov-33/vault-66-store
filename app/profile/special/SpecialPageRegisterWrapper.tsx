@@ -7,12 +7,12 @@ import SpecialRegisterRightColumn from "@/components/profile/special/SpecialRegi
 import SpecialRegisterHeader from "@/components/profile/special/SpecialRegisterHeader";
 import { createSpecialAction } from "@/utils/actions";
 import { useState } from "react";
-import { SpecialStats } from "@/types/profile";
+import { SpecialStats, SpecialStatsKeys } from "@/types/profile";
 
 const TOTAL_POINTS = 28;
 
 function SpecialPageWrapper() {
-  const [hoveredStat, setHoveredStat] = useState<string | null>(null);
+  const [hoveredStat, setHoveredStat] = useState<SpecialStatsKeys | null>(null);
   const [specialStats, setSpecialStats] = useState<SpecialStats>({
     strength: 1,
     perception: 1,
