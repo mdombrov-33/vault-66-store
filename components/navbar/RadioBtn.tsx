@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Radio } from "lucide-react";
 import { useState } from "react";
 import { VscLoading } from "react-icons/vsc";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useGlowClass } from "./hooks/useGlowClass";
 import { useNavbarContext } from "./context/NavbarContext";
 

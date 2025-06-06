@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { PROFILE_LINKS } from "@/data/nav";
 import Link from "next/link";
 import { SpecialRecord } from "@/types/profile";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 function ProfileSidebar({
   specialRecord,

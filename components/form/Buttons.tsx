@@ -3,7 +3,7 @@
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { SubmitButtonProps } from "@/types/form";
 import { IconButtonProps } from "@/types/button-action";
 import { SignInButton } from "@clerk/nextjs";

@@ -1,4 +1,4 @@
-import { getSpecialRecord } from "@/utils/profile";
+import { getSpecialRecord } from "@/utils/actions/special";
 import SpecialPageRegisterWrapper from "./SpecialPageRegisterWrapper";
 import SpecialPageResults from "./SpecialPageResults";
 import { SpecialRecord } from "@/types/profile";

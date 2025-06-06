@@ -1,19 +1,4 @@
 import { SpecialRecord } from "@/types/profile";
-import db from "@/utils/db";
-import { currentUser } from "@clerk/nextjs/server";
-
-//* Get SPECIAL record for the user
-export const getSpecialRecord = async () => {
-  const user = await currentUser();
-
-  const specialRecord = await db.special.findUnique({
-    where: {
-      clerkId: user?.id,
-    },
-  });
-
-  return specialRecord;
-};
 
 //* Get the text for each SPECIAL attribute based on its value
 export const getStrengthText = (value: number) => {
@@ -70,6 +55,7 @@ export const getLuckText = (value: number) => {
   return "You once found a three-legged Brahmin and thought it was lucky.";
 };
 
+//* Get the combined text based on SPECIAL attributes
 export const getCombinedSpecialText = (special: SpecialRecord) => {
   const {
     strength,

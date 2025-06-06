@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { validateImageFile } from "./validate-image-file";
+import { validateImageFile } from "@/utils/validation/validate-image-file";
 
 //* This schema is used to validate the product form data.
 //* It ensures that the product name, company, price, description, and featured status are valid.

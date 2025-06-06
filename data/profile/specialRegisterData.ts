@@ -3,7 +3,7 @@ import EnduranceIcon from "@/public/images/special/endurance.png";
 import CharismaIcon from "@/public/images/special/charisma.png";
 import LuckIcon from "@/public/images/special/luck.png";
 
-export const specialData = [
+export const specialRegisterData = [
   {
     name: "strength",
     description:

@@ -1,13 +1,15 @@
 "use client";
 
-import { specialData } from "@/data/profile/special";
+import { specialRegisterData } from "@/data/profile/specialRegisterData";
 import { SpecialRegisterRightColumnProps } from "@/types/profile";
 import Image from "next/image";
 
 function SpecialRegisterRightColumn({
   hoveredStat,
 }: SpecialRegisterRightColumnProps) {
-  const currentSpecial = specialData.find((stat) => stat.name === hoveredStat);
+  const currentSpecial = specialRegisterData.find(
+    (stat) => stat.name === hoveredStat
+  );
 
   return (
     <div className="p-4">

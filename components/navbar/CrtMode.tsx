@@ -3,7 +3,7 @@
 import { useCrtMode } from "@/components/navbar/hooks/useCrtMode";
 import { Button } from "@/components/ui/button";
 import { TvIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useGlowClass } from "./hooks/useGlowClass";
 
 function CrtMode() {

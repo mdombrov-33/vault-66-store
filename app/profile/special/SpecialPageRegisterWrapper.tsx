@@ -5,7 +5,7 @@ import FormContainer from "@/components/form/FormContainer";
 import SpecialRegisterLeftColumn from "@/components/profile/special/register/SpecialRegisterLeftColumn";
 import SpecialRegisterRightColumn from "@/components/profile/special/register/SpecialRegisterRightColumn";
 import SpecialRegisterHeader from "@/components/profile/special/register/SpecialRegisterHeader";
-import { createSpecialAction } from "@/utils/actions";
+import { createSpecialAction } from "@/utils/actions/special";
 import { useState } from "react";
 import { SpecialStats, SpecialStatsKeys } from "@/types/profile";
 

@@ -1,4 +1,4 @@
-import { specialSchema } from "@/utils/schemas";
+import { specialSchema } from "@/utils/validation/schemas";
 import { z } from "zod";
 
 export type SpecialRecord = {

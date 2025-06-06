@@ -1,16 +1,11 @@
 "use server";
-import db from "@/utils/db";
+import db from "@/utils/db/db";
 import { redirect } from "next/navigation";
-import { getAuthorizedAdminUser, getAuthUser } from "@/utils/get-user";
+import { getAuthorizedAdminUser, getAuthUser } from "@/utils/auth/get-user";
 import { renderError } from "./render-error";
-import {
-  imageSchema,
-  productSchema,
-  reviewSchema,
-  specialSchema,
-} from "./schemas";
-import { validateZodSchema } from "./validate-zod-schema";
-import { deleteImage, uploadImage } from "./supabase";
+import { imageSchema, productSchema, reviewSchema } from "./validation/schemas";
+import { validateZodSchema } from "./validation/validate-zod-schema";
+import { deleteImage, uploadImage } from "./db/supabase";
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { Cart } from "@/lib/generated/prisma/client";
@@ -762,41 +757,4 @@ export const fetchAdminOrders = async () => {
     },
   });
   return orders;
-};
-
-//* Creates a new SPECIAL record in the database
-export const createSpecialAction = async (
-  prevState: any,
-  formData: FormData
-): Promise<{ message: string }> => {
-  try {
-    const user = await getAuthUser();
-
-    const rawData = Object.fromEntries(formData);
-    const validatedFields = validateZodSchema(specialSchema, rawData);
-
-    const isAllocated = await db.special.findFirst({
-      where: {
-        clerkId: user.id,
-        isAllocated: true,
-      },
-    });
-
-    if (isAllocated) {
-      throw new Error("You already allocated your SPECIAL attributes");
-    }
-
-    await db.special.create({
-      data: {
-        ...validatedFields,
-        clerkId: user.id,
-        isAllocated: true,
-      },
-    });
-
-    revalidatePath("/profile/special");
-    return { message: "Thanks! Nice to meet you" };
-  } catch (error) {
-    return renderError(error);
-  }
 };
