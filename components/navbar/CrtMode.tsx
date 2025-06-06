@@ -13,9 +13,12 @@ function CrtMode() {
     <Button
       onClick={toggle}
       size="icon"
-      variant={isEnabled ? "default" : "outline"}
+      variant="outline"
       aria-pressed={isEnabled}
       aria-label="Toggle CRT Mode"
+      className={
+        isEnabled ? (isDarkMode ? "crt-glow-dark" : "crt-glow-light") : ""
+      }
     >
       <span className="sr-only">CRT Mode Toggle</span>
       <TvIcon />

@@ -7,10 +7,10 @@ export function useCrtMode() {
   const { theme, resolvedTheme } = useTheme();
   const [isEnabled, setIsEnabled] = useState(false);
 
-  // Determine if current theme is dark (taking system fallback into account)
+  //* Determine if current theme is dark (taking system fallback into account)
   const isDarkMode = (theme === "system" ? resolvedTheme : theme) === "dark";
 
-  // Sync crt-mode class with state
+  //* Sync crt-mode class with state
   useEffect(() => {
     if (isEnabled && isDarkMode) {
       document.body.classList.add("crt-mode");
@@ -19,7 +19,7 @@ export function useCrtMode() {
     }
   }, [isEnabled, isDarkMode]);
 
-  // If dark mode turns off, disable CRT mode automatically
+  //* If dark mode turns off, disable CRT mode automatically
   useEffect(() => {
     if (!isDarkMode) {
       setIsEnabled(false);
