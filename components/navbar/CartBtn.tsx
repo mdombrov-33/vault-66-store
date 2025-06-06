@@ -14,7 +14,7 @@ async function CartBtn() {
       className="flex justify-center items-center relative"
     >
       <Link
-        href="/cart"
+        href="/supply-bin"
         aria-label={`Cart with ${numItemsInCart} item${
           numItemsInCart !== 1 ? "s" : ""
         }`}

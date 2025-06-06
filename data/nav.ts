@@ -3,19 +3,19 @@ import { NavLink } from "../types/nav";
 export const NAV_LINKS: NavLink[] = [
   { href: "/", label: "home" },
   { href: "/about", label: "about" },
-  { href: "/products", label: "items" },
+  { href: "/items", label: "items" },
   { href: "/favorites", label: "favorites" },
   { href: "/reviews", label: "reviews" },
-  { href: "/cart", label: "supply bin" },
-  { href: "/orders", label: "supply history" },
+  { href: "/supply-bin", label: "supply bin" },
+  { href: "/supply-history", label: "supply history" },
   { href: "/profile/special", label: "profile" },
   { href: "/admin/sales", label: "admin dashboard" },
 ];
 
 export const ADMIN_LINKS: NavLink[] = [
   { href: "/admin/sales", label: "sales" },
-  { href: "/admin/products", label: "products" },
-  { href: "/admin/products/create", label: "create product" },
+  { href: "/admin/items", label: "items" },
+  { href: "/admin/items/create", label: "create item" },
 ];
 
 export const PROFILE_LINKS: NavLink[] = [

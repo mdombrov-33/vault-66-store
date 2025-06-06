@@ -30,7 +30,7 @@ async function SalesPage() {
             Email
           </TableHead>
           <TableHead className="text-lg md:text-2xl xl:text-3xl">
-            Products
+            Items
           </TableHead>
           <TableHead className="text-lg md:text-2xl xl:text-3xl">
             Order Total

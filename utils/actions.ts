@@ -49,7 +49,7 @@ export const fetchSingleProduct = async (productId: string) => {
     },
   });
 
-  if (!product) redirect("/products");
+  if (!product) redirect("/items");
 
   return product;
 };
@@ -89,7 +89,7 @@ export const createProductAction = async (
   } catch (error) {
     return renderError(error);
   }
-  redirect("/admin/products");
+  redirect("/admin/items");
 };
 
 //* Fetches all products(from the admin panel).
@@ -124,11 +124,11 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
     });
 
     if (!product) {
-      throw new Error("Product not found");
+      throw new Error("Item not found");
     }
 
     if (!product.isTestProduct && user.id === testAdminId) {
-      throw new Error("You cannot delete a product created by the main admin");
+      throw new Error("You cannot delete a item created by the main admin");
     }
 
     await db.product.delete({
@@ -139,9 +139,9 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 
     await deleteImage(product.image);
 
-    revalidatePath("/admin/products");
+    revalidatePath("/admin/items");
 
-    return { message: "Product deleted" };
+    return { message: "Item deleted" };
   } catch (error) {
     return renderError(error);
   }
@@ -183,11 +183,11 @@ export const updateProductAction = async (
     });
 
     if (!product) {
-      throw new Error("Product not found");
+      throw new Error("Item not found");
     }
 
     if (!product.isTestProduct && user.id === testAdminId) {
-      throw new Error("You cannot update a product created by the main admin");
+      throw new Error("You cannot update an item created by the main admin");
     }
 
     await db.product.update({
@@ -199,9 +199,9 @@ export const updateProductAction = async (
       },
     });
 
-    revalidatePath(`/admin/products/${productId}/edit`);
+    revalidatePath(`/admin/items/${productId}/edit`);
 
-    return { message: "Product updated" };
+    return { message: "Item updated" };
   } catch (error) {
     return renderError(error);
   }
@@ -230,7 +230,7 @@ export const updateProductImageAction = async (
     });
 
     if (!product?.isTestProduct && user.id === testAdminId) {
-      throw new Error("You cannot update a product created by the main admin");
+      throw new Error("You cannot update an item created by the main admin");
     }
 
     await deleteImage(oldImageUrl);
@@ -244,9 +244,9 @@ export const updateProductImageAction = async (
       },
     });
 
-    revalidatePath(`/admin/products/${productId}/edit`);
+    revalidatePath(`/admin/items/${productId}/edit`);
 
-    return { message: "Product image updated" };
+    return { message: "Item image updated" };
   } catch (error) {
     return renderError(error);
   }
@@ -353,7 +353,7 @@ export const createReviewAction = async (
       },
     });
 
-    revalidatePath(`/products/${validatedFields.productId}`);
+    revalidatePath(`/items/${validatedFields.productId}`);
     return { message: "Review submitted" };
   } catch (error) {
     return renderError(error);
@@ -481,7 +481,7 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
     await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
     await updateCart(cart);
 
-    revalidatePath(`/products/${productId}`);
+    revalidatePath(`/items/${productId}`);
 
     return { message: `${product.name} added to the cart` };
   } catch (error) {
@@ -636,7 +636,7 @@ export const removeCartItemAction = async (
 
     await updateCart(cart);
 
-    revalidatePath("/cart");
+    revalidatePath("/supply-bin");
 
     return { message: "Item removed from the cart" };
   } catch (error) {
@@ -672,7 +672,7 @@ export const updateCartItemAction = async ({
 
     await updateCart(cart);
 
-    revalidatePath("/cart");
+    revalidatePath("/supply-bin");
 
     return { message: "Cart item updated" };
   } catch (error) {
