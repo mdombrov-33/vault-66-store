@@ -17,10 +17,10 @@ function LineWithClickableWords({
     playHackingSuccessSound,
   } = useHackingSounds();
 
-  const handleClick = async (word: string) => {
+  const handleClick = (word: string) => {
     if (gameOver) return;
 
-    const isCorrect = await onGuess(word);
+    const isCorrect = onGuess(word);
 
     if (isCorrect) {
       playHackingSuccessSound();
@@ -50,7 +50,7 @@ function LineWithClickableWords({
     <>
       {line.split(/(\[.*?\])/).map((part, idx) => {
         const isWord = part.startsWith("[") && part.endsWith("]");
-        const word = part.slice(1, -1); // Remove brackets
+        const word = part.slice(1, -1);
 
         return isWord ? (
           <button
@@ -62,7 +62,7 @@ function LineWithClickableWords({
             className={cn(
               "all-none",
               !gameOver
-                ? "cursor-pointer focus:outline focus:outline-offset-1 !hover:text-[var(--hacking-text)]"
+                ? "cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-[var(--hacking-text)]"
                 : "focus:outline focus:outline-offset-1"
             )}
           >
