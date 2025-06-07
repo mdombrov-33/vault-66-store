@@ -32,7 +32,7 @@ function embedWord(prefix: string, word: string, totalLength: number): string {
   for (let i = 0; i < offset; i++) {
     line += randomChar();
   }
-  line += word;
+  line += [word];
   while (line.length < totalLength) {
     line += randomChar();
   }
@@ -44,6 +44,7 @@ const TOTAL_LINE_LENGTH = 24;
 export function generateLines() {
   const leftColumn: string[] = [];
   const rightColumn: string[] = [];
+  const allWords: string[] = [];
 
   for (let i = 0; i < 20; i++) {
     const leftAddr =
@@ -60,9 +61,11 @@ export function generateLines() {
 
     leftColumn.push(embedWord(leftAddr, leftWord, TOTAL_LINE_LENGTH));
     rightColumn.push(embedWord(rightAddr, rightWord, TOTAL_LINE_LENGTH));
+
+    allWords.push(leftWord, rightWord);
   }
 
-  return { leftColumn, rightColumn };
+  return { leftColumn, rightColumn, allWords };
 }
 
 export function generateCombinedLines() {
