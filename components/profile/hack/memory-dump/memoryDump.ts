@@ -32,7 +32,7 @@ function embedWord(prefix: string, word: string, totalLength: number): string {
   for (let i = 0; i < offset; i++) {
     line += randomChar();
   }
-  line += [word];
+  line += `[${word}]`;
   while (line.length < totalLength) {
     line += randomChar();
   }

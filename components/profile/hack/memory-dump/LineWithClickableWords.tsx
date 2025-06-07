@@ -1,9 +1,11 @@
+import { Button } from "@/components/ui/button";
 import { LineWithClickableWordsProps } from "@/types/profile";
 
 function LineWithClickableWords({
   line,
   onGuess,
 }: LineWithClickableWordsProps) {
+  console.log("Rendering line:", line);
   return (
     <>
       {line.split(/(\[.*?\])/).map((part, idx) => {
@@ -11,18 +13,13 @@ function LineWithClickableWords({
         const word = part.slice(1, -1); // Remove brackets
 
         return isWord ? (
-          <span
+          <button
             key={idx}
-            role="button"
-            tabIndex={0}
             onClick={() => onGuess(word)}
-            onKeyDown={(e) =>
-              (e.key === "Enter" || e.key === " ") && onGuess(word)
-            }
-            className="cursor-pointer px-1 rounded-sm text-lime-400 underline decoration-dotted underline-offset-2 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-black"
+            className="all-none cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-foreground"
           >
             {word}
-          </span>
+          </button>
         ) : (
           <span key={idx}>{part}</span>
         );
