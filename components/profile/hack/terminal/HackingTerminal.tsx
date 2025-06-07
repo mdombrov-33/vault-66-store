@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
 import { useHackingGame } from "../useHackingGame";
 import TerminalIntro from "./TerminalIntro";

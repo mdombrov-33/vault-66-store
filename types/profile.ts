@@ -1,4 +1,5 @@
 import { specialSchema } from "@/utils/validation/schemas";
+import React from "react";
 import { z } from "zod";
 
 //* SPECIAL
@@ -81,13 +82,16 @@ export interface TerminalIntroProps {
 export interface DumpColumnProps {
   lines: string[];
   onGuess: (word: string) => void;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export interface LineWithClickableWordsProps {
   line: string;
   onGuess: (word: string) => void;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export interface TerminalLogProps {
   log: string[];
+  onWordHover: string | null;
 }

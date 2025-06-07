@@ -5,6 +5,7 @@ const allowedCharsRegex = /[^\&@]/g; // This matches everything except & and @
 function LineWithClickableWords({
   line,
   onGuess,
+  setOnWordHover,
 }: LineWithClickableWordsProps) {
   return (
     <>
@@ -14,6 +15,8 @@ function LineWithClickableWords({
 
         return isWord ? (
           <button
+            onMouseEnter={() => setOnWordHover(word)}
+            onMouseLeave={() => setOnWordHover(null)}
             key={idx}
             onClick={() => onGuess(word)}
             className="all-none cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-[var(--hacking-text)]"
