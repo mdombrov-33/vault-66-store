@@ -1,5 +1,3 @@
-// import { TerminalIntroProps } from "@/types/profile";
-
 import { TerminalIntroProps } from "@/types/profile";
 
 const MAX_ATTEMPTS = 5;

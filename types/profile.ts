@@ -1,5 +1,5 @@
-import React from "react";
 import { specialSchema } from "@/utils/validation/schemas";
+import React from "react";
 import { z } from "zod";
 
 //* SPECIAL
@@ -22,29 +22,24 @@ export interface SpecialPageResultsProps {
   specialRecord: SpecialRecord;
 }
 
-//* Base props for stat display
-export interface StatDisplayBase {
-  name: keyof z.infer<typeof specialSchema>;
-  label: string;
+export interface SpecialResultInputProps {
+  name: string;
   value: number;
+  label: string;
 }
 
-//* Base props for hoverable stats
-export interface HoverableStatProps extends StatDisplayBase {
-  hoveredStat?: keyof z.infer<typeof specialSchema> | null;
-  onHoverChange?: (stat: keyof z.infer<typeof specialSchema> | null) => void;
+export type SpecialStats = z.infer<typeof specialSchema>;
+export type SpecialStatsKeys = keyof SpecialStats;
+
+export interface SpecialRegisterRightColumnProps {
+  hoveredStat: SpecialStatsKeys | null;
 }
 
-export type SpecialResultInputProps = StatDisplayBase;
-
-export type SpecialRegisterRightColumnProps = HoverableStatProps;
-
-export interface SpecialRegisterLeftColumnProps extends HoverableStatProps {
-  onHoverChange: (stat: keyof z.infer<typeof specialSchema> | null) => void;
-  setSpecialStats: React.Dispatch<
-    React.SetStateAction<z.infer<typeof specialSchema>>
-  >;
-  specialStats: z.infer<typeof specialSchema>;
+export interface SpecialRegisterLeftColumnProps
+  extends SpecialRegisterRightColumnProps {
+  onHoverChange: (stat: SpecialStatsKeys | null) => void;
+  setSpecialStats: React.Dispatch<React.SetStateAction<SpecialStats>>;
+  specialStats: SpecialStats;
   remainingPoints: number;
 }
 
@@ -53,28 +48,26 @@ export interface SpecialRegisterHeaderProps {
 }
 
 export interface FormSpecialRegisterInput {
-  name: keyof z.infer<typeof specialSchema>;
+  name: SpecialStatsKeys;
   label: string;
   min?: number;
   max?: number;
   value: number;
-  onIncrement: (name: keyof z.infer<typeof specialSchema>) => void;
-  onDecrement: (name: keyof z.infer<typeof specialSchema>) => void;
-  onHoverChange: (stat: keyof z.infer<typeof specialSchema> | null) => void;
-  hoveredStat?: keyof z.infer<typeof specialSchema> | null;
+  onIncrement: (name: SpecialStatsKeys) => void;
+  onDecrement: (name: SpecialStatsKeys) => void;
+  onHoverChange: (stat: SpecialStatsKeys | null) => void;
+  hoveredStat?: SpecialStatsKeys | null;
+}
+
+export interface SpecialResultStatProps {
+  name: SpecialStatsKeys;
+  label: string;
+  value: number;
+  hoveredStat?: SpecialStatsKeys | null;
+  onHoverChange?: (stat: SpecialStatsKeys | null) => void;
 }
 
 //* HACKING
-//* Shared
-export interface BaseHackingProps {
-  onGuess: (word: string) => void;
-  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
-  gameOver: boolean;
-}
-
-export type WordHoverState = string | null;
-
-//* Specific
 export interface MemoryDumpGridProps {
   leftColumn: string[];
   rightColumn: string[];
@@ -87,16 +80,22 @@ export interface TerminalIntroProps {
   attemptsLeft: number;
 }
 
-export interface DumpColumnProps extends BaseHackingProps {
+export interface DumpColumnProps {
   lines: string[];
+  onGuess: (word: string) => void;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
 }
 
-export interface LineWithClickableWordsProps extends BaseHackingProps {
+export interface LineWithClickableWordsProps {
   line: string;
+  onGuess: (word: string) => void;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
 }
 
 export interface TerminalLogProps {
   log: string[];
-  onWordHover: WordHoverState;
+  onWordHover: string | null;
   gameOver: boolean;
 }
