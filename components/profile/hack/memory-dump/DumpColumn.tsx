@@ -1,7 +1,12 @@
 import { DumpColumnProps } from "@/types/profile";
 import LineWithClickableWords from "./LineWithClickableWords";
 
-function DumpColumn({ lines, onGuess, setOnWordHover }: DumpColumnProps) {
+function DumpColumn({
+  lines,
+  onGuess,
+  setOnWordHover,
+  gameOver,
+}: DumpColumnProps) {
   return (
     <div>
       {lines.map((line, i) => (
@@ -10,6 +15,7 @@ function DumpColumn({ lines, onGuess, setOnWordHover }: DumpColumnProps) {
             setOnWordHover={setOnWordHover}
             line={line}
             onGuess={onGuess}
+            gameOver={gameOver}
           />
         </div>
       ))}

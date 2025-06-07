@@ -6,7 +6,7 @@ import TerminalIntro from "./TerminalIntro";
 import { Button } from "@/components/ui/button";
 
 export default function HackingTerminal() {
-  const { gameState, attemptsLeft, log, handleGuess, resetGame } =
+  const { gameState, attemptsLeft, log, handleGuess, resetGame, gameOver } =
     useHackingGame(5);
 
   return (
@@ -19,6 +19,7 @@ export default function HackingTerminal() {
             rightColumn={gameState.rightColumn}
             onGuess={handleGuess}
             log={log}
+            gameOver={gameOver}
           />
         </div>
 

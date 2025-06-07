@@ -8,6 +8,7 @@ function MemoryDumpGrid({
   rightColumn,
   onGuess,
   log,
+  gameOver,
 }: MemoryDumpGridProps) {
   const [onWordHover, setOnWordHover] = useState<string | null>(null);
 
@@ -18,11 +19,13 @@ function MemoryDumpGrid({
           setOnWordHover={setOnWordHover}
           lines={leftColumn}
           onGuess={onGuess}
+          gameOver={gameOver}
         />
         <DumpColumn
           setOnWordHover={setOnWordHover}
           lines={rightColumn}
           onGuess={onGuess}
+          gameOver={gameOver}
         />
       </div>
 

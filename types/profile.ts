@@ -73,6 +73,7 @@ export interface MemoryDumpGridProps {
   rightColumn: string[];
   onGuess: (word: string) => void;
   log: string[];
+  gameOver: boolean;
 }
 
 export interface TerminalIntroProps {
@@ -83,12 +84,14 @@ export interface DumpColumnProps {
   lines: string[];
   onGuess: (word: string) => void;
   setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
 }
 
 export interface LineWithClickableWordsProps {
   line: string;
   onGuess: (word: string) => void;
   setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
 }
 
 export interface TerminalLogProps {
