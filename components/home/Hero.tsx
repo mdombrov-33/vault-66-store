@@ -21,6 +21,8 @@ function Hero() {
             3000,
             "all products approved by vault-tec",
             3000,
+            "surface conditions: unknown. stock up accordingly",
+            5000,
           ]}
           wrapper="p"
           className="mt-8 min-h-16 max-w-xl text-2xl leading-8 text-muted-foreground uppercase"
