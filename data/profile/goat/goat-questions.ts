@@ -33,7 +33,7 @@ export const goatQuestions: GoatQuestion[] = [
     id: 2,
     question:
       "You discover a young boy lost in the lower levels of the Vault. He's hungry and frightened, but also appears to be in possession of stolen property. What do you do?",
-    image: "/images/goat/question2.jpg",
+    image: "/images/goat/question2.png",
     answers: [
       {
         id: "A",
@@ -61,7 +61,7 @@ export const goatQuestions: GoatQuestion[] = [
     id: 3,
     question:
       "Your grandmother invites you to tea, but you're surprised when she gives you a pistol and orders you to kill another Vault resident. What do you do?",
-    image: "/images/goat/question3.jpg",
+    image: "/images/goat/question3.png",
     answers: [
       {
         id: "A",
@@ -89,7 +89,7 @@ export const goatQuestions: GoatQuestion[] = [
     id: 4,
     question:
       "While working as an intern in the Clinic, a patient with a strange infection on his foot stumbles through the door. The infection is spreading at an alarming rate, but the doctor has stepped out for a while. What do you do?",
-    image: "/images/goat/question4.jpg",
+    image: "/images/goat/question4.png",
     answers: [
       {
         id: "A",
@@ -133,7 +133,7 @@ export const goatQuestions: GoatQuestion[] = [
     id: 6,
     question:
       "Old Mr. Abernathy has locked himself in his quarters again, and you've been ordered to get him out. How do you proceed?",
-    image: "/images/goat/question6.jpg",
+    image: "/images/goat/question6.png",
     answers: [
       {
         id: "A",
