@@ -71,7 +71,7 @@ export interface SpecialResultStatProps {
 export interface MemoryDumpGridProps {
   leftColumn: string[];
   rightColumn: string[];
-  onGuess: (word: string) => void;
+  onGuess: (word: string) => boolean;
   log: string[];
   gameOver: boolean;
 }
@@ -82,7 +82,7 @@ export interface TerminalIntroProps {
 
 export interface DumpColumnProps {
   lines: string[];
-  onGuess: (word: string) => void;
+  onGuess: (word: string) => boolean;
   setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
   gameOver: boolean;
 }
