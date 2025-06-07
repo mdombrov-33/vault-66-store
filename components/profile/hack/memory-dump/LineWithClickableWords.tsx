@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { LineWithClickableWordsProps } from "@/types/profile";
+
+const allowedCharsRegex = /[^\&@]/g; // This matches everything except & and @
 
 function LineWithClickableWords({
   line,
@@ -21,7 +22,7 @@ function LineWithClickableWords({
             {word}
           </button>
         ) : (
-          <span key={idx}>{part}</span>
+          <span key={idx}>{part.match(allowedCharsRegex)?.join("")}</span>
         );
       })}
     </>
