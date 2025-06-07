@@ -2,9 +2,9 @@
 
 import { TerminalIntroProps } from "@/types/profile";
 
+const MAX_ATTEMPTS = 5;
 const TerminalIntro = ({ attemptsLeft }: TerminalIntroProps) => {
-  const maxAttempts = 5;
-  const blocks = Array.from({ length: maxAttempts }, (_, i) =>
+  const blocks = Array.from({ length: MAX_ATTEMPTS }, (_, i) =>
     i < attemptsLeft ? "▮" : "▯"
   ).join(" ");
 
