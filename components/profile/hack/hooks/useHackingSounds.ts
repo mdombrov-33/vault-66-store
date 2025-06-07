@@ -1,9 +1,14 @@
 import { useRef } from "react";
-import { hackingHoverSrc, hackingClickSrc } from "@/data/sounds/hacking-sounds";
+import {
+  hackingHoverSrc,
+  hackingClickSrc,
+  hackingScrollSrc,
+} from "@/data/sounds/hacking-sounds";
 
 export function useHackingSounds() {
   const soundIndexHover = useRef(0);
   const soundIndexClick = useRef(0);
+  const soundIndexScroll = useRef(0);
 
   function playHackingHoverSound() {
     const audio = new Audio(hackingHoverSrc[soundIndexHover.current]);
@@ -23,5 +28,18 @@ export function useHackingSounds() {
       (soundIndexClick.current + 1) % hackingClickSrc.length;
   }
 
-  return { playHackingHoverSound, playHackingClickSound };
+  function playHackingScrollSound() {
+    const audio = new Audio(hackingScrollSrc[soundIndexScroll.current]);
+    audio.volume = 0.2;
+    audio.play();
+
+    soundIndexScroll.current =
+      (soundIndexScroll.current + 1) % hackingScrollSrc.length;
+  }
+
+  return {
+    playHackingHoverSound,
+    playHackingClickSound,
+    playHackingScrollSound,
+  };
 }

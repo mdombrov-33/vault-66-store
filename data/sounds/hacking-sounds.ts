@@ -12,3 +12,8 @@ export const hackingClickSrc = [
   "/sounds/hacking/charsingle_05.wav",
   "/sounds/hacking/charsingle_06.wav",
 ];
+
+export const hackingScrollSrc = [
+  "/sounds/hacking/charscroll.wav",
+  "/sounds/hacking/charscroll_ip.wav",
+];
