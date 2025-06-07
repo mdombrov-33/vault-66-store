@@ -17,3 +17,5 @@ export const hackingScrollSrc = [
   "/sounds/hacking/charscroll.wav",
   "/sounds/hacking/charscroll_ip.wav",
 ];
+
+export const hackingSuccessSrc = "/sounds/hacking/success.mp3";

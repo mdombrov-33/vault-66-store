@@ -23,13 +23,14 @@ export function useHackingGame(initialAttempts = 5) {
     return likeness;
   }
 
-  function handleGuess(word: string) {
-    if (attemptsLeft <= 0 || gameOver) return;
+  function handleGuess(word: string): boolean {
+    if (attemptsLeft <= 0 || gameOver) return false;
 
     if (word === gameState.correctPassword) {
       setLog((prev) => [...prev, `> ${word}`, "ACCESS GRANTED"]);
       setAttemptsLeft(0);
       setGameOver(true);
+      return true;
     } else {
       const likeness = getLikeness(word, gameState.correctPassword);
       setLog((prev) => [
@@ -44,7 +45,9 @@ export function useHackingGame(initialAttempts = 5) {
       if (newAttempts <= 0) {
         setLog((prev) => [...prev, "LOGIN FAILURE - TERMINAL LOCKED"]);
         setGameOver(true);
+        return false;
       }
+      return false;
     }
   }
 

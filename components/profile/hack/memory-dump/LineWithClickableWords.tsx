@@ -14,12 +14,19 @@ function LineWithClickableWords({
     playHackingHoverSound,
     playHackingClickSound,
     playHackingScrollSound,
+    playHackingSuccessSound,
   } = useHackingSounds();
 
-  const handleClick = (word: string) => {
+  const handleClick = async (word: string) => {
     if (gameOver) return;
-    onGuess(word);
-    playHackingClickSound();
+
+    const isCorrect = await onGuess(word);
+
+    if (isCorrect) {
+      playHackingSuccessSound();
+    } else {
+      playHackingClickSound();
+    }
   };
 
   const handleMouseEnter = (word: string) => {

@@ -3,6 +3,7 @@ import {
   hackingHoverSrc,
   hackingClickSrc,
   hackingScrollSrc,
+  hackingSuccessSrc,
 } from "@/data/sounds/hacking-sounds";
 
 export function useHackingSounds() {
@@ -37,9 +38,16 @@ export function useHackingSounds() {
       (soundIndexScroll.current + 1) % hackingScrollSrc.length;
   }
 
+  function playHackingSuccessSound() {
+    const audio = new Audio(hackingSuccessSrc);
+    audio.volume = 1;
+    audio.play();
+  }
+
   return {
     playHackingHoverSound,
     playHackingClickSound,
     playHackingScrollSound,
+    playHackingSuccessSound,
   };
 }

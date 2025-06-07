@@ -89,7 +89,7 @@ export interface DumpColumnProps {
 
 export interface LineWithClickableWordsProps {
   line: string;
-  onGuess: (word: string) => void;
+  onGuess: (word: string) => boolean;
   setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
   gameOver: boolean;
 }
