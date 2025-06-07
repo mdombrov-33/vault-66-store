@@ -1,6 +1,8 @@
 import { specialSchema } from "@/utils/validation/schemas";
+import React from "react";
 import { z } from "zod";
 
+//* SPECIAL
 export type SpecialRecord = {
   id: string;
   strength: number;
@@ -63,4 +65,37 @@ export interface SpecialResultStatProps {
   value: number;
   hoveredStat?: SpecialStatsKeys | null;
   onHoverChange?: (stat: SpecialStatsKeys | null) => void;
+}
+
+//* HACKING
+export interface MemoryDumpGridProps {
+  leftColumn: string[];
+  rightColumn: string[];
+  onGuess: (word: string) => void;
+  log: string[];
+  gameOver: boolean;
+}
+
+export interface TerminalIntroProps {
+  attemptsLeft: number;
+}
+
+export interface DumpColumnProps {
+  lines: string[];
+  onGuess: (word: string) => void;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
+}
+
+export interface LineWithClickableWordsProps {
+  line: string;
+  onGuess: (word: string) => boolean;
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+  gameOver: boolean;
+}
+
+export interface TerminalLogProps {
+  log: string[];
+  onWordHover: string | null;
+  gameOver: boolean;
 }

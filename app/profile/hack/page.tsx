@@ -1,7 +1,7 @@
-import React from "react";
+import HackingTerminal from "@/components/profile/hack/terminal/HackingTerminal";
 
 function HackPage() {
-  return <p>Not implemented</p>;
+  return <HackingTerminal />;
 }
 
 export default HackPage;

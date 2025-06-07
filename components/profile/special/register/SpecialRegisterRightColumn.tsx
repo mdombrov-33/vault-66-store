@@ -1,6 +1,6 @@
 "use client";
 
-import { specialRegisterData } from "@/data/profile/specialRegisterData";
+import { specialRegisterData } from "@/data/profile/special/specialRegisterData";
 import { SpecialRegisterRightColumnProps } from "@/types/profile";
 import Image from "next/image";
 
