@@ -22,6 +22,7 @@ function SpecialRegisterRightColumn({
             height={200}
             alt={`${currentSpecial.name} icon`}
             sizes="(min-width: 768px) 50vw"
+            unoptimized
           />
           <h3 className="text-7xl uppercase font-bold text-primary tracking-wider">
             {currentSpecial.name}
