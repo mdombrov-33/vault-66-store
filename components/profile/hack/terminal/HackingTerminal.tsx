@@ -1,6 +1,6 @@
 "use client";
 import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
-import { useHackingGame } from "../useHackingGame";
+import { useHackingGame } from "../hooks/useHackingGame";
 import TerminalIntro from "./TerminalIntro";
 import { Button } from "@/components/ui/button";
 

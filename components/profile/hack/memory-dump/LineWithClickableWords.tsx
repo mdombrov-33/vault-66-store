@@ -1,5 +1,6 @@
 import { LineWithClickableWordsProps } from "@/types/profile";
 import { cn } from "@/utils/cn";
+import { useHackingSounds } from "../hooks/useHackingSounds";
 
 const allowedCharsRegex = /[^\&@]/g; // This matches everything except & and @
 
@@ -9,6 +10,25 @@ function LineWithClickableWords({
   setOnWordHover,
   gameOver,
 }: LineWithClickableWordsProps) {
+  const { playHackingHoverSound, playHackingClickSound } = useHackingSounds();
+
+  const handleClick = (word: string) => {
+    if (gameOver) return;
+    onGuess(word);
+    playHackingClickSound();
+  };
+
+  const handleMouseEnter = (word: string) => {
+    if (gameOver) return;
+    setOnWordHover(word);
+    playHackingHoverSound();
+  };
+
+  const handleMouseLeave = () => {
+    if (gameOver) return;
+    setOnWordHover(null);
+  };
+
   return (
     <>
       {line.split(/(\[.*?\])/).map((part, idx) => {
@@ -17,18 +37,10 @@ function LineWithClickableWords({
 
         return isWord ? (
           <button
-            onMouseEnter={() => {
-              if (!gameOver) {
-                setOnWordHover(word);
-              }
-            }}
-            onMouseLeave={() => {
-              if (!gameOver) {
-                setOnWordHover(null);
-              }
-            }}
+            onMouseEnter={() => handleMouseEnter(word)}
+            onMouseLeave={() => handleMouseLeave()}
             key={idx}
-            onClick={() => onGuess(word)}
+            onClick={() => handleClick(word)}
             className={cn(
               "all-none",
               !gameOver &&
