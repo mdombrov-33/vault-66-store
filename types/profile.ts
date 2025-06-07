@@ -64,3 +64,8 @@ export interface SpecialResultStatProps {
   hoveredStat?: SpecialStatsKeys | null;
   onHoverChange?: (stat: SpecialStatsKeys | null) => void;
 }
+
+export type MemoryDumpProps = {
+  leftColumn: string[];
+  rightColumn: string[];
+};
