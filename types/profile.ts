@@ -1,6 +1,7 @@
 import { specialSchema } from "@/utils/validation/schemas";
 import { z } from "zod";
 
+//* SPECIAL
 export type SpecialRecord = {
   id: string;
   strength: number;
@@ -65,7 +66,16 @@ export interface SpecialResultStatProps {
   onHoverChange?: (stat: SpecialStatsKeys | null) => void;
 }
 
+//* HACKING
 export type MemoryDumpProps = {
   leftColumn: string[];
   rightColumn: string[];
+};
+
+export type TerminalIntroProps = {
+  attemptsLeft: number;
+};
+
+export type DumpColumnProps = {
+  lines: string[];
 };

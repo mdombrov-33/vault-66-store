@@ -1,18 +1,28 @@
 "use client";
 import { useState } from "react";
 import { generateLines } from "@/data/profile/hack/memoryDump";
-import MemoryDump from "./MemoryDump";
-import { terminalLines } from "@/data/profile/hack/terminalLines";
+import MemoryDump from "./MemoryDumpGrid";
+import TerminalIntro from "./TerminalIntro";
+
+// const correctPassword = "HUNTER";
 
 export default function HackingTerminal() {
+  // function handleGuess(word: string) {
+  //   if (word !== correctPassword) {
+  //     setAttempts((prev) => Math.max(prev - 1, 0));
+  //     setLog((prevLog) => [`> ${word} - Access Denied`, ...prevLog]);
+  //   } else {
+  //     setLog((prevLog) => [`> ${word} - Access Granted`, ...prevLog]);
+  //   }
+  // }
+
   const [leftRight, setLeftRight] = useState(() => generateLines());
+  // const [attempts, setAttempts] = useState(4);
 
   return (
-    <div className="bg-black text-primary flex flex-col items-center justify-center py-10 px-2 sm:py-20 sm:px-4">
-      <div className="w-full min-h-[300px] sm:h-[800x] max-w-[1900px] border border-primary p-3 sm:p-4 text-md sm:text-lg overflow-hidden shadow-inner shadow-primary/20 bg-[#020202] whitespace-pre font-mono">
-        {terminalLines.map((line, index) => (
-          <div key={`intro-${index}`}>{line}</div>
-        ))}
+    <section className="bg-black text-primary flex flex-col items-center justify-center py-10 px-2 sm:py-20 sm:px-4">
+      <div className="w-full min-h-[200px] sm:h-[800x] max-w-7xl p-3 sm:p-4 text-md sm:text-lg overflow-hidden bg-[#020202] whitespace-pre font-mono">
+        <TerminalIntro />
 
         <div className="mt-2">
           <MemoryDump
@@ -30,6 +40,6 @@ export default function HackingTerminal() {
           Regenerate
         </button>
       </div>
-    </div>
+    </section>
   );
 }
