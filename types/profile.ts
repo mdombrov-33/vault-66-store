@@ -67,10 +67,11 @@ export interface SpecialResultStatProps {
 }
 
 //* HACKING
-export interface MemoryDumpProps {
+export interface MemoryDumpGridProps {
   leftColumn: string[];
   rightColumn: string[];
   onGuess: (word: string) => void;
+  log: string[];
 }
 
 export interface TerminalIntroProps {
@@ -85,4 +86,8 @@ export interface DumpColumnProps {
 export interface LineWithClickableWordsProps {
   line: string;
   onGuess: (word: string) => void;
+}
+
+export interface TerminalLogProps {
+  log: string[];
 }

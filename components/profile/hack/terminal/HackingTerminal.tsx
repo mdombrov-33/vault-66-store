@@ -3,6 +3,7 @@ import { useState } from "react";
 import { generateLines } from "@/components/profile/hack/memory-dump/memoryDump";
 import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
 import TerminalIntro from "./TerminalIntro";
+import TerminalLog from "./TerminalLog";
 
 export default function HackingTerminal() {
   const [leftRight, setLeftRight] = useState(() => generateLines());
@@ -70,8 +71,11 @@ export default function HackingTerminal() {
             leftColumn={gameState.leftColumn}
             rightColumn={gameState.rightColumn}
             onGuess={handleGuess}
+            log={log}
           />
         </div>
+
+        {/* TERMINAL LOG */}
 
         <button
           className="mt-4 px-4 py-2 bg-primary text-black rounded hover:bg-primary/80"
