@@ -100,7 +100,7 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
   }
 
   if (luck <= 3 && charisma <= 3) {
-    return "Neither charming nor lucky—you should probably stay at home.";
+    return "Neither charming nor lucky — you should probably stay at home.";
   }
 
   return null;

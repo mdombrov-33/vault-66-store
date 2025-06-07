@@ -1,21 +1,20 @@
 "use server";
 
-import { currentUser } from "@clerk/nextjs/server";
 import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { renderError } from "@/utils/render-error";
 import { validateZodSchema } from "@/utils/validation/validate-zod-schema";
 import { specialSchema } from "@/utils/validation/schemas";
 import { getAuthUser } from "@/utils/auth/get-user";
+import { calculateSkills } from "../profile/calculate-skills";
 
 //* Creates a new SPECIAL record in the database
 export const createSpecialAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
+  const user = await getAuthUser();
   try {
-    const user = await getAuthUser();
-
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateZodSchema(specialSchema, rawData);
 
@@ -47,7 +46,7 @@ export const createSpecialAction = async (
 
 //* Get SPECIAL record for the user
 export const getSpecialRecord = async () => {
-  const user = await currentUser();
+  const user = await getAuthUser();
 
   const specialRecord = await db.special.findUnique({
     where: {
@@ -56,4 +55,31 @@ export const getSpecialRecord = async () => {
   });
 
   return specialRecord;
+};
+
+//* Syncs the user's skills based on their SPECIAL attributes
+export const syncSkillsFromSpecial = async () => {
+  const user = await getAuthUser();
+
+  try {
+    const special = await getSpecialRecord();
+
+    const skillsData = {
+      ...calculateSkills(special!),
+    };
+
+    const result = await db.skill.upsert({
+      where: {
+        clerkId: user.id,
+      },
+      update: skillsData,
+      create: {
+        ...skillsData,
+        clerkId: user.id,
+      },
+    });
+    return result;
+  } catch (error) {
+    return renderError(error);
+  }
 };
