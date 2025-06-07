@@ -37,6 +37,9 @@ export const createSpecialAction = async (
       },
     });
 
+    //* Calculate and sync skills based on SPECIAL attributes
+    await syncSkillsFromSpecial(user.id);
+
     revalidatePath("/profile/special");
     return { message: "Thanks! Nice to meet you" };
   } catch (error) {
@@ -45,12 +48,10 @@ export const createSpecialAction = async (
 };
 
 //* Get SPECIAL record for the user
-export const getSpecialRecord = async () => {
-  const user = await getAuthUser();
-
+export const getSpecialRecord = async (clerkId: string) => {
   const specialRecord = await db.special.findUnique({
     where: {
-      clerkId: user?.id,
+      clerkId,
     },
   });
 
@@ -58,24 +59,25 @@ export const getSpecialRecord = async () => {
 };
 
 //* Syncs the user's skills based on their SPECIAL attributes
-export const syncSkillsFromSpecial = async () => {
-  const user = await getAuthUser();
-
+export const syncSkillsFromSpecial = async (clerkId: string) => {
   try {
-    const special = await getSpecialRecord();
+    const special = await getSpecialRecord(clerkId);
 
     const skillsData = {
       ...calculateSkills(special!),
     };
 
+    // console.log("DB Object Keys:", Object.keys(db));
+    // console.log("db.skill:", db.skill);
+
     const result = await db.skill.upsert({
       where: {
-        clerkId: user.id,
+        clerkId,
       },
       update: skillsData,
       create: {
         ...skillsData,
-        clerkId: user.id,
+        clerkId,
       },
     });
     return result;

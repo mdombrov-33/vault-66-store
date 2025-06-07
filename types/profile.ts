@@ -78,6 +78,7 @@ export interface MemoryDumpGridProps {
 
 export interface TerminalIntroProps {
   attemptsLeft: number;
+  resetGame: () => void;
 }
 
 export interface DumpColumnProps {
