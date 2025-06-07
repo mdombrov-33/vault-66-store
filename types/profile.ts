@@ -118,3 +118,13 @@ export type Skills = {
   unarmed: number;
   survival: number;
 };
+export type GoatQuestion = {
+  id: number;
+  question: string;
+  image?: string;
+  answers: {
+    id: string; //* A, B, C, D
+    text: string;
+    tags?: string[]; //* optional skill tags for backend skill boosts, e.g. ["barter", "speech"]
+  }[];
+};
