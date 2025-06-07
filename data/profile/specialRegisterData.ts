@@ -2,6 +2,7 @@ import StrengthIcon from "@/public/images/special/strength.png";
 import EnduranceIcon from "@/public/images/special/endurance.png";
 import CharismaIcon from "@/public/images/special/charisma.png";
 import LuckIcon from "@/public/images/special/luck.png";
+import IntelligenceIcon from "@/public/images/special/intelligence.png";
 
 export const specialRegisterData = [
   {
@@ -28,12 +29,12 @@ export const specialRegisterData = [
       "Measures your social presence. Perfect for bartering, leading group activities, or persuading Overseers — if that’s your thing.",
     icon: CharismaIcon,
   },
-  //   {
-  //     name: "intelligence",
-  //     description:
-  //       "Your mental sharpness and problem-solving skills. Vault-tec recommends high intelligence for technical roles and advanced maintenance.",
-  //     icon: IntelligenceIcon,
-  //   },
+  {
+    name: "intelligence",
+    description:
+      "Your mental sharpness and problem-solving skills. Vault-tec recommends high intelligence for technical roles and advanced maintenance.",
+    icon: IntelligenceIcon,
+  },
   //   {
   //     name: "agility",
   //     description:
