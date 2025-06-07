@@ -6,7 +6,6 @@ function LineWithClickableWords({
   line,
   onGuess,
 }: LineWithClickableWordsProps) {
-  console.log("Rendering line:", line);
   return (
     <>
       {line.split(/(\[.*?\])/).map((part, idx) => {

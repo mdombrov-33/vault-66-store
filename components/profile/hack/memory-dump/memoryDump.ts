@@ -1,24 +1,7 @@
-const WORDS = [
-  "TIGERS",
-  "BOTTLE",
-  "GLOBAL",
-  "HUNTER",
-  "ROCKET",
-  "SYSTEM",
-  "VAULTS",
-  "PIRATE",
-  "RADIO",
-  "TERMINAL",
-  "VAULT",
-  "FALLOUT",
-  "SOLDIER",
-  "GAMER",
-  "MUTANT",
-  "CAPS",
-];
+import { GUESSING_WORDS } from "@/data/profile/hack/hack-words";
 
 function randomChar() {
-  const chars = "}*%$>+@!^&#()&$#@!";
+  const chars = "}*%$>+!^&#()&$#!";
   return chars[Math.floor(Math.random() * chars.length)];
 }
 
@@ -56,8 +39,10 @@ export function generateLines() {
       (168 + i * 0x10).toString(16).toUpperCase().padStart(2, "0") +
       ": ";
 
-    const leftWord = WORDS[Math.floor(Math.random() * WORDS.length)];
-    const rightWord = WORDS[Math.floor(Math.random() * WORDS.length)];
+    const leftWord =
+      GUESSING_WORDS[Math.floor(Math.random() * GUESSING_WORDS.length)];
+    const rightWord =
+      GUESSING_WORDS[Math.floor(Math.random() * GUESSING_WORDS.length)];
 
     leftColumn.push(embedWord(leftAddr, leftWord, TOTAL_LINE_LENGTH));
     rightColumn.push(embedWord(rightAddr, rightWord, TOTAL_LINE_LENGTH));
