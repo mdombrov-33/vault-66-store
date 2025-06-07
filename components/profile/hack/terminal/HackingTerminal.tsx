@@ -3,7 +3,7 @@ import { useState } from "react";
 import { generateLines } from "@/components/profile/hack/memory-dump/memoryDump";
 import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
 import TerminalIntro from "./TerminalIntro";
-import TerminalLog from "./TerminalLog";
+import { Button } from "@/components/ui/button";
 
 export default function HackingTerminal() {
   const [leftRight, setLeftRight] = useState(() => generateLines());
@@ -65,7 +65,6 @@ export default function HackingTerminal() {
     <section className="bg-black text-primary flex flex-col items-center justify-center px-2  sm:px-4">
       <div className="w-full min-h-[200px] sm:h-[px] max-w-7xl p-3 sm:p-4 text-md sm:text-lg overflow-hidden bg-[#020202] whitespace-pre font-mono">
         <TerminalIntro attemptsLeft={attemptsLeft} />
-
         <div className="mt-2">
           <MemoryDumpGrid
             leftColumn={gameState.leftColumn}
@@ -75,14 +74,15 @@ export default function HackingTerminal() {
           />
         </div>
 
-        {/* TERMINAL LOG */}
-
-        <button
-          className="mt-4 px-4 py-2 bg-primary text-black rounded hover:bg-primary/80"
-          onClick={resetGame}
-        >
-          Regenerate
-        </button>
+        {attemptsLeft === 0 && (
+          <Button
+            className="mt-4 px-4 py-2 bg-primary text-black rounded hover:bg-primary/80 text-lg"
+            onClick={resetGame}
+            size={"lg"}
+          >
+            Try Again
+          </Button>
+        )}
       </div>
     </section>
   );
