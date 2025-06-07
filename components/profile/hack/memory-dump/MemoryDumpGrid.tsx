@@ -4,9 +4,9 @@ import DumpColumn from "./DumpColumn";
 
 function MemoryDumpGrid({ leftColumn, rightColumn, onGuess }: MemoryDumpProps) {
   return (
-    <div className="grid grid-cols-5 gap-4 sm:gap-6 leading-tight text-primary text-sm md:text-xl mt-6 whitespace-pre">
+    <div className="grid grid-cols-4 gap-4 sm:gap-6 leading-tight text-primary text-sm md:text-xl mt-6 whitespace-pre">
       {/* WORD GUESS */}
-      <div className="col-span-4 grid grid-cols-2 gap-x-8">
+      <div className="col-span-3 grid grid-cols-2 gap-x-8">
         <DumpColumn lines={leftColumn} onGuess={onGuess} />
         <DumpColumn lines={rightColumn} onGuess={onGuess} />
       </div>

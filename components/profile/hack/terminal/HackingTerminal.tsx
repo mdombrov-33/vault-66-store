@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { generateLines } from "@/components/profile/hack/memory-dump/memoryDump";
-import MemoryDump from "../memory-dump/MemoryDumpGrid";
+import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
 import TerminalIntro from "./TerminalIntro";
 
 export default function HackingTerminal() {
@@ -62,11 +62,11 @@ export default function HackingTerminal() {
 
   return (
     <section className="bg-black text-primary flex flex-col items-center justify-center px-2  sm:px-4">
-      <div className="w-full min-h-[200px] sm:h-[800px] max-w-7xl p-3 sm:p-4 text-md sm:text-lg overflow-hidden bg-[#020202] whitespace-pre font-mono">
+      <div className="w-full min-h-[200px] sm:h-[px] max-w-7xl p-3 sm:p-4 text-md sm:text-lg overflow-hidden bg-[#020202] whitespace-pre font-mono">
         <TerminalIntro attemptsLeft={attemptsLeft} />
 
         <div className="mt-2">
-          <MemoryDump
+          <MemoryDumpGrid
             leftColumn={gameState.leftColumn}
             rightColumn={gameState.rightColumn}
             onGuess={handleGuess}

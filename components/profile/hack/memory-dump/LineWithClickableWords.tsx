@@ -17,7 +17,7 @@ function LineWithClickableWords({
           <button
             key={idx}
             onClick={() => onGuess(word)}
-            className="all-none cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-foreground"
+            className="all-none cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-[var(--hacking-text)]"
           >
             {word}
           </button>

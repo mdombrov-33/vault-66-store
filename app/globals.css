@@ -92,6 +92,8 @@
 
   --sidebar-disabled-muted: rgb(217, 207, 182);
   --sidebar-disabled-muted-foreground: rgb(88, 75, 50);
+
+  --hacking-text: rgb(45, 35, 10);
 }
 
 .dark {
@@ -144,6 +146,8 @@
 
   --sidebar-disabled-muted: rgb(23, 41, 20);
   --sidebar-disabled-muted-foreground: (78, 161, 114);
+
+  --hacking-text: rgb(0, 0, 0);
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
