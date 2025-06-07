@@ -37,11 +37,11 @@ export default function GoatPage() {
     return (
       <div className="flex flex-col items-center justify-center text-center gap-6">
         <Image
-          width={300}
-          height={200}
+          width={500}
+          height={500}
           src="/images/goat/welcome.png"
           alt="Vault 66 Welcome"
-          className="shadow-lg rounded-lg"
+          className="shadow-lg rounded-lg border border-muted"
         />
         <h2 className="text-6xl font-bold font-vault">Welcome to Vault-66</h2>
         <p className="text-3xl font-mono text-muted-foreground max-w-2xl">
@@ -88,7 +88,7 @@ export default function GoatPage() {
       <div className="min-h-[500px] space-y-10">
         {/* Question Header */}
         <div className="text-center space-y-4">
-          <span className="text-xl font-mono text-muted-foreground">
+          <span className="text-xl font-[roboto-mono] text-muted-foreground">
             Question {currentQuestionIndex + 1} of {goatQuestions.length}
           </span>
           <h3 className="text-3xl font-bold font-[roboto-mono]">
@@ -117,7 +117,7 @@ export default function GoatPage() {
                 onClick={() => handleAnswer(key)}
                 variant={isSelected ? "default" : "outline"}
                 className={cn(
-                  "text-left justify-start text-base h-auto p-4 font-mono whitespace-normal break-words",
+                  "text-left justify-start text-base h-auto p-4 font-[roboto-mono] whitespace-normal break-words",
                   isSelected && "ring-2 ring-primary"
                 )}
               >
