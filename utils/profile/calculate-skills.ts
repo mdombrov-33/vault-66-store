@@ -1,5 +1,3 @@
-import { specialSchema } from "../validation/schemas";
-import z from "zod";
 import { Skills, SpecialStats } from "../../types/profile";
 
 export function calculateSkills({
