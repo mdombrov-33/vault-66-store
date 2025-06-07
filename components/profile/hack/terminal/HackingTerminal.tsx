@@ -8,8 +8,6 @@ export default function HackingTerminal() {
   const { gameState, attemptsLeft, log, handleGuess, resetGame, gameOver } =
     useHackingGame(5);
 
-  console.log(gameState.correctPassword);
-
   return (
     <section className="bg-black text-primary flex flex-col items-center justify-center px-2  sm:px-4">
       <div className="w-full min-h-[200px] sm:h-[px] max-w-7xl p-3 sm:p-4 text-md sm:text-lg overflow-hidden bg-[#020202] whitespace-pre font-mono">
