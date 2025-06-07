@@ -8,7 +8,7 @@ import {
   getLuckText,
   getPerceptionText,
   getStrengthText,
-} from "@/utils/text/specialResultText";
+} from "@/utils/text/special-result-text";
 
 function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
   const {

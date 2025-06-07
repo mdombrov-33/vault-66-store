@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateLines } from "@/components/profile/hack/memory-dump/memoryDump";
+import { generateLines } from "@/components/profile/hack/memory-dump/memory-dump";
 
 export function useHackingGame(initialAttempts = 5) {
   function initGame() {
