@@ -30,7 +30,7 @@ function MemoryDumpGrid({
       </div>
 
       <div className="col-span-1 pl-4 break-words whitespace-pre-wrap">
-        <TerminalLog onWordHover={onWordHover} log={log} />
+        <TerminalLog gameOver={gameOver} onWordHover={onWordHover} log={log} />
       </div>
     </div>
   );

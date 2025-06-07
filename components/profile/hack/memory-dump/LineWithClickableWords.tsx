@@ -24,7 +24,7 @@ function LineWithClickableWords({
             }}
             onMouseLeave={() => {
               if (!gameOver) {
-                setOnWordHover(word);
+                setOnWordHover(null);
               }
             }}
             key={idx}

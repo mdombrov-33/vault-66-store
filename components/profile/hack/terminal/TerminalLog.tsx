@@ -1,6 +1,6 @@
 import { TerminalLogProps } from "@/types/profile";
 
-function TerminalLog({ log, onWordHover }: TerminalLogProps) {
+function TerminalLog({ log, onWordHover, gameOver }: TerminalLogProps) {
   return (
     <div className="">
       {log.map((entry, i) => (
@@ -8,7 +8,7 @@ function TerminalLog({ log, onWordHover }: TerminalLogProps) {
           {entry}
         </p>
       ))}
-      {onWordHover && (
+      {!gameOver && onWordHover && (
         <p className="text-lg text-primary">{`> ${onWordHover}`}</p>
       )}
     </div>

@@ -97,4 +97,5 @@ export interface LineWithClickableWordsProps {
 export interface TerminalLogProps {
   log: string[];
   onWordHover: string | null;
+  gameOver: boolean;
 }
