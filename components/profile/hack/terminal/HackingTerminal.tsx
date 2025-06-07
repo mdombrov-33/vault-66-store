@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { generateLines } from "@/data/profile/hack/memoryDump";
-import MemoryDump from "./MemoryDumpGrid";
+import { generateLines } from "@/components/profile/hack/memory-dump/memoryDump";
+import MemoryDump from "../memory-dump/MemoryDumpGrid";
 import TerminalIntro from "./TerminalIntro";
 
 // const correctPassword = "HUNTER";

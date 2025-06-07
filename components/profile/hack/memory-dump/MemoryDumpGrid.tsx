@@ -1,5 +1,5 @@
 import { MemoryDumpProps } from "@/types/profile";
-import TerminalLog from "./TerminalLog";
+import TerminalLog from "../terminal/TerminalLog";
 import DumpColumn from "./DumpColumn";
 
 export default function MemoryDump({

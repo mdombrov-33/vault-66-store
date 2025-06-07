@@ -1,4 +1,4 @@
-import HackingTerminal from "@/components/profile/hack/HackingTerminal";
+import HackingTerminal from "@/components/profile/hack/terminal/HackingTerminal";
 
 function HackPage() {
   return <HackingTerminal />;
