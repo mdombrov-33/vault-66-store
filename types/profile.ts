@@ -99,3 +99,21 @@ export interface TerminalLogProps {
   onWordHover: string | null;
   gameOver: boolean;
 }
+
+//* GOAT
+export type Skills = {
+  barter: number;
+  bigGuns: number;
+  energyWeapons: number;
+  explosives: number;
+  lockpick: number;
+  medicine: number;
+  meleeWeapons: number;
+  repair: number;
+  science: number;
+  smallGuns: number;
+  sneak: number;
+  speech: number;
+  unarmed: number;
+  survival: number;
+};
