@@ -68,12 +68,16 @@ export interface SpecialResultStatProps {
 }
 
 //* HACKING
-export interface MemoryDumpGridProps {
+export interface HackingGameBaseProps {
+  onGuess: (word: string) => boolean;
+  gameOver: boolean;
+  log: string[];
+  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+export interface MemoryDumpGridProps extends HackingGameBaseProps {
   leftColumn: string[];
   rightColumn: string[];
-  onGuess: (word: string) => boolean;
-  log: string[];
-  gameOver: boolean;
 }
 
 export interface TerminalIntroProps {
@@ -81,24 +85,18 @@ export interface TerminalIntroProps {
   resetGame: () => void;
 }
 
-export interface DumpColumnProps {
+export interface DumpColumnProps extends Omit<HackingGameBaseProps, "log"> {
   lines: string[];
-  onGuess: (word: string) => boolean;
-  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
-  gameOver: boolean;
 }
 
-export interface LineWithClickableWordsProps {
+export interface LineWithClickableWordsProps
+  extends Omit<HackingGameBaseProps, "log"> {
   line: string;
-  onGuess: (word: string) => boolean;
-  setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
-  gameOver: boolean;
 }
 
-export interface TerminalLogProps {
-  log: string[];
+export interface TerminalLogProps
+  extends Pick<HackingGameBaseProps, "log" | "gameOver"> {
   onWordHover: string | null;
-  gameOver: boolean;
 }
 
 //* GOAT
