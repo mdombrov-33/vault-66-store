@@ -33,7 +33,9 @@ export interface SpecialRegisterProps extends SpecialHoverProps {
 }
 
 export type SpecialRegisterLeftColumnProps = SpecialRegisterProps;
-export type SpecialRegisterRightColumnProps = SpecialHoverProps;
+export interface SpecialRegisterRightColumnProps {
+  hoveredStat: SpecialStatsKeys | null;
+}
 
 export interface SpecialRegisterHeaderProps {
   remainingPoints: number;
