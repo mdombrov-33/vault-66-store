@@ -49,8 +49,8 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
         </p>
       </div>
 
-      <div className="text-sm sm:text-base text-muted-foreground font-[roboto-mono] text-center italic">
-        <p className="text-3xl">
+      <div className="w-full">
+        <p className="text-xl text-muted-foreground font-[roboto-mono] text-center italic ">
           Thank you. You may proceed to the G.O.A.T. evaluation.
         </p>
       </div>
