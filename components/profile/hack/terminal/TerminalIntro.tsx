@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TerminalIntroProps } from "@/types/profile";
 import { TypeAnimation } from "react-type-animation";
-import { hackingScrollSrc } from "@/data/sounds/hacking-sounds";
 import ResetBtn from "./ResetBtn";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 const MAX_ATTEMPTS = 4;
 
@@ -12,7 +12,7 @@ const TerminalIntro = ({
   setOnWordHover,
 }: TerminalIntroProps) => {
   const [animationDone, setAnimationDone] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { playTypingLoop, stopTypingLoop } = useSoundPlayer();
 
   const blocks = Array.from({ length: MAX_ATTEMPTS }, (_, i) =>
     i < attemptsLeft ? "▮" : "▯"
@@ -20,29 +20,11 @@ const TerminalIntro = ({
 
   useEffect(() => {
     if (!animationDone) {
-      const randomIndex = Math.floor(Math.random() * hackingScrollSrc.length);
-      const soundSrc = hackingScrollSrc[randomIndex];
-
-      if (!audioRef.current) {
-        audioRef.current = new Audio(soundSrc);
-        audioRef.current.loop = true;
-        audioRef.current.volume = 0.2;
-      } else {
-        if (audioRef.current.src !== window.location.origin + soundSrc) {
-          audioRef.current.src = soundSrc;
-        }
-      }
-
-      audioRef.current.play().catch((e) => {
-        console.log("Audio play failed:", e);
-      });
+      playTypingLoop();
     } else {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
+      stopTypingLoop();
     }
-  }, [animationDone]);
+  }, [animationDone, playTypingLoop, stopTypingLoop]);
 
   return (
     <section

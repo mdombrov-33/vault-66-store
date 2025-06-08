@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 import { SpecialRegisterInputProps } from "@/types/profile";
 import { cn } from "@/utils/cn";
 import { Minus, Plus } from "lucide-react";
@@ -15,13 +16,18 @@ function SpecialRegisterInput({
   onHoverChange,
   hoveredStat,
 }: SpecialRegisterInputProps) {
+  const { playHover, playClick } = useSoundPlayer();
+
   return (
     <div
       className={cn(
         "flex flex-wrap items-center gap-2 sm:gap-4 px-2",
         hoveredStat === name && "bg-primary/20 rounded-md"
       )}
-      onMouseEnter={() => onHoverChange?.(name)}
+      onMouseEnter={() => {
+        playHover();
+        onHoverChange?.(name);
+      }}
       onMouseLeave={() => onHoverChange?.(null)}
     >
       <label
@@ -35,7 +41,10 @@ function SpecialRegisterInput({
       <Button
         type="button"
         variant="ghost"
-        onClick={() => onDecrement(name)}
+        onClick={() => {
+          playClick();
+          onDecrement(name);
+        }}
         disabled={value <= min}
         aria-label={`Decrease ${name}`}
       >
@@ -54,7 +63,10 @@ function SpecialRegisterInput({
       <Button
         type="button"
         variant="ghost"
-        onClick={() => onIncrement(name)}
+        onClick={() => {
+          playClick();
+          onIncrement(name);
+        }}
         disabled={value >= max}
         aria-label={`Increase ${name}`}
       >

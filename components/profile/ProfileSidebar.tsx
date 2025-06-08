@@ -6,6 +6,7 @@ import { PROFILE_LINKS } from "@/data/nav";
 import Link from "next/link";
 import { SpecialRecord } from "@/types/profile";
 import { cn } from "@/utils/cn";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function ProfileSidebar({
   specialRecord,
@@ -13,6 +14,10 @@ function ProfileSidebar({
   specialRecord?: SpecialRecord | null;
 }) {
   const pathname = usePathname();
+  {
+  }
+
+  const { playClick } = useSoundPlayer();
 
   return (
     <aside>
@@ -25,6 +30,9 @@ function ProfileSidebar({
         return (
           <Button
             asChild
+            onClick={() => {
+              playClick();
+            }}
             className={cn(
               "w-full mb-2 capitalize font-normal justify-start text-xl",
               isDisabledGoat &&
