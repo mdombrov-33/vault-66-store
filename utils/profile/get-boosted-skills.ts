@@ -32,7 +32,7 @@ export function getBoostedSkills(
 
     for (const tag of answer.tags) {
       if (tag in boostedSkills) {
-        boostedSkills[tag as keyof Skills] += 5;
+        boostedSkills[tag as keyof Skills] += 8;
       }
     }
   }
