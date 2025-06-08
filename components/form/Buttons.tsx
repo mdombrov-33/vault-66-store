@@ -17,6 +17,7 @@ export function SubmitButton({
   size = "lg",
   disabled = false,
   loadingText = "Please wait...",
+  onClick = () => {},
 }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
@@ -26,6 +27,7 @@ export function SubmitButton({
       disabled={pending || disabled}
       className={cn("capitalize", className)}
       size={size}
+      onClick={onClick}
     >
       {pending ? (
         <>

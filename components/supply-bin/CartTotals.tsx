@@ -1,12 +1,16 @@
+"use client";
+
 import { Card, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { createOrderAction } from "@/utils/actions/order";
 import FormContainer from "@/components/form/FormContainer";
 import { SubmitButton } from "@/components/form/Buttons";
 import { Cart } from "@/lib/generated/prisma/client";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function CartTotals({ cart }: { cart: Cart }) {
   const { cartTotal, shipping, tax, orderTotal } = cart;
+  const { playClick } = useSoundPlayer();
 
   return (
     <div>
@@ -23,6 +27,7 @@ function CartTotals({ cart }: { cart: Cart }) {
           text="Send Barter Request"
           className="mt-8 w-full text-3xl"
           loadingText="Initiating Trade Protocol..."
+          onClick={() => playClick()}
         />
       </FormContainer>
     </div>

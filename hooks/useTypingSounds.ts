@@ -5,6 +5,7 @@ import {
   spacebarSoundSrc,
 } from "@/data/sounds/typing-sounds";
 
+//* Typing sounds for chat and nav search
 export function useTypingSounds() {
   const soundIndex = useRef(0);
   const enterSound = useRef(new Audio(enterSoundSrc));

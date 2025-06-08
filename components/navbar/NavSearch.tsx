@@ -3,6 +3,7 @@ import { Input } from "../ui/input";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { useState, useEffect } from "react";
+import { useTypingSounds } from "@/hooks/useTypingSounds";
 
 function NavSearch() {
   const searchParams = useSearchParams();
@@ -10,6 +11,8 @@ function NavSearch() {
   const [search, setSearch] = useState(
     searchParams.get("search")?.toString() || ""
   );
+
+  const { playTypingSound } = useTypingSounds();
 
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -36,6 +39,7 @@ function NavSearch() {
       onChange={(e) => {
         setSearch(e.target.value);
         handleSearch(e.target.value);
+        playTypingSound();
       }}
     />
   );

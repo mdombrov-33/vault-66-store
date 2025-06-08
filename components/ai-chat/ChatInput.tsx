@@ -1,6 +1,6 @@
 import { ChatInputProps } from "@/types/ai-chat";
 import { Textarea } from "@/components/ui/textarea";
-import { useTypingSounds } from "./hooks/useTypingSounds";
+import { useTypingSounds } from "../../hooks/useTypingSounds";
 
 function ChatInput({
   input,

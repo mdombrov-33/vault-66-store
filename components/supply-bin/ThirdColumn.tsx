@@ -9,6 +9,7 @@ import {
   updateCartItemAction,
 } from "@/utils/actions/cart";
 import { toast } from "sonner";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function ThirdColumn({
   quantity,
@@ -19,6 +20,7 @@ function ThirdColumn({
 }) {
   const [amount, setAmount] = useState(quantity);
   const [isLoading, setIsLoading] = useState(false);
+  const { playClick } = useSoundPlayer();
 
   const handleAmountChange = async (value: number) => {
     setIsLoading(true);
@@ -47,7 +49,12 @@ function ThirdColumn({
       />
       <FormContainer action={removeCartItemAction}>
         <input type="hidden" name="cartItemId" value={cartItemId} />
-        <SubmitButton size="sm" className="mt-4 text-2xl" text="remove" />
+        <SubmitButton
+          size="sm"
+          className="mt-4 text-2xl"
+          text="remove"
+          onClick={() => playClick()}
+        />
       </FormContainer>
     </div>
   );

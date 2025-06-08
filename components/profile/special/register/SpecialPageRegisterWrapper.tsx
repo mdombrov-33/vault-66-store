@@ -8,10 +8,12 @@ import SpecialRegisterHeader from "@/components/profile/special/register/Special
 import { createSpecialAction } from "@/utils/actions/special";
 import { useState } from "react";
 import { SpecialStats, SpecialStatsKeys } from "@/types/profile";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 const TOTAL_POINTS = 28;
 
 function SpecialPageWrapper() {
+  const { playClick } = useSoundPlayer();
   const [hoveredStat, setHoveredStat] = useState<SpecialStatsKeys | null>(null);
   const [specialStats, setSpecialStats] = useState<SpecialStats>({
     strength: 1,
@@ -48,6 +50,7 @@ function SpecialPageWrapper() {
             <SubmitButton
               text="Submit S.P.E.C.I.A.L."
               className="text-xl sm:text-2xl mt-12 uppercase"
+              onClick={() => playClick()}
             />
           </div>
         </FormContainer>
