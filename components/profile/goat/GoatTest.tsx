@@ -6,14 +6,14 @@ import GoatIntro from "./GoatIntro";
 import GoatQuestion from "./GoatQuestion";
 import GoatAnswers from "./GoatAnswers";
 import GoatResults from "./GoatResults";
+import { GoatResultProps } from "@/types/profile";
 
-function GoatTest() {
+function GoatTest({ skills }: GoatResultProps) {
   const [hasStarted, setHasStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [isCompleted, setIsCompleted] = useState(false);
   const currentQuestion = goatQuestions[currentQuestionIndex];
-  console.log(answers);
 
   const handleStart = () => {
     setHasStarted(true);
@@ -24,7 +24,7 @@ function GoatTest() {
   }
 
   if (isCompleted) {
-    return <GoatResults />;
+    return <GoatResults skills={skills} />;
   }
 
   return (

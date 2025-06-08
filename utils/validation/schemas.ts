@@ -116,3 +116,21 @@ export const specialSchema = z
       message: "You can only allocate 21 points above the base value of 7",
     }
   );
+
+//* This schema is used to validate user's skills.
+export const skillSchema = z.object({
+  barter: z.number().int().min(0).max(100),
+  bigGuns: z.number().int().min(0).max(100),
+  energyWeapons: z.number().int().min(0).max(100),
+  explosives: z.number().int().min(0).max(100),
+  lockpick: z.number().int().min(0).max(100),
+  medicine: z.number().int().min(0).max(100),
+  meleeWeapons: z.number().int().min(0).max(100),
+  repair: z.number().int().min(0).max(100),
+  science: z.number().int().min(0).max(100),
+  sneak: z.number().int().min(0).max(100),
+  speech: z.number().int().min(0).max(100),
+  smallGuns: z.number().int().min(0).max(100),
+  unarmed: z.number().int().min(0).max(100),
+  survival: z.number().int().min(0).max(100),
+});

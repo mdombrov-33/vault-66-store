@@ -1,4 +1,4 @@
-import { specialSchema } from "@/utils/validation/schemas";
+import { skillSchema, specialSchema } from "@/utils/validation/schemas";
 import React from "react";
 import { z } from "zod";
 
@@ -110,22 +110,11 @@ export interface TerminalLogProps
 }
 
 //* GOAT
-export type Skills = {
-  barter: number;
-  bigGuns: number;
-  energyWeapons: number;
-  explosives: number;
-  lockpick: number;
-  medicine: number;
-  meleeWeapons: number;
-  repair: number;
-  science: number;
-  smallGuns: number;
-  sneak: number;
-  speech: number;
-  unarmed: number;
-  survival: number;
-};
+export type Skills = z.infer<typeof skillSchema>;
+
+export interface GoatResultProps {
+  skills: Skills | null;
+}
 
 export type GoatQuestion = {
   id: number;

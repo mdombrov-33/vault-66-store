@@ -6,7 +6,7 @@ import { renderError } from "@/utils/render-error";
 import { validateZodSchema } from "@/utils/validation/validate-zod-schema";
 import { specialSchema } from "@/utils/validation/schemas";
 import { getAuthUser } from "@/utils/auth/get-user";
-import { calculateSkills } from "../profile/calculate-skills";
+import { syncSkillsFromSpecial } from "./goat";
 
 //* Creates a new SPECIAL record in the database
 export const createSpecialAction = async (
@@ -37,7 +37,6 @@ export const createSpecialAction = async (
       },
     });
 
-    //* Calculate and sync skills based on SPECIAL attributes
     await syncSkillsFromSpecial(user.id);
 
     revalidatePath("/profile/special");
@@ -56,32 +55,4 @@ export const getSpecialRecord = async (clerkId: string) => {
   });
 
   return specialRecord;
-};
-
-//* Syncs the user's skills based on their SPECIAL attributes
-export const syncSkillsFromSpecial = async (clerkId: string) => {
-  try {
-    const special = await getSpecialRecord(clerkId);
-
-    const skillsData = {
-      ...calculateSkills(special!),
-    };
-
-    // console.log("DB Object Keys:", Object.keys(db));
-    // console.log("db.skill:", db.skill);
-
-    const result = await db.skill.upsert({
-      where: {
-        clerkId,
-      },
-      update: skillsData,
-      create: {
-        ...skillsData,
-        clerkId,
-      },
-    });
-    return result;
-  } catch (error) {
-    return renderError(error);
-  }
 };

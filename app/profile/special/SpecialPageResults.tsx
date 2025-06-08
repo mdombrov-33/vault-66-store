@@ -4,7 +4,7 @@ import { SpecialPageResultsProps } from "@/types/profile";
 
 function SpecialPageResults({ specialRecord }: SpecialPageResultsProps) {
   return (
-    <section className="max-w-5xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section className="max-w-5xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 -mt-4">
       {/* Left Column: SPECIAL Results */}
       <div className="bg-primary/10 rounded-lg p-4 shadow-md flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold uppercase mb-4 tracking-wider">
