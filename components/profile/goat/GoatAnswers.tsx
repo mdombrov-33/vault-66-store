@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { goatQuestions } from "@/data/profile/goat/goat-questions";
 import { GoatAnswersProps } from "@/types/profile";
-import { cn } from "@/utils/cn";
 
 function GoatAnswers({
   setAnswers,
@@ -22,7 +21,7 @@ function GoatAnswers({
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
       {Object.entries(currentQuestion.answers).map(([key, answer]) => {
         return (
           <Button
@@ -31,9 +30,7 @@ function GoatAnswers({
               handleAnswer(key);
             }}
             variant="ghost"
-            className={cn(
-              "text-center  text-base h-auto p-4 font-[roboto-mono] whitespace-normal break-words"
-            )}
+            className="text-center text-lg md:text-xl h-auto p-4 font-[roboto-mono] whitespace-normal break-words"
           >
             {answer.text}
           </Button>
