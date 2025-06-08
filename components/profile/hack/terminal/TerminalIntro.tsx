@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { TerminalIntroProps } from "@/types/profile";
 import { TypeAnimation } from "react-type-animation";
 import { hackingScrollSrc } from "@/data/sounds/hacking-sounds";
-import { Button } from "@/components/ui/button";
 import ResetBtn from "./ResetBtn";
 
-const MAX_ATTEMPTS = 5;
+const MAX_ATTEMPTS = 4;
 
 const TerminalIntro = ({ attemptsLeft, resetGame }: TerminalIntroProps) => {
   const [animationDone, setAnimationDone] = useState(false);

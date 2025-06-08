@@ -29,7 +29,8 @@ export function generateLines() {
   const rightColumn: string[] = [];
   const allWords: string[] = [];
 
-  for (let i = 0; i < 20; i++) {
+  //* 15 lines
+  for (let i = 0; i < 16; i++) {
     const leftAddr =
       "0xF4" +
       (160 + i * 0x10).toString(16).toUpperCase().padStart(2, "0") +
