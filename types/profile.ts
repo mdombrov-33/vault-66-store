@@ -112,8 +112,12 @@ export interface TerminalLogProps
 //* GOAT
 export type Skills = z.infer<typeof skillSchema>;
 
-export interface GoatResultProps {
+export interface GoatSkillsProps {
   skills: Skills | null;
+}
+
+export interface GoatResultProps extends GoatSkillsProps {
+  answers: Record<number, string>;
 }
 
 export type GoatQuestion = {

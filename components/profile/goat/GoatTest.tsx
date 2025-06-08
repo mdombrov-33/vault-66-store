@@ -6,9 +6,9 @@ import GoatIntro from "./GoatIntro";
 import GoatQuestion from "./GoatQuestion";
 import GoatAnswers from "./GoatAnswers";
 import GoatResults from "./GoatResults";
-import { GoatResultProps } from "@/types/profile";
+import { GoatSkillsProps } from "@/types/profile";
 
-function GoatTest({ skills }: GoatResultProps) {
+function GoatTest({ skills }: GoatSkillsProps) {
   const [hasStarted, setHasStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -24,7 +24,7 @@ function GoatTest({ skills }: GoatResultProps) {
   }
 
   if (isCompleted) {
-    return <GoatResults skills={skills} />;
+    return <GoatResults answers={answers} skills={skills} />;
   }
 
   return (
