@@ -68,29 +68,43 @@ export interface SpecialResultStatProps {
 }
 
 //* HACKING
-export interface HackingGameBaseProps {
+interface HackingGameBaseProps {
   onGuess: (word: string) => boolean;
   gameOver: boolean;
   log: string[];
+}
+
+interface HackingHoverProps {
+  onWordHover: string | null;
   setOnWordHover: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-export interface MemoryDumpGridProps extends HackingGameBaseProps {
+export interface MemoryDumpGridProps
+  extends HackingGameBaseProps,
+    HackingHoverProps {
   leftColumn: string[];
   rightColumn: string[];
 }
 
-export interface TerminalIntroProps {
+export interface TerminalIntroProps
+  extends Pick<HackingHoverProps, "setOnWordHover"> {
   attemptsLeft: number;
   resetGame: () => void;
 }
 
-export interface DumpColumnProps extends Omit<HackingGameBaseProps, "log"> {
+export type ResetBtnProps = Pick<
+  TerminalIntroProps,
+  "resetGame" | "setOnWordHover"
+>;
+
+export interface DumpColumnProps
+  extends Omit<HackingGameBaseProps, "log">,
+    Pick<HackingHoverProps, "setOnWordHover"> {
   lines: string[];
 }
-
 export interface LineWithClickableWordsProps
-  extends Omit<HackingGameBaseProps, "log"> {
+  extends Omit<HackingGameBaseProps, "log">,
+    Pick<HackingHoverProps, "setOnWordHover"> {
   line: string;
 }
 
@@ -116,6 +130,7 @@ export type Skills = {
   unarmed: number;
   survival: number;
 };
+
 export type GoatQuestion = {
   id: number;
   question: string;

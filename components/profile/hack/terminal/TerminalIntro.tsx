@@ -6,7 +6,11 @@ import ResetBtn from "./ResetBtn";
 
 const MAX_ATTEMPTS = 4;
 
-const TerminalIntro = ({ attemptsLeft, resetGame }: TerminalIntroProps) => {
+const TerminalIntro = ({
+  attemptsLeft,
+  resetGame,
+  setOnWordHover,
+}: TerminalIntroProps) => {
   const [animationDone, setAnimationDone] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -79,7 +83,9 @@ const TerminalIntro = ({ attemptsLeft, resetGame }: TerminalIntroProps) => {
       </div>
 
       {/* Right: retry button */}
-      {attemptsLeft === 0 && <ResetBtn resetGame={resetGame} />}
+      {attemptsLeft === 0 && (
+        <ResetBtn setOnWordHover={setOnWordHover} resetGame={resetGame} />
+      )}
     </section>
   );
 };
