@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SpecialRegisterInputProps } from "@/types/profile";
 import { cn } from "@/utils/cn";
-import { FormSpecialRegisterInput } from "@/types/profile";
 import { Minus, Plus } from "lucide-react";
 
 function SpecialRegisterInput({
@@ -14,7 +14,7 @@ function SpecialRegisterInput({
   onDecrement,
   onHoverChange,
   hoveredStat,
-}: FormSpecialRegisterInput) {
+}: SpecialRegisterInputProps) {
   return (
     <div
       className={cn(

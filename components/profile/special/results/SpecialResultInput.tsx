@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
-import { SpecialResultInputProps } from "@/types/profile";
+import { SpecialResultStatProps } from "@/types/profile";
 
-function SpecialResultInput({ name, label, value }: SpecialResultInputProps) {
+function SpecialResultInput({ name, label, value }: SpecialResultStatProps) {
   return (
     <div className="flex items-center gap-4 px-4 py-2">
       <label

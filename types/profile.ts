@@ -5,9 +5,9 @@ import { z } from "zod";
 //* SPECIAL
 export type SpecialRecord = {
   id: string;
+  clerkId: string;
   strength: number;
   endurance: number;
-  clerkId: string;
   perception: number;
   charisma: number;
   intelligence: number;
@@ -18,45 +18,35 @@ export type SpecialRecord = {
   updatedAt?: Date;
 };
 
-export interface SpecialPageResultsProps {
-  specialRecord: SpecialRecord;
-}
-
-export interface SpecialResultInputProps {
-  name: string;
-  value: number;
-  label: string;
-}
-
 export type SpecialStats = z.infer<typeof specialSchema>;
 export type SpecialStatsKeys = keyof SpecialStats;
 
-export interface SpecialRegisterRightColumnProps {
+export interface SpecialHoverProps {
   hoveredStat: SpecialStatsKeys | null;
+  onHoverChange: (stat: SpecialStatsKeys | null) => void;
 }
 
-export interface SpecialRegisterLeftColumnProps
-  extends SpecialRegisterRightColumnProps {
-  onHoverChange: (stat: SpecialStatsKeys | null) => void;
-  setSpecialStats: React.Dispatch<React.SetStateAction<SpecialStats>>;
+export interface SpecialRegisterProps extends SpecialHoverProps {
   specialStats: SpecialStats;
+  setSpecialStats: React.Dispatch<React.SetStateAction<SpecialStats>>;
   remainingPoints: number;
 }
+
+export type SpecialRegisterLeftColumnProps = SpecialRegisterProps;
+export type SpecialRegisterRightColumnProps = SpecialHoverProps;
 
 export interface SpecialRegisterHeaderProps {
   remainingPoints: number;
 }
 
-export interface FormSpecialRegisterInput {
+export interface SpecialRegisterInputProps extends SpecialHoverProps {
   name: SpecialStatsKeys;
   label: string;
+  value: number;
   min?: number;
   max?: number;
-  value: number;
   onIncrement: (name: SpecialStatsKeys) => void;
   onDecrement: (name: SpecialStatsKeys) => void;
-  onHoverChange: (stat: SpecialStatsKeys | null) => void;
-  hoveredStat?: SpecialStatsKeys | null;
 }
 
 export interface SpecialResultStatProps {
@@ -65,6 +55,10 @@ export interface SpecialResultStatProps {
   value: number;
   hoveredStat?: SpecialStatsKeys | null;
   onHoverChange?: (stat: SpecialStatsKeys | null) => void;
+}
+
+export interface SpecialPageResultsProps {
+  specialRecord: SpecialRecord;
 }
 
 //* HACKING
