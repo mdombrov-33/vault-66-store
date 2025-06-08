@@ -57,7 +57,7 @@ export default function GoatPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10 space-y-10 -mt-16">
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <Button
           onClick={handleBack}
           disabled={currentQuestionIndex === 0}
@@ -71,10 +71,10 @@ export default function GoatPage() {
         >
           Next
         </Button>
-      </div>
+      </div> */}
 
       {/* Progress Bar */}
-      <div className="w-full bg-muted h-2 rounded">
+      {/* <div className="w-full bg-muted h-2 rounded">
         <div
           className="bg-primary h-2 rounded"
           style={{
@@ -83,7 +83,7 @@ export default function GoatPage() {
             }%`,
           }}
         />
-      </div>
+      </div> */}
 
       <div className="min-h-[500px] space-y-10">
         {/* Question Header */}
@@ -114,8 +114,13 @@ export default function GoatPage() {
             return (
               <Button
                 key={key}
-                onClick={() => handleAnswer(key)}
-                variant={isSelected ? "default" : "outline"}
+                onClick={() => {
+                  handleAnswer(key);
+                  if (currentQuestionIndex < goatQuestions.length - 1) {
+                    handleNext();
+                  }
+                }}
+                variant="outline"
                 className={cn(
                   "text-left justify-start text-base h-auto p-4 font-[roboto-mono] whitespace-normal break-words",
                   isSelected && "ring-2 ring-primary"
