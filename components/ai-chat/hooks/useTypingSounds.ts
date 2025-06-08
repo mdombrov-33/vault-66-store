@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import {
-  typingSounds,
+  typingSoundsSrc,
   enterSoundSrc,
   spacebarSoundSrc,
 } from "@/data/sounds/typing-sounds";
@@ -11,11 +11,11 @@ export function useTypingSounds() {
   const spacebarSound = useRef(new Audio(spacebarSoundSrc));
 
   function playTypingSound() {
-    const audio = new Audio(typingSounds[soundIndex.current]);
+    const audio = new Audio(typingSoundsSrc[soundIndex.current]);
     audio.volume = 0.4;
     audio.play();
 
-    soundIndex.current = (soundIndex.current + 1) % typingSounds.length;
+    soundIndex.current = (soundIndex.current + 1) % typingSoundsSrc.length;
   }
 
   function playEnterSound() {

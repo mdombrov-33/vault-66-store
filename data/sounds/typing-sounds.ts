@@ -1,4 +1,4 @@
-export const typingSounds = [
+export const typingSoundsSrc = [
   "/sounds/typing/typing1.wav",
   "/sounds/typing/typing2.wav",
   "/sounds/typing/typing3.wav",

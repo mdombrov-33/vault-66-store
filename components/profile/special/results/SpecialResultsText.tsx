@@ -49,11 +49,11 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
         </p>
       </div>
 
-      <div className="w-full">
+      {/* <div className="w-full">
         <p className="text-xl text-muted-foreground font-[roboto-mono] text-center italic ">
           Thank you. You may proceed to the G.O.A.T. evaluation.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

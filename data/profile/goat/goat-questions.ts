@@ -19,12 +19,12 @@ export const goatQuestions: GoatQuestion[] = [
       },
       {
         id: "C",
-        text: "Say nothing, grab a nearby pipe and hit the scientist in the head to knock him out. For all you knew, he was planning to blow up the vault.",
+        text: "Say nothing, grab a nearby pipe and hit the scientist in the head to knock him out. For all you knew, he was planning to blow up the vault",
         tags: ["strength", "meleeWeapons", "unarmed", "explosives"],
       },
       {
         id: "D",
-        text: "Say nothing, but slip away before the scientist can continue his rant.",
+        text: "Say nothing, but slip away before the scientist can continue his rant",
         tags: ["sneak", "agility"],
       },
     ],
@@ -65,22 +65,22 @@ export const goatQuestions: GoatQuestion[] = [
     answers: [
       {
         id: "A",
-        text: "Obey your elder and kill the Vault resident with the pistol.",
+        text: "Obey your elder and kill the Vault resident with the pistol",
         tags: ["smallGuns", "bigGuns", "energyWeapons"],
       },
       {
         id: "B",
-        text: "Offer your most prized possession for the resident's life.",
+        text: "Offer your most prized possession for the resident's life",
         tags: ["barter", "speech"],
       },
       {
         id: "C",
-        text: "Ask granny for a minigun instead. After all, you don't want to miss.",
+        text: "Ask granny for a minigun instead. After all, you don't want to miss",
         tags: ["bigGuns", "smallGuns"],
       },
       {
         id: "D",
-        text: "Throw your tea in granny's face.",
+        text: "Throw your tea in granny's face",
         tags: ["unarmed", "explosives"],
       },
     ],
@@ -93,7 +93,7 @@ export const goatQuestions: GoatQuestion[] = [
     answers: [
       {
         id: "A",
-        text: "Amputate the foot before the infection spreads.",
+        text: "Amputate the foot before the infection spreads",
         tags: ["medicine", "science", "meleeWeapons"],
       },
       {
@@ -103,12 +103,12 @@ export const goatQuestions: GoatQuestion[] = [
       },
       {
         id: "C",
-        text: "Medicate the infected area to the best of your abilities.",
+        text: "Medicate the infected area to the best of your abilities",
         tags: ["medicine", "science"],
       },
       {
         id: "D",
-        text: "Restrain the patient, and merely observe as the infection spreads - Science",
+        text: "Restrain the patient, and merely observe as the infection spreads",
         tags: ["science", "repair", "survival"],
       },
     ],
@@ -116,7 +116,7 @@ export const goatQuestions: GoatQuestion[] = [
   {
     id: 5,
     question:
-      "Congratulations! You made one of the Vault 101 baseball teams! Which position do you prefer?",
+      "Congratulations! You made one of the Vault 66 baseball teams! Which position do you prefer?",
     image: "/images/goat/question5.png",
     answers: [
       { id: "A", text: "Pitcher", tags: ["explosives"] },
@@ -137,22 +137,22 @@ export const goatQuestions: GoatQuestion[] = [
     answers: [
       {
         id: "A",
-        text: "Use a bobby pin to pick the lock on the door.",
+        text: "Use a bobby pin to pick the lock on the door",
         tags: ["lockpick"],
       },
       {
         id: "B",
-        text: "Trade a Vault hoodlum for his cherry bomb and blow open the lock. ",
+        text: "Trade a Vault hoodlum for his cherry bomb and blow open the lock ",
         tags: ["barter", "explosives"],
       },
       {
         id: "C",
-        text: "Go to the armory, retrieve a laser pistol, and blow the lock off.",
+        text: "Go to the armory, retrieve a laser pistol, and blow the lock off",
         tags: ["energyWeapons", "bigGuns", "smallGuns"],
       },
       {
         id: "D",
-        text: "Walk away, and let the old coot rot.",
+        text: "Walk away, and let the old coot rot",
         tags: ["sneak", "survival"],
       },
     ],
