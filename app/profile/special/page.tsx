@@ -1,6 +1,6 @@
 import { getSpecialRecord } from "@/utils/actions/special";
-import SpecialPageRegisterWrapper from "./SpecialPageRegisterWrapper";
-import SpecialPageResults from "./SpecialPageResults";
+import SpecialPageRegisterWrapper from "../../../components/profile/special/register/SpecialPageRegisterWrapper";
+import SpecialPageResults from "../../../components/profile/special/results/SpecialPageResults";
 import { SpecialRecord } from "@/types/profile";
 import { getAuthUser } from "@/utils/auth/get-user";
 

@@ -1,4 +1,4 @@
-import { Skills, SpecialStats } from "../../types/profile";
+import { SkillAttributes, SpecialStats } from "../../types/profile";
 
 export function calculateSkills({
   strength,
@@ -8,7 +8,7 @@ export function calculateSkills({
   intelligence,
   agility,
   luck,
-}: SpecialStats): Skills {
+}: SpecialStats): SkillAttributes {
   const scale = 1.5;
   const base = (stat: number) => Math.round(stat * 2 + 2 + luck / 2) * scale;
   return {

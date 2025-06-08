@@ -1,31 +1,23 @@
-"use client";
-
-import { goatQuestions } from "@/data/profile/goat/goat-questions";
 import { useState } from "react";
-import GoatIntro from "./GoatIntro";
-import GoatQuestion from "./GoatQuestion";
 import GoatAnswers from "./GoatAnswers";
-import GoatResults from "./GoatResults";
-import { GoatSkillsProps } from "@/types/profile";
+import GoatQuestion from "./GoatQuestion";
+import { goatQuestions } from "@/data/profile/goat/goat-questions";
+import { GoatTestProps } from "@/types/profile";
 
-function GoatTest({ skills }: GoatSkillsProps) {
-  const [hasStarted, setHasStarted] = useState(false);
+export default function GoatTest({ setStage, setAnswers }: GoatTestProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [isCompleted, setIsCompleted] = useState(false);
   const currentQuestion = goatQuestions[currentQuestionIndex];
 
-  const handleStart = () => {
-    setHasStarted(true);
+  const handleAnswer = (answer: string) => {
+    setAnswers((prev) => ({ ...prev, [currentQuestionIndex]: answer }));
+    const isLast = currentQuestionIndex === goatQuestions.length - 1;
+
+    if (isLast) {
+      setStage("tagging");
+    } else {
+      setCurrentQuestionIndex((i) => i + 1);
+    }
   };
-
-  if (!hasStarted) {
-    return <GoatIntro handleStart={handleStart} />;
-  }
-
-  if (isCompleted) {
-    return <GoatResults answers={answers} skills={skills} />;
-  }
 
   return (
     <section>
@@ -33,15 +25,7 @@ function GoatTest({ skills }: GoatSkillsProps) {
         currentQuestion={currentQuestion}
         currentQuestionIndex={currentQuestionIndex}
       />
-      <GoatAnswers
-        setAnswers={setAnswers}
-        currentQuestion={currentQuestion}
-        currentQuestionIndex={currentQuestionIndex}
-        setCurrentQuestionIndex={setCurrentQuestionIndex}
-        setIsCompleted={setIsCompleted}
-      />
+      <GoatAnswers currentQuestion={currentQuestion} onAnswer={handleAnswer} />
     </section>
   );
 }
-
-export default GoatTest;

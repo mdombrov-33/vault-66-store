@@ -124,6 +124,7 @@ model Skill {
   speech Int
   survival Int
   unarmed Int
+  isGoatCompleted Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

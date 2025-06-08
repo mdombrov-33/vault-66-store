@@ -55,6 +55,7 @@ export const getSkillRecord = async (clerkId: string) => {
       survival: true,
       unarmed: true,
       smallGuns: true,
+      isGoatCompleted: true,
     },
   });
 

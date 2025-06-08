@@ -9731,6 +9731,7 @@ export namespace Prisma {
     speech: number | null
     survival: number | null
     unarmed: number | null
+    isGoatCompleted: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9752,6 +9753,7 @@ export namespace Prisma {
     speech: number | null
     survival: number | null
     unarmed: number | null
+    isGoatCompleted: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9773,6 +9775,7 @@ export namespace Prisma {
     speech: number
     survival: number
     unarmed: number
+    isGoatCompleted: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -9830,6 +9833,7 @@ export namespace Prisma {
     speech?: true
     survival?: true
     unarmed?: true
+    isGoatCompleted?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9851,6 +9855,7 @@ export namespace Prisma {
     speech?: true
     survival?: true
     unarmed?: true
+    isGoatCompleted?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9872,6 +9877,7 @@ export namespace Prisma {
     speech?: true
     survival?: true
     unarmed?: true
+    isGoatCompleted?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -9980,6 +9986,7 @@ export namespace Prisma {
     speech: number
     survival: number
     unarmed: number
+    isGoatCompleted: boolean
     createdAt: Date
     updatedAt: Date
     _count: SkillCountAggregateOutputType | null
@@ -10020,6 +10027,7 @@ export namespace Prisma {
     speech?: boolean
     survival?: boolean
     unarmed?: boolean
+    isGoatCompleted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["skill"]>
@@ -10041,6 +10049,7 @@ export namespace Prisma {
     speech?: boolean
     survival?: boolean
     unarmed?: boolean
+    isGoatCompleted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["skill"]>
@@ -10062,6 +10071,7 @@ export namespace Prisma {
     speech?: boolean
     survival?: boolean
     unarmed?: boolean
+    isGoatCompleted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["skill"]>
@@ -10083,11 +10093,12 @@ export namespace Prisma {
     speech?: boolean
     survival?: boolean
     unarmed?: boolean
+    isGoatCompleted?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "barter" | "bigGuns" | "energyWeapons" | "explosives" | "lockpick" | "medicine" | "meleeWeapons" | "repair" | "science" | "smallGuns" | "sneak" | "speech" | "survival" | "unarmed" | "createdAt" | "updatedAt", ExtArgs["result"]["skill"]>
+  export type SkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "barter" | "bigGuns" | "energyWeapons" | "explosives" | "lockpick" | "medicine" | "meleeWeapons" | "repair" | "science" | "smallGuns" | "sneak" | "speech" | "survival" | "unarmed" | "isGoatCompleted" | "createdAt" | "updatedAt", ExtArgs["result"]["skill"]>
 
   export type $SkillPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Skill"
@@ -10109,6 +10120,7 @@ export namespace Prisma {
       speech: number
       survival: number
       unarmed: number
+      isGoatCompleted: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["skill"]>
@@ -10550,6 +10562,7 @@ export namespace Prisma {
     readonly speech: FieldRef<"Skill", 'Int'>
     readonly survival: FieldRef<"Skill", 'Int'>
     readonly unarmed: FieldRef<"Skill", 'Int'>
+    readonly isGoatCompleted: FieldRef<"Skill", 'Boolean'>
     readonly createdAt: FieldRef<"Skill", 'DateTime'>
     readonly updatedAt: FieldRef<"Skill", 'DateTime'>
   }
@@ -12057,6 +12070,7 @@ export namespace Prisma {
     speech: 'speech',
     survival: 'survival',
     unarmed: 'unarmed',
+    isGoatCompleted: 'isGoatCompleted',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -12720,6 +12734,7 @@ export namespace Prisma {
     speech?: IntFilter<"Skill"> | number
     survival?: IntFilter<"Skill"> | number
     unarmed?: IntFilter<"Skill"> | number
+    isGoatCompleted?: BoolFilter<"Skill"> | boolean
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
   }
@@ -12741,6 +12756,7 @@ export namespace Prisma {
     speech?: SortOrder
     survival?: SortOrder
     unarmed?: SortOrder
+    isGoatCompleted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12765,6 +12781,7 @@ export namespace Prisma {
     speech?: IntFilter<"Skill"> | number
     survival?: IntFilter<"Skill"> | number
     unarmed?: IntFilter<"Skill"> | number
+    isGoatCompleted?: BoolFilter<"Skill"> | boolean
     createdAt?: DateTimeFilter<"Skill"> | Date | string
     updatedAt?: DateTimeFilter<"Skill"> | Date | string
   }, "id" | "clerkId">
@@ -12786,6 +12803,7 @@ export namespace Prisma {
     speech?: SortOrder
     survival?: SortOrder
     unarmed?: SortOrder
+    isGoatCompleted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: SkillCountOrderByAggregateInput
@@ -12815,6 +12833,7 @@ export namespace Prisma {
     speech?: IntWithAggregatesFilter<"Skill"> | number
     survival?: IntWithAggregatesFilter<"Skill"> | number
     unarmed?: IntWithAggregatesFilter<"Skill"> | number
+    isGoatCompleted?: BoolWithAggregatesFilter<"Skill"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Skill"> | Date | string
   }
@@ -13481,6 +13500,7 @@ export namespace Prisma {
     speech: number
     survival: number
     unarmed: number
+    isGoatCompleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13502,6 +13522,7 @@ export namespace Prisma {
     speech: number
     survival: number
     unarmed: number
+    isGoatCompleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13523,6 +13544,7 @@ export namespace Prisma {
     speech?: IntFieldUpdateOperationsInput | number
     survival?: IntFieldUpdateOperationsInput | number
     unarmed?: IntFieldUpdateOperationsInput | number
+    isGoatCompleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13544,6 +13566,7 @@ export namespace Prisma {
     speech?: IntFieldUpdateOperationsInput | number
     survival?: IntFieldUpdateOperationsInput | number
     unarmed?: IntFieldUpdateOperationsInput | number
+    isGoatCompleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13565,6 +13588,7 @@ export namespace Prisma {
     speech: number
     survival: number
     unarmed: number
+    isGoatCompleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13586,6 +13610,7 @@ export namespace Prisma {
     speech?: IntFieldUpdateOperationsInput | number
     survival?: IntFieldUpdateOperationsInput | number
     unarmed?: IntFieldUpdateOperationsInput | number
+    isGoatCompleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13607,6 +13632,7 @@ export namespace Prisma {
     speech?: IntFieldUpdateOperationsInput | number
     survival?: IntFieldUpdateOperationsInput | number
     unarmed?: IntFieldUpdateOperationsInput | number
+    isGoatCompleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14160,6 +14186,7 @@ export namespace Prisma {
     speech?: SortOrder
     survival?: SortOrder
     unarmed?: SortOrder
+    isGoatCompleted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -14198,6 +14225,7 @@ export namespace Prisma {
     speech?: SortOrder
     survival?: SortOrder
     unarmed?: SortOrder
+    isGoatCompleted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -14219,6 +14247,7 @@ export namespace Prisma {
     speech?: SortOrder
     survival?: SortOrder
     unarmed?: SortOrder
+    isGoatCompleted?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }

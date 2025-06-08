@@ -1,14 +1,14 @@
 import { goatQuestions } from "@/data/profile/goat/goat-questions";
-import { Skills } from "@/types/profile";
+import { SkillAttributes } from "@/types/profile";
 
 export function getBoostedSkills(
-  baseSkills: Skills | null,
+  baseSkills: SkillAttributes | null,
   answers: Record<number, string>
-): Skills {
+): SkillAttributes {
   //* Start with a fresh skills object.
   //* Set all skills to 0 first, then copy over any base skills the user already has.
   //* This way we don’t accidentally modify the original baseSkills object.
-  const boostedSkills: Skills = {
+  const boostedSkills: SkillAttributes = {
     barter: 0,
     speech: 0,
     science: 0,
@@ -48,7 +48,7 @@ export function getBoostedSkills(
       if (tag in boostedSkills) {
         //* Add 5 points to that skill for every tag
         //* This simulates the user getting better at that skill thanks to their answer choice
-        boostedSkills[tag as keyof Skills] += 8;
+        boostedSkills[tag as keyof SkillAttributes] += 8;
       }
     }
   }

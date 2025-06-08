@@ -110,14 +110,28 @@ export interface TerminalLogProps
 }
 
 //* GOAT
-export type Skills = z.infer<typeof skillSchema>;
+export type SkillAttributes = z.infer<typeof skillSchema>;
+export interface Skills extends SkillAttributes {
+  isGoatCompleted: boolean;
+}
 
 export interface GoatSkillsProps {
-  skills: Skills | null;
+  skills: Skills;
+}
+
+export type GoatStage = "intro" | "test" | "tagging" | "final";
+
+export interface GoatTestProps {
+  setStage: React.Dispatch<React.SetStateAction<GoatStage>>;
+  setAnswers: React.Dispatch<React.SetStateAction<Record<number, string>>>;
 }
 
 export interface GoatResultProps extends GoatSkillsProps {
   answers: Record<number, string>;
+}
+
+export interface GoatSkillTaggerProps extends GoatResultProps {
+  onFinish: () => void;
 }
 
 export type GoatQuestion = {
@@ -139,9 +153,7 @@ export interface GoatBaseProps {
 export interface GoatIntroProps {
   handleStart: () => void;
 }
-
-export interface GoatAnswersProps extends GoatBaseProps {
-  setAnswers: React.Dispatch<React.SetStateAction<Record<number, string>>>;
-  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
-  setIsCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+export interface GoatAnswersProps {
+  currentQuestion: GoatQuestion;
+  onAnswer: (answerKey: string) => void;
 }
