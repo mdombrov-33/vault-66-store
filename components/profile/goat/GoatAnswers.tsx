@@ -16,7 +16,7 @@ function GoatAnswers({ currentQuestion, onAnswer }: GoatAnswersProps) {
           }}
           onMouseEnter={playHover}
           variant="ghost"
-          className="text-center text-lg md:text-xl h-auto p-4 font-[roboto-mono] whitespace-normal break-words"
+          className="text-center text-lg md:text-xl h-auto p-4 font-[roboto-mono] whitespace-normal break-words hover:text-foreground"
         >
           {answer.text}
         </Button>

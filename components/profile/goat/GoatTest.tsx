@@ -4,7 +4,7 @@ import GoatQuestion from "./GoatQuestion";
 import { goatQuestions } from "@/data/profile/goat/goat-questions";
 import { GoatTestProps } from "@/types/profile";
 
-export default function GoatTest({ setStage, setAnswers }: GoatTestProps) {
+function GoatTest({ setStage, setAnswers }: GoatTestProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const currentQuestion = goatQuestions[currentQuestionIndex];
 
@@ -29,3 +29,5 @@ export default function GoatTest({ setStage, setAnswers }: GoatTestProps) {
     </section>
   );
 }
+
+export default GoatTest;

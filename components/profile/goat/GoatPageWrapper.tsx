@@ -7,7 +7,7 @@ import GoatSkillTagger from "./GoatSkillTagger";
 import GoatFinalResults from "./GoatFinalResults";
 import { GoatSkillsProps, GoatStage } from "@/types/profile";
 
-export default function GoatFlowWrapper({ skills }: GoatSkillsProps) {
+function GoatPageWrapper({ skills }: GoatSkillsProps) {
   const [stage, setStage] = useState<GoatStage>("intro");
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
@@ -31,3 +31,5 @@ export default function GoatFlowWrapper({ skills }: GoatSkillsProps) {
       return _exhaustiveCheck;
   }
 }
+
+export default GoatPageWrapper;
