@@ -16,6 +16,7 @@ import {
 import { useChatStorage } from "./hooks/useChatStorage";
 import { useState } from "react";
 import { sendMessage } from "./send-message";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 //* Define the expiration time for chat messages in localStorage
 const EXPIRATION_MS = 1000 * 60 * 60; // 1 hour
@@ -25,6 +26,7 @@ function ChatLauncher() {
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const { playClick } = useSoundPlayer();
 
   async function handleSend(): Promise<void> {
     await sendMessage({
@@ -74,13 +76,16 @@ function ChatLauncher() {
 
         <DialogFooter className="mt-auto">
           <DialogClose asChild>
-            <Button variant="secondary" className="text-2xl">
+            <Button variant="ghost" className="text-2xl">
               Close
             </Button>
           </DialogClose>
           <Button
             className="text-3xl"
-            onClick={handleSend}
+            onClick={() => {
+              playClick();
+              handleSend();
+            }}
             disabled={isLoading || isTyping}
           >
             Send

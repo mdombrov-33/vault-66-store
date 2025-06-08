@@ -15,7 +15,7 @@ import { formatDate } from "@/utils/format";
 async function OrdersPage() {
   const orders = await fetchUserOrders();
   if (!orders || orders.length === 0) {
-    return <SectionTitle text="your supply History list is empty" />;
+    return <SectionTitle text="Your supply history is empty" />;
   }
 
   return (

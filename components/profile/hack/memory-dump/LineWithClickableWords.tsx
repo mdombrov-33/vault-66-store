@@ -62,7 +62,7 @@ function LineWithClickableWords({
             className={cn(
               "all-none",
               !gameOver
-                ? "cursor-pointer focus:outline focus:outline-offset-1 hover:bg-primary hover:text-[var(--hacking-text)]"
+                ? "cursor-pointer focus:outline focus:outline-offset-1 hover:bg-[var(--terminal-hover-bg)] hover:text-[var(--terminal-hover-text)]"
                 : "focus:outline focus:outline-offset-1"
             )}
           >

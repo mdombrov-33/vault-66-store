@@ -7,7 +7,7 @@ import { fetchUserFavorites } from "@/utils/actions/favorite";
 async function FavoritesPage() {
   const favorites = await fetchUserFavorites();
   if (!favorites || favorites.length === 0)
-    return <SectionTitle text="No Favorites yet" />;
+    return <SectionTitle text="No favorites synced" />;
 
   return (
     <div>

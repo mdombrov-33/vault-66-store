@@ -30,7 +30,7 @@ function ChatMessages({
       {/* Chat messages container */}
       <div
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto overflow-x-auto border rounded whitespace-pre-wrap break-words p-2 space-y-2 bg-accent text-sm"
+        className="flex-1 outline-none overflow-y-auto overflow-x-auto border focus-visible:border-ring focus-visible:ring-ring/50 rounded whitespace-pre-wrap break-words p-2 space-y-2 bg-[var(--terminal-background)] text-sm"
       >
         {messages.map((msg, i) => {
           if (msg.role === "user") {

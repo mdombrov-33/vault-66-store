@@ -11,7 +11,7 @@ export default function HackingTerminal() {
 
   return (
     <section className="text-primary flex flex-col items-center justify-center px-2 py-4 sm:px-4">
-      <div className="w-full max-w-7xl p-3 sm:p-4 overflow-hidden bg-[#020202] whitespace-pre font-mono">
+      <div className="w-full max-w-7xl p-3 sm:p-4 overflow-hidden bg-[var(--terminal-background)]  text-[var(--terminal-text)] whitespace-pre font-mono">
         <TerminalIntro
           attemptsLeft={attemptsLeft}
           resetGame={resetGame}

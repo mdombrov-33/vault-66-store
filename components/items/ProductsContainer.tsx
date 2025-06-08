@@ -56,9 +56,7 @@ async function ProductsContainer({
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
-          <h5 className="text-4xl mt-16">
-            Sorry, no items matched your search
-          </h5>
+          <h5 className="text-4xl mt-16">:: SEARCH RESULTS: NULL ::</h5>
         ) : layout === "grid" ? (
           <ProductsGrid products={products} />
         ) : (
