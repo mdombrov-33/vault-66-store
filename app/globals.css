@@ -94,9 +94,9 @@
   --sidebar-disabled-muted-foreground: rgb(88, 75, 50);
 
   --terminal-background: #221a00;
-  --terminal-text: #ffcc00;
-  --terminal-hover-bg: #3a2d00;
-  --terminal-hover-text: #fff94d;
+  --terminal-text: #ad8f19;
+  --terminal-hover-bg: #c2be4f;
+  --terminal-hover-text: #3a2d00;
 }
 
 .dark {
@@ -153,7 +153,7 @@
   --terminal-background: #0a140a;
   --terminal-text: #00ff00;
   --terminal-hover-bg: #428242; /* lighter green */
-  --terminal-hover-text: #0e1c0e; /* brighter green */
+  --terminal-hover-text: #020302; /* brighter green */
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
