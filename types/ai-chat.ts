@@ -1,5 +1,6 @@
 import React from "react";
 
+//! FIXME: CLEAN THIS FILE LATER
 export type Message = {
   role: string;
   content: string;
