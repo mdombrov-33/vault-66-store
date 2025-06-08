@@ -137,3 +137,18 @@ export type GoatQuestion = {
     tags?: string[]; //* optional skill tags for backend skill boosts, e.g. ["barter", "speech"]
   }[];
 };
+
+export interface GoatBaseProps {
+  currentQuestion: GoatQuestion;
+  currentQuestionIndex: number;
+}
+
+export interface GoatIntroProps {
+  handleStart: () => void;
+}
+
+export interface GoatAnswersProps extends GoatBaseProps {
+  setAnswers: React.Dispatch<React.SetStateAction<Record<number, string>>>;
+  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+  setIsCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+}

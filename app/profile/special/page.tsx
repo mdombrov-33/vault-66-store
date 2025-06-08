@@ -13,7 +13,6 @@ async function SpecialPage() {
   }
 
   //* LOGIC if stats were allocated
-
   return <SpecialPageResults specialRecord={specialRecord} />;
 }
 
