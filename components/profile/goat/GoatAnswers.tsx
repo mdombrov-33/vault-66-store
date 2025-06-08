@@ -22,20 +22,16 @@ function GoatAnswers({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
-      {Object.entries(currentQuestion.answers).map(([key, answer]) => {
-        return (
-          <Button
-            key={key}
-            onClick={() => {
-              handleAnswer(key);
-            }}
-            variant="ghost"
-            className="text-center text-lg md:text-xl h-auto p-4 font-[roboto-mono] whitespace-normal break-words"
-          >
-            {answer.text}
-          </Button>
-        );
-      })}
+      {currentQuestion.answers.map((answer) => (
+        <Button
+          key={answer.id}
+          onClick={() => handleAnswer(answer.id)} // ✅ Use the actual answer ID (e.g. 'A', 'B')
+          variant="ghost"
+          className="text-center text-lg md:text-xl h-auto p-4 font-[roboto-mono] whitespace-normal break-words"
+        >
+          {answer.text}
+        </Button>
+      ))}
     </div>
   );
 }
