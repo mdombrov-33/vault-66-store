@@ -33,7 +33,7 @@ function SpecialPageWrapper() {
   return (
     <>
       <SpecialRegisterHeader remainingPoints={remainingPoints} />
-      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 py-8l mt-12">
+      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8 mt-12">
         <FormContainer action={createSpecialAction}>
           <div className="md:self-start">
             <SpecialRegisterLeftColumn
