@@ -106,3 +106,31 @@ model Special{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Skill {
+  id String @id @default(uuid())
+  clerkId String @unique
+  barter Int
+  bigGuns Int
+  energyWeapons Int
+  explosives Int
+  lockpick Int
+  medicine Int
+  meleeWeapons Int
+  repair Int
+  science Int
+  smallGuns Int
+  sneak Int
+  speech Int
+  survival Int
+  unarmed Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SkillTag {
+  id      Int     @id @default(autoincrement())
+  clerkId String
+  skill   String
+  @@unique([clerkId, skill])
+}

@@ -78,6 +78,7 @@ export interface MemoryDumpGridProps {
 
 export interface TerminalIntroProps {
   attemptsLeft: number;
+  resetGame: () => void;
 }
 
 export interface DumpColumnProps {
@@ -99,3 +100,31 @@ export interface TerminalLogProps {
   onWordHover: string | null;
   gameOver: boolean;
 }
+
+//* GOAT
+export type Skills = {
+  barter: number;
+  bigGuns: number;
+  energyWeapons: number;
+  explosives: number;
+  lockpick: number;
+  medicine: number;
+  meleeWeapons: number;
+  repair: number;
+  science: number;
+  smallGuns: number;
+  sneak: number;
+  speech: number;
+  unarmed: number;
+  survival: number;
+};
+export type GoatQuestion = {
+  id: number;
+  question: string;
+  image?: string;
+  answers: {
+    id: string; //* A, B, C, D
+    text: string;
+    tags?: string[]; //* optional skill tags for backend skill boosts, e.g. ["barter", "speech"]
+  }[];
+};

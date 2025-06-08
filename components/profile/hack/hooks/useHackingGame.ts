@@ -36,7 +36,7 @@ export function useHackingGame(initialAttempts = 5) {
       setLog((prev) => [
         ...prev,
         `> ${word}`,
-        `Entry denied. Likeness=${likeness}`,
+        `ENTRY DENIED LIKENESS=${likeness}`,
       ]);
 
       const newAttempts = attemptsLeft - 1;

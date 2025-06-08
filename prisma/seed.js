@@ -1,23 +1,16 @@
 //* node prisma/seed.js
 const { PrismaClient } = require("../lib/generated/prisma");
-const reviews = require("./reviewsSeed");
+// const reviews = require("./reviewsSeed");
+const skills = require("./skillsSeed");
 
 const prisma = new PrismaClient();
 
 async function main() {
-  for (const review of reviews) {
-    await prisma.review.create({
-      data: {
-        clerkId: review.clerkId,
-        rating: review.rating,
-        comment: review.comment,
-        authorName: review.authorName,
-        authorImageUrl: review.authorImageUrl,
-        productId: review.productId,
-      },
-    });
+  for (const skill of skills) {
+    await prisma.skill.create({ data: skill });
   }
-  console.log("Seeded reviews successfully!");
+
+  console.log("Seeded skills successfully!");
 }
 
 main()

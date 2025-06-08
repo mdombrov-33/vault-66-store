@@ -1,0 +1,38 @@
+const skills = [
+  {
+    clerkId: "clerk-001",
+    barter: 55,
+    bigGuns: 40,
+    energyWeapons: 65,
+    explosives: 50,
+    lockpick: 60,
+    medicine: 70,
+    meleeWeapons: 35,
+    repair: 58,
+    science: 72,
+    smallGuns: 61,
+    sneak: 50,
+    speech: 63,
+    unarmed: 42,
+    survival: 75,
+  },
+  {
+    clerkId: "clerk-002",
+    barter: 45,
+    bigGuns: 30,
+    energyWeapons: 40,
+    explosives: 35,
+    lockpick: 52,
+    medicine: 68,
+    meleeWeapons: 45,
+    repair: 50,
+    science: 60,
+    smallGuns: 55,
+    sneak: 48,
+    speech: 60,
+    unarmed: 40,
+    survival: 70,
+  },
+];
+
+module.exports = skills;

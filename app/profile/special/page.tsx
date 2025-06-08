@@ -2,9 +2,11 @@ import { getSpecialRecord } from "@/utils/actions/special";
 import SpecialPageRegisterWrapper from "./SpecialPageRegisterWrapper";
 import SpecialPageResults from "./SpecialPageResults";
 import { SpecialRecord } from "@/types/profile";
+import { getAuthUser } from "@/utils/auth/get-user";
 
 async function SpecialPage() {
-  const specialRecord: SpecialRecord | null = await getSpecialRecord();
+  const user = await getAuthUser();
+  const specialRecord: SpecialRecord | null = await getSpecialRecord(user.id);
 
   if (!specialRecord) {
     return <SpecialPageRegisterWrapper />;
