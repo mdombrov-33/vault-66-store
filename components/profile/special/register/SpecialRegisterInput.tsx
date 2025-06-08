@@ -18,7 +18,7 @@ function SpecialRegisterInput({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-2 sm:gap-4 px-4",
+        "flex flex-wrap items-center gap-2 sm:gap-4 px-2",
         hoveredStat === name && "bg-primary/20 rounded-md"
       )}
       onMouseEnter={() => onHoverChange?.(name)}
