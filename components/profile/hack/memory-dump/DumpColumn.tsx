@@ -13,7 +13,7 @@ function DumpColumn({
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.07,
         delayChildren: delay,
       },
     },

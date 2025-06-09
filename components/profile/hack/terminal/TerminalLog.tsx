@@ -1,5 +1,5 @@
 import { TerminalLogProps } from "@/types/profile";
-import TerminalTypewriter from "@/components/profile/hack/terminal/TerminalTypeWriter"; // path to the new component
+import TerminalTypewriter from "@/components/profile/hack/terminal/TerminalTypeWriter";
 
 function TerminalLog({ log, onWordHover }: TerminalLogProps) {
   return (
