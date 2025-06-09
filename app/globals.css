@@ -95,7 +95,7 @@
   --shadow-glow-primary: rgba(50, 49, 43, 0.6);
   --terminal-background: #221a00;
   --terminal-text: #ad8f19;
-  --terminal-hover-bg: #c2be4f;
+  --terminal-hover-bg: #ad8f19;
   --terminal-hover-text: #3a2d00;
 }
 
@@ -150,10 +150,10 @@
 
   /* CUSTOM VARIABLES */
   --shadow-glow-primary: rgba(72, 177, 53, 0.7);
-  --terminal-background: #101b10ec;
-  --terminal-text: #00ff00;
-  --terminal-hover-bg: #428242; /* lighter green */
-  --terminal-hover-text: #020302; /* brighter green */
+  --terminal-background: #4b954b1b;
+  --terminal-text: #5bdd8dbb;
+  --terminal-hover-bg: #5bdd8dbb;
+  --terminal-hover-text: #020302;
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
