@@ -29,7 +29,7 @@ const TerminalIntro = ({
   return (
     <section
       aria-label="Terminal introduction"
-      className="text-primary text-[0.6rem] md:text-md lg:text-xl font-mono p-4 rounded grid grid-cols-[1fr_auto] items-center gap-4"
+      className="text-primary text-[0.6rem] md:text-lg lg:text-xl font-mono p-4 rounded grid grid-cols-[1fr_auto] items-center gap-4"
     >
       <h1 className="sr-only">Terminal Intro</h1>
 
