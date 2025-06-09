@@ -29,7 +29,6 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   };
 
   const boostedSkills = getBoostedSkills(baseSkills, answers);
-  console.log("Boosted Skills:", boostedSkills);
 
   const [selectedSkills, setSelectedSkills] = useState<
     Record<SkillKeys, boolean>
@@ -42,9 +41,6 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
 
   const [hoveredSkill, setHoveredSkill] = useState<SkillKeys | null>(null);
 
-  const selectedCount = Object.values(selectedSkills).filter(Boolean).length;
-  const totalCount = 3;
-
   //* ADD ACTION FOR UPDATING SKILLS + TAGGING
   return (
     <>
@@ -56,8 +52,6 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
               selectedSkills={selectedSkills}
               setSelectedSkills={setSelectedSkills}
               setHoveredSkill={setHoveredSkill}
-              selectedCount={selectedCount}
-              totalCount={totalCount}
             />
           </div>
           <div className="flex items-center justify-center mt-8 ">
