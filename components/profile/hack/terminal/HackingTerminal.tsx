@@ -10,7 +10,7 @@ export default function HackingTerminal() {
   const [onWordHover, setOnWordHover] = useState<string | null>(null);
 
   return (
-    <section className="text-primary flex flex-col items-center justify-center px-2 py-4 sm:px-4">
+    <section className="text-primary flex flex-col items-center justify-center px-2 py-4 sm:px-4 -mt-8">
       <div className="w-full max-w-7xl p-3 sm:p-4 overflow-hidden bg-[var(--terminal-background)]  text-[var(--terminal-text)] whitespace-pre font-mono">
         <TerminalIntro
           attemptsLeft={attemptsLeft}

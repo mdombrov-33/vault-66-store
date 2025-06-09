@@ -12,7 +12,7 @@ function MemoryDumpGrid({
   setOnWordHover,
 }: MemoryDumpGridProps) {
   return (
-    <div className="grid grid-cols-4 gap-4 sm:gap-6 leading-tight text-primary text-sm md:text-xl mt-6 whitespace-pre">
+    <div className="grid grid-cols-4 gap-4 sm:gap-6 leading-tight text-primary text-[0.6rem] md:text-md lg:text-xl md:mt-4 lg-mt-6 -mt-2   whitespace-pre">
       <div className="col-span-3 grid grid-cols-2 gap-x-4">
         <DumpColumn
           setOnWordHover={setOnWordHover}
