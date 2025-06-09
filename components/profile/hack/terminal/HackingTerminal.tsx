@@ -8,15 +8,21 @@ export default function HackingTerminal() {
   const { gameState, attemptsLeft, log, handleGuess, resetGame, gameOver } =
     useHackingGame(4);
   const [onWordHover, setOnWordHover] = useState<string | null>(null);
+  const [isIntroDone, setIsIntroDone] = useState(false);
 
   return (
     <section className="text-primary flex flex-col items-center justify-center px-2 py-4 sm:px-4 -mt-6">
-      <div className="w-full max-w-7xl p-3 sm:p-4 overflow-hidden bg-[var(--terminal-background)]  text-[var(--terminal-text)] whitespace-pre font-mono">
-        <TerminalIntro
-          attemptsLeft={attemptsLeft}
-          resetGame={resetGame}
-          setOnWordHover={setOnWordHover}
-        />
+      {!isIntroDone && (
+        <div className="w-full max-w-7xl p-3 sm:p-4 overflow-hidden bg-[var(--terminal-background)]  text-[var(--terminal-text)] whitespace-pre font-mono">
+          <TerminalIntro
+            attemptsLeft={attemptsLeft}
+            resetGame={resetGame}
+            setOnWordHover={setOnWordHover}
+            setIsIntroDone={setIsIntroDone}
+          />
+        </div>
+      )}
+      {isIntroDone && (
         <div className="mt-2">
           <MemoryDumpGrid
             leftColumn={gameState.leftColumn}
@@ -28,7 +34,7 @@ export default function HackingTerminal() {
             setOnWordHover={setOnWordHover}
           />
         </div>
-      </div>
+      )}
     </section>
   );
 }

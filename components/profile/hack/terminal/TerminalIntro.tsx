@@ -10,6 +10,7 @@ const TerminalIntro = ({
   attemptsLeft,
   resetGame,
   setOnWordHover,
+  setIsIntroDone,
 }: TerminalIntroProps) => {
   const [animationDone, setAnimationDone] = useState(false);
   const { playTypingLoop, stopTypingLoop } = useSoundPlayer();
@@ -47,6 +48,7 @@ const TerminalIntro = ({
               `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
               () => {
                 setAnimationDone(true);
+                setIsIntroDone(true);
               },
             ]}
             repeat={0}

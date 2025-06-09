@@ -86,6 +86,7 @@ export interface TerminalIntroProps
   extends Pick<HackingHoverProps, "setOnWordHover"> {
   attemptsLeft: number;
   resetGame: () => void;
+  setIsIntroDone: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export type ResetBtnProps = Pick<
