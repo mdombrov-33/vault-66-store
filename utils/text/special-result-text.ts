@@ -67,6 +67,7 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
     luck,
   } = special;
 
+  //* Original well-rounded mid-range
   if (
     strength >= 3 &&
     strength <= 6 &&
@@ -86,35 +87,133 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
     return "A well-rounded person — maybe not exceptional, but definitely adaptable.";
   }
 
-  if (intelligence >= 7 && strength <= 4 && charisma <= 4) {
-    return "Brains over brawn — and charm. You think your way through the Wastes.";
+  //* Intelligence + Perception high combo
+  if (intelligence >= 7 && perception >= 7) {
+    return "Smart and sharp-eyed — you’re the ultimate scout and thinker.";
   }
 
-  if (strength >= 7 && intelligence <= 3) {
-    return "You solve problems the old-fashioned way: by punching them.";
+  //* Charisma + Luck high combo
+  if (charisma >= 7 && luck >= 7) {
+    return "Charm and fortune favor you — a smooth talker who always catches a break.";
   }
 
+  //* Strength + Endurance high combo
+  if (strength >= 7 && endurance >= 7) {
+    return "Built like a tank — strong and tough enough to take a beating.";
+  }
+
+  //* Agility + Luck high combo
+  if (agility >= 7 && luck >= 7) {
+    return "Quick on your feet and lucky to boot — hard to pin down and easy to get ahead.";
+  }
+
+  //* Medium charisma + low perception + low intelligence
+  if (charisma >= 5 && charisma <= 7 && perception <= 3 && intelligence <= 3) {
+    return "You rely on charm, but sometimes miss what’s right in front of you.";
+  }
+
+  //* High endurance, low agility and luck
+  if (endurance >= 7 && agility <= 4 && luck <= 4) {
+    return "Slow and steady wins the race — you can take hits, but don’t expect quick reflexes or lucky breaks.";
+  }
+
+  //* Low charisma + high perception + moderate intelligence
   if (
-    [
-      strength,
-      perception,
-      endurance,
-      charisma,
-      intelligence,
-      agility,
-      luck,
-    ].filter((stat) => stat >= 4 && stat <= 6).length >= 6
+    charisma <= 3 &&
+    perception >= 6 &&
+    intelligence >= 5 &&
+    intelligence <= 7
   ) {
-    return "Not too hot, not too cold — you’re right in the survivable sweet spot.";
+    return "Not one for social graces, but your mind and senses keep you one step ahead.";
   }
 
-  if (luck >= 8) {
-    return "Luck is on your side. When everything goes wrong, you somehow come out on top.";
+  //* Strength + Intelligence combo — brawler with brains
+  if (strength >= 6 && intelligence >= 6 && charisma <= 5) {
+    return "Brains and brawn combine in you — a force to be reckoned with.";
   }
 
-  if (agility >= 6 && intelligence >= 6 && endurance <= 3) {
-    return "You think fast and move faster — just hope you don’t get hit.";
+  //* Medium agility + medium luck + low endurance
+  if (
+    agility >= 5 &&
+    agility <= 7 &&
+    luck >= 5 &&
+    luck <= 7 &&
+    endurance <= 3
+  ) {
+    return "Fast and fortunate, but fragile — keep moving or get knocked down.";
   }
 
+  //* High charisma + medium intelligence + low strength
+  if (
+    charisma >= 7 &&
+    intelligence >= 5 &&
+    intelligence <= 7 &&
+    strength <= 3
+  ) {
+    return "You talk your way out of trouble, relying on wit and charm over muscle.";
+  }
+
+  //* Low luck + high endurance + medium strength and perception
+  if (
+    luck <= 3 &&
+    endurance >= 7 &&
+    strength >= 4 &&
+    strength <= 6 &&
+    perception >= 4 &&
+    perception <= 6
+  ) {
+    return "Not lucky, but tough and alert — you survive through sheer grit.";
+  }
+
+  //* Medium stats all around except high luck
+  if (
+    strength >= 3 &&
+    strength <= 6 &&
+    perception >= 3 &&
+    perception <= 6 &&
+    endurance >= 3 &&
+    endurance <= 6 &&
+    charisma >= 3 &&
+    charisma <= 6 &&
+    intelligence >= 3 &&
+    intelligence <= 6 &&
+    agility >= 3 &&
+    agility <= 6 &&
+    luck >= 7
+  ) {
+    return "Balanced, but with an edge of fortune on your side.";
+  }
+
+  //* Agility + perception + intelligence high combo
+  if (agility >= 7 && perception >= 7 && intelligence >= 7) {
+    return "Fast, sharp, and smart — a stealthy genius in the Wastes.";
+  }
+
+  //* Low charisma + low agility + low luck
+  if (charisma <= 3 && agility <= 3 && luck <= 3) {
+    return "You struggle to charm, move quickly, or catch a break — but maybe there’s other strengths to lean on.";
+  }
+
+  //* Strength + endurance + luck medium-high combo
+  if (strength >= 5 && endurance >= 6 && luck >= 5) {
+    return "Strong, tough, and a bit lucky — you can survive the worst and come out ahead.";
+  }
+
+  //* High charisma + perception + luck combo (3 stats)
+  if (charisma >= 7 && perception >= 7 && luck >= 7) {
+    return "You see the world clearly, charm your way through it, and luck is always on your side.";
+  }
+
+  //* Intelligence + endurance + low charisma
+  if (intelligence >= 7 && endurance >= 6 && charisma <= 3) {
+    return "Brain and brawn combined, but you don’t waste time on social niceties.";
+  }
+
+  //* Agility + perception low + high strength
+  if (agility <= 4 && perception <= 4 && strength >= 7) {
+    return "Not very quick or observant, but you make up for it with raw power.";
+  }
+
+  //* Fallback
   return "You're an odd mix. Maybe that’s exactly what the Wasteland needs.";
 };

@@ -5,7 +5,7 @@ function GoatTaggerSummary({
   totalCount,
 }: GoatTaggerSummaryProps) {
   return (
-    <div className="mb-4 text-md font-semibold text-primary">
+    <div className="mb-4 text-md text-primary text-2xl">
       {selectedCount} / {totalCount}
     </div>
   );

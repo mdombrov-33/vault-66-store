@@ -6,7 +6,16 @@ function GoatTaggerLeftColumn({
   setSelectedSkills,
   setHoveredSkill,
 }: GoatTaggerLeftColumnProps) {
-  return <div>GoatTaggerLeftColumn</div>;
+  return (
+    <ul>
+      {Object.entries(boostedSkills).map(([key, value]) => (
+        <li key={key} className="flex justify-between ">
+          <span className="text-2xl uppercase text-primary">{key}</span>
+          <span className="text-2xl text-primary">{value}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default GoatTaggerLeftColumn;
