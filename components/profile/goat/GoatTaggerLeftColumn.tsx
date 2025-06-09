@@ -1,5 +1,12 @@
-function GoatSkillTaggerLeftColumn() {
-  return <div>Left column</div>;
+import { GoatTaggerLeftColumnProps } from "@/types/profile";
+
+function GoatTaggerLeftColumn({
+  boostedSkills,
+  selectedSkills,
+  setSelectedSkills,
+  setHoveredSkill,
+}: GoatTaggerLeftColumnProps) {
+  return <div>GoatTaggerLeftColumn</div>;
 }
 
-export default GoatSkillTaggerLeftColumn;
+export default GoatTaggerLeftColumn;

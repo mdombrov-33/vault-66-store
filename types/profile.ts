@@ -167,3 +167,29 @@ export interface GoatTaggerSummaryProps {
   selectedCount: number;
   totalCount: number;
 }
+
+export interface GoatHoverProps {
+  hoveredSkill: SkillKeys | null;
+  setHoveredSkill: (skill: SkillKeys | null) => void;
+}
+
+export interface GoatSkillSelectionProps {
+  selectedSkills: Record<SkillKeys, boolean>;
+  setSelectedSkills: React.Dispatch<
+    React.SetStateAction<Record<SkillKeys, boolean>>
+  >;
+}
+
+export interface GoatBoostedSkillsProps {
+  boostedSkills: Record<SkillKeys, number>;
+}
+
+export interface GoatTaggerLeftSectionProps
+  extends Pick<GoatHoverProps, "setHoveredSkill">,
+    GoatSkillSelectionProps,
+    GoatBoostedSkillsProps {}
+
+export interface GoatTaggerLeftColumnProps
+  extends GoatBoostedSkillsProps,
+    GoatSkillSelectionProps,
+    Pick<GoatHoverProps, "setHoveredSkill"> {}

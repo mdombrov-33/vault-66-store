@@ -1,11 +1,11 @@
 import { getBoostedSkills } from "@/utils/profile/get-boosted-skills";
-import GoatTaggerLeftColumn from "@/components/profile/goat/GoatTaggerLeftColumn";
-import GoatTaggerRightColumn from "@/components/profile/goat/GoatTaggerRightColumn";
 import { GoatSkillTaggerProps, SkillKeys } from "@/types/profile";
 import { useState } from "react";
-import GoatTaggerSummary from "./GoatTaggerSummary";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
+import GoatTaggerLeftColumn from "./GoatTaggerLeftSection";
+import GoatSkillTaggerRightSection from "./GoatTaggerRightSection";
+import GoatTaggerLeftSection from "./GoatTaggerLeftSection";
 
 function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   const boostedSkills = getBoostedSkills(skills, answers);
@@ -27,19 +27,16 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   //* ADD ACTION FOR UPDATING SKILLS + TAGGING
   return (
     <>
-      <GoatTaggerSummary
-        selectedCount={selectedCount}
-        totalCount={totalCount}
-      />
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8 mt-12">
         <FormContainer>
           <div className="md:self-start">
-            <GoatTaggerLeftColumn
+            <GoatTaggerLeftSection
               boostedSkills={boostedSkills}
               selectedSkills={selectedSkills}
               setSelectedSkills={setSelectedSkills}
-              hoveredSkill={hoveredSkill}
               setHoveredSkill={setHoveredSkill}
+              selectedCount={selectedCount}
+              totalCount={totalCount}
             />
           </div>
           <div className="flex items-center justify-center mt-8 md:mt-0">
@@ -48,7 +45,7 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
         </FormContainer>
 
         <div className="hidden md:block">
-          <GoatTaggerRightColumn hoveredSkill={hoveredSkill} />
+          <GoatSkillTaggerRightSection hoveredSkill={hoveredSkill} />
         </div>
       </div>
     </>
