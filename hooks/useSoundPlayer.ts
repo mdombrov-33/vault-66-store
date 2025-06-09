@@ -35,7 +35,7 @@ export const useSoundPlayer = () => {
   const playTypingLoop = () => {
     if (!typingAudioRef.current) {
       const src = getRandomSrc(globalHoverOrAnimationSrc);
-      const audio = playSound(src, { volume: 0.2, loop: true });
+      const audio = playSound(src, { volume: 0.2 });
       typingAudioRef.current = audio;
     }
   };

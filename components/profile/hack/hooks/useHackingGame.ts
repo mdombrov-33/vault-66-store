@@ -43,7 +43,7 @@ export function useHackingGame(initialAttempts = 5) {
       setAttemptsLeft(newAttempts);
 
       if (newAttempts <= 0) {
-        setLog((prev) => [...prev, "LOGIN FAILURE - TERMINAL LOCKED"]);
+        setLog((prev) => ["LOGIN FAILURE - TERMINAL LOCKED", ...prev]);
         setGameOver(true);
         return false;
       }

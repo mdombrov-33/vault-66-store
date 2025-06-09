@@ -105,7 +105,8 @@ export interface LineWithClickableWordsProps
   line: string;
 }
 
-export interface TerminalLogProps extends Pick<HackingGameBaseProps, "log"> {
+export interface TerminalLogProps
+  extends Pick<HackingGameBaseProps, "log" | "gameOver"> {
   onWordHover: string | null;
 }
 
