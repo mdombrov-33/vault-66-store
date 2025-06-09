@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TerminalIntroProps } from "@/types/profile";
 import { TypeAnimation } from "react-type-animation";
 import ResetBtn from "./ResetBtn";
@@ -15,9 +15,27 @@ const TerminalIntro = ({
   const [animationDone, setAnimationDone] = useState(false);
   const { playTypingLoop, stopTypingLoop } = useSoundPlayer();
 
-  const blocks = Array.from({ length: MAX_ATTEMPTS }, (_, i) =>
-    i < attemptsLeft ? "▮" : "▯"
-  ).join(" ");
+  const blocks = useMemo(() => {
+    return Array.from({ length: MAX_ATTEMPTS }, (_, i) =>
+      i < attemptsLeft ? "▮" : "▯"
+    ).join(" ");
+  }, [attemptsLeft]);
+
+  const sequence = useMemo(() => {
+    return [
+      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\n",
+      0,
+      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\n",
+      0,
+      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\n",
+      0,
+      `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
+      () => {
+        setAnimationDone(true);
+        setIsIntroDone(true);
+      },
+    ];
+  }, [blocks, setIsIntroDone]);
 
   useEffect(() => {
     if (!animationDone) {
@@ -38,19 +56,7 @@ const TerminalIntro = ({
       <div>
         {!animationDone ? (
           <TypeAnimation
-            sequence={[
-              "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\n",
-              0,
-              "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\n",
-              0,
-              "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\n",
-              0,
-              `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
-              () => {
-                setAnimationDone(true);
-                setIsIntroDone(true);
-              },
-            ]}
+            sequence={sequence}
             repeat={0}
             speed={95}
             cursor={false}
