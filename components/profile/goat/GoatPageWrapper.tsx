@@ -11,6 +11,12 @@ function GoatPageWrapper({ skills }: GoatSkillsProps) {
   const [stage, setStage] = useState<GoatStage>("intro");
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
+  //*  Lock GOAT screen if already completed, add db query later to set true when submitting at tagging section
+  if (skills.isGoatCompleted) {
+    return <GoatFinalResults />;
+  }
+
+  //*  Otherwise, proceed with test stages
   switch (stage) {
     case "intro":
       return <GoatIntro handleStart={() => setStage("test")} />;

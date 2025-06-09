@@ -1,16 +1,27 @@
 import { getBoostedSkills } from "@/utils/profile/get-boosted-skills";
-import GoatResultsLeftColumn from "@/components/profile/goat/GoatTaggerLeftColumn";
-import GoatResultsRightColumn from "@/components/profile/goat/GoatTaggerRightColumn";
-import { GoatSkillTaggerProps } from "@/types/profile";
+import GoatTaggerLeftColumn from "@/components/profile/goat/GoatTaggerLeftColumn";
+import GoatTaggerRightColumn from "@/components/profile/goat/GoatTaggerRightColumn";
+import { GoatSkillTaggerProps, SkillKeys } from "@/types/profile";
+import { useState } from "react";
 
 function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   const boostedSkills = getBoostedSkills(skills, answers);
-  console.log("Boosted Skills:", boostedSkills);
+
+  const [selectedSkills, setSelectedSkills] = useState<
+    Record<SkillKeys, boolean>
+  >(
+    () =>
+      Object.fromEntries(
+        Object.keys(boostedSkills).map((key) => [key, false])
+      ) as Record<SkillKeys, boolean>
+  );
+
+  const [hoveredSkill, setHoveredSkill] = useState<SkillKeys | null>(null);
 
   return (
     <section>
-      <GoatResultsLeftColumn />
-      <GoatResultsRightColumn />
+      <GoatTaggerLeftColumn />
+      <GoatTaggerRightColumn />
       <button onClick={onFinish}>Finish Tagging</button>
     </section>
   );

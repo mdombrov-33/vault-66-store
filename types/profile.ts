@@ -115,6 +115,8 @@ export interface Skills extends SkillAttributes {
   isGoatCompleted: boolean;
 }
 
+export type SkillKeys = keyof SkillAttributes;
+
 export interface GoatSkillsProps {
   skills: Skills;
 }
@@ -156,4 +158,9 @@ export interface GoatIntroProps {
 export interface GoatAnswersProps {
   currentQuestion: GoatQuestion;
   onAnswer: (answerKey: string) => void;
+}
+
+export interface GoatTaggerSummaryProps {
+  selectedCount: number;
+  totalCount: number;
 }
