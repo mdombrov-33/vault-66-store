@@ -33,9 +33,9 @@ export default function TerminalTypewriter({
     return () => clearInterval(interval);
   }, [word, speed]);
 
-  console.log(displayedText);
-
   return (
-    <p className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)]">{`> ${displayedText}`}</p>
+    <p className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)]">
+      &gt; {displayedText}
+    </p>
   );
 }
