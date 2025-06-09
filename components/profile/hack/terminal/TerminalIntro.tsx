@@ -30,7 +30,6 @@ const TerminalIntro = ({
     0,
     `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
     () => {
-      console.log("🔥 Animation callback fired");
       setAnimationDone(true);
       setIsIntroDone(true);
     },

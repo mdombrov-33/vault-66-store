@@ -94,8 +94,8 @@
   /* CUSTOM VARIABLES */
   --shadow-glow-primary: rgba(50, 49, 43, 0.6);
   --terminal-background: #221a00;
-  --terminal-text: #c7a726;
-  --terminal-hover-bg: #ad8f19;
+  --terminal-text: #c2a532;
+  --terminal-hover-bg: #c2a532;
   --terminal-hover-text: #3a2d00;
 }
 
