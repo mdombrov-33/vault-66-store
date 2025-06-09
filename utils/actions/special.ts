@@ -10,7 +10,6 @@ import { syncSkillsFromSpecial } from "./goat";
 
 //* Creates a new SPECIAL record in the database
 export const createSpecialAction = async (
-  prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
@@ -37,7 +36,7 @@ export const createSpecialAction = async (
       },
     });
 
-    await syncSkillsFromSpecial(user.id);
+    await syncSkillsFromSpecial();
 
     revalidatePath("/profile/special");
     return { message: "Thanks! Nice to meet you" };

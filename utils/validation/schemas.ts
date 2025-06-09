@@ -118,19 +118,20 @@ export const specialSchema = z
   );
 
 //* This schema is used to validate user's skills.
+
 export const skillSchema = z.object({
-  barter: z.number().int().min(0).max(100),
-  bigGuns: z.number().int().min(0).max(100),
-  energyWeapons: z.number().int().min(0).max(100),
-  explosives: z.number().int().min(0).max(100),
-  lockpick: z.number().int().min(0).max(100),
-  medicine: z.number().int().min(0).max(100),
-  meleeWeapons: z.number().int().min(0).max(100),
-  repair: z.number().int().min(0).max(100),
-  science: z.number().int().min(0).max(100),
-  sneak: z.number().int().min(0).max(100),
-  speech: z.number().int().min(0).max(100),
-  smallGuns: z.number().int().min(0).max(100),
-  unarmed: z.number().int().min(0).max(100),
-  survival: z.number().int().min(0).max(100),
+  barter: z.coerce.number().int().min(0).max(100),
+  bigGuns: z.coerce.number().int().min(0).max(100),
+  energyWeapons: z.coerce.number().int().min(0).max(100),
+  explosives: z.coerce.number().int().min(0).max(100),
+  lockpick: z.coerce.number().int().min(0).max(100),
+  medicine: z.coerce.number().int().min(0).max(100),
+  meleeWeapons: z.coerce.number().int().min(0).max(100),
+  repair: z.coerce.number().int().min(0).max(100),
+  science: z.coerce.number().int().min(0).max(100),
+  sneak: z.coerce.number().int().min(0).max(100),
+  speech: z.coerce.number().int().min(0).max(100),
+  smallGuns: z.coerce.number().int().min(0).max(100),
+  unarmed: z.coerce.number().int().min(0).max(100),
+  survival: z.coerce.number().int().min(0).max(100),
 });
