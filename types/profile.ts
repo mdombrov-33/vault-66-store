@@ -133,7 +133,9 @@ export interface GoatResultProps extends GoatSkillsProps {
   answers: Record<number, string>;
 }
 
-export interface GoatSkillTaggerProps extends GoatResultProps {
+export interface GoatSkillTaggerProps
+  extends Omit<GoatSkillsProps, "isGoatCompleted">,
+    Pick<GoatResultProps, "answers"> {
   onFinish: () => void;
 }
 

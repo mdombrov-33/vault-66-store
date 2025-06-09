@@ -1,8 +1,8 @@
 import db from "@/lib/db";
 import { renderError } from "@/utils/render-error";
-import { validateZodSchema } from "@/utils/validation/validate-zod-schema";
-import { specialSchema } from "@/utils/validation/schemas";
-import { getAuthUser } from "@/utils/auth/get-user";
+// import { validateZodSchema } from "@/utils/validation/validate-zod-schema";
+// import { specialSchema } from "@/utils/validation/schemas";
+// import { getAuthUser } from "@/utils/auth/get-user";
 import { getSpecialRecord } from "./special";
 import { calculateSkills } from "../profile/calculate-skills";
 
@@ -58,7 +58,7 @@ export const getSkillRecord = async (clerkId: string) => {
     },
   });
 
-  // Default to 0 if any field is missing
+  //* Default to 0 if any field is missing
   return {
     barter: skillRecord?.barter ?? 0,
     bigGuns: skillRecord?.bigGuns ?? 0,

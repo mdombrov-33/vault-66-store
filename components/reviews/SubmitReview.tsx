@@ -9,10 +9,12 @@ import TextAreaInput from "@/components/form/TextAreaInput";
 import { Button } from "@/components/ui/button";
 import { createReviewAction } from "@/utils/actions/review";
 import { useUser } from "@clerk/nextjs"; //* using useUser because this is a client component
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
   const { user } = useUser();
+  const { playClick } = useSoundPlayer();
 
   return (
     <div>
@@ -40,6 +42,9 @@ function SubmitReview({ productId }: { productId: string }) {
               className="mt-4 text-3xl"
               text="Submit Field Report"
               loadingText="Transmitting Review..."
+              onClick={() => {
+                playClick();
+              }}
             />
           </FormContainer>
         </Card>
