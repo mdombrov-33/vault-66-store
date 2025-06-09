@@ -1,16 +1,28 @@
 import { TerminalLogProps } from "@/types/profile";
+import TerminalTypewriter from "@/components/profile/hack/terminal/TerminalTypeWriter"; // path to the new component
 
 function TerminalLog({ log, onWordHover, gameOver }: TerminalLogProps) {
   return (
-    <div>
-      {log.map((entry, i) => (
-        <p className="text-[0.6rem] md:text-lg lg:text-xl" key={i}>
-          {entry}
-        </p>
-      ))}
-      {!gameOver && onWordHover && (
-        <p className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)">{`> ${onWordHover}`}</p>
-      )}
+    <div className="relative h-full w-full overflow-hidden">
+      {/* Terminal content area */}
+      <div className="absolute inset-0 flex px-2 pb-8">
+        {/* Log messages (clicked results) */}
+        <div className="flex flex-col-reverse space-y-1 space-y-reverse">
+          {log.map((entry, i) => (
+            <p
+              key={i}
+              className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)]"
+            >
+              {entry}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      {/* Persistent input at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full px-2 pb-1">
+        <TerminalTypewriter word={onWordHover} />
+      </div>
     </div>
   );
 }

@@ -34,9 +34,9 @@ export function useHackingGame(initialAttempts = 5) {
     } else {
       const likeness = getLikeness(word, gameState.correctPassword);
       setLog((prev) => [
-        ...prev,
-        `> ${word}`,
         `ENTRY DENIED LIKENESS=${likeness}`,
+        `> ${word}`,
+        ...prev,
       ]);
 
       const newAttempts = attemptsLeft - 1;
