@@ -55,9 +55,36 @@ export const getSkillRecord = async (clerkId: string) => {
       survival: true,
       unarmed: true,
       smallGuns: true,
-      isGoatCompleted: true,
     },
   });
 
-  return skillRecord;
+  // Default to 0 if any field is missing
+  return {
+    barter: skillRecord?.barter ?? 0,
+    bigGuns: skillRecord?.bigGuns ?? 0,
+    energyWeapons: skillRecord?.energyWeapons ?? 0,
+    explosives: skillRecord?.explosives ?? 0,
+    lockpick: skillRecord?.lockpick ?? 0,
+    medicine: skillRecord?.medicine ?? 0,
+    meleeWeapons: skillRecord?.meleeWeapons ?? 0,
+    repair: skillRecord?.repair ?? 0,
+    science: skillRecord?.science ?? 0,
+    sneak: skillRecord?.sneak ?? 0,
+    speech: skillRecord?.speech ?? 0,
+    survival: skillRecord?.survival ?? 0,
+    unarmed: skillRecord?.unarmed ?? 0,
+    smallGuns: skillRecord?.smallGuns ?? 0,
+  };
+};
+
+//* Get goat status to lock in final result
+export const getGoatCompletionStatus = async (
+  clerkId: string
+): Promise<boolean> => {
+  const result = await db.skill.findUnique({
+    where: { clerkId },
+    select: { isGoatCompleted: true },
+  });
+
+  return result?.isGoatCompleted ?? false;
 };

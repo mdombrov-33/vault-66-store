@@ -7,14 +7,15 @@ import GoatSkillTagger from "./GoatSkillTagger";
 import GoatFinalResults from "./GoatFinalResults";
 import { GoatSkillsProps, GoatStage } from "@/types/profile";
 
-function GoatPageWrapper({ skills }: GoatSkillsProps) {
+function GoatPageWrapper({ skills, isGoatCompleted }: GoatSkillsProps) {
   const [stage, setStage] = useState<GoatStage>("intro");
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  console.log(isGoatCompleted, "isGoatCompleted");
 
   //*  Lock GOAT screen if already completed, add db query later to set true when submitting at tagging section
-  if (skills.isGoatCompleted) {
-    return <GoatFinalResults />;
-  }
+  // if (isGoatCompleted) {
+  //   return <GoatFinalResults />;
+  // }
 
   //*  Otherwise, proceed with test stages
   switch (stage) {

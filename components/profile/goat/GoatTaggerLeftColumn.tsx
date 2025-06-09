@@ -1,11 +1,5 @@
-import GoatTaggerSummary from "./GoatTaggerSummary";
-
 function GoatSkillTaggerLeftColumn() {
-  return (
-    <div>
-      <GoatTaggerSummary />
-    </div>
-  );
+  return <div>Left column</div>;
 }
 
 export default GoatSkillTaggerLeftColumn;

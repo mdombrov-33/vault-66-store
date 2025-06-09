@@ -119,6 +119,7 @@ export type SkillKeys = keyof SkillAttributes;
 
 export interface GoatSkillsProps {
   skills: Skills;
+  isGoatCompleted: boolean;
 }
 
 export type GoatStage = "intro" | "test" | "tagging" | "final";
