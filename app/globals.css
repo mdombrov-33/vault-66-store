@@ -88,11 +88,11 @@
   --sidebar-border: rgba(0, 0, 0, 0.1);
   --sidebar-ring: rgb(229, 195, 70);
 
-  --shadow-glow-primary: rgba(50, 49, 43, 0.6);
-
   --sidebar-disabled-muted: rgb(217, 207, 182);
   --sidebar-disabled-muted-foreground: rgb(88, 75, 50);
 
+  /* CUSTOM VARIABLES */
+  --shadow-glow-primary: rgba(50, 49, 43, 0.6);
   --terminal-background: #221a00;
   --terminal-text: #ad8f19;
   --terminal-hover-bg: #c2be4f;
@@ -145,11 +145,11 @@
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-ring: rgb(80, 150, 100);
 
-  --shadow-glow-primary: rgba(72, 177, 53, 0.7);
-
   --sidebar-disabled-muted: rgb(23, 41, 20);
   --sidebar-disabled-muted-foreground: (78, 161, 114);
 
+  /* CUSTOM VARIABLES */
+  --shadow-glow-primary: rgba(72, 177, 53, 0.7);
   --terminal-background: #101b10ec;
   --terminal-text: #00ff00;
   --terminal-hover-bg: #428242; /* lighter green */
