@@ -7,11 +7,31 @@ function DumpColumn({
   onGuess,
   setOnWordHover,
   gameOver,
-}: DumpColumnProps) {
+  delay = 0,
+}: DumpColumnProps & { delay?: number }) {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: delay,
+      },
+    },
+  };
+
+  const lineVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
-    <div>
+    <motion.div variants={containerVariants} initial="hidden" animate="visible">
       {lines.map((line, i) => (
-        <motion.div key={i}>
+        <motion.div
+          key={i}
+          variants={lineVariants}
+          transition={{ duration: 0.05 }}
+        >
           <div className="flex flex-wrap">
             <LineWithClickableWords
               setOnWordHover={setOnWordHover}
@@ -22,7 +42,7 @@ function DumpColumn({
           </div>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 

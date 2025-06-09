@@ -21,21 +21,20 @@ const TerminalIntro = ({
     ).join(" ");
   }, [attemptsLeft]);
 
-  const sequence = useMemo(() => {
-    return [
-      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\n",
-      0,
-      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\n",
-      0,
-      "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\n",
-      0,
-      `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
-      () => {
-        setAnimationDone(true);
-        setIsIntroDone(true);
-      },
-    ];
-  }, [blocks, setIsIntroDone]);
+  const sequence = [
+    "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\n",
+    0,
+    "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\n",
+    0,
+    "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\n",
+    0,
+    `ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nWELCOME TO ROBCO INDUSTRIES (TM)\nPASSWORD REQUIRED\nATTEMPTS REMAINING: ${blocks}`,
+    () => {
+      console.log("🔥 Animation callback fired");
+      setAnimationDone(true);
+      setIsIntroDone(true);
+    },
+  ];
 
   useEffect(() => {
     if (!animationDone) {

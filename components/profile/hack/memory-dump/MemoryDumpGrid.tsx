@@ -19,12 +19,14 @@ function MemoryDumpGrid({
           lines={leftColumn}
           onGuess={onGuess}
           gameOver={gameOver}
+          delay={0}
         />
         <DumpColumn
           setOnWordHover={setOnWordHover}
           lines={rightColumn}
           onGuess={onGuess}
           gameOver={gameOver}
+          delay={leftColumn.length * 0.05 + 0.1}
         />
       </div>
 
