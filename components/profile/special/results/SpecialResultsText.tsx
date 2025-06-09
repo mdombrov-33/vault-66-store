@@ -22,9 +22,12 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
   } = specialRecord;
 
   return (
-    <div className="flex flex-col justify-between gap-6">
+    <div className="flex flex-col justify-between gap-6 pb-4">
       <div className="border rounded-md p-4">
         {/* Dynamic text based on SPECIAL */}
+        <span className="font-[roboto-mono] text-xl">
+          VAULT-TEC PSYCH EVAL:
+        </span>
         <p className="text-lg sm:text-xl font-[roboto-mono] leading-10">
           {getStrengthText(strength)}
           <br />

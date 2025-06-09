@@ -67,93 +67,54 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
     luck,
   } = special;
 
-  if (strength >= 8 && perception >= 8) {
-    return "You’re a powerhouse who can spot threats before they even get close.";
+  if (
+    strength >= 3 &&
+    strength <= 6 &&
+    perception >= 3 &&
+    perception <= 6 &&
+    endurance >= 3 &&
+    endurance <= 6 &&
+    charisma >= 3 &&
+    charisma <= 6 &&
+    intelligence >= 3 &&
+    intelligence <= 6 &&
+    agility >= 3 &&
+    agility <= 6 &&
+    luck >= 3 &&
+    luck <= 6
+  ) {
+    return "A well-rounded person — maybe not exceptional, but definitely adaptable.";
   }
 
-  if (endurance >= 9 && luck <= 3) {
-    return "You can take a beating, but the Wasteland isn’t kind to the unlucky.";
+  if (intelligence >= 7 && strength <= 4 && charisma <= 4) {
+    return "Brains over brawn — and charm. You think your way through the Wastes.";
   }
 
-  if (charisma >= 9 && intelligence <= 3) {
-    return "You might not be the brightest, but you sure know how to make friends.";
+  if (strength >= 7 && intelligence <= 3) {
+    return "You solve problems the old-fashioned way: by punching them.";
   }
 
-  if (agility >= 9 && luck >= 9) {
-    return "You’re quick and lucky—like a feral ghoul in a Nuka-Cola factory.";
+  if (
+    [
+      strength,
+      perception,
+      endurance,
+      charisma,
+      intelligence,
+      agility,
+      luck,
+    ].filter((stat) => stat >= 4 && stat <= 6).length >= 6
+  ) {
+    return "Not too hot, not too cold — you’re right in the survivable sweet spot.";
   }
 
-  if (intelligence >= 7 && charisma >= 7) {
-    return "With both brains and charm, you're a smooth-talking strategist.";
+  if (luck >= 8) {
+    return "Luck is on your side. When everything goes wrong, you somehow come out on top.";
   }
 
-  if (agility >= 8 && perception >= 8) {
-    return "You move like a ghost and strike before they even see you.";
+  if (agility >= 6 && intelligence >= 6 && endurance <= 3) {
+    return "You think fast and move faster — just hope you don’t get hit.";
   }
 
-  if (luck >= 9 && intelligence <= 3) {
-    return "You're dumb as a radroach, but somehow everything just works out.";
-  }
-
-  if (strength >= 8 && endurance >= 8) {
-    return "You’re a walking tank. Subtlety isn’t your style.";
-  }
-
-  if (intelligence >= 9 && perception >= 9) {
-    return "You're a master tactician with eyes like a hawk—nothing escapes your plan.";
-  }
-
-  if (strength <= 3 && intelligence >= 9) {
-    return "A fragile genius—big brain, weak biceps. You’d rather outsmart than outpunch.";
-  }
-
-  if (charisma >= 9 && luck >= 9) {
-    return "People love you and fate favors you. Somehow, things *always* go your way.";
-  }
-
-  if (agility <= 3 && endurance >= 9) {
-    return "You're not fast, but you’re built like a Brahmin. You’ll outlast everyone.";
-  }
-
-  if (perception <= 3 && intelligence >= 8) {
-    return "You're brilliant, but you might walk into a wall if it weren’t for your Pip-Boy.";
-  }
-
-  if (strength >= 7 && charisma >= 7) {
-    return "You can charm or crush your way through any situation.";
-  }
-
-  if (luck >= 9 && perception <= 3) {
-    return "You barely notice what's going on, but your luck saves you every time.";
-  }
-
-  if (endurance >= 8 && agility >= 8) {
-    return "You're a tireless sprinter, like a radstag on jet.";
-  }
-
-  if (charisma <= 3 && intelligence >= 7) {
-    return "You have the brains but not the bedside manner. Maybe let someone else do the talking.";
-  }
-
-  if (strength <= 3 && agility >= 9) {
-    return "You can’t lift much, but good luck trying to catch you.";
-  }
-
-  if (luck <= 3 && charisma <= 3) {
-    return "Neither charming nor lucky — you should probably stay at home.";
-  }
-
-  if (strength >= 9 && intelligence >= 9) {
-    return "A rare brute-genius — you can smash *and* strategize. Dangerous combo.";
-  }
-
-  if (luck === 1 && intelligence === 1 && charisma === 1) {
-    return "Let’s just say… you’re not exactly the Chosen One.";
-  }
-
-  if (strength === 1 && agility === 1 && endurance === 1) {
-    return "You probably shouldn’t leave the Vault. Ever.";
-  }
-
-  return null;
+  return "You're an odd mix. Maybe that’s exactly what the Wasteland needs.";
 };

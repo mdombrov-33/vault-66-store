@@ -4,7 +4,7 @@ import {
   globalClickSrc,
 } from "@/data/sounds/global-sounds";
 
-//* Play click sound or hover sound on demand anywhere in the app
+//* Play click, hover or non-user typing sounds on demand anywhere in the app.
 const getRandomSrc = (arr: string[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 

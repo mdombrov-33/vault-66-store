@@ -150,7 +150,7 @@
   --sidebar-disabled-muted: rgb(23, 41, 20);
   --sidebar-disabled-muted-foreground: (78, 161, 114);
 
-  --terminal-background: #0a140a;
+  --terminal-background: #101b10ec;
   --terminal-text: #00ff00;
   --terminal-hover-bg: #428242; /* lighter green */
   --terminal-hover-text: #020302; /* brighter green */
