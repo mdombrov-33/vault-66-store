@@ -167,3 +167,18 @@ export async function submitGoatSkillsAction(
     return renderError(error);
   }
 }
+
+//* Fetch user's tagged skills
+export const getTaggedSkills = async () => {
+  const user = await getAuthUser();
+  try {
+    const taggedSkills = await db.skillTag.findMany({
+      where: {
+        clerkId: user.id,
+      },
+    });
+    return taggedSkills.map((tag) => tag.skill);
+  } catch (error) {
+    return renderError(error);
+  }
+};

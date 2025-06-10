@@ -29,7 +29,7 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
     unarmed: skills.unarmed,
   };
 
-  const boostedSkills = getBoostedSkills(baseSkills, answers);
+  const boostedSkills = getBoostedSkills(baseSkills, answers); //* We take base skills for SPECIAL registration + applying goat answers
 
   const [selectedSkills, setSelectedSkills] = useState<
     Record<SkillKeys, boolean>
@@ -49,10 +49,18 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
     })
   ) as SkillAttributes;
 
+  const taggedSkills = (Object.keys(selectedSkills) as SkillKeys[]).filter(
+    (key) => selectedSkills[key]
+  );
+
+  const handleSubmit = () => {
+    onFinish(finalSkills, taggedSkills);
+  };
+
   return (
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
-        <FormContainer action={submitGoatSkillsAction} onSuccess={onFinish}>
+        <FormContainer action={submitGoatSkillsAction} onSuccess={handleSubmit}>
           {/* Hidden inputs for final Skills after tagging */}
           {Object.entries(finalSkills).map(([key, value]) => (
             <input key={key} type="hidden" name={key} value={value} />

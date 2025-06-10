@@ -137,7 +137,10 @@ export interface GoatResultProps extends GoatSkillsProps {
 export interface GoatSkillTaggerProps
   extends Omit<GoatSkillsProps, "isGoatCompleted">,
     Pick<GoatResultProps, "answers"> {
-  onFinish: () => void;
+  onFinish: (
+    finalSkills: Record<SkillKeys, number>,
+    taggedSkills: string[]
+  ) => void;
 }
 
 export type GoatQuestion = {
@@ -204,3 +207,8 @@ export interface GoatTaggerLeftColumnProps
     Pick<GoatHoverProps, "setHoveredSkill"> {}
 
 export type GoatTaggerRightSectionProps = Pick<GoatHoverProps, "hoveredSkill">;
+
+export type GoatFinalResultsProps = {
+  finalSkills: Record<SkillKeys, number> | null;
+  taggedSkills: string[];
+};
