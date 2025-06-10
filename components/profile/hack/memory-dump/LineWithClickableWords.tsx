@@ -1,8 +1,32 @@
+"use client";
+
 import { LineWithClickableWordsProps } from "@/types/profile";
 import { cn } from "@/utils/cn";
 import { useHackingSounds } from "../hooks/useHackingSounds";
+import { useEffect } from "react";
 
-const allowedCharsRegex = /[^\&@]/g; //* This matches everything except & and @
+const allowedCharsRegex = /[^\&@]/g;
+
+//* Track last interaction globally
+let lastInteractionWasKeyboard = false;
+
+function setupInteractionListeners() {
+  if (
+    typeof window !== "undefined" &&
+    !(window as any)._hackingListenersAttached
+  ) {
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Tab") lastInteractionWasKeyboard = true;
+    });
+
+    window.addEventListener("mousedown", () => {
+      lastInteractionWasKeyboard = false;
+    });
+
+    //* Prevent double-adding
+    (window as any)._hackingListenersAttached = true;
+  }
+}
 
 function LineWithClickableWords({
   line,
@@ -16,6 +40,10 @@ function LineWithClickableWords({
     playHackingScrollSound,
     playHackingSuccessSound,
   } = useHackingSounds();
+
+  useEffect(() => {
+    setupInteractionListeners();
+  }, []);
 
   const handleClick = (word: string) => {
     if (gameOver) return;
@@ -43,7 +71,10 @@ function LineWithClickableWords({
   const handleFocus = (word: string) => {
     if (gameOver) return;
     setOnWordHover(word);
-    playHackingScrollSound();
+
+    if (lastInteractionWasKeyboard) {
+      playHackingScrollSound();
+    }
   };
 
   return (
@@ -54,10 +85,10 @@ function LineWithClickableWords({
 
         return isWord ? (
           <button
-            onMouseEnter={() => handleMouseEnter(word)}
-            onMouseLeave={() => handleMouseLeave()}
-            onFocus={() => handleFocus(word)}
             key={idx}
+            onMouseEnter={() => handleMouseEnter(word)}
+            onMouseLeave={handleMouseLeave}
+            onFocus={() => handleFocus(word)}
             onClick={() => handleClick(word)}
             className={cn(
               "all-none",
