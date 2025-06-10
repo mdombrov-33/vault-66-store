@@ -5,20 +5,25 @@ import GoatIntro from "./GoatIntro";
 import GoatTest from "./GoatTest";
 import GoatSkillTagger from "./GoatSkillTagger";
 import GoatFinalResults from "./GoatFinalResults";
-import { GoatSkillsProps, GoatStage, SkillKeys } from "@/types/profile";
+import {
+  GoatSkillsProps,
+  GoatStage,
+  SkillAttributes,
+  SkillKeys,
+} from "@/types/profile";
 
 function GoatPageWrapper({
-  skills,
+  baseSkills,
   isGoatCompleted,
-  initialTaggedSkills,
+  taggedSkills,
 }: GoatSkillsProps) {
-  const [stage, setStage] = useState<GoatStage>("intro");
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [finalSkills, setFinalSkills] = useState<Record<SkillKeys, number>>(
-    {} as Record<SkillKeys, number>
+  const [stage, setStage] = useState<GoatStage>(
+    isGoatCompleted ? "final" : "intro"
   );
-  const [taggedSkills, setTaggedSkills] =
-    useState<string[]>(initialTaggedSkills);
+
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
+  const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills);
+  const [finalTags, setFinalTags] = useState<string[]>(taggedSkills);
 
   //*  Lock at GOAT results screen if already completed, we set the flag after submitting the skills
   if (isGoatCompleted) {

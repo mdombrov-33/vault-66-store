@@ -112,16 +112,13 @@ export interface TerminalLogProps
 
 //* GOAT
 export type SkillAttributes = z.infer<typeof skillSchema>;
-export interface Skills extends SkillAttributes {
-  isGoatCompleted: boolean;
-}
 
 export type SkillKeys = keyof SkillAttributes;
 
 export interface GoatSkillsProps {
-  skills: Skills;
+  baseSkills: SkillAttributes;
+  taggedSkills?: string[];
   isGoatCompleted: boolean;
-  initialTaggedSkills: string[];
 }
 
 export type GoatStage = "intro" | "test" | "tagging" | "final";

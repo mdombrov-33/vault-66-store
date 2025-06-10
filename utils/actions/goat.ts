@@ -208,11 +208,10 @@ export const getUserFinalSkills = async () => {
         survival: true,
         unarmed: true,
         smallGuns: true,
-        isGoatCompleted: true,
       },
     });
 
-    if (!skills || !skills.isGoatCompleted) {
+    if (!skills) {
       return null;
     }
 

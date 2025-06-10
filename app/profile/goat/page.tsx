@@ -9,30 +9,23 @@ import {
 export default async function GoatPage() {
   const isGoatCompleted = await getGoatCompletionStatus();
 
-  let skills;
-  let taggedSkills: string[] = [];
-
   if (isGoatCompleted) {
     const finalSkills = await getUserFinalSkills();
-    taggedSkills = await getUserTaggedSkills();
+    const taggedSkills = await getUserTaggedSkills();
 
     if (!finalSkills) {
-      throw new Error(
-        "GOAT is marked as completed, but no final skills found somehow."
-      );
+      throw new Error("GOAT marked as completed but no final skills found.");
     }
 
-    skills = { ...finalSkills, isGoatCompleted: true };
+    return (
+      <GoatPageWrapper
+        isGoatCompleted={isGoatCompleted}
+        baseSkills={finalSkills}
+        taggedSkills={taggedSkills}
+      />
+    );
   } else {
-    const rawSkills = await getInitialSkills();
-    skills = { ...rawSkills, isGoatCompleted: false };
+    const baseSkills = await getInitialSkills();
+    return <GoatPageWrapper isGoatCompleted={false} baseSkills={baseSkills} />;
   }
-
-  return (
-    <GoatPageWrapper
-      isGoatCompleted={isGoatCompleted}
-      skills={skills}
-      initialTaggedSkills={taggedSkills}
-    />
-  );
 }
