@@ -209,6 +209,6 @@ export interface GoatTaggerLeftColumnProps
 export type GoatTaggerRightSectionProps = Pick<GoatHoverProps, "hoveredSkill">;
 
 export type GoatFinalResultsProps = {
-  finalSkills: Record<SkillKeys, number> | null;
+  finalSkills: Record<SkillKeys, number>;
   taggedSkills: string[];
 };
