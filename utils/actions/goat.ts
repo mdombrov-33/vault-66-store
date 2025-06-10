@@ -81,7 +81,23 @@ export const getSkillRecord = async () => {
       smallGuns: skillRecord?.smallGuns ?? 0,
     };
   } catch (error) {
-    return renderError(error);
+    renderError(error);
+    return {
+      barter: 0,
+      bigGuns: 0,
+      energyWeapons: 0,
+      explosives: 0,
+      lockpick: 0,
+      medicine: 0,
+      meleeWeapons: 0,
+      repair: 0,
+      science: 0,
+      sneak: 0,
+      speech: 0,
+      survival: 0,
+      unarmed: 0,
+      smallGuns: 0,
+    };
   }
 };
 
@@ -136,6 +152,7 @@ export async function submitGoatSkillsAction(formData: FormData) {
         skill,
       })),
     });
+    return { message: "Skills updated successfully" };
   } catch (error) {
     return renderError(error);
   }
