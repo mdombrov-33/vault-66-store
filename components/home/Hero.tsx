@@ -4,8 +4,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import HeroCarousel from "./HeroCarousel";
 import { TypeAnimation } from "react-type-animation";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function Hero() {
+  const { playClick } = useSoundPlayer();
+
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <div>
@@ -32,6 +35,7 @@ function Hero() {
         />
 
         <Button
+          onClick={playClick}
           asChild
           size="lg"
           className="mt-10 text-2xl uppercase text-primary-foreground shadow-primary-glow hover:shadow-[0_0_15px_var(--shadow-glow-primary)] transition-all duration-300 ease-in-out "
