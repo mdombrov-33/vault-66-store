@@ -1,3 +1,5 @@
+"use server";
+
 import db from "@/lib/db";
 import { renderError } from "@/utils/render-error";
 import { validateZodSchema } from "@/utils/validation/validate-zod-schema";

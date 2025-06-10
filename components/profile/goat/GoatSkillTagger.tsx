@@ -46,23 +46,23 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   return (
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
-        {/* <FormContainer action={submitGoatSkillsAction}> */}
-        <div className="md:self-start">
-          <GoatTaggerLeftSection
-            boostedSkills={boostedSkills}
-            selectedSkills={selectedSkills}
-            setSelectedSkills={setSelectedSkills}
-            setHoveredSkill={setHoveredSkill}
-          />
-        </div>
-        <div className="flex items-center justify-center mt-8 ">
-          <SubmitButton
-            className="text-3xl"
-            text="submit skills"
-            onClick={onFinish}
-          />
-        </div>
-        {/* </FormContainer> */}
+        <FormContainer action={submitGoatSkillsAction}>
+          <div className="md:self-start">
+            <GoatTaggerLeftSection
+              boostedSkills={boostedSkills}
+              selectedSkills={selectedSkills}
+              setSelectedSkills={setSelectedSkills}
+              setHoveredSkill={setHoveredSkill}
+            />
+          </div>
+          <div className="flex items-center justify-center mt-8 ">
+            <SubmitButton
+              className="text-3xl"
+              text="submit skills"
+              onClick={onFinish}
+            />
+          </div>
+        </FormContainer>
 
         <div className="hidden md:block">
           <GoatSkillTaggerRightSection hoveredSkill={hoveredSkill} />
