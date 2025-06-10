@@ -54,8 +54,8 @@ Test Admin Credentials:
 - 🌗 **Theming**
   - Toggle between Fallout 3–style green and New Vegas–style amber
   - Accessible right from the navbar
- 
-- 📻 Fallout.FM Radio Integration
+
+- 📻 **Fallout.FM Radio Integration**
   - Immerse yourself in the world of Fallout with a live-streamed in-universe radio station  
   - Accessible via the navbar for ambient Wasteland vibes while you shop
 
@@ -66,6 +66,24 @@ Test Admin Credentials:
   - Schema-safe forms with reusable components
   - Built with Zod for consistent client/server validation
 
+### 🧍‍♂️ Character System
+
+Manage user profiles and personalize each experience through Fallout-inspired features:
+
+- 📇 **User Profile**
+  - View your S.P.E.C.I.A.L. allocation and quiz results
+  - Profile data is saved per account and reflects updates in real time.
+
+- 📊 **S.P.E.C.I.A.L. Attributes**
+  - Allocate points across Fallout’s core stats
+
+- 🧪 **G.O.A.T. Quiz**
+  - Vault-Tec–style personality quiz to tag your skills
+
+- 💻 **Hacking Minigame**
+  - Terminal-style word puzzle inspired by Fallout’s hacking mechanic
+  - Offers an immersive mini-game experience within the profile section
+    
 ---
 
 ## 🖼️ Screenshots
