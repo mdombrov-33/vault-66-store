@@ -94,16 +94,16 @@ Manage user profiles and personalize each experience through Fallout-inspired fe
 ## 🖼️ Screenshots
 
 ### 🏪 Home Page  
-![Home Page](./public/images/showcase/home.png)
+![Home Page](./public/images/showcase/home-screen.png)
 
 ### 📦 Product Page  
-![Product Page](./public/images/showcase/product.png)
+![Product Page](./public/images/showcase/single-product-screen.png)
 
 ### ⚙️ Admin Dashboard  
-![Admin Dashboard](./public/images/showcase/admin.png)
+![Admin Dashboard](./public/images/showcase/dashboard-screen.png)
 
 ### 🛒 Cart Page  
-![Cart Page](./public/images/showcasecart.png)
+![Cart Page](./public/images/showcase/cart-screen.png)
 
 ---
 
