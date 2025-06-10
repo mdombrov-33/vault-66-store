@@ -151,6 +151,13 @@ export type GoatQuestion = {
   }[];
 };
 
+export type GoatSkills = {
+  id: number;
+  name: string;
+  description: string;
+  icon: string;
+};
+
 export interface GoatBaseProps {
   currentQuestion: GoatQuestion;
   currentQuestionIndex: number;
