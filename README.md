@@ -11,6 +11,12 @@ A Fallout-inspired e-commerce store built with modern full-stack tools and a ret
 ## 🤖  AI Assistant Showcase
 ![AI Assistant Demo](./public/vault-assistant.gif)
 
+## 💪  S.P.E.C.I.A.L. Showcase
+![S.P.E.C.I.A.L. Demo](./public/special.gif)
+
+## 🧠  Hacking Minigame Showcase
+![Hacking Minigame Demo](./public/hacking.gif)
+
 ---
 
 ## 🔐 Test Admin Access
