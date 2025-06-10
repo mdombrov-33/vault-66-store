@@ -74,7 +74,11 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
             />
           </div>
           <div className="flex items-center justify-center mt-8 ">
-            <SubmitButton className="text-3xl" text="submit skills" />
+            <SubmitButton
+              loadingText="Checking results..."
+              className="text-3xl"
+              text="submit skills"
+            />
           </div>
         </FormContainer>
 

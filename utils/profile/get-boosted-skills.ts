@@ -46,7 +46,7 @@ export function getBoostedSkills(
     for (const tag of answer.tags) {
       //* Make sure this skill actually exists in our skills object
       if (tag in boostedSkills) {
-        //* Add 5 points to that skill for every tag
+        //* Add 8 points to that skill for every tag
         //* This simulates the user getting better at that skill thanks to their answer choice
         boostedSkills[tag as keyof SkillAttributes] += 8;
       }

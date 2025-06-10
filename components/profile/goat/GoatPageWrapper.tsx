@@ -11,10 +11,10 @@ function GoatPageWrapper({ skills, isGoatCompleted }: GoatSkillsProps) {
   const [stage, setStage] = useState<GoatStage>("intro");
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
-  //*  Lock GOAT screen if already completed, add db query later to set true when submitting at tagging section
-  if (isGoatCompleted) {
-    return <GoatFinalResults />;
-  }
+  //*  Lock at GOAT results screen if already completed, we set the flag after submitting the skills
+  // if (isGoatCompleted) {
+  //   return <GoatFinalResults />;
+  // }
 
   //*  Otherwise, proceed with test stages
   switch (stage) {
