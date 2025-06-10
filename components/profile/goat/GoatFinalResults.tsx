@@ -8,7 +8,7 @@ function GoatFinalResults({
   taggedSkills,
 }: GoatFinalResultsProps) {
   return (
-    <div className="max-w-4xl mx-auto text-xl -mt-4 px-4 ">
+    <div className="max-w-4xl mx-auto text-xl -mt-4 px-4 pb-4 ">
       <h2 className="text-4xl font-semibold mb-6  uppercase tracking-wide">
         Skills
       </h2>

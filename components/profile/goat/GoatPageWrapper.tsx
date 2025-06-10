@@ -5,12 +5,7 @@ import GoatIntro from "./GoatIntro";
 import GoatTest from "./GoatTest";
 import GoatSkillTagger from "./GoatSkillTagger";
 import GoatFinalResults from "./GoatFinalResults";
-import {
-  GoatSkillsProps,
-  GoatStage,
-  SkillAttributes,
-  SkillKeys,
-} from "@/types/profile";
+import { GoatSkillsProps, GoatStage, SkillAttributes } from "@/types/profile";
 
 function GoatPageWrapper({
   baseSkills,
@@ -20,21 +15,17 @@ function GoatPageWrapper({
   const [stage, setStage] = useState<GoatStage>(
     isGoatCompleted ? "final" : "intro"
   );
-
   const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
   const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills);
-  const [finalTags, setFinalTags] = useState<string[]>(taggedSkills);
+  const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || []);
 
   //*  Lock at GOAT results screen if already completed, we set the flag after submitting the skills
   if (isGoatCompleted) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { isGoatCompleted: _, ...final } = skills;
-    return (
-      <GoatFinalResults
-        finalSkills={final as Record<SkillKeys, number>}
-        taggedSkills={taggedSkills}
-      />
-    );
+    if (stage === "final") {
+      return (
+        <GoatFinalResults finalSkills={finalSkills} taggedSkills={finalTags} />
+      );
+    }
   }
 
   //*  Otherwise, proceed with test stages
@@ -42,32 +33,30 @@ function GoatPageWrapper({
     case "intro":
       return <GoatIntro handleStart={() => setStage("test")} />;
     case "test":
-      return <GoatTest setStage={setStage} setAnswers={setAnswers} />;
+      return <GoatTest setStage={setStage} setAnswers={setQuizAnswers} />;
     case "tagging":
       return (
         <GoatSkillTagger
-          skills={skills}
-          answers={answers}
+          baseSkills={baseSkills}
+          answers={quizAnswers}
           onFinish={(finalSkills, taggedSkills) => {
             setFinalSkills(finalSkills);
-            setTaggedSkills(taggedSkills);
+            setFinalTags(taggedSkills);
             setStage("final");
           }}
         />
       );
-    case "final":
-      return (
-        <div className="pb-8 lg:pb-0">
+    default:
+      if (stage === "final") {
+        return (
           <GoatFinalResults
             finalSkills={finalSkills}
-            taggedSkills={taggedSkills}
+            taggedSkills={finalTags}
           />
-        </div>
-      );
-    default:
-      const _exhaustiveCheck: never = stage;
-      return _exhaustiveCheck;
+        );
+      }
+
+      throw new Error("Unknown stage state.");
   }
 }
-
 export default GoatPageWrapper;

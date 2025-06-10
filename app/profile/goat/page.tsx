@@ -6,13 +6,16 @@ import {
   getUserTaggedSkills,
 } from "@/utils/actions/goat";
 
-export default async function GoatPage() {
-  const isGoatCompleted = await getGoatCompletionStatus();
+async function GoatPage() {
+  const [isGoatCompleted, baseSkills, finalSkills, taggedSkills] =
+    await Promise.all([
+      getGoatCompletionStatus(),
+      getInitialSkills(),
+      getUserFinalSkills(),
+      getUserTaggedSkills(),
+    ]);
 
   if (isGoatCompleted) {
-    const finalSkills = await getUserFinalSkills();
-    const taggedSkills = await getUserTaggedSkills();
-
     if (!finalSkills) {
       throw new Error("GOAT marked as completed but no final skills found.");
     }
@@ -25,7 +28,8 @@ export default async function GoatPage() {
       />
     );
   } else {
-    const baseSkills = await getInitialSkills();
     return <GoatPageWrapper isGoatCompleted={false} baseSkills={baseSkills} />;
   }
 }
+
+export default GoatPage;

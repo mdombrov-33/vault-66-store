@@ -12,26 +12,12 @@ import GoatTaggerLeftSection from "./GoatTaggerLeftSection";
 import { submitGoatSkillsAction } from "@/utils/actions/goat";
 import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
-function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
-  const baseSkills: SkillAttributes = {
-    barter: skills.barter,
-    bigGuns: skills.bigGuns,
-    energyWeapons: skills.energyWeapons,
-    explosives: skills.explosives,
-    lockpick: skills.lockpick,
-    medicine: skills.medicine,
-    meleeWeapons: skills.meleeWeapons,
-    repair: skills.repair,
-    science: skills.science,
-    smallGuns: skills.smallGuns,
-    sneak: skills.sneak,
-    speech: skills.speech,
-    survival: skills.survival,
-    unarmed: skills.unarmed,
-  };
-
+function GoatSkillTagger({
+  baseSkills,
+  answers,
+  onFinish,
+}: GoatSkillTaggerProps) {
   const boostedSkills = getBoostedSkills(baseSkills, answers); //* We take base skills for SPECIAL registration + applying goat answers
-
   const { playClick } = useSoundPlayer();
 
   const [selectedSkills, setSelectedSkills] = useState<
