@@ -116,7 +116,10 @@ export const getGoatCompletionStatus = async (): Promise<boolean> => {
 };
 
 //* Submits the GOAT skills form and updates the user's skills
-export async function submitGoatSkillsAction(formData: FormData) {
+export async function submitGoatSkillsAction(
+  prevState: any,
+  formData: FormData
+) {
   const user = await getAuthUser();
 
   try {

@@ -9,6 +9,7 @@ import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
 import GoatSkillTaggerRightSection from "./GoatTaggerRightSection";
 import GoatTaggerLeftSection from "./GoatTaggerLeftSection";
+import { submitGoatSkillsAction } from "@/utils/actions/goat";
 
 function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   const baseSkills: SkillAttributes = {
@@ -45,7 +46,7 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   return (
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
-        {/* <FormContainer> */}
+        {/* <FormContainer action={submitGoatSkillsAction}> */}
         <div className="md:self-start">
           <GoatTaggerLeftSection
             boostedSkills={boostedSkills}
