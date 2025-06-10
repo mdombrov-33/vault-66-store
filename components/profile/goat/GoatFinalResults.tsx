@@ -1,63 +1,61 @@
 import React from "react";
 import { GoatFinalResultsProps } from "@/types/profile";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils"; // Optional: for conditional classes
+import { GiBottleCap } from "react-icons/gi";
+import { getVaultOccupation } from "@/utils/text/goat-result-text";
 
 function GoatFinalResults({
   finalSkills,
   taggedSkills,
 }: GoatFinalResultsProps) {
   return (
-    <div className="max-w-4xl mx-auto mt-10 space-y-6">
-      {/* Header */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-3xl">G.O.A.T. Results</CardTitle>
-          <p className="text-muted-foreground">
-            Your final skill assessment is complete. Tagged skills are marked
-            below.
-          </p>
-        </CardHeader>
-      </Card>
+    <div className="max-w-4xl mx-auto text-xl -mt-4 px-4 ">
+      <h2 className="text-4xl font-semibold mb-6  uppercase tracking-wide">
+        Skills
+      </h2>
 
-      {/* Skills List */}
-      <ScrollArea className="h-[400px] rounded-md border">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-          {Object.entries(finalSkills).map(([skill, value]) => {
-            const isTagged = taggedSkills.includes(skill);
-            return (
-              <Card
-                key={skill}
-                className={cn(
-                  "transition-shadow",
-                  isTagged ? "border-green-600 shadow-lg" : ""
-                )}
-              >
-                <CardContent className="flex items-center justify-between py-4">
-                  <div className="font-medium capitalize">
-                    {skill.replace(/([A-Z])/g, " $1")}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold">{value}</span>
-                    {isTagged && <Badge variant="outline">Tagged</Badge>}
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </ScrollArea>
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        role="list"
+      >
+        {Object.entries(finalSkills).map(([skill, value]) => {
+          const isTagged = taggedSkills.includes(skill);
+          return (
+            <div
+              key={skill}
+              className="bg-background border border-muted rounded-lg p-5 flex items-center justify-between shadow-sm hover:shadow-md transition cursor-default"
+              role="listitem"
+              tabIndex={0}
+              aria-label={`${skill} skill, value ${value}, ${
+                isTagged ? "tagged" : "not tagged"
+              }`}
+            >
+              <div className="capitalize font-medium text-2xl text-muted-foreground">
+                {skill.replace(/([A-Z])/g, " $1")}
+              </div>
+              <div className="font-bold text-2xl tabular-nums text-muted-foreground mx-4">
+                {value}
+              </div>
+              {isTagged && (
+                <div
+                  className="text-primary text-2xl select-none"
+                  aria-hidden="true"
+                >
+                  <GiBottleCap />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
 
-      {/* Summary (placeholder) */}
-      <Card>
-        <CardContent className="p-4 text-center text-muted-foreground">
-          Based on your performance, Vault-Tec recommends a future in
-          **Engineering**. Be sure to review your tagged skills and prepare for
-          greatness!
-        </CardContent>
-      </Card>
+      {/* Dynamic text below */}
+      <div
+        className="mt-8 p-4 bg-muted rounded-md text-3xl text-muted-foreground font-[roboto-mono] max-w-4xl mx-auto"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {getVaultOccupation(finalSkills, taggedSkills)}
+      </div>
     </div>
   );
 }

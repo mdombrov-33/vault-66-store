@@ -10,6 +10,7 @@ import FormContainer from "@/components/form/FormContainer";
 import GoatSkillTaggerRightSection from "./GoatTaggerRightSection";
 import GoatTaggerLeftSection from "./GoatTaggerLeftSection";
 import { submitGoatSkillsAction } from "@/utils/actions/goat";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   const baseSkills: SkillAttributes = {
@@ -30,6 +31,8 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
   };
 
   const boostedSkills = getBoostedSkills(baseSkills, answers); //* We take base skills for SPECIAL registration + applying goat answers
+
+  const { playClick } = useSoundPlayer();
 
   const [selectedSkills, setSelectedSkills] = useState<
     Record<SkillKeys, boolean>
@@ -86,6 +89,9 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
               loadingText="Checking results..."
               className="text-3xl"
               text="submit skills"
+              onClick={() => {
+                playClick();
+              }}
             />
           </div>
         </FormContainer>

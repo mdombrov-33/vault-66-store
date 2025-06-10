@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 import { GoatIntroProps } from "@/types/profile";
 import Image from "next/image";
 
 function GoatIntro({ handleStart }: GoatIntroProps) {
+  const { playClick } = useSoundPlayer();
+
   return (
     <div className="flex flex-col items-center justify-center text-center gap-6 pb-4">
       <Image
@@ -17,7 +20,13 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
         To take part in Vault life, you must pass the Generalized Occupational
         Aptitude Test (G.O.A.T).
       </p>
-      <Button className="text-2xl px-8 py-4" onClick={handleStart}>
+      <Button
+        className="text-2xl px-8 py-4"
+        onClick={() => {
+          playClick();
+          handleStart();
+        }}
+      >
         Start the GOAT Test
       </Button>
     </div>

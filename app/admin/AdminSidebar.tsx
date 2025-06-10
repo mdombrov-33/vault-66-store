@@ -4,11 +4,9 @@ import { ADMIN_LINKS } from "@/data/nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
 
 function AdminSidebar() {
   const pathname = usePathname();
-  const { playClick } = useSoundPlayer();
 
   return (
     <aside>
@@ -21,7 +19,6 @@ function AdminSidebar() {
             className="w-full mb-2 capitalize font-normal justify-start text-xl"
             variant={variant}
             key={adminLink.href}
-            onClick={() => playClick()}
           >
             <Link href={adminLink.href}>{adminLink.label}</Link>
           </Button>

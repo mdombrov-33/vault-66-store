@@ -121,6 +121,7 @@ export type SkillKeys = keyof SkillAttributes;
 export interface GoatSkillsProps {
   skills: Skills;
   isGoatCompleted: boolean;
+  initialTaggedSkills: string[];
 }
 
 export type GoatStage = "intro" | "test" | "tagging" | "final";
@@ -135,7 +136,7 @@ export interface GoatResultProps extends GoatSkillsProps {
 }
 
 export interface GoatSkillTaggerProps
-  extends Omit<GoatSkillsProps, "isGoatCompleted">,
+  extends Omit<GoatSkillsProps, "isGoatCompleted" | "initialTaggedSkills">,
     Pick<GoatResultProps, "answers"> {
   onFinish: (
     finalSkills: Record<SkillKeys, number>,

@@ -5,20 +5,32 @@ import GoatIntro from "./GoatIntro";
 import GoatTest from "./GoatTest";
 import GoatSkillTagger from "./GoatSkillTagger";
 import GoatFinalResults from "./GoatFinalResults";
-import { GoatSkillsProps, GoatStage } from "@/types/profile";
+import { GoatSkillsProps, GoatStage, SkillKeys } from "@/types/profile";
 
-function GoatPageWrapper({ skills, isGoatCompleted }: GoatSkillsProps) {
+function GoatPageWrapper({
+  skills,
+  isGoatCompleted,
+  initialTaggedSkills,
+}: GoatSkillsProps) {
   const [stage, setStage] = useState<GoatStage>("intro");
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [finalSkills, setFinalSkills] = useState<Record<string, number> | null>(
-    null
+  const [finalSkills, setFinalSkills] = useState<Record<SkillKeys, number>>(
+    {} as Record<SkillKeys, number>
   );
-  const [taggedSkills, setTaggedSkills] = useState<string[]>([]);
+  const [taggedSkills, setTaggedSkills] =
+    useState<string[]>(initialTaggedSkills);
 
   //*  Lock at GOAT results screen if already completed, we set the flag after submitting the skills
-  // if (isGoatCompleted) {
-  //   return <GoatFinalResults />;
-  // }
+  if (isGoatCompleted) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { isGoatCompleted: _, ...final } = skills;
+    return (
+      <GoatFinalResults
+        finalSkills={final as Record<SkillKeys, number>}
+        taggedSkills={taggedSkills}
+      />
+    );
+  }
 
   //*  Otherwise, proceed with test stages
   switch (stage) {
@@ -40,10 +52,12 @@ function GoatPageWrapper({ skills, isGoatCompleted }: GoatSkillsProps) {
       );
     case "final":
       return (
-        <GoatFinalResults
-          finalSkills={finalSkills}
-          taggedSkills={taggedSkills}
-        />
+        <div className="pb-8 lg:pb-0">
+          <GoatFinalResults
+            finalSkills={finalSkills}
+            taggedSkills={taggedSkills}
+          />
+        </div>
       );
     default:
       const _exhaustiveCheck: never = stage;

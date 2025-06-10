@@ -39,7 +39,7 @@ export const syncSkillsFromSpecial = async () => {
 };
 
 //* Get Skills record for the user
-export const getSkillRecord = async () => {
+export const getInitialSkills = async () => {
   const user = await getAuthUser();
 
   try {
@@ -169,7 +169,7 @@ export async function submitGoatSkillsAction(
 }
 
 //* Fetch user's tagged skills
-export const getTaggedSkills = async () => {
+export const getUserTaggedSkills = async () => {
   const user = await getAuthUser();
   try {
     const taggedSkills = await db.skillTag.findMany({
@@ -179,6 +179,45 @@ export const getTaggedSkills = async () => {
     });
     return taggedSkills.map((tag) => tag.skill);
   } catch (error) {
-    return renderError(error);
+    renderError(error);
+    return [];
+  }
+};
+
+//* Fetch user's final skills after GOAT completion
+export const getUserFinalSkills = async () => {
+  const user = await getAuthUser();
+
+  try {
+    const skills = await db.skill.findUnique({
+      where: {
+        clerkId: user.id,
+      },
+      select: {
+        barter: true,
+        bigGuns: true,
+        energyWeapons: true,
+        explosives: true,
+        lockpick: true,
+        medicine: true,
+        meleeWeapons: true,
+        repair: true,
+        science: true,
+        sneak: true,
+        speech: true,
+        survival: true,
+        unarmed: true,
+        smallGuns: true,
+        isGoatCompleted: true,
+      },
+    });
+
+    if (!skills || !skills.isGoatCompleted) {
+      return null;
+    }
+
+    return skills;
+  } catch (error) {
+    renderError(error);
   }
 };
