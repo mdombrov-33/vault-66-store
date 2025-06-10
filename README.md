@@ -22,7 +22,7 @@ Buy Wasteland gear with bottle caps, chat with a terminal–styled AI assistant,
 ---
 
 ## 🔐 Test Admin Access  
-You can log in as a test admin to explore the full admin dashboard (product creation, deletion, etc.)
+You can log in as a test admin to explore the full admin dashboard (product creation, deletion, etc.).
 
 **Test Admin Credentials:**  
 Email: controlvault66@gmail.com  
