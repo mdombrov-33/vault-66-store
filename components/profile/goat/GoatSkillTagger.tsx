@@ -42,13 +42,43 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
 
   const [hoveredSkill, setHoveredSkill] = useState<SkillKeys | null>(null);
 
+  const finalSkills = Object.fromEntries(
+    Object.entries(boostedSkills).map(([key, value]) => {
+      const isTagged = selectedSkills[key as SkillKeys];
+      return [key, isTagged ? value + 15 : value];
+    })
+  ) as SkillAttributes;
+
   //* ADD ACTION FOR UPDATING SKILLS + TAGGING
   return (
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
         <FormContainer action={submitGoatSkillsAction}>
+          {/* Hidden inputs for boostedSkills */}
+          {Object.entries(boostedSkills).map(([key, value]) => (
+            <input
+              key={key}
+              type="hidden"
+              name={`boostedSkills.${key}`}
+              value={value}
+            />
+          ))}
+
+          {/* Hidden inputs for tagged skills (only those selected) */}
+          {Object.entries(selectedSkills).map(([key, isSelected]) =>
+            isSelected ? (
+              <input
+                key={key}
+                type="hidden"
+                name="taggedSkills[]"
+                value={key}
+              />
+            ) : null
+          )}
+
           <div className="md:self-start">
             <GoatTaggerLeftSection
+              finalSkills={finalSkills}
               boostedSkills={boostedSkills}
               selectedSkills={selectedSkills}
               setSelectedSkills={setSelectedSkills}

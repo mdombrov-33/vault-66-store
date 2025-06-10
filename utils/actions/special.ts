@@ -15,10 +15,6 @@ export const createSpecialAction = async (
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
   try {
-    for (const entry of formData.entries()) {
-      console.log("FORM ENTRY:", entry);
-    }
-
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateZodSchema(specialSchema, rawData);
 

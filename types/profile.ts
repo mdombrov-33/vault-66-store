@@ -190,6 +190,7 @@ export interface GoatSkillSelectionProps {
 
 export interface GoatBoostedSkillsProps {
   boostedSkills: Record<SkillKeys, number>;
+  finalSkills: Record<SkillKeys, number>;
 }
 
 export interface GoatTaggerLeftSectionProps
