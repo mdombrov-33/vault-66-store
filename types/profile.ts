@@ -196,10 +196,10 @@ export interface GoatBoostedSkillsProps {
 export interface GoatTaggerLeftSectionProps
   extends Pick<GoatHoverProps, "setHoveredSkill">,
     GoatSkillSelectionProps,
-    GoatBoostedSkillsProps {}
+    Pick<GoatBoostedSkillsProps, "finalSkills"> {}
 
 export interface GoatTaggerLeftColumnProps
-  extends GoatBoostedSkillsProps,
+  extends Pick<GoatBoostedSkillsProps, "finalSkills">,
     GoatSkillSelectionProps,
     Pick<GoatHoverProps, "setHoveredSkill"> {}
 

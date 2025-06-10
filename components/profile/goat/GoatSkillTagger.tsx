@@ -49,48 +49,32 @@ function GoatSkillTagger({ skills, answers, onFinish }: GoatSkillTaggerProps) {
     })
   ) as SkillAttributes;
 
-  //* ADD ACTION FOR UPDATING SKILLS + TAGGING
   return (
     <>
       <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
-        <FormContainer action={submitGoatSkillsAction}>
-          {/* Hidden inputs for boostedSkills */}
-          {Object.entries(boostedSkills).map(([key, value]) => (
-            <input
-              key={key}
-              type="hidden"
-              name={`boostedSkills.${key}`}
-              value={value}
-            />
+        <FormContainer action={submitGoatSkillsAction} onSuccess={onFinish}>
+          {/* Hidden inputs for final Skills after tagging */}
+          {Object.entries(finalSkills).map(([key, value]) => (
+            <input key={key} type="hidden" name={key} value={value} />
           ))}
 
           {/* Hidden inputs for tagged skills (only those selected) */}
           {Object.entries(selectedSkills).map(([key, isSelected]) =>
             isSelected ? (
-              <input
-                key={key}
-                type="hidden"
-                name="taggedSkills[]"
-                value={key}
-              />
+              <input key={key} type="hidden" name="taggedSkills" value={key} />
             ) : null
           )}
 
           <div className="md:self-start">
             <GoatTaggerLeftSection
               finalSkills={finalSkills}
-              boostedSkills={boostedSkills}
               selectedSkills={selectedSkills}
               setSelectedSkills={setSelectedSkills}
               setHoveredSkill={setHoveredSkill}
             />
           </div>
           <div className="flex items-center justify-center mt-8 ">
-            <SubmitButton
-              className="text-3xl"
-              text="submit skills"
-              onClick={onFinish}
-            />
+            <SubmitButton className="text-3xl" text="submit skills" />
           </div>
         </FormContainer>
 

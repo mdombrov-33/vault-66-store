@@ -11,18 +11,22 @@ const initialState = {
 function FormContainer({
   action,
   children,
+  onSuccess,
 }: {
   action: actionFunction;
   children: React.ReactNode;
+  onSuccess?: () => void;
 }) {
   const [state, formAction] = useActionState(action, initialState);
 
   useEffect(() => {
     if (state.message) {
       toast.success(state.message);
+      if (onSuccess) {
+        onSuccess();
+      }
     }
-  }, [state]);
-
+  }, [state.message, onSuccess]);
   return <form action={formAction}>{children}</form>;
 }
 

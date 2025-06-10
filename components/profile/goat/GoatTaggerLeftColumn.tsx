@@ -12,14 +12,13 @@ function camelCaseToWords(str: string) {
 
 function GoatTaggerLeftColumn({
   finalSkills,
-  boostedSkills,
   selectedSkills,
   setSelectedSkills,
   setHoveredSkill,
 }: GoatTaggerLeftColumnProps) {
   const { playHover, playClick } = useSoundPlayer();
 
-  const handleClick = (key: keyof typeof boostedSkills) => {
+  const handleClick = (key: keyof typeof finalSkills) => {
     const isSelected = selectedSkills[key as SkillKeys];
     if (
       !isSelected &&
@@ -36,7 +35,7 @@ function GoatTaggerLeftColumn({
     playClick();
   };
 
-  const handleHover = (key: keyof typeof boostedSkills) => {
+  const handleHover = (key: keyof typeof finalSkills) => {
     setHoveredSkill(key);
     playHover();
   };
@@ -45,9 +44,9 @@ function GoatTaggerLeftColumn({
     <ul>
       {Object.entries(finalSkills).map(([key, value]) => (
         <li
-          onClick={() => handleClick(key as keyof typeof boostedSkills)}
+          onClick={() => handleClick(key as keyof typeof finalSkills)}
           onMouseEnter={() => {
-            handleHover(key as keyof typeof boostedSkills);
+            handleHover(key as keyof typeof finalSkills);
           }}
           onMouseLeave={() => {
             setHoveredSkill(null);

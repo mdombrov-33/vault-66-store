@@ -3,7 +3,6 @@ import GoatTaggerSummary from "./GoatTaggerSummary";
 import GoatTaggerLeftColumn from "./GoatTaggerLeftColumn";
 
 function GoatTaggerLeftSection({
-  boostedSkills,
   finalSkills,
   selectedSkills,
   setSelectedSkills,
@@ -20,7 +19,6 @@ function GoatTaggerLeftSection({
       />
       <GoatTaggerLeftColumn
         finalSkills={finalSkills}
-        boostedSkills={boostedSkills}
         selectedSkills={selectedSkills}
         setSelectedSkills={setSelectedSkills}
         setHoveredSkill={setHoveredSkill}

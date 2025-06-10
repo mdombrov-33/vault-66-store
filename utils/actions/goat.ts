@@ -125,7 +125,12 @@ export async function submitGoatSkillsAction(
   const user = await getAuthUser();
 
   try {
-    const rawData = Object.fromEntries(formData);
+    const rawData = Object.fromEntries(
+      Array.from(formData.entries()).filter(
+        ([key]) => !key.startsWith("taggedSkills")
+      )
+    );
+
     const validatedSkills = validateZodSchema(skillSchema, rawData);
 
     const taggedSkills = formData.getAll("taggedSkills") as string[];
@@ -157,7 +162,7 @@ export async function submitGoatSkillsAction(
         skill,
       })),
     });
-    return { message: "Skills updated successfully" };
+    return { message: "You passed the test! Congratulations!" };
   } catch (error) {
     return renderError(error);
   }
