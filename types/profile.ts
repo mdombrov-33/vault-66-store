@@ -194,3 +194,5 @@ export interface GoatTaggerLeftColumnProps
   extends GoatBoostedSkillsProps,
     GoatSkillSelectionProps,
     Pick<GoatHoverProps, "setHoveredSkill"> {}
+
+export type GoatTaggerRightSectionProps = Pick<GoatHoverProps, "hoveredSkill">;
