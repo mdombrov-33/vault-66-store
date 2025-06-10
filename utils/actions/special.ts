@@ -10,6 +10,7 @@ import { syncSkillsFromSpecial } from "./goat";
 
 //* Creates a new SPECIAL record in the database
 export const createSpecialAction = async (
+  prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
