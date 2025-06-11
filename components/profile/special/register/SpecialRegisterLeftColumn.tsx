@@ -30,69 +30,20 @@ function SpecialRegisterLeftColumn({
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
-      <SpecialRegisterInput
-        name="strength"
-        label="Strength"
-        value={specialStats.strength}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="perception"
-        label="Perception"
-        value={specialStats.perception}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="endurance"
-        label="Endurance"
-        value={specialStats.endurance}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="charisma"
-        label="Charisma"
-        value={specialStats.charisma}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="intelligence"
-        label="Intelligence"
-        value={specialStats.intelligence}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="agility"
-        label="Agility"
-        value={specialStats.agility}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
-      <SpecialRegisterInput
-        name="luck"
-        label="Luck"
-        value={specialStats.luck}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        onHoverChange={onHoverChange}
-        hoveredStat={hoveredStat}
-      />
+      {Object.entries(specialStats).map(([statKey, statValue]) => {
+        return (
+          <SpecialRegisterInput
+            key={statKey}
+            name={statKey as SpecialStatsKeys}
+            label={statKey}
+            value={statValue}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onHoverChange={onHoverChange}
+            hoveredStat={hoveredStat}
+          />
+        );
+      })}
     </div>
   );
 }

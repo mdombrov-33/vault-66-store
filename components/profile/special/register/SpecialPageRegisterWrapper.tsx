@@ -33,11 +33,12 @@ function SpecialPageWrapper() {
   const remainingPoints = TOTAL_POINTS - allocatedPoints;
 
   return (
-    <>
+    <section>
       <SpecialRegisterHeader remainingPoints={remainingPoints} />
-      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8 mt-12">
-        <FormContainer action={createSpecialAction}>
-          <div className="md:self-start">
+
+      <FormContainer action={createSpecialAction}>
+        <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 px-4 py-6 mt-12 mx-auto">
+          <div className="flex flex-col justify-between gap-8 md:self-start">
             <SpecialRegisterLeftColumn
               onHoverChange={setHoveredStat}
               hoveredStat={hoveredStat}
@@ -45,20 +46,22 @@ function SpecialPageWrapper() {
               setSpecialStats={setSpecialStats}
               remainingPoints={remainingPoints}
             />
+
+            <div className="flex justify-center mt-8">
+              <SubmitButton
+                text="Submit S.P.E.C.I.A.L."
+                className="text-xl sm:text-2xl uppercase w-66 max-w-md"
+                onClick={() => playClick()}
+              />
+            </div>
           </div>
-          <div className="flex items-center justify-center ">
-            <SubmitButton
-              text="Submit S.P.E.C.I.A.L."
-              className="text-xl sm:text-2xl mt-12 uppercase"
-              onClick={() => playClick()}
-            />
+
+          <div className="hidden md:block">
+            <SpecialRegisterRightColumn hoveredStat={hoveredStat} />
           </div>
-        </FormContainer>
-        <div className="hidden md:block">
-          <SpecialRegisterRightColumn hoveredStat={hoveredStat} />
         </div>
-      </div>
-    </>
+      </FormContainer>
+    </section>
   );
 }
 
