@@ -47,7 +47,7 @@ function SpecialPageWrapper() {
               remainingPoints={remainingPoints}
             />
 
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center">
               <SubmitButton
                 text="Submit S.P.E.C.I.A.L."
                 className="text-xl sm:text-2xl uppercase w-66 max-w-md"
