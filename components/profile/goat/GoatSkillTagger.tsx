@@ -48,7 +48,7 @@ function GoatSkillTagger({
 
   return (
     <section>
-      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-8  ">
+      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8 px-4 pb-20 md:pb-0  ">
         <FormContainer action={submitGoatSkillsAction} onSuccess={handleSubmit}>
           {/* Hidden inputs for final Skills after tagging */}
           {Object.entries(finalSkills).map(([key, value]) => (
