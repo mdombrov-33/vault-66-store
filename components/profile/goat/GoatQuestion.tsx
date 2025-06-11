@@ -27,15 +27,17 @@ function GoatQuestion({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <Image
-              src={currentQuestion.image}
-              alt="Question image"
-              width={400}
-              height={400}
-              sizes="(max-width: 768px) 80vw, 400px"
-              className="rounded-md shadow-lg border border-muted object-contain mx-auto max-w-full h-auto"
-              priority
-            />
+            <div className="mx-auto max-w-[80vw] md:max-w-[400px]">
+              <Image
+                src={currentQuestion.image}
+                alt="Question image"
+                width={400}
+                height={400}
+                sizes="(max-width: 768px) 80vw, 400px"
+                className="rounded-md shadow-lg border border-muted object-contain max-w-full h-auto"
+                priority
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

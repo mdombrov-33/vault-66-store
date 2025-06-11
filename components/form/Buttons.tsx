@@ -10,6 +10,7 @@ import { SignInButton } from "@clerk/nextjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { LuTrash2 } from "react-icons/lu";
 import { FiEdit2 } from "react-icons/fi";
+import { GiFalloutShelter } from "react-icons/gi";
 
 export function SubmitButton({
   className = "",
@@ -31,7 +32,7 @@ export function SubmitButton({
     >
       {pending ? (
         <>
-          <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+          <GiFalloutShelter className="mr-2 h-4 w-4 animate-spin" />
           {loadingText}
         </>
       ) : (
@@ -63,7 +64,7 @@ export function IconButton({ actionType }: IconButtonProps) {
       variant="link"
       className="p-2 cursor-pointer"
     >
-      {pending ? <ReloadIcon className="animate-spin" /> : renderIcon()}
+      {pending ? <GiFalloutShelter className="animate-spin" /> : renderIcon()}
     </Button>
   );
 }
@@ -94,7 +95,7 @@ export function CardSubmitButton({ isFavorite }: { isFavorite: boolean }) {
       className="p-2 cursor-pointer"
     >
       {pending ? (
-        <ReloadIcon className="animate-spin" />
+        <GiFalloutShelter className="animate-spin" />
       ) : isFavorite ? (
         <FaHeart />
       ) : (
