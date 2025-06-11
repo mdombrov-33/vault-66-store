@@ -157,4 +157,60 @@ export const goatQuestions: GoatQuestion[] = [
       },
     ],
   },
+  {
+    id: 7,
+    question:
+      "Oh, no! You've been exposed to radiation, and a mutated hand has grown out of your stomach! What's the best course of treatment?",
+    image: "/images/goat/question7.png",
+    answers: [
+      {
+        id: "A",
+        text: "A bullet to the brain",
+        tags: ["bigGuns", "smallGuns"],
+      },
+      {
+        id: "B",
+        text: "Large doses of anti-mutagen agent",
+        tags: ["medicine", "science"],
+      },
+      {
+        id: "C",
+        text: "Prayer, maybe you can pray the radiation away",
+        tags: ["speech", "survival"],
+      },
+      {
+        id: "D",
+        text: "Remove the mutated tissue with a precision laser",
+        tags: ["energyWeapons", "repair"],
+      },
+    ],
+  },
+  {
+    id: 8,
+    question:
+      "You decide it would be fun to play a prank on your father. You enter his private restroom when no one is looking, and....",
+    image: "/images/goat/question8.png",
+    answers: [
+      {
+        id: "A",
+        text: "Loosen some bolts on some pipes. When the sink is turned on, the room will flood",
+        tags: ["repair"],
+      },
+      {
+        id: "B",
+        text: "Put a firecracker in the toilet. That's sure to cause some chaos",
+        tags: ["explosives"],
+      },
+      {
+        id: "C",
+        text: 'Leave a note on the mirror that says, "I know what you did last summer"',
+        tags: ["speech", "sneak"],
+      },
+      {
+        id: "D",
+        text: "Manipulate the power wattage on his razor, so he'll get an electric shock next time he shaves",
+        tags: ["sneak", "lockpick"],
+      },
+    ],
+  },
 ];
