@@ -1,9 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Radio } from "lucide-react";
+import { Radio, Cog } from "lucide-react";
 import { useState } from "react";
-import { VscLoading } from "react-icons/vsc";
 import { cn } from "@/utils/cn";
 import { useGlowClass } from "./hooks/useGlowClass";
 import { useNavbarContext } from "./context/NavbarContext";
@@ -40,7 +39,11 @@ function RadioBtn() {
         aria-pressed={isRadioEnabled}
         aria-label="Toggle Radio"
       >
-        {isLoading ? <VscLoading className="animate-spin" /> : <Radio />}
+        {isLoading ? (
+          <Cog className="animate-spin" aria-hidden="true" />
+        ) : (
+          <Radio />
+        )}
       </Button>
 
       {isRadioEnabled && (
