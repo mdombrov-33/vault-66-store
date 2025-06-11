@@ -5,7 +5,6 @@ import Navbar from "@/components/navbar/Navbar";
 import Container from "@/components/global/Container";
 import Providers from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
-import Footer from "@/components/global/GitHubButton";
 import ChatLauncher from "@/components/ai-chat/ChatLauncher";
 import GitHubButton from "@/components/global/GitHubButton";
 
@@ -34,10 +33,8 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <Container className="py-20">{children}</Container>
-            <div>
-              <GitHubButton />
-              <ChatLauncher />
-            </div>
+            <GitHubButton />
+            <ChatLauncher />
           </Providers>
         </body>
       </html>
