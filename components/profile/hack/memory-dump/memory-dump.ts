@@ -29,7 +29,7 @@ export function generateLines() {
   const rightColumn: string[] = [];
   const allWords: string[] = [];
 
-  //* 15 lines
+  //* 16 lines for each column
   for (let i = 0; i < 16; i++) {
     const leftAddr =
       "0xF4" +
