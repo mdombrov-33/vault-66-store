@@ -8,7 +8,7 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
 
   return (
     <section
-      className="flex flex-col items-center justify-center text-center gap-6 pb-16 md:pb-12
+      className="flex flex-col items-center justify-center text-center gap-6 pb-20 md:pb-12
 "
     >
       <Image
