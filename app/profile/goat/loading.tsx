@@ -1,5 +1,3 @@
-// import NukaColaSpinner from "@/components/global/NukaSpinner";
-
 import NukaColaSpinner from "@/components/global/NukaSpinner";
 
 function loading() {
