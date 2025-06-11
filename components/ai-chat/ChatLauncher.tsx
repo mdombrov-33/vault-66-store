@@ -43,11 +43,11 @@ function ChatLauncher() {
       <DialogTrigger asChild>
         <Button
           variant="default"
-          size="default"
-          className="fixed inset-x-4 bottom-4 sm:right-4 sm:inset-x-auto"
+          size="icon"
+          className="fixed bottom-4 right-4 z-50 p-3 rounded-full sm:p-4"
         >
-          <TerminalIcon className="mr-2" />
-          <span className="hidden 2xl:inline">Need Help?</span>
+          <TerminalIcon className="w-6 h-6" />
+          <span className="sr-only">Need Help?</span>
         </Button>
       </DialogTrigger>
 
