@@ -22,7 +22,7 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
   } = specialRecord;
 
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-start">
       <div className="border rounded-md px-2 pt-2">
         {/* Dynamic text based on SPECIAL */}
         <span className="font-[roboto-mono] text-xl">
