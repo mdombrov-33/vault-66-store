@@ -37,7 +37,7 @@ function SpecialPageWrapper() {
       <SpecialRegisterHeader remainingPoints={remainingPoints} />
 
       <FormContainer action={createSpecialAction}>
-        <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 px-4 py-6 mt-12 mx-auto">
+        <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 px-4 py-6 mx-auto">
           <div className="flex flex-col justify-between gap-8 md:self-start">
             <SpecialRegisterLeftColumn
               onHoverChange={setHoveredStat}
