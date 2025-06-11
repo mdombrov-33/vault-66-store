@@ -27,7 +27,7 @@ export function useHackingGame(initialAttempts = 5) {
     if (attemptsLeft <= 0 || gameOver) return false;
 
     if (word === gameState.correctPassword) {
-      setLog((prev) => [...prev, `> ${word}`, "ACCESS GRANTED"]);
+      setLog((prev) => ["ACCESS GRANTED", `> ${word}`, ...prev]);
       setAttemptsLeft(0);
       setGameOver(true);
       return true;

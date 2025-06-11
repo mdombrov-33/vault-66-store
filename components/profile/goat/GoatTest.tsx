@@ -20,12 +20,17 @@ function GoatTest({ setStage, setAnswers }: GoatTestProps) {
   };
 
   return (
-    <section>
-      <GoatQuestion
-        currentQuestion={currentQuestion}
-        currentQuestionIndex={currentQuestionIndex}
-      />
-      <GoatAnswers currentQuestion={currentQuestion} onAnswer={handleAnswer} />
+    <section className="flex items-center justify-center px-4 -mt-6">
+      <div className="w-full max-w-5xl flex flex-col items-center text-center gap-y-4">
+        <GoatQuestion
+          currentQuestion={currentQuestion}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+        <GoatAnswers
+          currentQuestion={currentQuestion}
+          onAnswer={handleAnswer}
+        />
+      </div>
     </section>
   );
 }

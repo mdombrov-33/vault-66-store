@@ -6,7 +6,7 @@ function GoatAnswers({ currentQuestion, onAnswer }: GoatAnswersProps) {
   const { playClick, playHover } = useSoundPlayer();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2 mt-6">
       {currentQuestion.answers.map((answer) => (
         <Button
           key={answer.id}
