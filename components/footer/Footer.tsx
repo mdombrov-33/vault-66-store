@@ -1,4 +1,3 @@
-import ChatLauncher from "@/components/ai-chat/ChatLauncher";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -16,7 +15,6 @@ function Footer() {
           <span className="sr-only">Open GitHub repository</span>
         </Link>
       </Button>
-      <ChatLauncher />
     </footer>
   );
 }
