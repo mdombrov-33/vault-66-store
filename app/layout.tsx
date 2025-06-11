@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { VT323 } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
@@ -18,12 +17,6 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-roboto-mono",
 });
-
-export const metadata: Metadata = {
-  title: "Vault 66 Store",
-  description:
-    "Get your post-apocalyptic survival gear and Vault-themed collectibles. Prepare for the wasteland!",
-};
 
 export default function RootLayout({
   children,
