@@ -33,7 +33,7 @@ function GoatQuestion({
               width={400}
               height={400}
               sizes="(max-width: 768px) 80vw, 400px"
-              className="rounded-md shadow-lg border border-muted object-contain mx-auto"
+              className="rounded-md shadow-lg border border-muted object-contain mx-auto max-w-full h-auto"
               priority
             />
           </motion.div>
