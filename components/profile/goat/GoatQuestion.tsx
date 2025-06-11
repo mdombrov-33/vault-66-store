@@ -32,6 +32,7 @@ function GoatQuestion({
               alt="Question image"
               width={400}
               height={400}
+              sizes="(max-width: 768px) 80vw, 400px"
               className="rounded-md shadow-lg border border-muted object-contain mx-auto"
               priority
             />
