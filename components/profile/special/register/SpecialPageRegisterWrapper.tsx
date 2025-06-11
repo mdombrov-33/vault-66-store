@@ -38,7 +38,7 @@ function SpecialPageWrapper() {
 
       <FormContainer action={createSpecialAction}>
         <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 px-4 py-6 mx-auto">
-          <div className="flex flex-col justify-between gap-8 md:self-start">
+          <div className="flex flex-col justify-between gap-8">
             <SpecialRegisterLeftColumn
               onHoverChange={setHoveredStat}
               hoveredStat={hoveredStat}
@@ -50,7 +50,7 @@ function SpecialPageWrapper() {
             <div className="flex justify-center">
               <SubmitButton
                 text="Submit S.P.E.C.I.A.L."
-                className="text-xl sm:text-2xl uppercase w-66 max-w-md"
+                className="text-xl sm:text-2xl uppercase w-64 max-w-md"
                 onClick={() => playClick()}
               />
             </div>
