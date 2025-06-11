@@ -8,13 +8,13 @@ function GoatFinalResults({
   taggedSkills,
 }: GoatFinalResultsProps) {
   return (
-    <div className="max-w-4xl mx-auto text-xl -mt-4 px-4 pb-4 ">
+    <div className="max-w-4xl mx-auto text-xl px-4 pb-16 md:pb-0">
       <h2 className="text-4xl font-semibold mb-6  uppercase tracking-wide">
         Skills
       </h2>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-"
         role="list"
       >
         {Object.entries(finalSkills).map(([skill, value]) => {
