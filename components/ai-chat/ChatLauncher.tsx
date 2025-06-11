@@ -44,7 +44,7 @@ function ChatLauncher() {
         <Button
           variant="default"
           size="default"
-          className="fixed bottom-4 text-3xl right-4 z-50 flex items-center"
+          className="fixed inset-x-4 bottom-4 sm:right-4 sm:inset-x-auto"
         >
           <TerminalIcon className="mr-2" />
           <span className="hidden 2xl:inline">Need Help?</span>
@@ -52,7 +52,7 @@ function ChatLauncher() {
       </DialogTrigger>
 
       <DialogContent
-        className="w-full max-w-[90vw] sm:max-w-4xl h-[60vh] flex flex-col sm:rounded-xl border
+        className="w-full max-w-[90vw] sm:max-w-4xl h-[60dvh] sm:h-[60vh] flex flex-col sm:rounded-xl border
         border-primary bg-black text-primary px-4 sm:px-8 mx-auto focus:outline-none"
       >
         <DialogHeader>
