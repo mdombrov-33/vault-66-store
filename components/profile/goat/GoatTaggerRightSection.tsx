@@ -30,7 +30,7 @@ function GoatTaggerRightSection({ hoveredSkill }: GoatTaggerRightSectionProps) {
           <h3 className="text-7xl uppercase font-bold text-primary text-center tracking-wider">
             {camelCaseToWords(currentSkill.name)}
           </h3>
-          <p className="text-muted-foreground text-2xl text-center mt-2 font-[roboto-mono] ">
+          <p className="text-muted-foreground text-xl xl:text-2xl text-center mt-2 font-[roboto-mono] ">
             {currentSkill.description}
           </p>
         </div>
