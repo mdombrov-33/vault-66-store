@@ -15,19 +15,18 @@ function GoatPageWrapper({
   isGoatCompleted,
   taggedSkills,
 }: GoatSkillsProps) {
-  const [stage, setStage] = useState<GoatStage>(
-    isGoatCompleted ? "final" : "intro"
-  );
+  //* TEMP: Set to "tagging" directly for testing
+  const [stage, setStage] = useState<GoatStage>("tagging");
+
   const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
   const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills);
   const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || []);
   const { playGoatSuccess } = useSoundPlayer();
 
-  if (isGoatCompleted && stage === "final") {
-    return (
-      <GoatFinalResults finalSkills={finalSkills} taggedSkills={finalTags} />
-    );
-  }
+  // Optional: default behavior if quiz was completed
+  // const [stage, setStage] = useState<GoatStage>(
+  //   isGoatCompleted ? "final" : "intro"
+  // );
 
   if (stage === "intro") {
     return <GoatIntro handleStart={() => setStage("test")} />;
@@ -48,18 +47,18 @@ function GoatPageWrapper({
           setStage("success");
           playGoatSuccess();
 
-          //* wait 2 seconds, then show final result with animation
+          //* Wait 3 seconds, then show final result
           setTimeout(() => {
             setStage("final");
-          }, 2000);
+          }, 3000);
         }}
       />
     );
   }
 
-  return (
-    <AnimatePresence mode="wait">
-      {stage === "success" && (
+  if (stage === "success") {
+    return (
+      <AnimatePresence mode="wait">
         <motion.div
           key="success"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -69,30 +68,27 @@ function GoatPageWrapper({
         >
           <VaultBoySuccessScreen />
         </motion.div>
-      )}
+      </AnimatePresence>
+    );
+  }
 
-      {stage === "final" && (
-        <motion.div
-          key="final"
-          initial={{ opacity: 0, y: 30, rotate: -2 }}
-          animate={{ opacity: 1, y: 0, rotate: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 150,
-            damping: 10,
-            mass: 1,
-            bounce: 0.3,
-          }}
-        >
-          <GoatFinalResults
-            finalSkills={finalSkills}
-            taggedSkills={finalTags}
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  if (stage === "final") {
+    return (
+      <motion.div
+        key="final"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut",
+        }}
+      >
+        <GoatFinalResults finalSkills={finalSkills} taggedSkills={finalTags} />
+      </motion.div>
+    );
+  }
+
+  return null;
 }
 
 export default GoatPageWrapper;

@@ -50,7 +50,7 @@ export const useSoundPlayer = () => {
   };
 
   const playGoatSuccess = () => {
-    playSound(goatSuccessSrc, { volume: 0.4 });
+    playSound(goatSuccessSrc, { volume: 1 });
   };
 
   return {
