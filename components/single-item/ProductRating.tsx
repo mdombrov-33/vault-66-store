@@ -8,7 +8,7 @@ async function ProductRating({ productId }: { productId: string }) {
   const countValue = `(${count} reviews)`;
   return (
     <span className={className}>
-      <FaStar className="w-3 h-3" />
+      <FaStar role="img" aria-label="star" className="w-3 h-3" />
       {rating} {countValue}
     </span>
   );
