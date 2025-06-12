@@ -19,9 +19,9 @@ function Rating({ rating }: { rating: number }) {
           isFilled ? "text-primary" : "text-gray-400"
         }`;
         return isFilled ? (
-          <FaStar key={i} className={className} />
+          <FaStar aria-label="filled-star" key={i} className={className} />
         ) : (
-          <FaRegStar key={i} className={className} />
+          <FaRegStar aria-label="empty-star" key={i} className={className} />
         );
       })}
     </div>

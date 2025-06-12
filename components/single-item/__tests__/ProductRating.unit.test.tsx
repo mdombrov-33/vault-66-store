@@ -5,7 +5,7 @@ vi.mock("@/utils/actions/review", () => ({
   fetchProductRating: vi.fn().mockResolvedValue({ rating: 4.5, count: 20 }),
 }));
 
-describe("ProductRating", () => {
+describe("ProductRating component", () => {
   it("renders rating and count", async () => {
     const jsx = await ProductRating({ productId: "123" });
 
