@@ -15,18 +15,14 @@ function GoatPageWrapper({
   isGoatCompleted,
   taggedSkills,
 }: GoatSkillsProps) {
-  //* TEMP: Set to "tagging" directly for testing
-  const [stage, setStage] = useState<GoatStage>("tagging");
+  const [stage, setStage] = useState<GoatStage>(
+    isGoatCompleted ? "final" : "intro"
+  );
 
   const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
   const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills);
   const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || []);
   const { playGoatSuccess } = useSoundPlayer();
-
-  // Optional: default behavior if quiz was completed
-  // const [stage, setStage] = useState<GoatStage>(
-  //   isGoatCompleted ? "final" : "intro"
-  // );
 
   if (stage === "intro") {
     return <GoatIntro handleStart={() => setStage("test")} />;
