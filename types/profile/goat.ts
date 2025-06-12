@@ -12,7 +12,7 @@ export interface GoatSkillsProps {
   isGoatCompleted: boolean;
 }
 
-export type GoatStage = "intro" | "test" | "tagging" | "final";
+export type GoatStage = "intro" | "test" | "tagging" | "success" | "final";
 
 export interface GoatTestProps {
   setStage: React.Dispatch<React.SetStateAction<GoatStage>>;

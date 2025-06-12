@@ -3,6 +3,7 @@ import {
   globalHoverOrAnimationSrc,
   globalClickSrc,
 } from "@/data/sounds/global-sounds";
+import { goatSuccessSrc } from "@/data/sounds/goat-success";
 
 //* Play click, hover or non-user typing sounds on demand anywhere in the app.
 const getRandomSrc = (arr: string[]) =>
@@ -48,10 +49,15 @@ export const useSoundPlayer = () => {
     }
   };
 
+  const playGoatSuccess = () => {
+    playSound(goatSuccessSrc, { volume: 0.4 });
+  };
+
   return {
     playClick,
     playHover,
     playTypingLoop,
     stopTypingLoop,
+    playGoatSuccess,
   };
 };
