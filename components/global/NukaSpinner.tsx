@@ -10,7 +10,7 @@ export default function NukaColaSpinner() {
       style={{ perspective: "100px", display: "inline-block" }}
     >
       <img
-        src="/nuka-cap.png"
+        src="/nukaicon.svg"
         alt=""
         className="animate-spin-slow w-24 h-24"
         aria-hidden="true"
