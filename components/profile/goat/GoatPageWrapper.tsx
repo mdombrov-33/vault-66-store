@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import GoatIntro from "./GoatIntro";
 import GoatTest from "./GoatTest";
 import GoatSkillTagger from "./GoatSkillTagger";
@@ -24,6 +24,8 @@ function GoatPageWrapper({
   const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || []);
   const { playGoatSuccess } = useSoundPlayer();
 
+  const shouldAnimateFinal = useRef(false);
+
   if (stage === "intro") {
     return <GoatIntro handleStart={() => setStage("test")} />;
   }
@@ -43,7 +45,8 @@ function GoatPageWrapper({
           setStage("success");
           playGoatSuccess();
 
-          //* Wait 3 seconds, then show final result
+          shouldAnimateFinal.current = true;
+
           setTimeout(() => {
             setStage("final");
           }, 3000);
@@ -69,15 +72,16 @@ function GoatPageWrapper({
   }
 
   if (stage === "final") {
+    const animate = shouldAnimateFinal.current;
+
+    shouldAnimateFinal.current = false;
+
     return (
       <motion.div
         key="final"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.6,
-          ease: "easeInOut",
-        }}
+        initial={animate ? { opacity: 0 } : false}
+        animate={animate ? { opacity: 1 } : false}
+        transition={animate ? { duration: 0.6, ease: "easeInOut" } : undefined}
       >
         <GoatFinalResults finalSkills={finalSkills} taggedSkills={finalTags} />
       </motion.div>
