@@ -120,6 +120,7 @@ Manage user profiles and personalize each experience through Fallout-inspired fe
 | Supabase           | Stores and serves product images via bucket storage |
 | Zod                | Validates forms and inputs to keep everything type-safe |
 | OpenRouter         | Powers the in-universe AI assistant (uses GPT-4o mini) |
+| Framer Motion      | Used for animations, mostly for profile section |
 
 ---
 
