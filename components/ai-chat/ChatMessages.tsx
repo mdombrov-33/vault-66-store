@@ -1,7 +1,7 @@
-import { ChatWindowProps } from "@/types/ai-chat";
-import { useEffect, useState } from "react";
-import { TypeAnimation } from "react-type-animation";
-import { useAutoScroll } from "./hooks/useAutoScroll";
+import { ChatWindowProps } from '@/types/ai-chat'
+import { useEffect, useState } from 'react'
+import { TypeAnimation } from 'react-type-animation'
+import { useAutoScroll } from './hooks/useAutoScroll'
 
 function ChatMessages({
   messages,
@@ -10,20 +10,20 @@ function ChatMessages({
   isTyping,
   messagesContainerRef,
 }: ChatWindowProps) {
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useAutoScroll(
     messagesContainerRef as React.RefObject<HTMLDivElement>,
     isTyping,
     messages,
     isInitialLoad
-  );
+  )
 
   useEffect(() => {
     if (messages.length > 0 && isInitialLoad) {
-      setIsInitialLoad(false);
+      setIsInitialLoad(false)
     }
-  }, [messages, isInitialLoad]);
+  }, [messages, isInitialLoad])
 
   return (
     <section className="flex flex-col h-full overflow-hidden">
@@ -33,7 +33,7 @@ function ChatMessages({
         className="flex-1 outline-none overflow-y-auto overflow-x-auto border focus-visible:border-ring focus-visible:ring-ring/50 rounded whitespace-pre-wrap break-words p-2 space-y-2 bg-[var(--terminal-background)] text-sm"
       >
         {messages.map((msg, i) => {
-          if (msg.role === "user") {
+          if (msg.role === 'user') {
             return (
               <div
                 key={i}
@@ -41,7 +41,7 @@ function ChatMessages({
               >
                 {msg.content.trim()}
               </div>
-            );
+            )
           } else {
             //* If already animated, just show instantly
             if (msg.hasAnimated) {
@@ -52,7 +52,7 @@ function ChatMessages({
                 >
                   {msg.content.trim()}
                 </div>
-              );
+              )
             }
 
             //* Animate only messages that are not animated yet
@@ -64,18 +64,18 @@ function ChatMessages({
                   msg.content.trim(),
                   100,
                   () => {
-                    setIsTyping(false); // typing finished
+                    setIsTyping(false) // typing finished
                     //* Mark message as animated
                     setMessages((prev) => {
-                      const newMessages = [...prev];
+                      const newMessages = [...prev]
                       if (newMessages[i]) {
                         newMessages[i] = {
                           ...newMessages[i],
                           hasAnimated: true,
-                        };
+                        }
                       }
-                      return newMessages;
-                    });
+                      return newMessages
+                    })
                   },
                 ]}
                 speed={95}
@@ -83,12 +83,12 @@ function ChatMessages({
                 className="p-2 rounded text-2xl bg-muted self-start text-muted-foreground"
                 cursor={false}
               />
-            );
+            )
           }
         })}
       </div>
     </section>
-  );
+  )
 }
 
-export default ChatMessages;
+export default ChatMessages

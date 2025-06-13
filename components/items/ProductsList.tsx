@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Product } from "@/lib/generated/prisma";
-import Image from "next/image";
-import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
+import Link from 'next/link'
+import { Card, CardContent } from '@/components/ui/card'
+import { Product } from '@/lib/generated/prisma'
+import Image from 'next/image'
+import FavoriteToggleButton from '@/components/items/FavoriteToggleButton'
 
 function ProductsList({ products }: { products: Product[] }) {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { name, price, image, company } = product;
-        const productId = product.id;
+        const { name, price, image, company } = product
+        const productId = product.id
 
         return (
           <article key={productId} className="group relative">
@@ -27,12 +27,8 @@ function ProductsList({ products }: { products: Product[] }) {
                     />
                   </div>
                   <div>
-                    <h2 className="text-4xl font-semibold capitalize">
-                      {name}
-                    </h2>
-                    <h4 className="text=muted-foreground text-3xl">
-                      {company}
-                    </h4>
+                    <h2 className="text-4xl font-semibold capitalize">{name}</h2>
+                    <h4 className="text=muted-foreground text-3xl">{company}</h4>
                   </div>
                   <p className="text-muted-foreground text-4xl md:ml-auto font-[roboto]">
                     {price} Caps
@@ -44,10 +40,10 @@ function ProductsList({ products }: { products: Product[] }) {
               <FavoriteToggleButton productId={productId} />
             </div>
           </article>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default ProductsList;
+export default ProductsList

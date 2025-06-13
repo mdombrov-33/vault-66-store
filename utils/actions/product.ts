@@ -1,6 +1,6 @@
-"use server";
-import db from "@/lib/db";
-import { redirect } from "next/navigation";
+'use server'
+import db from '@/lib/db'
+import { redirect } from 'next/navigation'
 
 //* Fetches featured products from the database.
 export const fetchFeaturedProducts = async () => {
@@ -8,25 +8,25 @@ export const fetchFeaturedProducts = async () => {
     where: {
       featured: true,
     },
-  });
+  })
 
-  return products;
-};
+  return products
+}
 
 //* Fetches all products from the database with optional search functionality.
-export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
+export const fetchAllProducts = async ({ search = '' }: { search: string }) => {
   return db.product.findMany({
     where: {
       OR: [
-        { name: { contains: search, mode: "insensitive" } },
-        { company: { contains: search, mode: "insensitive" } },
+        { name: { contains: search, mode: 'insensitive' } },
+        { company: { contains: search, mode: 'insensitive' } },
       ],
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
-  });
-};
+  })
+}
 
 //* Fetches a single product by its ID from the database.
 export const fetchSingleProduct = async (productId: string) => {
@@ -34,9 +34,9 @@ export const fetchSingleProduct = async (productId: string) => {
     where: {
       id: productId,
     },
-  });
+  })
 
-  if (!product) redirect("/items");
+  if (!product) redirect('/items')
 
-  return product;
-};
+  return product
+}

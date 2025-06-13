@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { LucideShoppingCart } from "lucide-react";
-import { fetchCartItems } from "@/utils/actions/cart";
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { LucideShoppingCart } from 'lucide-react'
+import { fetchCartItems } from '@/utils/actions/cart'
 
 async function CartBtn() {
-  const numItemsInCart = await fetchCartItems();
+  const numItemsInCart = await fetchCartItems()
 
   return (
     <Button
@@ -15,9 +15,7 @@ async function CartBtn() {
     >
       <Link
         href="/supply-bin"
-        aria-label={`Cart with ${numItemsInCart} item${
-          numItemsInCart !== 1 ? "s" : ""
-        }`}
+        aria-label={`Cart with ${numItemsInCart} item${numItemsInCart !== 1 ? 's' : ''}`}
       >
         <LucideShoppingCart />
 
@@ -29,7 +27,7 @@ async function CartBtn() {
         </span>
       </Link>
     </Button>
-  );
+  )
 }
 
-export default CartBtn;
+export default CartBtn

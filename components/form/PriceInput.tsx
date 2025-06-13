@@ -1,10 +1,10 @@
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { FormInputNumberProps } from "@/types/form";
+import { Label } from '../ui/label'
+import { Input } from '../ui/input'
+import { FormInputNumberProps } from '@/types/form'
 
 // import { Prisma } from "@/lib/generated/prisma"; //Grab Prisma field instead of hardcoding
 // Prisma.ProductScalarFieldEnum.price
-const name = "price";
+const name = 'price'
 
 function PriceInput({ defaultValue }: FormInputNumberProps) {
   return (
@@ -21,7 +21,7 @@ function PriceInput({ defaultValue }: FormInputNumberProps) {
         required
       />
     </div>
-  );
+  )
 }
 
-export default PriceInput;
+export default PriceInput

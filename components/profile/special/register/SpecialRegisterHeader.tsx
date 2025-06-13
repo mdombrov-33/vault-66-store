@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
-import { SpecialRegisterHeaderProps } from "@/types/profile";
-import { TypeAnimation } from "react-type-animation";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import { useEffect, useState } from 'react'
+import { SpecialRegisterHeaderProps } from '@/types/profile'
+import { TypeAnimation } from 'react-type-animation'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
-function SpecialRegisterHeader({
-  remainingPoints,
-}: SpecialRegisterHeaderProps) {
-  const { playTypingLoop, stopTypingLoop } = useSoundPlayer();
-  const [animationStage, setAnimationStage] = useState<
-    "none" | "first" | "second"
-  >("none");
+function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) {
+  const { playTypingLoop, stopTypingLoop } = useSoundPlayer()
+  const [animationStage, setAnimationStage] = useState<'none' | 'first' | 'second'>('none')
 
   useEffect(() => {
-    if (animationStage === "first" || animationStage === "second") {
-      playTypingLoop();
+    if (animationStage === 'first' || animationStage === 'second') {
+      playTypingLoop()
     } else {
-      stopTypingLoop();
+      stopTypingLoop()
     }
     return () => {
-      stopTypingLoop();
-    };
-  }, [animationStage, playTypingLoop, stopTypingLoop]);
+      stopTypingLoop()
+    }
+  }, [animationStage, playTypingLoop, stopTypingLoop])
 
   return (
     <div
@@ -30,9 +26,9 @@ function SpecialRegisterHeader({
     >
       <TypeAnimation
         sequence={[
-          () => setAnimationStage("first"), //* animation start callback
-          "welcome to your S.P.E.C.I.A.L. profile",
-          () => setAnimationStage("second"), //* first animation done
+          () => setAnimationStage('first'), //* animation start callback
+          'welcome to your S.P.E.C.I.A.L. profile',
+          () => setAnimationStage('second'), //* first animation done
         ]}
         wrapper="h1"
         speed={85}
@@ -43,10 +39,10 @@ function SpecialRegisterHeader({
 
       <TypeAnimation
         sequence={[
-          () => setAnimationStage("second"), //* second animation start
+          () => setAnimationStage('second'), //* second animation start
           0, //* wait for first animation to finish visually
-          "Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network",
-          () => setAnimationStage("none"), //* second animation done
+          'Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network',
+          () => setAnimationStage('none'), //* second animation done
         ]}
         wrapper="p"
         speed={80}
@@ -58,14 +54,11 @@ function SpecialRegisterHeader({
         {remainingPoints}
       </p>
 
-      <p
-        className="text-2xl uppercase text-muted-foreground"
-        id="points-available-label"
-      >
+      <p className="text-2xl uppercase text-muted-foreground" id="points-available-label">
         points available
       </p>
     </div>
-  );
+  )
 }
 
-export default SpecialRegisterHeader;
+export default SpecialRegisterHeader

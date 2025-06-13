@@ -1,13 +1,9 @@
-"use client";
+'use client'
 
-import { Checkbox } from "@/components/ui/checkbox";
-import { CheckboxInputProps } from "@/types/form";
+import { Checkbox } from '@/components/ui/checkbox'
+import { CheckboxInputProps } from '@/types/form'
 
-function CheckboxInput({
-  name,
-  label,
-  defaultChecked = false,
-}: CheckboxInputProps) {
+function CheckboxInput({ name, label, defaultChecked = false }: CheckboxInputProps) {
   return (
     <div className="flex items-center space-x-2">
       <Checkbox id={name} name={name} defaultChecked={defaultChecked} />
@@ -18,7 +14,7 @@ function CheckboxInput({
         {label}
       </label>
     </div>
-  );
+  )
 }
 
-export default CheckboxInput;
+export default CheckboxInput

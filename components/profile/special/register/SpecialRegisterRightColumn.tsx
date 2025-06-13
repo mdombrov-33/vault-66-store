@@ -1,15 +1,11 @@
-"use client";
+'use client'
 
-import { specialRegisterData } from "@/data/profile/special/special-register-data";
-import { SpecialRegisterRightColumnProps } from "@/types/profile";
-import Image from "next/image";
+import { specialRegisterData } from '@/data/profile/special/special-register-data'
+import { SpecialRegisterRightColumnProps } from '@/types/profile'
+import Image from 'next/image'
 
-function SpecialRegisterRightColumn({
-  hoveredStat,
-}: SpecialRegisterRightColumnProps) {
-  const currentSpecial = specialRegisterData.find(
-    (stat) => stat.name === hoveredStat
-  );
+function SpecialRegisterRightColumn({ hoveredStat }: SpecialRegisterRightColumnProps) {
+  const currentSpecial = specialRegisterData.find((stat) => stat.name === hoveredStat)
 
   return (
     <div className="p-4">
@@ -32,12 +28,10 @@ function SpecialRegisterRightColumn({
           </p>
         </div>
       ) : (
-        <p className="text-muted-foreground text-2xl">
-          Hover over a stat to see details.
-        </p>
+        <p className="text-muted-foreground text-2xl">Hover over a stat to see details.</p>
       )}
     </div>
-  );
+  )
 }
 
-export default SpecialRegisterRightColumn;
+export default SpecialRegisterRightColumn

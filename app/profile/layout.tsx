@@ -1,6 +1,6 @@
-import SectionTitle from "@/components/global/SectionTitle";
-import React from "react";
-import ProfileSidebarWrapper from "@/app/profile/ProfileSidebarWrapper";
+import SectionTitle from '@/components/global/SectionTitle'
+import React from 'react'
+import ProfileSidebarWrapper from '@/app/profile/ProfileSidebarWrapper'
 
 function ProfileLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +13,7 @@ function ProfileLayout({ children }: { children: React.ReactNode }) {
         <div className="lg:col-span-10 px-4">{children}</div>
       </div>
     </section>
-  );
+  )
 }
 
-export default ProfileLayout;
+export default ProfileLayout

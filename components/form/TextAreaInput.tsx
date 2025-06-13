@@ -1,6 +1,6 @@
-import { Label } from "../ui/label";
-import { Textarea } from "../ui/textarea";
-import { TextAreaInputProps } from "@/types/form";
+import { Label } from '../ui/label'
+import { Textarea } from '../ui/textarea'
+import { TextAreaInputProps } from '@/types/form'
 
 function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
   return (
@@ -17,7 +17,7 @@ function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
         defaultValue={defaultValue}
       />
     </div>
-  );
+  )
 }
 
-export default TextAreaInput;
+export default TextAreaInput

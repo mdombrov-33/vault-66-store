@@ -1,3 +1,3 @@
-export * from "./goat";
-export * from "./hacking";
-export * from "./special";
+export * from './goat'
+export * from './hacking'
+export * from './special'

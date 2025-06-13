@@ -1,7 +1,7 @@
-import { useRef } from "react";
-import ChatMessages from "@/components/ai-chat/ChatMessages";
-import ChatInput from "@/components/ai-chat/ChatInput";
-import { ChatInterfaceProps } from "@/types/ai-chat";
+import { useRef } from 'react'
+import ChatMessages from '@/components/ai-chat/ChatMessages'
+import ChatInput from '@/components/ai-chat/ChatInput'
+import { ChatInterfaceProps } from '@/types/ai-chat'
 
 function ChatInterface({
   messages,
@@ -13,7 +13,7 @@ function ChatInterface({
   setIsTyping,
   handleSend,
 }: ChatInterfaceProps) {
-  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null)
 
   return (
     <section className="flex flex-col h-full overflow-hidden">
@@ -39,7 +39,7 @@ function ChatInterface({
         isTyping={isTyping}
       />
     </section>
-  );
+  )
 }
 
-export default ChatInterface;
+export default ChatInterface

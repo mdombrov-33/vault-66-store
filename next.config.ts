@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 //*  bodySizeLimit is used to pass the restriction of the body size for server actions.
 //*  This is useful when uploading large files, such as images.
@@ -13,29 +13,29 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      bodySizeLimit: "20mb",
+      bodySizeLimit: '20mb',
     },
   },
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.pexels.com",
+        protocol: 'https',
+        hostname: 'images.pexels.com',
       },
       {
-        protocol: "https",
-        hostname: "opzuqgehxlasumgyysml.supabase.co",
+        protocol: 'https',
+        hostname: 'opzuqgehxlasumgyysml.supabase.co',
       },
       {
-        protocol: "https",
-        hostname: "img.clerk.com",
+        protocol: 'https',
+        hostname: 'img.clerk.com',
       },
       {
-        protocol: "https",
-        hostname: "i.pravatar.cc",
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

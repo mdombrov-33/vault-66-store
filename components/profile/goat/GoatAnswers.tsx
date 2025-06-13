@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { GoatAnswersProps } from "@/types/profile";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import { Button } from '@/components/ui/button'
+import { GoatAnswersProps } from '@/types/profile'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
 function GoatAnswers({ currentQuestion, onAnswer }: GoatAnswersProps) {
-  const { playClick, playHover } = useSoundPlayer();
+  const { playClick, playHover } = useSoundPlayer()
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 md:mt-6 gap-4 pb-2 ">
@@ -11,8 +11,8 @@ function GoatAnswers({ currentQuestion, onAnswer }: GoatAnswersProps) {
         <Button
           key={answer.id}
           onClick={() => {
-            playClick();
-            onAnswer(answer.id);
+            playClick()
+            onAnswer(answer.id)
           }}
           onMouseEnter={playHover}
           variant="ghost"
@@ -22,7 +22,7 @@ function GoatAnswers({ currentQuestion, onAnswer }: GoatAnswersProps) {
         </Button>
       ))}
     </div>
-  );
+  )
 }
 
-export default GoatAnswers;
+export default GoatAnswers

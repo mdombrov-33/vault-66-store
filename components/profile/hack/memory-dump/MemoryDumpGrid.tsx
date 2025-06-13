@@ -1,6 +1,6 @@
-import { MemoryDumpGridProps } from "@/types/profile";
-import TerminalLog from "../terminal/TerminalLog";
-import DumpColumn from "./DumpColumn";
+import { MemoryDumpGridProps } from '@/types/profile'
+import TerminalLog from '../terminal/TerminalLog'
+import DumpColumn from './DumpColumn'
 
 function MemoryDumpGrid({
   leftColumn,
@@ -34,7 +34,7 @@ function MemoryDumpGrid({
         <TerminalLog gameOver={gameOver} onWordHover={onWordHover} log={log} />
       </div>
     </div>
-  );
+  )
 }
 
-export default MemoryDumpGrid;
+export default MemoryDumpGrid

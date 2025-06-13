@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
 function Logo() {
-  const { playClick } = useSoundPlayer();
+  const { playClick } = useSoundPlayer()
 
   return (
     <Button
@@ -18,7 +18,7 @@ function Logo() {
         <span className="uppercase text-3xl">vault 66</span>
       </Link>
     </Button>
-  );
+  )
 }
 
-export default Logo;
+export default Logo

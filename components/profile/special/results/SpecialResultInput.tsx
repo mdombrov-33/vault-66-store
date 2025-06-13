@@ -1,13 +1,10 @@
-import { Input } from "@/components/ui/input";
-import { SpecialResultStatProps } from "@/types/profile";
+import { Input } from '@/components/ui/input'
+import { SpecialResultStatProps } from '@/types/profile'
 
 function SpecialResultInput({ name, label, value }: SpecialResultStatProps) {
   return (
     <div className="flex items-center gap-4 px-4 py-2">
-      <label
-        htmlFor={name}
-        className="w-28 text-3xl uppercase text-muted-foreground"
-      >
+      <label htmlFor={name} className="w-28 text-3xl uppercase text-muted-foreground">
         <span className="text-primary">{label.charAt(0)}</span>
         {label.slice(1)}
       </label>
@@ -23,7 +20,7 @@ function SpecialResultInput({ name, label, value }: SpecialResultStatProps) {
         />
       </div>
     </div>
-  );
+  )
 }
 
-export default SpecialResultInput;
+export default SpecialResultInput
