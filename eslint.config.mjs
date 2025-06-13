@@ -9,6 +9,12 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 })
 
-const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript')]
+const eslintConfig = [
+  {
+    ignores: ['lib/generated/prisma', 'node_modules', 'dist', '.next'],
+  },
+
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+]
 
 export default eslintConfig
