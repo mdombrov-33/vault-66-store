@@ -47,10 +47,12 @@ export const createSpecialAction = async (
 }
 
 //* Get SPECIAL record for the user
-export const getSpecialRecord = async (clerkId: string) => {
+export const getSpecialRecord = async () => {
+  const user = await getAuthUser()
+
   const specialRecord = await db.special.findUnique({
     where: {
-      clerkId,
+      clerkId: user.id,
     },
   })
 
