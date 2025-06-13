@@ -6,5 +6,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'no-console': 'warn',
+    'next/next/no-img-element': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 }
