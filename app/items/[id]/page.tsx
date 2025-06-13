@@ -1,29 +1,24 @@
-import BreadCrumbs from "@/components/single-item/BreadCrumbs";
-import { findExistingReview } from "@/utils/actions/review";
-import { fetchSingleProduct } from "@/utils/actions/product";
-import Image from "next/image";
-import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
-import AddToCart from "@/components/single-item/AddToCart";
-import ProductRating from "@/components/single-item/ProductRating";
-import ShareButton from "@/components/single-item/ShareButton";
-import SubmitReview from "@/components/reviews/SubmitReview";
-import ProductReviews from "@/components/reviews/ProductReviews";
-import { auth } from "@clerk/nextjs/server";
+import BreadCrumbs from '@/components/single-item/BreadCrumbs'
+import { findExistingReview } from '@/utils/actions/review'
+import { fetchSingleProduct } from '@/utils/actions/product'
+import Image from 'next/image'
+import FavoriteToggleButton from '@/components/items/FavoriteToggleButton'
+import AddToCart from '@/components/single-item/AddToCart'
+import ProductRating from '@/components/single-item/ProductRating'
+import ShareButton from '@/components/single-item/ShareButton'
+import SubmitReview from '@/components/reviews/SubmitReview'
+import ProductReviews from '@/components/reviews/ProductReviews'
+import { auth } from '@clerk/nextjs/server'
 
-async function SingleProductPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const productId = (await params).id;
+async function SingleProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const productId = (await params).id
 
-  const product = await fetchSingleProduct(productId);
-  const { name, image, company, description, price } = product;
+  const product = await fetchSingleProduct(productId)
+  const { name, image, company, description, price } = product
 
-  const { userId } = await auth();
+  const { userId } = await auth()
 
-  const reviewDoesNotExist =
-    userId && !(await findExistingReview(userId, productId));
+  const reviewDoesNotExist = userId && !(await findExistingReview(userId, productId))
 
   return (
     <section>
@@ -43,9 +38,7 @@ async function SingleProductPage({
         {/* PRODUCT INFO SECOND COL */}
         <div>
           <div className="flex gap-x-8 items-center">
-            <h1 className="capitalize text-4xl lg:text-5xl font-bold">
-              {name}
-            </h1>
+            <h1 className="capitalize text-4xl lg:text-5xl font-bold">{name}</h1>
 
             <div className="flex items-center gap-x-2">
               <FavoriteToggleButton productId={productId} />
@@ -67,7 +60,7 @@ async function SingleProductPage({
 
       {reviewDoesNotExist && <SubmitReview productId={productId} />}
     </section>
-  );
+  )
 }
 
-export default SingleProductPage;
+export default SingleProductPage

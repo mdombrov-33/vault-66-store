@@ -1,10 +1,6 @@
-import React from "react";
-import SpecialRegisterInput from "@/components/profile/special/register/SpecialRegisterInput";
-import {
-  SpecialRegisterLeftColumnProps,
-  SpecialStats,
-  SpecialStatsKeys,
-} from "@/types/profile";
+import React from 'react'
+import SpecialRegisterInput from '@/components/profile/special/register/SpecialRegisterInput'
+import { SpecialRegisterLeftColumnProps, SpecialStats, SpecialStatsKeys } from '@/types/profile'
 
 function SpecialRegisterLeftColumn({
   onHoverChange,
@@ -14,19 +10,19 @@ function SpecialRegisterLeftColumn({
   remainingPoints,
 }: SpecialRegisterLeftColumnProps) {
   const handleIncrement = (name: keyof SpecialStats) => {
-    if (remainingPoints <= 0) return;
+    if (remainingPoints <= 0) return
     setSpecialStats((prev) => ({
       ...prev,
       [name]: Math.min(prev[name] + 1, 10),
-    }));
-  };
+    }))
+  }
 
   const handleDecrement = (name: SpecialStatsKeys) => {
     setSpecialStats((prev) => ({
       ...prev,
       [name]: Math.max(prev[name] - 1, 1),
-    }));
-  };
+    }))
+  }
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
@@ -42,10 +38,10 @@ function SpecialRegisterLeftColumn({
             onHoverChange={onHoverChange}
             hoveredStat={hoveredStat}
           />
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default SpecialRegisterLeftColumn;
+export default SpecialRegisterLeftColumn

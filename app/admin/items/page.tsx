@@ -1,6 +1,6 @@
-import EmptyList from "@/components/global/EmptyList";
-import { deleteProductAction, fetchAdminProducts } from "@/utils/actions/admin";
-import Link from "next/link";
+import EmptyList from '@/components/global/EmptyList'
+import { deleteProductAction, fetchAdminProducts } from '@/utils/actions/admin'
+import Link from 'next/link'
 
 import {
   Table,
@@ -10,19 +10,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { IconButton } from "@/components/form/Buttons";
-import FormContainer from "@/components/form/FormContainer";
+} from '@/components/ui/table'
+import { IconButton } from '@/components/form/Buttons'
+import FormContainer from '@/components/form/FormContainer'
 
 async function AdminProductsPage() {
-  const items = await fetchAdminProducts();
-  if (items.length === 0) return <EmptyList />;
+  const items = await fetchAdminProducts()
+  if (items.length === 0) return <EmptyList />
   return (
     <section>
       <Table>
-        <TableCaption className="capitalize text-xl">
-          total products: {items.length}
-        </TableCaption>
+        <TableCaption className="capitalize text-xl">total products: {items.length}</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-xl">Item Name</TableHead>
@@ -33,7 +31,7 @@ async function AdminProductsPage() {
         </TableHeader>
         <TableBody>
           {items.map((item) => {
-            const { id: productId, name, company, price } = item;
+            const { id: productId, name, company, price } = item
             return (
               <TableRow key={productId}>
                 <TableCell>
@@ -53,12 +51,12 @@ async function AdminProductsPage() {
                   <DeleteProduct productId={productId} />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </section>
-  );
+  )
 }
 
 function DeleteProduct({ productId }: { productId: string }) {
@@ -66,13 +64,13 @@ function DeleteProduct({ productId }: { productId: string }) {
   //* This creates a new version of deleteProductAction where productId is already included.
   //* So when the form is submitted, Next.js passes that { productId } as prevState to the action.
   //* This avoids using a hidden input field to send the ID manually.
-  const deleteProduct = deleteProductAction.bind(null, { productId });
+  const deleteProduct = deleteProductAction.bind(null, { productId })
 
   return (
     <FormContainer action={deleteProduct}>
       <IconButton actionType="delete" />
     </FormContainer>
-  );
+  )
 }
 
-export default AdminProductsPage;
+export default AdminProductsPage

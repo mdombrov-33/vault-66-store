@@ -1,12 +1,12 @@
-import { Card, CardContent } from "../ui/card";
-import { Skeleton } from "../ui/skeleton";
+import { Card, CardContent } from '../ui/card'
+import { Skeleton } from '../ui/skeleton'
 
 function LoadingContainer() {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <LoadingProduct />
     </div>
-  );
+  )
 }
 
 function LoadingProduct() {
@@ -18,7 +18,7 @@ function LoadingProduct() {
         <Skeleton className="h-4 w-1/2 mt-4" />
       </CardContent>
     </Card>
-  );
+  )
 }
 
-export default LoadingContainer;
+export default LoadingContainer

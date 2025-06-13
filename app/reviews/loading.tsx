@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { Card, CardHeader } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardHeader } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 function loading() {
   return (
@@ -9,7 +9,7 @@ function loading() {
       <ReviewLoadingCard />
       <ReviewLoadingCard />
     </div>
-  );
+  )
 }
 
 function ReviewLoadingCard() {
@@ -25,7 +25,7 @@ function ReviewLoadingCard() {
         </div>
       </CardHeader>
     </Card>
-  );
+  )
 }
 
-export default loading;
+export default loading

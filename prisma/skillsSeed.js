@@ -1,6 +1,6 @@
 const skills = [
   {
-    clerkId: "clerk-001",
+    clerkId: 'clerk-001',
     barter: 55,
     bigGuns: 40,
     energyWeapons: 65,
@@ -17,7 +17,7 @@ const skills = [
     survival: 75,
   },
   {
-    clerkId: "clerk-002",
+    clerkId: 'clerk-002',
     barter: 45,
     bigGuns: 30,
     energyWeapons: 40,
@@ -33,6 +33,6 @@ const skills = [
     unarmed: 40,
     survival: 70,
   },
-];
+]
 
-module.exports = skills;
+module.exports = skills

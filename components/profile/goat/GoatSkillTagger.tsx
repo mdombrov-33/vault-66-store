@@ -1,50 +1,41 @@
-import { getBoostedSkills } from "@/utils/profile/get-boosted-skills";
-import {
-  GoatSkillTaggerProps,
-  SkillAttributes,
-  SkillKeys,
-} from "@/types/profile";
-import { useState } from "react";
-import { SubmitButton } from "@/components/form/Buttons";
-import FormContainer from "@/components/form/FormContainer";
-import GoatSkillTaggerRightSection from "./GoatTaggerRightSection";
-import GoatTaggerLeftSection from "./GoatTaggerLeftSection";
-import { submitGoatSkillsAction } from "@/utils/actions/goat";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import { getBoostedSkills } from '@/utils/profile/get-boosted-skills'
+import { GoatSkillTaggerProps, SkillAttributes, SkillKeys } from '@/types/profile'
+import { useState } from 'react'
+import { SubmitButton } from '@/components/form/Buttons'
+import FormContainer from '@/components/form/FormContainer'
+import GoatSkillTaggerRightSection from './GoatTaggerRightSection'
+import GoatTaggerLeftSection from './GoatTaggerLeftSection'
+import { submitGoatSkillsAction } from '@/utils/actions/goat'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
-function GoatSkillTagger({
-  baseSkills,
-  answers,
-  onFinish,
-}: GoatSkillTaggerProps) {
-  const boostedSkills = getBoostedSkills(baseSkills, answers); //* We take base skills for SPECIAL registration + applying goat answers
-  const { playClick } = useSoundPlayer();
+function GoatSkillTagger({ baseSkills, answers, onFinish }: GoatSkillTaggerProps) {
+  const boostedSkills = getBoostedSkills(baseSkills, answers) //* We take base skills for SPECIAL registration + applying goat answers
+  const { playClick } = useSoundPlayer()
 
-  const [selectedSkills, setSelectedSkills] = useState<
-    Record<SkillKeys, boolean>
-  >(
+  const [selectedSkills, setSelectedSkills] = useState<Record<SkillKeys, boolean>>(
     () =>
-      Object.fromEntries(
-        Object.keys(boostedSkills).map((key) => [key, false])
-      ) as Record<SkillKeys, boolean>
-  );
+      Object.fromEntries(Object.keys(boostedSkills).map((key) => [key, false])) as Record<
+        SkillKeys,
+        boolean
+      >
+  )
 
-  const [hoveredSkill, setHoveredSkill] = useState<SkillKeys | null>(null);
+  const [hoveredSkill, setHoveredSkill] = useState<SkillKeys | null>(null)
 
   const finalSkills = Object.fromEntries(
     Object.entries(boostedSkills).map(([key, value]) => {
-      const isTagged = selectedSkills[key as SkillKeys];
-      return [key, isTagged ? value + 15 : value];
+      const isTagged = selectedSkills[key as SkillKeys]
+      return [key, isTagged ? value + 15 : value]
     })
-  ) as SkillAttributes;
+  ) as SkillAttributes
 
   const taggedSkills = (Object.keys(selectedSkills) as SkillKeys[]).filter(
     (key) => selectedSkills[key]
-  );
+  )
 
   const handleSubmit = () => {
-    onFinish(finalSkills, taggedSkills);
-  };
+    onFinish(finalSkills, taggedSkills)
+  }
 
   return (
     <section>
@@ -57,9 +48,7 @@ function GoatSkillTagger({
 
           {/* Hidden inputs for tagged skills (only those selected) */}
           {Object.entries(selectedSkills).map(([key, isSelected]) =>
-            isSelected ? (
-              <input key={key} type="hidden" name="taggedSkills" value={key} />
-            ) : null
+            isSelected ? <input key={key} type="hidden" name="taggedSkills" value={key} /> : null
           )}
 
           <div className="md:self-start">
@@ -76,7 +65,7 @@ function GoatSkillTagger({
               className="text-3xl"
               text="submit skills"
               onClick={() => {
-                playClick();
+                playClick()
               }}
             />
           </div>
@@ -87,7 +76,7 @@ function GoatSkillTagger({
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default GoatSkillTagger;
+export default GoatSkillTagger

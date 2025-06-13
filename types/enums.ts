@@ -1,4 +1,4 @@
 export enum Mode {
-  SingleProduct = "singleProduct",
-  CartItem = "cartItem",
+  SingleProduct = 'singleProduct',
+  CartItem = 'cartItem',
 }

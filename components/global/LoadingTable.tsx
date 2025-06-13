@@ -1,12 +1,12 @@
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from '../ui/skeleton'
 
 function LoadingTable({ rows = 5 }: { rows?: number }) {
   const tableRows = Array.from({ length: rows }, (_, index) => (
     <div className="mb-4" key={index}>
       <Skeleton className="w-full h-8 rounded" />
     </div>
-  ));
-  return <>{tableRows}</>;
+  ))
+  return <>{tableRows}</>
 }
 
-export default LoadingTable;
+export default LoadingTable

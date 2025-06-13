@@ -1,1 +1,1 @@
-export const goatSuccessSrc = "/sounds/goatsuccess.wav";
+export const goatSuccessSrc = '/sounds/goatsuccess.wav'

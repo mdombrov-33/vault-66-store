@@ -1,4 +1,4 @@
-import { SpecialPageResultsProps } from "@/types/profile";
+import { SpecialPageResultsProps } from '@/types/profile'
 import {
   getAgilityText,
   getCharismaText,
@@ -8,26 +8,16 @@ import {
   getLuckText,
   getPerceptionText,
   getStrengthText,
-} from "@/utils/text/special-result-text";
+} from '@/utils/text/special-result-text'
 
 function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
-  const {
-    strength,
-    perception,
-    endurance,
-    charisma,
-    intelligence,
-    agility,
-    luck,
-  } = specialRecord;
+  const { strength, perception, endurance, charisma, intelligence, agility, luck } = specialRecord
 
   return (
     <div className="flex flex-col justify-start">
       <div className="border rounded-md px-2 pt-2">
         {/* Dynamic text based on SPECIAL */}
-        <span className="font-[roboto-mono] text-xl">
-          VAULT-TEC PSYCH EVAL:
-        </span>
+        <span className="font-[roboto-mono] text-xl">VAULT-TEC PSYCH EVAL:</span>
         <p className="text-lg sm:text-xl font-[roboto-mono] leading-10">
           {getStrengthText(strength)}
           <br />
@@ -58,7 +48,7 @@ function SpecialResultText({ specialRecord }: SpecialPageResultsProps) {
         </p>
       </div> */}
     </div>
-  );
+  )
 }
 
-export default SpecialResultText;
+export default SpecialResultText

@@ -1,20 +1,16 @@
-"use client";
+'use client'
 
-import { Card } from "@/components/ui/card";
-import {
-  FirstColumn,
-  SecondColumn,
-  FourthColumn,
-} from "@/components/supply-bin/CartItemColumns";
-import ThirdColumn from "@/components/supply-bin/ThirdColumn";
-import { CartItemWithProduct } from "@/types/cart";
+import { Card } from '@/components/ui/card'
+import { FirstColumn, SecondColumn, FourthColumn } from '@/components/supply-bin/CartItemColumns'
+import ThirdColumn from '@/components/supply-bin/ThirdColumn'
+import { CartItemWithProduct } from '@/types/cart'
 
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
   return (
     <div>
       {cartItems.map((cartItem) => {
-        const { id: cartItemId, amount } = cartItem;
-        const { image, name, company, price, id: productId } = cartItem.product;
+        const { id: cartItemId, amount } = cartItem
+        const { image, name, company, price, id: productId } = cartItem.product
 
         return (
           <Card
@@ -26,10 +22,10 @@ function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
             <ThirdColumn cartItemId={cartItemId} quantity={amount} />
             <FourthColumn price={price} />
           </Card>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default CartItemsList;
+export default CartItemsList

@@ -1,18 +1,17 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Button } from "../ui/button";
+import { useState } from 'react'
+import { Button } from '../ui/button'
 
 function Comment({ comment }: { comment: string }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleExpanded = () => {
-    setIsExpanded((prev) => !prev);
-  };
+    setIsExpanded((prev) => !prev)
+  }
 
-  const longComment = comment.length > 100;
-  const displayComment =
-    longComment && !isExpanded ? `${comment.slice(0, 100)}...` : comment;
+  const longComment = comment.length > 100
+  const displayComment = longComment && !isExpanded ? `${comment.slice(0, 100)}...` : comment
 
   return (
     <div>
@@ -23,10 +22,10 @@ function Comment({ comment }: { comment: string }) {
           onClick={toggleExpanded}
           variant="link"
         >
-          {isExpanded ? "Show less" : "Show more"}
+          {isExpanded ? 'Show less' : 'Show more'}
         </Button>
       )}
     </div>
-  );
+  )
 }
-export default Comment;
+export default Comment

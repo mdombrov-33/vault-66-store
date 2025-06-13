@@ -1,9 +1,9 @@
-import { TerminalLogProps } from "@/types/profile";
-import TerminalTypewriter from "@/components/profile/hack/terminal/TerminalTypeWriter";
+import { TerminalLogProps } from '@/types/profile'
+import TerminalTypewriter from '@/components/profile/hack/terminal/TerminalTypeWriter'
 
 function TerminalLog({ log, onWordHover, gameOver }: TerminalLogProps) {
   if (gameOver) {
-    onWordHover = null;
+    onWordHover = null
   }
 
   return (
@@ -11,10 +11,7 @@ function TerminalLog({ log, onWordHover, gameOver }: TerminalLogProps) {
       <div className="absolute inset-0 flex px-2 pb-8 overflow-y-auto">
         <div className="flex flex-col-reverse space-y-1 space-y-reverse">
           {log.map((entry, i) => (
-            <p
-              key={i}
-              className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)]"
-            >
+            <p key={i} className="text-[0.6rem] md:text-lg lg:text-xl text-[var(--terminal-text)]">
               {entry}
             </p>
           ))}
@@ -22,10 +19,10 @@ function TerminalLog({ log, onWordHover, gameOver }: TerminalLogProps) {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full px-2 pb-1">
-        <TerminalTypewriter word={onWordHover ?? ""} />
+        <TerminalTypewriter word={onWordHover ?? ''} />
       </div>
     </div>
-  );
+  )
 }
 
-export default TerminalLog;
+export default TerminalLog

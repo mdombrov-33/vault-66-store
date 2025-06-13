@@ -1,15 +1,15 @@
-import { Product } from "@/lib/generated/prisma"; //grab type from prisma schema
-import Link from "next/link";
-import { Card, CardContent } from "../ui/card";
-import Image from "next/image";
-import FavoriteToggleButton from "@/components/items/FavoriteToggleButton";
+import { Product } from '@/lib/generated/prisma' //grab type from prisma schema
+import Link from 'next/link'
+import { Card, CardContent } from '../ui/card'
+import Image from 'next/image'
+import FavoriteToggleButton from '@/components/items/FavoriteToggleButton'
 
 function ProductsGrid({ products }: { products: Product[] }) {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => {
-        const { name, price, image } = product;
-        const productId = product.id;
+        const { name, price, image } = product
+        const productId = product.id
 
         return (
           <article key={productId} className="group relative">
@@ -39,10 +39,10 @@ function ProductsGrid({ products }: { products: Product[] }) {
               <FavoriteToggleButton productId={productId} />
             </div>
           </article>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default ProductsGrid;
+export default ProductsGrid

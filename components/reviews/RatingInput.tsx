@@ -1,23 +1,17 @@
-import { Label } from "@/components/ui/label";
+import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
-function RatingInput({
-  name,
-  labelText,
-}: {
-  name: string;
-  labelText?: string;
-}) {
+function RatingInput({ name, labelText }: { name: string; labelText?: string }) {
   const numbers = Array.from({ length: 5 }, (_, i) => {
-    const value = i + 1;
-    return value.toString();
-  }).reverse();
+    const value = i + 1
+    return value.toString()
+  }).reverse()
 
   return (
     <div className="mb-2 max-w-xs">
@@ -37,7 +31,7 @@ function RatingInput({
         </SelectContent>
       </Select>
     </div>
-  );
+  )
 }
 
-export default RatingInput;
+export default RatingInput

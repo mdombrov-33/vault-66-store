@@ -1,12 +1,12 @@
-import Container from "@/components/global/Container";
-import CartBtn from "@/components/navbar/CartBtn";
-import DarkMode from "@/components/navbar/DarkMode";
-import LinksDropdown from "@/components/navbar/LinksDropdown";
-import Logo from "@/components/navbar/Logo";
-import NavSearch from "@/components/navbar/NavSearch";
-import RadioBtn from "@/components/navbar/RadioBtn";
-import CrtMode from "@/components/navbar/CrtMode";
-import { Suspense } from "react";
+import Container from '@/components/global/Container'
+import CartBtn from '@/components/navbar/CartBtn'
+import DarkMode from '@/components/navbar/DarkMode'
+import LinksDropdown from '@/components/navbar/LinksDropdown'
+import Logo from '@/components/navbar/Logo'
+import NavSearch from '@/components/navbar/NavSearch'
+import RadioBtn from '@/components/navbar/RadioBtn'
+import CrtMode from '@/components/navbar/CrtMode'
+import { Suspense } from 'react'
 
 function Navbar() {
   return (
@@ -28,7 +28,7 @@ function Navbar() {
         </div>
       </Container>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

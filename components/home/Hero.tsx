@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { Button } from "../ui/button";
-import HeroCarousel from "./HeroCarousel";
-import { TypeAnimation } from "react-type-animation";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import HeroCarousel from './HeroCarousel'
+import { TypeAnimation } from 'react-type-animation'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
 function Hero() {
-  const { playClick } = useSoundPlayer();
+  const { playClick } = useSoundPlayer()
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -18,13 +18,13 @@ function Hero() {
 
         <TypeAnimation
           sequence={[
-            "vault 66 online. initiating supply catalog...",
+            'vault 66 online. initiating supply catalog...',
             4000,
-            "remember: a prepared survivor is a safe survivor",
+            'remember: a prepared survivor is a safe survivor',
             3000,
-            "all products approved by vault-tec",
+            'all products approved by vault-tec',
             3000,
-            "surface conditions: unknown. stock up accordingly",
+            'surface conditions: unknown. stock up accordingly',
             5000,
           ]}
           wrapper="p"
@@ -45,7 +45,7 @@ function Hero() {
       </div>
       <HeroCarousel />
     </section>
-  );
+  )
 }
 
-export default Hero;
+export default Hero

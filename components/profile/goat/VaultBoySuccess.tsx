@@ -1,6 +1,6 @@
-import Image from "next/image";
-import vaultboyThumbsUp from "@/public/vaultboy.svg"; // or .png
-import { motion } from "framer-motion";
+import Image from 'next/image'
+import vaultboyThumbsUp from '@/public/vaultboy.svg' // or .png
+import { motion } from 'framer-motion'
 
 export default function VaultBoySuccessScreen() {
   return (
@@ -17,12 +17,8 @@ export default function VaultBoySuccessScreen() {
         height={250}
         priority
       />
-      <h2 className="mt-6 text-3xl font-bold text-muted-foreground">
-        Good job, kid!
-      </h2>
-      <p className="text-xl text-muted-foreground">
-        Vault-Tec has reviewed your skills
-      </p>
+      <h2 className="mt-6 text-3xl font-bold text-muted-foreground">Good job, kid!</h2>
+      <p className="text-xl text-muted-foreground">Vault-Tec has reviewed your skills</p>
     </motion.div>
-  );
+  )
 }

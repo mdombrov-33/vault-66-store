@@ -1,61 +1,55 @@
-"use client";
+'use client'
 
-import { useRef, useState } from "react";
-import GoatIntro from "./GoatIntro";
-import GoatTest from "./GoatTest";
-import GoatSkillTagger from "./GoatSkillTagger";
-import GoatFinalResults from "./GoatFinalResults";
-import VaultBoySuccessScreen from "./VaultBoySuccess";
-import { GoatSkillsProps, GoatStage, SkillAttributes } from "@/types/profile";
-import { AnimatePresence, motion } from "framer-motion";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+import { useRef, useState } from 'react'
+import GoatIntro from './GoatIntro'
+import GoatTest from './GoatTest'
+import GoatSkillTagger from './GoatSkillTagger'
+import GoatFinalResults from './GoatFinalResults'
+import VaultBoySuccessScreen from './VaultBoySuccess'
+import { GoatSkillsProps, GoatStage, SkillAttributes } from '@/types/profile'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
-function GoatPageWrapper({
-  baseSkills,
-  isGoatCompleted,
-  taggedSkills,
-}: GoatSkillsProps) {
-  const [stage, setStage] = useState<GoatStage>(
-    isGoatCompleted ? "final" : "intro"
-  );
+function GoatPageWrapper({ baseSkills, isGoatCompleted, taggedSkills }: GoatSkillsProps) {
+  const [stage, setStage] = useState<GoatStage>(isGoatCompleted ? 'final' : 'intro')
 
-  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
-  const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills);
-  const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || []);
-  const { playGoatSuccess } = useSoundPlayer();
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({})
+  const [finalSkills, setFinalSkills] = useState<SkillAttributes>(baseSkills)
+  const [finalTags, setFinalTags] = useState<string[]>(taggedSkills || [])
+  const { playGoatSuccess } = useSoundPlayer()
 
-  const shouldAnimateFinal = useRef(false);
+  const shouldAnimateFinal = useRef(false)
 
-  if (stage === "intro") {
-    return <GoatIntro handleStart={() => setStage("test")} />;
+  if (stage === 'intro') {
+    return <GoatIntro handleStart={() => setStage('test')} />
   }
 
-  if (stage === "test") {
-    return <GoatTest setStage={setStage} setAnswers={setQuizAnswers} />;
+  if (stage === 'test') {
+    return <GoatTest setStage={setStage} setAnswers={setQuizAnswers} />
   }
 
-  if (stage === "tagging") {
+  if (stage === 'tagging') {
     return (
       <GoatSkillTagger
         baseSkills={baseSkills}
         answers={quizAnswers}
         onFinish={(finalSkills, taggedSkills) => {
-          setFinalSkills(finalSkills);
-          setFinalTags(taggedSkills);
-          setStage("success");
-          playGoatSuccess();
+          setFinalSkills(finalSkills)
+          setFinalTags(taggedSkills)
+          setStage('success')
+          playGoatSuccess()
 
-          shouldAnimateFinal.current = true;
+          shouldAnimateFinal.current = true
 
           setTimeout(() => {
-            setStage("final");
-          }, 3000);
+            setStage('final')
+          }, 3000)
         }}
       />
-    );
+    )
   }
 
-  if (stage === "success") {
+  if (stage === 'success') {
     return (
       <AnimatePresence mode="wait">
         <motion.div
@@ -68,27 +62,27 @@ function GoatPageWrapper({
           <VaultBoySuccessScreen />
         </motion.div>
       </AnimatePresence>
-    );
+    )
   }
 
-  if (stage === "final") {
-    const animate = shouldAnimateFinal.current;
+  if (stage === 'final') {
+    const animate = shouldAnimateFinal.current
 
-    shouldAnimateFinal.current = false;
+    shouldAnimateFinal.current = false
 
     return (
       <motion.div
         key="final"
         initial={animate ? { opacity: 0 } : false}
         animate={animate ? { opacity: 1 } : false}
-        transition={animate ? { duration: 0.6, ease: "easeInOut" } : undefined}
+        transition={animate ? { duration: 0.6, ease: 'easeInOut' } : undefined}
       >
         <GoatFinalResults finalSkills={finalSkills} taggedSkills={finalTags} />
       </motion.div>
-    );
+    )
   }
 
-  return null;
+  return null
 }
 
-export default GoatPageWrapper;
+export default GoatPageWrapper

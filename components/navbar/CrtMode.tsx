@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useCrtMode } from "@/components/navbar/hooks/useCrtMode";
-import { Button } from "@/components/ui/button";
-import { TvIcon } from "lucide-react";
-import { cn } from "@/utils/cn";
-import { useGlowClass } from "./hooks/useGlowClass";
+import { useCrtMode } from '@/components/navbar/hooks/useCrtMode'
+import { Button } from '@/components/ui/button'
+import { TvIcon } from 'lucide-react'
+import { cn } from '@/utils/cn'
+import { useGlowClass } from './hooks/useGlowClass'
 
 function CrtMode() {
-  const { toggle, isEnabled, resolvedTheme } = useCrtMode();
+  const { toggle, isEnabled, resolvedTheme } = useCrtMode()
 
-  const glowClass = useGlowClass(isEnabled);
+  const glowClass = useGlowClass(isEnabled)
 
-  if (resolvedTheme === "dark") {
+  if (resolvedTheme === 'dark') {
     return (
       <Button
         onClick={toggle}
@@ -24,10 +24,10 @@ function CrtMode() {
         <span className="sr-only">CRT Mode Toggle</span>
         <TvIcon />
       </Button>
-    );
+    )
   }
 
-  return null;
+  return null
 }
 
-export default CrtMode;
+export default CrtMode

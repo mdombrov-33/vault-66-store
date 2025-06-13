@@ -1,6 +1,6 @@
-import { DumpColumnProps } from "@/types/profile";
-import LineWithClickableWords from "./LineWithClickableWords";
-import { motion } from "framer-motion";
+import { DumpColumnProps } from '@/types/profile'
+import LineWithClickableWords from './LineWithClickableWords'
+import { motion } from 'framer-motion'
 
 function DumpColumn({
   lines,
@@ -17,21 +17,17 @@ function DumpColumn({
         delayChildren: delay,
       },
     },
-  };
+  }
 
   const lineVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
-  };
+  }
 
   return (
     <motion.div variants={containerVariants} initial="hidden" animate="visible">
       {lines.map((line, i) => (
-        <motion.div
-          key={i}
-          variants={lineVariants}
-          transition={{ duration: 0.05 }}
-        >
+        <motion.div key={i} variants={lineVariants} transition={{ duration: 0.05 }}>
           <div className="flex flex-wrap">
             <LineWithClickableWords
               setOnWordHover={setOnWordHover}
@@ -43,7 +39,7 @@ function DumpColumn({
         </motion.div>
       ))}
     </motion.div>
-  );
+  )
 }
 
-export default DumpColumn;
+export default DumpColumn

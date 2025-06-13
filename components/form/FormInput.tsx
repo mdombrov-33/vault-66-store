@@ -1,14 +1,8 @@
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { FormInputProps } from "@/types/form";
+import { Label } from '../ui/label'
+import { Input } from '../ui/input'
+import { FormInputProps } from '@/types/form'
 
-function FormInput({
-  name,
-  type,
-  label,
-  defaultValue,
-  placeholder,
-}: FormInputProps) {
+function FormInput({ name, type, label, defaultValue, placeholder }: FormInputProps) {
   return (
     <div className="mb-2">
       <Label htmlFor={name} className="capitalize text-xl">
@@ -23,7 +17,7 @@ function FormInput({
         required
       />
     </div>
-  );
+  )
 }
 
-export default FormInput;
+export default FormInput

@@ -1,13 +1,13 @@
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
-import { GoatTaggerLeftColumnProps, SkillKeys } from "@/types/profile";
-import { cn } from "@/utils/cn";
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
+import { GoatTaggerLeftColumnProps, SkillKeys } from '@/types/profile'
+import { cn } from '@/utils/cn'
 
 //* To split keys with multiple words into readable format
 function camelCaseToWords(str: string) {
   return str
-    .replace(/([A-Z])/g, " $1")
+    .replace(/([A-Z])/g, ' $1')
     .replace(/^./, (s) => s.toUpperCase())
-    .trim();
+    .trim()
 }
 
 function GoatTaggerLeftColumn({
@@ -16,29 +16,26 @@ function GoatTaggerLeftColumn({
   setSelectedSkills,
   setHoveredSkill,
 }: GoatTaggerLeftColumnProps) {
-  const { playHover, playClick } = useSoundPlayer();
+  const { playHover, playClick } = useSoundPlayer()
 
   const handleClick = (key: keyof typeof finalSkills) => {
-    const isSelected = selectedSkills[key as SkillKeys];
-    if (
-      !isSelected &&
-      Object.values(selectedSkills).filter(Boolean).length >= 3
-    ) {
-      return;
+    const isSelected = selectedSkills[key as SkillKeys]
+    if (!isSelected && Object.values(selectedSkills).filter(Boolean).length >= 3) {
+      return
     }
     setSelectedSkills((prev) => {
       return {
         ...prev,
         [key]: !isSelected,
-      };
-    });
-    playClick();
-  };
+      }
+    })
+    playClick()
+  }
 
   const handleHover = (key: keyof typeof finalSkills) => {
-    setHoveredSkill(key);
-    playHover();
-  };
+    setHoveredSkill(key)
+    playHover()
+  }
 
   return (
     <ul>
@@ -46,17 +43,15 @@ function GoatTaggerLeftColumn({
         <li
           onClick={() => handleClick(key as keyof typeof finalSkills)}
           onMouseEnter={() => {
-            handleHover(key as keyof typeof finalSkills);
+            handleHover(key as keyof typeof finalSkills)
           }}
           onMouseLeave={() => {
-            setHoveredSkill(null);
+            setHoveredSkill(null)
           }}
           key={key}
           className={cn(
-            "flex justify-between hover:bg-primary hover:text-black px-2",
-            selectedSkills[key as SkillKeys]
-              ? "bg-primary text-black"
-              : undefined
+            'flex justify-between hover:bg-primary hover:text-black px-2',
+            selectedSkills[key as SkillKeys] ? 'bg-primary text-black' : undefined
           )}
         >
           <span className="text-2xl uppercase">{camelCaseToWords(key)}</span>
@@ -64,7 +59,7 @@ function GoatTaggerLeftColumn({
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
-export default GoatTaggerLeftColumn;
+export default GoatTaggerLeftColumn

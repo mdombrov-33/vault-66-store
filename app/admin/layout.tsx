@@ -1,5 +1,5 @@
-import { Separator } from "@/components/ui/separator";
-import AdminSidebar from "./AdminSidebar";
+import { Separator } from '@/components/ui/separator'
+import AdminSidebar from './AdminSidebar'
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +13,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div className="lg:col-span-10 px-4">{children}</div>
       </section>
     </>
-  );
+  )
 }
 
-export default DashboardLayout;
+export default DashboardLayout

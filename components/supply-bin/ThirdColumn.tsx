@@ -1,43 +1,34 @@
-"use client";
-import { useState } from "react";
-import SelectProductAmount from "@/components/single-item/SelectProductAmount";
-import { Mode } from "@/types/enums";
-import FormContainer from "@/components/form/FormContainer";
-import { SubmitButton } from "@/components/form/Buttons";
-import {
-  removeCartItemAction,
-  updateCartItemAction,
-} from "@/utils/actions/cart";
-import { toast } from "sonner";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
+'use client'
+import { useState } from 'react'
+import SelectProductAmount from '@/components/single-item/SelectProductAmount'
+import { Mode } from '@/types/enums'
+import FormContainer from '@/components/form/FormContainer'
+import { SubmitButton } from '@/components/form/Buttons'
+import { removeCartItemAction, updateCartItemAction } from '@/utils/actions/cart'
+import { toast } from 'sonner'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
-function ThirdColumn({
-  quantity,
-  cartItemId,
-}: {
-  quantity: number;
-  cartItemId: string;
-}) {
-  const [amount, setAmount] = useState(quantity);
-  const [isLoading, setIsLoading] = useState(false);
-  const { playClick } = useSoundPlayer();
+function ThirdColumn({ quantity, cartItemId }: { quantity: number; cartItemId: string }) {
+  const [amount, setAmount] = useState(quantity)
+  const [isLoading, setIsLoading] = useState(false)
+  const { playClick } = useSoundPlayer()
 
   const handleAmountChange = async (value: number) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
-    const toastId = toast.loading("Changing amount...");
+    const toastId = toast.loading('Changing amount...')
 
     const result = await updateCartItemAction({
       amount: value,
       cartItemId,
-    });
+    })
 
-    setAmount(value);
+    setAmount(value)
 
-    toast.success(result.message, { id: toastId });
+    toast.success(result.message, { id: toastId })
 
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <div className="md:ml-8">
@@ -57,7 +48,7 @@ function ThirdColumn({
         />
       </FormContainer>
     </div>
-  );
+  )
 }
 
-export default ThirdColumn;
+export default ThirdColumn

@@ -1,15 +1,15 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
-import { Button } from "../ui/button";
-import FormContainer from "./FormContainer";
-import ImageInput from "./ImageInput";
-import { SubmitButton } from "./Buttons";
-import { ImageInputContainerProps } from "@/types/form";
+'use client'
+import { useState } from 'react'
+import Image from 'next/image'
+import { Button } from '../ui/button'
+import FormContainer from './FormContainer'
+import ImageInput from './ImageInput'
+import { SubmitButton } from './Buttons'
+import { ImageInputContainerProps } from '@/types/form'
 
 function ImageInputContainer(props: ImageInputContainerProps) {
-  const { image, name, action, text } = props;
-  const [isUpdateFormVisible, setIsUpdateFormVisible] = useState(false);
+  const { image, name, action, text } = props
+  const [isUpdateFormVisible, setIsUpdateFormVisible] = useState(false)
 
   return (
     <div className="mb-8">
@@ -39,7 +39,7 @@ function ImageInputContainer(props: ImageInputContainerProps) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default ImageInputContainer;
+export default ImageInputContainer

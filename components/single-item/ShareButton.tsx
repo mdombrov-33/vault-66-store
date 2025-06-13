@@ -1,12 +1,8 @@
-"use client";
+'use client'
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Button } from "../ui/button";
-import { LuShare2 } from "react-icons/lu";
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Button } from '../ui/button'
+import { LuShare2 } from 'react-icons/lu'
 
 import {
   TwitterShareButton,
@@ -15,11 +11,11 @@ import {
   FacebookIcon,
   TelegramShareButton,
   TelegramIcon,
-} from "react-share";
+} from 'react-share'
 
 function ShareButton({ productId, name }: { productId: string; name: string }) {
-  const url = process.env.NEXT_PUBLIC_WEBSITE_URL;
-  const sharedLink = `${url}/items/${productId}`;
+  const url = process.env.NEXT_PUBLIC_WEBSITE_URL
+  const sharedLink = `${url}/items/${productId}`
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -44,7 +40,7 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
         </FacebookShareButton>
       </PopoverContent>
     </Popover>
-  );
+  )
 }
 
-export default ShareButton;
+export default ShareButton
