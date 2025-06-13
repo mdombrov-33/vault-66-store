@@ -13,7 +13,7 @@ export const syncSkillsFromSpecial = async () => {
   const user = await getAuthUser()
 
   try {
-    const special = await getSpecialRecord(user.id)
+    const special = await getSpecialRecord()
 
     const skillsData = {
       ...calculateSkills(special!),
