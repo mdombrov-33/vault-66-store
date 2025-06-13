@@ -7,14 +7,22 @@ import {
 } from '@/utils/actions/goat'
 import { getSpecialRecord } from '@/utils/actions/special'
 import { redirect } from 'next/navigation'
+import { cache } from 'react'
+
+export const revalidate = 60
 
 async function GoatPage() {
+  const cachedGetGoatCompletionStatus = cache(getGoatCompletionStatus)
+  const cachedGetInitialSkills = cache(getInitialSkills)
+  const cachedGetUserFinalSkills = cache(getUserFinalSkills)
+  const cachedGetUserTaggedSkills = cache(getUserTaggedSkills)
+
   const [isGoatCompleted, baseSkills, finalSkills, taggedSkills, specialRecord] = await Promise.all(
     [
-      getGoatCompletionStatus(),
-      getInitialSkills(),
-      getUserFinalSkills(),
-      getUserTaggedSkills(),
+      cachedGetGoatCompletionStatus(),
+      cachedGetInitialSkills(),
+      cachedGetUserFinalSkills(),
+      cachedGetUserTaggedSkills(),
       getSpecialRecord(),
     ]
   )
