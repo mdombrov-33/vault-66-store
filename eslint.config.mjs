@@ -17,6 +17,7 @@ const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'plugin:prettier/recommended', 'next/typescript'),
 
   {
+    files: ['*.ts', '*.tsx'],
     rules: {
       'prettier/prettier': 'error',
       'no-console': 'warn',
