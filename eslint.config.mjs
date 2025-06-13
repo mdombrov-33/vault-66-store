@@ -17,7 +17,9 @@ const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'plugin:prettier/recommended'),
 
   {
-    plugins: ['prettier'],
+    plugins: {
+      prettier: {},
+    },
     rules: {
       'prettier/prettier': 'error',
       'no-console': 'warn',
