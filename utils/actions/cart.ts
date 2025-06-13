@@ -1,46 +1,46 @@
-"use server";
-import db from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
-import { getAuthUser } from "../auth/get-user";
-import { revalidatePath } from "next/cache";
-import { renderError } from "../render-error";
-import { Cart } from "@/lib/generated/prisma/client";
+'use server'
+import db from '@/lib/db'
+import { auth } from '@clerk/nextjs/server'
+import { getAuthUser } from '../auth/get-user'
+import { revalidatePath } from 'next/cache'
+import { renderError } from '../render-error'
+import { Cart } from '@/lib/generated/prisma/client'
 
 //* Fetches the number of items in the user's cart.
 export const fetchCartItems = async () => {
-  const { userId } = await auth();
+  const { userId } = await auth()
 
   const cart = await db.cart.findFirst({
     where: {
-      clerkId: userId ?? "",
+      clerkId: userId ?? '',
     },
     select: {
       numItemsInCart: true,
     },
-  });
+  })
 
-  return cart?.numItemsInCart || 0;
-};
+  return cart?.numItemsInCart || 0
+}
 
 //* Adds a product to the user's cart.
 export const addToCartAction = async (prevState: any, formData: FormData) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
-    const productId = formData.get("productId") as string;
-    const amount = Number(formData.get("amount"));
-    const product = await fetchProduct(productId);
-    const cart = await fetchOrCreateCart({ userId: user.id });
-    await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
-    await updateCart(cart);
+    const productId = formData.get('productId') as string
+    const amount = Number(formData.get('amount'))
+    const product = await fetchProduct(productId)
+    const cart = await fetchOrCreateCart({ userId: user.id })
+    await updateOrCreateCartItem({ productId, cartId: cart.id, amount })
+    await updateCart(cart)
 
-    revalidatePath(`/items/${productId}`);
+    revalidatePath(`/items/${productId}`)
 
-    return { message: `${product.name} is added to the bin` };
+    return { message: `${product.name} is added to the bin` }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 
 const includeProductClause = {
   cartItems: {
@@ -48,24 +48,24 @@ const includeProductClause = {
       product: true,
     },
   },
-};
+}
 
 //* Fetches the user's cart or creates a new one if it doesn't exist.
 export const fetchOrCreateCart = async ({
   userId,
   errorOnFailure = false,
 }: {
-  userId: string;
-  errorOnFailure?: boolean;
+  userId: string
+  errorOnFailure?: boolean
 }) => {
   let cart = await db.cart.findFirst({
     where: {
       clerkId: userId,
     },
     include: includeProductClause,
-  });
+  })
   if (!cart && errorOnFailure) {
-    throw new Error("Cart not found");
+    throw new Error('Cart not found')
   }
   if (!cart) {
     cart = await db.cart.create({
@@ -73,11 +73,11 @@ export const fetchOrCreateCart = async ({
         clerkId: userId,
       },
       include: includeProductClause,
-    });
+    })
   }
 
-  return cart;
-};
+  return cart
+}
 
 //* Updates or creates a cart item in the user's cart.
 const updateOrCreateCartItem = async ({
@@ -85,16 +85,16 @@ const updateOrCreateCartItem = async ({
   cartId,
   amount,
 }: {
-  productId: string;
-  cartId: string;
-  amount: number;
+  productId: string
+  cartId: string
+  amount: number
 }) => {
   let cartItem = await db.cartItem.findFirst({
     where: {
       productId,
       cartId,
     },
-  });
+  })
   if (cartItem) {
     cartItem = await db.cartItem.update({
       where: {
@@ -103,13 +103,13 @@ const updateOrCreateCartItem = async ({
       data: {
         amount: cartItem.amount + amount,
       },
-    });
+    })
   } else {
     cartItem = await db.cartItem.create({
       data: { amount, productId, cartId },
-    });
+    })
   }
-};
+}
 
 //* Updates the cart with the latest cart items and calculates totals.
 export const updateCart = async (cart: Cart) => {
@@ -121,20 +121,20 @@ export const updateCart = async (cart: Cart) => {
       product: true,
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: 'asc',
     },
-  });
-  let numItemsInCart = 0;
-  let cartTotal = 0;
+  })
+  let numItemsInCart = 0
+  let cartTotal = 0
 
   for (const item of cartItems) {
-    numItemsInCart += item.amount;
-    cartTotal += item.amount * item.product.price;
+    numItemsInCart += item.amount
+    cartTotal += item.amount * item.product.price
   }
 
-  const tax = cart.taxRate * cartTotal;
-  const shipping = cartTotal ? cart.shipping : 0;
-  const orderTotal = cartTotal + tax + shipping;
+  const tax = cart.taxRate * cartTotal
+  const shipping = cartTotal ? cart.shipping : 0
+  const orderTotal = cartTotal + tax + shipping
 
   const currentCart = await db.cart.update({
     where: {
@@ -147,57 +147,54 @@ export const updateCart = async (cart: Cart) => {
       orderTotal,
     },
     include: includeProductClause,
-  });
+  })
 
-  return { cartItems, currentCart };
-};
+  return { cartItems, currentCart }
+}
 
 //* Removes a cart item from the user's cart.
-export const removeCartItemAction = async (
-  prevState: any,
-  formData: FormData
-) => {
-  const user = await getAuthUser();
+export const removeCartItemAction = async (prevState: any, formData: FormData) => {
+  const user = await getAuthUser()
 
   try {
-    const cartItemId = formData.get("cartItemId") as string;
+    const cartItemId = formData.get('cartItemId') as string
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
-    });
+    })
 
     await db.cartItem.delete({
       where: {
         id: cartItemId,
         cartId: cart.id,
       },
-    });
+    })
 
-    await updateCart(cart);
+    await updateCart(cart)
 
-    revalidatePath("/supply-bin");
+    revalidatePath('/supply-bin')
 
-    return { message: "Item removed from bin" };
+    return { message: 'Item removed from bin' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 
 //* Updates the quantity of a cart item in the user's cart.
 export const updateCartItemAction = async ({
   amount,
   cartItemId,
 }: {
-  amount: number;
-  cartItemId: string;
+  amount: number
+  cartItemId: string
 }) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
-    });
+    })
 
     await db.cartItem.update({
       where: {
@@ -207,17 +204,17 @@ export const updateCartItemAction = async ({
       data: {
         amount,
       },
-    });
+    })
 
-    await updateCart(cart);
+    await updateCart(cart)
 
-    revalidatePath("/supply-bin");
+    revalidatePath('/supply-bin')
 
-    return { message: "Amount is updated" };
+    return { message: 'Amount is updated' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 
 //* Fetches a product by its ID to ensure it exists before adding it to the cart.
 export const fetchProduct = async (productId: string) => {
@@ -225,10 +222,10 @@ export const fetchProduct = async (productId: string) => {
     where: {
       id: productId,
     },
-  });
+  })
   if (!product) {
-    throw new Error("Product not found");
+    throw new Error('Product not found')
   }
 
-  return product;
-};
+  return product
+}

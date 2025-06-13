@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
-import { SpecialRegisterInputProps } from "@/types/profile";
-import { cn } from "@/utils/cn";
-import { Minus, Plus } from "lucide-react";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
+import { SpecialRegisterInputProps } from '@/types/profile'
+import { cn } from '@/utils/cn'
+import { Minus, Plus } from 'lucide-react'
 
 function SpecialRegisterInput({
   name,
@@ -16,17 +16,17 @@ function SpecialRegisterInput({
   onHoverChange,
   hoveredStat,
 }: SpecialRegisterInputProps) {
-  const { playHover, playClick } = useSoundPlayer();
+  const { playHover, playClick } = useSoundPlayer()
 
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-2 sm:gap-4 px-2",
-        hoveredStat === name && "bg-primary/20 rounded-md"
+        'flex flex-wrap items-center gap-2 sm:gap-4 px-2',
+        hoveredStat === name && 'bg-primary/20 rounded-md'
       )}
       onMouseEnter={() => {
-        playHover();
-        onHoverChange?.(name);
+        playHover()
+        onHoverChange?.(name)
       }}
       onMouseLeave={() => onHoverChange?.(null)}
     >
@@ -42,8 +42,8 @@ function SpecialRegisterInput({
         type="button"
         variant="ghost"
         onClick={() => {
-          playClick();
-          onDecrement(name);
+          playClick()
+          onDecrement(name)
         }}
         disabled={value <= min}
         aria-label={`Decrease ${name}`}
@@ -64,8 +64,8 @@ function SpecialRegisterInput({
         type="button"
         variant="ghost"
         onClick={() => {
-          playClick();
-          onIncrement(name);
+          playClick()
+          onIncrement(name)
         }}
         disabled={value >= max}
         aria-label={`Increase ${name}`}
@@ -73,7 +73,7 @@ function SpecialRegisterInput({
         <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
       </Button>
     </div>
-  );
+  )
 }
 
-export default SpecialRegisterInput;
+export default SpecialRegisterInput

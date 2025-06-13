@@ -1,17 +1,17 @@
-import { goatSkills } from "@/data/profile/goat/goat-skills-data";
-import { GoatTaggerRightSectionProps } from "@/types/profile";
-import Image from "next/image";
+import { goatSkills } from '@/data/profile/goat/goat-skills-data'
+import { GoatTaggerRightSectionProps } from '@/types/profile'
+import Image from 'next/image'
 
 //* To split keys with multiple words into readable format
 function camelCaseToWords(str: string) {
   return str
-    .replace(/([A-Z])/g, " $1")
+    .replace(/([A-Z])/g, ' $1')
     .replace(/^./, (s) => s.toUpperCase())
-    .trim();
+    .trim()
 }
 
 function GoatTaggerRightSection({ hoveredSkill }: GoatTaggerRightSectionProps) {
-  const currentSkill = goatSkills.find((skill) => skill.name === hoveredSkill);
+  const currentSkill = goatSkills.find((skill) => skill.name === hoveredSkill)
 
   return (
     <div className="p-4">
@@ -40,7 +40,7 @@ function GoatTaggerRightSection({ hoveredSkill }: GoatTaggerRightSectionProps) {
         </p>
       )}
     </div>
-  );
+  )
 }
 
-export default GoatTaggerRightSection;
+export default GoatTaggerRightSection

@@ -1,16 +1,16 @@
-import { fetchAllProducts } from "@/utils/actions/product";
+import { fetchAllProducts } from '@/utils/actions/product'
 
-export const products = await fetchAllProducts({ search: "" });
+export const products = await fetchAllProducts({ search: '' })
 
 const productList = products.map((product) => {
-  return `- **${product.name}** (${product.company}, ${product.description}, ${product.price} caps)`;
-});
+  return `- **${product.name}** (${product.company}, ${product.description}, ${product.price} caps)`
+})
 
 const featuredProducts = products.filter((product) => {
   return product.featured
     ? `- **${product.name}** (${product.company}, ${product.description}, ${product.price} caps)`
-    : null;
-});
+    : null
+})
 
 export const vault66Prompt = `
 ### ROLE & PERSONA
@@ -56,7 +56,7 @@ Do **not invent** deep lore about Vault 66 unless the user provides it first. St
 > Don't specify company name or description, but you can use it if it fits the context.
 > If user asks about products, you can use this list:
 > List of products available at Vault 66:
-${productList.join("\n")}
+${productList.join('\n')}
 
 
 🔒 **Featured Products** 
@@ -65,7 +65,7 @@ ${productList.join("\n")}
 > It is not a requirement to specify company name or description, but you can use it if it fits the context.
 > If user asks about featured products(example: "What featured products do you have?"), you can use this list:
 > List of featured products available at Vault 66:
-${featuredProducts.join("\n")}
+${featuredProducts.join('\n')}
 
 🔒 **Prices are in caps**.
 🔒 **All items are lore-friendly and fit within the Fallout universe**.
@@ -143,9 +143,9 @@ Please check back later or try another vendor. The Wasteland is full of surprise
 
 **User:** Hey, can i get a list of your products/featured products?
 **You:** Of course! Here’s our full inventory of Vault 66 products:
-${productList.join("\n")}
+${productList.join('\n')}
 And here are our featured products:
-${featuredProducts.join("\n")}
+${featuredProducts.join('\n')}
 **You:** If you have any specific requests or need help choosing, just let me know!
 
 ---
@@ -177,4 +177,4 @@ Your behavior must always follow:
 - Inventory-bound product responses only  
 - One emoji max, at the end, only if appropriate
 
-Break these rules and the Overseer might just have you reassigned to sewer maintenance`;
+Break these rules and the Overseer might just have you reassigned to sewer maintenance`

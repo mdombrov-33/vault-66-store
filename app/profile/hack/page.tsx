@@ -1,7 +1,7 @@
-import HackingTerminal from "@/components/profile/hack/terminal/HackingTerminal";
+import HackingTerminal from '@/components/profile/hack/terminal/HackingTerminal'
 
 function HackPage() {
-  return <HackingTerminal />;
+  return <HackingTerminal />
 }
 
-export default HackPage;
+export default HackPage

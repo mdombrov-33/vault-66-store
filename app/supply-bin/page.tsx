@@ -1,23 +1,23 @@
-import CartItemsList from "@/components/supply-bin/CartItemsList";
-import CartTotals from "@/components/supply-bin/CartTotals";
-import SectionTitle from "@/components/global/SectionTitle";
-import { fetchOrCreateCart, updateCart } from "@/utils/actions/cart";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import CartItemsList from '@/components/supply-bin/CartItemsList'
+import CartTotals from '@/components/supply-bin/CartTotals'
+import SectionTitle from '@/components/global/SectionTitle'
+import { fetchOrCreateCart, updateCart } from '@/utils/actions/cart'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 
 //! FIXME: We don't see toaster notifications in this page after removing products from the cart.
 //! Probably something to do with component unmounting or with using client components in a server component.
 
 async function CartPage() {
-  const { userId } = await auth();
+  const { userId } = await auth()
 
-  if (!userId) redirect("/");
+  if (!userId) redirect('/')
 
-  const previousCart = await fetchOrCreateCart({ userId });
-  const { currentCart, cartItems } = await updateCart(previousCart);
+  const previousCart = await fetchOrCreateCart({ userId })
+  const { currentCart, cartItems } = await updateCart(previousCart)
 
   if (currentCart.numItemsInCart === 0) {
-    return <SectionTitle text="Your supply bin is empty" />;
+    return <SectionTitle text="Your supply bin is empty" />
   }
 
   return (
@@ -32,7 +32,7 @@ async function CartPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default CartPage;
+export default CartPage

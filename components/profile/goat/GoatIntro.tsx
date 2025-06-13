@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { useSoundPlayer } from "@/hooks/useSoundPlayer";
-import { GoatIntroProps } from "@/types/profile";
-import Image from "next/image";
+import { Button } from '@/components/ui/button'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
+import { GoatIntroProps } from '@/types/profile'
+import Image from 'next/image'
 
 function GoatIntro({ handleStart }: GoatIntroProps) {
-  const { playClick } = useSoundPlayer();
+  const { playClick } = useSoundPlayer()
 
   return (
     <section
@@ -22,20 +22,20 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
       />
       <h2 className="md:text-6xl text-5xl">Welcome to Vault 66</h2>
       <p className="md:text-3xl text-lg font-[roboto-mono] text-muted-foreground max-w-2xl">
-        To take part in Vault life, you must pass the Generalized Occupational
-        Aptitude Test (G.O.A.T).
+        To take part in Vault life, you must pass the Generalized Occupational Aptitude Test
+        (G.O.A.T).
       </p>
       <Button
         className="text-2xl px-8 py-4"
         onClick={() => {
-          playClick();
-          handleStart();
+          playClick()
+          handleStart()
         }}
       >
         Start the GOAT Test
       </Button>
     </section>
-  );
+  )
 }
 
-export default GoatIntro;
+export default GoatIntro

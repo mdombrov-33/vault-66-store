@@ -1,4 +1,4 @@
-import { SkillAttributes, SpecialStats } from "../../types/profile";
+import { SkillAttributes, SpecialStats } from '../../types/profile'
 
 export function calculateSkills({
   strength,
@@ -9,8 +9,8 @@ export function calculateSkills({
   agility,
   luck,
 }: SpecialStats): SkillAttributes {
-  const scale = 1.5;
-  const base = (stat: number) => Math.round(stat * 2 + 2 + luck / 2) * scale;
+  const scale = 1.5
+  const base = (stat: number) => Math.round(stat * 2 + 2 + luck / 2) * scale
   return {
     barter: base(charisma),
     bigGuns: base(strength),
@@ -26,5 +26,5 @@ export function calculateSkills({
     smallGuns: base(perception),
     unarmed: base(strength),
     survival: base(endurance),
-  };
+  }
 }

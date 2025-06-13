@@ -1,14 +1,13 @@
-"use client";
-import MemoryDumpGrid from "../memory-dump/MemoryDumpGrid";
-import { useHackingGame } from "../hooks/useHackingGame";
-import TerminalIntro from "./TerminalIntro";
-import { useState } from "react";
+'use client'
+import MemoryDumpGrid from '../memory-dump/MemoryDumpGrid'
+import { useHackingGame } from '../hooks/useHackingGame'
+import TerminalIntro from './TerminalIntro'
+import { useState } from 'react'
 
 export default function HackingTerminal() {
-  const { gameState, attemptsLeft, log, handleGuess, resetGame, gameOver } =
-    useHackingGame(4);
-  const [onWordHover, setOnWordHover] = useState<string | null>(null);
-  const [isIntroDone, setIsIntroDone] = useState(false);
+  const { gameState, attemptsLeft, log, handleGuess, resetGame, gameOver } = useHackingGame(4)
+  const [onWordHover, setOnWordHover] = useState<string | null>(null)
+  const [isIntroDone, setIsIntroDone] = useState(false)
 
   return (
     <section className="text-primary flex flex-col items-center justify-center sm:px-4 pb-24 xl:pb-0">
@@ -34,5 +33,5 @@ export default function HackingTerminal() {
         )}
       </div>
     </section>
-  );
+  )
 }

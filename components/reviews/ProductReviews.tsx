@@ -1,27 +1,27 @@
-import { fetchProductReviews } from "@/utils/actions/review";
-import SectionTitle from "@/components/global/SectionTitle";
-import ReviewCard from "./ReviewCard";
+import { fetchProductReviews } from '@/utils/actions/review'
+import SectionTitle from '@/components/global/SectionTitle'
+import ReviewCard from './ReviewCard'
 
 async function ProductReviews({ productId }: { productId: string }) {
-  const reviews = await fetchProductReviews(productId);
+  const reviews = await fetchProductReviews(productId)
 
   return (
     <div className="mt-16">
       <SectionTitle text="item reviews" />
       <div className="grid md:grid-cols-2 gap-8 my-8">
         {reviews.map((review) => {
-          const { comment, rating, authorImageUrl, authorName } = review;
+          const { comment, rating, authorImageUrl, authorName } = review
           const reviewInfo = {
             comment,
             rating,
             image: authorImageUrl,
             name: authorName,
-          };
-          return <ReviewCard key={review.id} reviewInfo={reviewInfo} />;
+          }
+          return <ReviewCard key={review.id} reviewInfo={reviewInfo} />
         })}
       </div>
     </div>
-  );
+  )
 }
 
-export default ProductReviews;
+export default ProductReviews

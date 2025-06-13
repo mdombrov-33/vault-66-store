@@ -4,17 +4,15 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
-import { SelectCartItemAmountProps } from "@/types/cart";
-import { Mode } from "@/types/enums";
-import { SelectProductAmountProps } from "@/types/product-ui";
+import { SelectCartItemAmountProps } from '@/types/cart'
+import { Mode } from '@/types/enums'
+import { SelectProductAmountProps } from '@/types/product-ui'
 
-function SelectProductAmount(
-  props: SelectProductAmountProps | SelectCartItemAmountProps
-) {
-  const { mode, amount, setAmount } = props;
-  const cartItem = mode === Mode.CartItem;
+function SelectProductAmount(props: SelectProductAmountProps | SelectCartItemAmountProps) {
+  const { mode, amount, setAmount } = props
+  const cartItem = mode === Mode.CartItem
 
   return (
     <>
@@ -26,27 +24,23 @@ function SelectProductAmount(
       >
         <SelectTrigger
           aria-label={`Select amount, currently ${amount}`}
-          className={`${cartItem ? "w-[100px]" : "w-[150px]"} text-2xl`}
+          className={`${cartItem ? 'w-[100px]' : 'w-[150px]'} text-2xl`}
         >
           <SelectValue className="text-lg" placeholder={amount} />
         </SelectTrigger>
         <SelectContent>
           {Array.from({ length: cartItem ? amount + 10 : 10 }, (_, i) => {
-            const selectValue = (i + 1).toString();
+            const selectValue = (i + 1).toString()
             return (
-              <SelectItem
-                key={selectValue}
-                value={selectValue}
-                className="text-xl"
-              >
+              <SelectItem key={selectValue} value={selectValue} className="text-xl">
                 {selectValue}
               </SelectItem>
-            );
+            )
           })}
         </SelectContent>
       </Select>
     </>
-  );
+  )
 }
 
-export default SelectProductAmount;
+export default SelectProductAmount

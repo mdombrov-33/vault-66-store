@@ -1,23 +1,23 @@
-import { useState } from "react";
-import GoatAnswers from "./GoatAnswers";
-import GoatQuestion from "./GoatQuestion";
-import { goatQuestions } from "@/data/profile/goat/goat-questions";
-import { GoatTestProps } from "@/types/profile";
+import { useState } from 'react'
+import GoatAnswers from './GoatAnswers'
+import GoatQuestion from './GoatQuestion'
+import { goatQuestions } from '@/data/profile/goat/goat-questions'
+import { GoatTestProps } from '@/types/profile'
 
 function GoatTest({ setStage, setAnswers }: GoatTestProps) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const currentQuestion = goatQuestions[currentQuestionIndex];
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const currentQuestion = goatQuestions[currentQuestionIndex]
 
   const handleAnswer = (answer: string) => {
-    setAnswers((prev) => ({ ...prev, [currentQuestionIndex]: answer }));
-    const isLast = currentQuestionIndex === goatQuestions.length - 1;
+    setAnswers((prev) => ({ ...prev, [currentQuestionIndex]: answer }))
+    const isLast = currentQuestionIndex === goatQuestions.length - 1
 
     if (isLast) {
-      setStage("tagging");
+      setStage('tagging')
     } else {
-      setCurrentQuestionIndex((i) => i + 1);
+      setCurrentQuestionIndex((i) => i + 1)
     }
-  };
+  }
 
   return (
     <section className="flex items-center justify-center px-4  md:overflow-hidden overflow-auto pb-16 md:pb-0">
@@ -26,13 +26,10 @@ function GoatTest({ setStage, setAnswers }: GoatTestProps) {
           currentQuestion={currentQuestion}
           currentQuestionIndex={currentQuestionIndex}
         />
-        <GoatAnswers
-          currentQuestion={currentQuestion}
-          onAnswer={handleAnswer}
-        />
+        <GoatAnswers currentQuestion={currentQuestion} onAnswer={handleAnswer} />
       </div>
     </section>
-  );
+  )
 }
 
-export default GoatTest;
+export default GoatTest

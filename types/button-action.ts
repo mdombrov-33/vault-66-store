@@ -1,5 +1,5 @@
-type actionType = "edit" | "delete";
+type actionType = 'edit' | 'delete'
 
 export type IconButtonProps = {
-  actionType: actionType;
-};
+  actionType: actionType
+}

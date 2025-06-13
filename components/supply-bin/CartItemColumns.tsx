@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 export function FirstColumn({ name, image }: { name: string; image: string }) {
   return (
@@ -13,7 +13,7 @@ export function FirstColumn({ name, image }: { name: string; image: string }) {
         className="w-full rounded-md object-cover"
       />
     </div>
-  );
+  )
 }
 
 export function SecondColumn({
@@ -21,26 +21,20 @@ export function SecondColumn({
   company,
   productId,
 }: {
-  name: string;
-  company: string;
-  productId: string;
+  name: string
+  company: string
+  productId: string
 }) {
   return (
     <div className="sm:w-48">
       <Link href={`/items/${productId}`}>
-        <h3 className="capitalize font-medium hover-underline text-lg">
-          {name}
-        </h3>
+        <h3 className="capitalize font-medium hover-underline text-lg">{name}</h3>
       </Link>
       <h4 className="mt-2 capitalize text-md">{company}</h4>
     </div>
-  );
+  )
 }
 
 export function FourthColumn({ price }: { price: number }) {
-  return (
-    <p className="font-medium md:ml-auto text-3xl font-[roboto]">
-      {price} Caps
-    </p>
-  );
+  return <p className="font-medium md:ml-auto text-3xl font-[roboto]">{price} Caps</p>
 }

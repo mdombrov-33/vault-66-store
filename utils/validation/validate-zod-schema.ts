@@ -1,15 +1,15 @@
-import { ZodSchema } from "zod";
+import { ZodSchema } from 'zod'
 
 //* This helper function validates Zod schemas.
 //* It takes a Zod schema and data, and returns the validated data or throws an error if validation fails.
 export function validateZodSchema<T>(schema: ZodSchema<T>, data: unknown): T {
-  const result = schema.safeParse(data);
+  const result = schema.safeParse(data)
   if (!result.success) {
-    const errors = result.error.errors.map((error) => error.message);
+    const errors = result.error.errors.map((error) => error.message)
 
-    throw new Error(errors.join(" "));
+    throw new Error(errors.join(' '))
   }
-  return result.data;
+  return result.data
 }
 
 //* If we need better log messages for toast notifications(`name` in forms does not match the Zod schema, for example, and we missed it),

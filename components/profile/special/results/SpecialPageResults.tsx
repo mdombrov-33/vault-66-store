@@ -1,6 +1,6 @@
-import SpecialResultStats from "@/components/profile/special/results/SpecialResultStats";
-import SpecialResultText from "@/components/profile/special/results/SpecialResultsText";
-import { SpecialPageResultsProps } from "@/types/profile";
+import SpecialResultStats from '@/components/profile/special/results/SpecialResultStats'
+import SpecialResultText from '@/components/profile/special/results/SpecialResultsText'
+import { SpecialPageResultsProps } from '@/types/profile'
 
 function SpecialPageResults({ specialRecord }: SpecialPageResultsProps) {
   return (
@@ -16,7 +16,7 @@ function SpecialPageResults({ specialRecord }: SpecialPageResultsProps) {
       {/* Right Column: Flavor Text */}
       <SpecialResultText specialRecord={specialRecord} />
     </section>
-  );
+  )
 }
 
-export default SpecialPageResults;
+export default SpecialPageResults

@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { Suspense } from "react";
-import CheckoutClient from "./CheckoutClient";
+import { Suspense } from 'react'
+import CheckoutClient from './CheckoutClient'
 
 function CheckoutPage() {
   return (
@@ -12,7 +12,7 @@ function CheckoutPage() {
         </Suspense>
       </div>
     </section>
-  );
+  )
 }
 
-export default CheckoutPage;
+export default CheckoutPage
