@@ -1,4 +1,5 @@
 ![CI](https://github.com/mdombrov-33/vault-66-store/actions/workflows/ci.yml/badge.svg)
+
 # Vault 66 Store
 
 A Fallout-inspired e-commerce store built with modern full-stack tools and a retro-futuristic UI.  
