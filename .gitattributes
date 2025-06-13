@@ -1,0 +1,15 @@
+# Ignore generated, compiled, or tooling files from language stats
+lib/generated/* linguist-vendored
+node_modules/* linguist-vendored
+dist/* linguist-vendored
+.next/* linguist-vendored
+public/* linguist-vendored
+
+# Ignore common tooling and config files
+eslint.config.mjs linguist-vendored
+vitest.config.ts linguist-vendored
+vite.config.ts linguist-vendored
+next.config.js linguist-vendored
+tailwind.config.ts linguist-vendored
+postcss.config.js linguist-vendored
+prisma/schema.prisma linguist-vendored
