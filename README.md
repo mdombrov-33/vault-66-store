@@ -206,6 +206,7 @@ Then start the container:
 ```bash
 docker run -p 3000:3000 --env-file .env vexenbay/vault-66:latest
 ```
+
 Open http://localhost:3000 in your browser.
 
 To stop the container, press `Ctrl+C`.
