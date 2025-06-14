@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Set environment variables
-COPY .env .env
+# COPY .env .env  - we don't do that with docker-compose, it will handle it
 
 # Build the application
 RUN npm run build
