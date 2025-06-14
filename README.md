@@ -175,7 +175,7 @@ npm run dev
 
 ## 🐳 Running with Docker
 
-If you want to run the app without installing Node.js or dependencies locally, you can use the official Docker image.
+If you want to run the app without installing dependencies locally, you can use the official Docker image.
 
 ### Pull the latest image:
 
