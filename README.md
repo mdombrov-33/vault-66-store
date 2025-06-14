@@ -175,21 +175,40 @@ npm run dev
 
 ## 🐳 Running with Docker
 
-If you want to run the app without installing dependencies locally, you can use the official Docker image.
+### 1. Run with Docker Compose
 
-### Pull the latest image:
+`docker-compose.yml` is already configured, so simply run:
+
+```bash
+docker-compose up
+```
+
+This will build (if necessary) and start the container, mapping ports and loading your environment variables as configured.
+
+Open http://localhost:3000 in your browser to access the app.
+
+To stop the container, press `Ctrl+C` or run:
+
+```bash
+docker-compose down
+```
+
+### 2. Pull and run the image manually
+
+If you want to use the pre-built official image without Docker Compose, run:
 
 ```bash
 docker pull vexenbay/vault-66:latest
 ```
 
-### Run the container:
+Then start the container:
 
 ```bash
 docker run -p 3000:3000 --env-file .env vexenbay/vault-66:latest
 ```
+Open http://localhost:3000 in your browser.
 
-Then open http://localhost:3000 in your browser.
+To stop the container, press `Ctrl+C`.
 
 ---
 
