@@ -173,6 +173,25 @@ npm run dev
 
 ---
 
+
+## 🐳 Running with Docker
+
+If you want to run the app without installing Node.js or dependencies locally, you can use the official Docker image.
+
+### Pull the latest image:
+
+```bash
+docker pull vexenbay/vault-66:latest
+```
+
+### Run the container:
+```bash
+docker run -p 3000:3000 --env-file .env vexenbay/vault-66:latest
+```
+Then open http://localhost:3000 in your browser.
+
+---
+
 ## 🌐 Environment Variables
 
 Make sure to fill in the following environment variables in your `.env` file:
