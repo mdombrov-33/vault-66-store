@@ -1,9 +1,4 @@
-import { RefObject } from 'react'
-
-interface ChatWindowProps {
-  messages: string[]
-  bottomRef: RefObject<HTMLDivElement | null>
-}
+import { ChatWindowProps } from '@/types/profile'
 
 export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
   return (
