@@ -136,3 +136,12 @@ model SkillTag {
   skill   String
   @@unique([clerkId, skill])
 }
+
+model ChatMessage{
+  id String @id @default (uuid())
+  clerkId String
+  senderName String
+  content String
+  sentAt DateTime @default(now())
+  chatRoomId String @default ("general")  
+}
