@@ -175,6 +175,8 @@ npm run dev
 
 ## 🐳 Running with Docker
 
+⚠️ Important: Regardless of whether you run with Docker Compose or pull and run the Docker image manually, you need to create and fill your own .env file with the required environment variables before starting the app. Without valid environment variables, features like authentication, payments, and AI chat won’t work.
+
 ### 1. Run with Docker Compose
 
 `docker-compose.yml` is already configured, so simply run:
