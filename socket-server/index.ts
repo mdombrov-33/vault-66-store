@@ -11,6 +11,10 @@ const io = new Server(server, {
   },
 })
 
+app.head('/ping', (req, res) => {
+  res.send('Pong!')
+})
+
 io.on('connection', (socket) => {
   console.log(`User connected:,${socket.id} `)
 

@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState, useTransition } from 'react'
+import io from 'socket.io-client'
 import ChatWindow from './ChatWindow'
 import ChatInput from './ChatInput'
-import { createChatMessage, getAllMessages } from '@/utils/actions/live-chat'
+import { createChatMessage } from '@/utils/actions/live-chat'
 import { renderError } from '@/utils/render-error'
 import { ChatWrapperProps, Message } from '@/types/profile'
 
@@ -11,6 +12,20 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const bottomRef = useRef<HTMLDivElement>(null)
   const [isPending, startTransition] = useTransition()
+
+  const socket = io('http://localhost:4000')
+
+  useEffect(() => {
+    const handleIncoming = (msg: Message) => {
+      setMessages((prev) => [...prev, { ...msg, sentAt: new Date(msg.sentAt) }])
+    }
+
+    socket.on('chat message', handleIncoming)
+
+    return () => {
+      socket.off('chat message', handleIncoming)
+    }
+  }, [])
 
   const handleSend = (text: string) => {
     if (!text.trim()) return
@@ -27,13 +42,14 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
 
     setMessages((prev) => [...prev, optimisticMessage])
 
+    socket.emit('chat message', {
+      ...optimisticMessage,
+      sentAt: optimisticMessage.sentAt.toISOString(),
+    })
+
     startTransition(async () => {
       try {
         await createChatMessage(text)
-        const updatedMessages = await getAllMessages()
-        if (updatedMessages) {
-          setMessages(updatedMessages)
-        }
       } catch (error) {
         renderError(error)
       }
