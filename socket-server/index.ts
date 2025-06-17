@@ -12,7 +12,7 @@ const io = new Server(server, {
 })
 
 app.head('/ping', (req, res) => {
-  res.send('Pong!')
+  res.status(200).send({ message: 'Server is running!' })
 })
 
 io.on('connection', (socket) => {
