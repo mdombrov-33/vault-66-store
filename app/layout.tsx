@@ -7,6 +7,7 @@ import Providers from './providers'
 import { ClerkProvider } from '@clerk/nextjs'
 import ChatLauncher from '@/components/ai-chat/ChatLauncher'
 import GitHubButton from '@/components/global/GitHubButton'
+import BootScreen from '@/components/global/BootScreen'
 
 const vt323 = VT323({
   variable: '--font-vt323',
@@ -28,6 +29,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={`${vt323.variable} ${robotoMono.variable} antialiased`}>
+          <BootScreen />
           <Providers>
             <Navbar />
             <Container className="py-20">{children}</Container>
