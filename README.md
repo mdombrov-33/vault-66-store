@@ -9,7 +9,7 @@ Buy Wasteland gear with bottle caps, chat with a terminal–style AI assistant, 
 
 ## 🔴 Live Demo
 
-➡️ [https://vault-66-store-maksym-dombrovs-projects.vercel.app/](https://vault-66-store-maksym-dombrovs-projects.vercel.app/)
+➡️ [https://vault-66.vercel.app/](https://vault-66.vercel.app/)
 
 ---
 
