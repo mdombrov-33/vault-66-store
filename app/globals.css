@@ -53,11 +53,11 @@
   --popover: rgb(245, 235, 210);
   --popover-foreground: rgb(55, 45, 25);
 
-  --primary: rgb(209, 172, 40);
-  --primary-foreground: rgb(30, 20, 5);
+  --primary: rgb(255, 160, 0);
+  --primary-foreground: rgb(50, 40, 10);
 
-  --muted: rgb(235, 225, 200);
-  --muted-foreground: rgb(88, 75, 50);
+  --muted: rgb(210, 195, 170);
+  --muted-foreground: rgb(80, 70, 50);
 
   --border: rgba(0, 0, 0, 0.1);
   --input: rgba(115, 117, 59, 0.716);
@@ -92,7 +92,7 @@
   --sidebar-disabled-muted-foreground: rgb(88, 75, 50);
 
   /* CUSTOM VARIABLES */
-  --shadow-glow-primary: rgba(50, 49, 43, 0.6);
+  --shadow-glow-primary: rgba(255, 160, 0, 0.8);
   --terminal-background: #221a00;
   --terminal-text: #c2a532;
   --terminal-hover-bg: #c2a532;
@@ -146,7 +146,7 @@
   --sidebar-ring: rgb(80, 150, 100);
 
   --sidebar-disabled-muted: rgb(23, 41, 20);
-  --sidebar-disabled-muted-foreground: (78, 161, 114);
+  --sidebar-disabled-muted-foreground: rgb(78, 161, 114);
 
   /* CUSTOM VARIABLES */
   --shadow-glow-primary: rgba(72, 177, 53, 0.7);
@@ -204,7 +204,7 @@ body.crt-mode::before {
     /* 🔧 Optional darker center line detail */ transparent 100%
       /* 🔧 Fades out to nothing at bottom */
   );
-  animation: sweep-line 10s linear infinite; /* 🔧 Speed of sweep — lower = faster, higher = slower */
+  animation: sweep-line 7s linear infinite; /* 🔧 Speed of sweep — lower = faster, higher = slower */
   z-index: 9999; /* Show above everything else */
   filter: blur(
     1.5px
@@ -230,7 +230,7 @@ body.crt-mode::after {
   background-image: repeating-linear-gradient(
     to bottom,
     rgba(91, 179, 135, 0.035) 0px,
-    /* 🔧 First green line — alpha controls visibility */ rgba(18, 58, 39, 0.275) 1px,
+    /* 🔧 First green line — alpha controls visibility */ rgba(18, 58, 39, 0.2) 2px,
     /* 🔧 Line thickness — higher alpha = more visible */ transparent 5px,
     /* 🔧 First part of gap between lines */ transparent 3px
       /* 🔧 End of each line block — 3px total spacing per line */
