@@ -6,22 +6,23 @@ import ChatWindow from './ChatWindow'
 import ChatInput from './ChatInput'
 import { createChatMessage } from '@/utils/actions/live-chat'
 import { renderError } from '@/utils/render-error'
-import { ChatWrapperProps, Message } from '@/types/profile'
+import { ChatWrapperProps, Message, SocketMessage } from '@/types/profile'
 
 function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }: ChatWrapperProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const bottomRef = useRef<HTMLDivElement>(null)
   const [isPending, startTransition] = useTransition()
 
-  const socket = io('https://vault66-chat-server.onrender.com')
+  const clientIdRef = useRef<string>(crypto.randomUUID())
+  const socket = useRef(io('https://vault66-chat-server.onrender.com')).current
 
   useEffect(() => {
-    const handleIncoming = (msg: Message) => {
+    const handleIncoming = (msg: SocketMessage) => {
+      if (msg.clientId === clientIdRef.current) return // avoid echo of own message
       setMessages((prev) => [...prev, { ...msg, sentAt: new Date(msg.sentAt) }])
     }
 
     socket.on('chat message', handleIncoming)
-
     return () => {
       socket.off('chat message', handleIncoming)
     }
@@ -30,7 +31,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
   const handleSend = (text: string) => {
     if (!text.trim()) return
 
-    const optimisticMessage: Message = {
+    const optimisticMessage: SocketMessage = {
       id: crypto.randomUUID(),
       content: text,
       clerkId: 'optimistic',
@@ -38,6 +39,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
       senderAvatar,
       sentAt: new Date(),
       chatRoomId: '',
+      clientId: clientIdRef.current,
     }
 
     setMessages((prev) => [...prev, optimisticMessage])
@@ -62,7 +64,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
 
   return (
     <section
-      className="flex flex-col h-dvh :max-h-[55dvh] max-h-[60dvh] rounded-xl border p-4 bg-card text-card-foreground mb-28 sm:mb-22"
+      className="flex flex-col h-dvh max-h-[60dvh] rounded-xl border p-4 bg-card text-card-foreground mb-28 sm:mb-22"
       role="main"
       aria-label="Live chat window"
     >
@@ -71,7 +73,6 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
       </header>
 
       <ChatWindow messages={messages} bottomRef={bottomRef} />
-
       <ChatInput onSend={handleSend} disabled={isPending} />
     </section>
   )

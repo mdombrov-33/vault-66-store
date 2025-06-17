@@ -10,6 +10,11 @@ export type Message = {
   chatRoomId: string
 }
 
+//* For socket-only usage, includes optional clientId
+export type SocketMessage = Message & {
+  clientId?: string
+}
+
 export interface ChatWindowProps {
   messages: Message[]
   bottomRef: RefObject<HTMLDivElement | null>
