@@ -1,5 +1,1 @@
-{
-  "ignore": [
-    "socket-server/**"
-  ]
-}
+socket-server/
