@@ -7,7 +7,7 @@ function GoatQuestion({ currentQuestionIndex, currentQuestion }: GoatBaseProps) 
   return (
     <div className="space-y-6">
       <div>
-        <h4 className="text-3xl  text-muted-foreground">
+        <h4 className="text-3xl text-muted-foreground">
           Question {currentQuestionIndex + 1} of {goatQuestions.length}
         </h4>
         <h3 className="text-2xl lg:text-3xl font-[roboto-mono] mt-2">{currentQuestion.question}</h3>
@@ -20,7 +20,7 @@ function GoatQuestion({ currentQuestionIndex, currentQuestion }: GoatBaseProps) 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
+            transition={{ duration: 2.5, ease: 'easeOut' }}
           >
             <div className="mx-auto max-w-[80vw] md:max-w-[350px]">
               <Image

@@ -5,7 +5,6 @@ import Image from 'next/image'
 
 function GoatIntro({ handleStart }: GoatIntroProps) {
   const { playClick } = useSoundPlayer()
-
   return (
     <section
       className="flex flex-col items-center justify-center text-center gap-6 pb-20 md:pb-12
@@ -20,7 +19,7 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
         priority
       />
-      <h2 className="md:text-6xl text-5xl">Welcome to Vault 66</h2>
+      <h2 className="md:text-6xl mt-6 lg:mt-12 text-5xl">Welcome to Vault 66</h2>
       <p className="md:text-3xl text-lg font-[roboto-mono] text-muted-foreground max-w-2xl">
         To take part in Vault life, you must pass the Generalized Occupational Aptitude Test
         (G.O.A.T).
