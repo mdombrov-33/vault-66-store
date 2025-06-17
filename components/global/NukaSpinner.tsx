@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import NukaIcon from '@/public/svg/nukaicon.svg'
 
 export default function NukaColaSpinner() {
   return (
@@ -11,7 +10,7 @@ export default function NukaColaSpinner() {
       style={{ perspective: '100px', display: 'inline-block' }}
     >
       <img
-        src={NukaIcon}
+        src="/svg/nukaicon.svg"
         alt=""
         className="animate-spin-slow w-24 h-24"
         aria-hidden="true"
