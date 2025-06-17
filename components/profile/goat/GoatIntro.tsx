@@ -17,7 +17,6 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
         height={400}
         className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-lg rounded-lg border border-muted"
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
-        priority
       />
       <h2 className="md:text-6xl mt-6 lg:mt-12 text-5xl">Welcome to Vault 66</h2>
       <p className="md:text-3xl text-lg font-[roboto-mono] text-muted-foreground max-w-2xl">

@@ -20,8 +20,8 @@ function GoatTest({ setStage, setAnswers }: GoatTestProps) {
   }
 
   return (
-    <section className="flex items-center justify-center px-4 md:overflow-hidden overflow-auto pb-16 md:pb-0">
-      <div className="w-full max-w-5xl flex flex-col items-center text-center gap-y-4">
+    <section className="flex items-center justify-center px-4 pb-12 md:pb-6 min-h-[70dvh] -mt-8">
+      <div className="w-full max-w-4xl flex flex-col items-center text-center gap-y-6">
         <GoatQuestion
           currentQuestion={currentQuestion}
           currentQuestionIndex={currentQuestionIndex}
