@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import vaultboyThumbsUp from '@/public/vaultboy.svg' // or .png
+import vaultboyThumbsUp from '@/public/vaultboy.svg'
 import { motion } from 'framer-motion'
 
 export default function VaultBoySuccessScreen() {
