@@ -13,7 +13,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
   const bottomRef = useRef<HTMLDivElement>(null)
   const [isPending, startTransition] = useTransition()
 
-  const socket = io('http://localhost:4000')
+  const socket = io('https://vault66-chat-server.onrender.com')
 
   useEffect(() => {
     const handleIncoming = (msg: Message) => {
