@@ -22,4 +22,5 @@ export const PROFILE_LINKS: NavLink[] = [
   { href: '/profile/special', label: 'SPECIAL' },
   { href: '/profile/goat', label: 'g.o.a.t.' },
   { href: '/profile/hack', label: 'hack' },
+  { href: '/profile/vault-log', label: 'vault log' },
 ]
