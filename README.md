@@ -15,15 +15,15 @@ Buy Wasteland gear with bottle caps, chat with a terminal–style AI assistant, 
 
 ## 🤖 AI Assistant Showcase
 
-![AI Assistant Demo](./public/vault-assistant.gif)
+![AI Assistant Demo](./public/gif/vault-assistant.gif)
 
 ## 💪 S.P.E.C.I.A.L. Showcase
 
-![S.P.E.C.I.A.L. Demo](./public/special.gif)
+![S.P.E.C.I.A.L. Demo](./public/gif/special.gif)
 
 ## 🧠 Hacking Minigame Showcase
 
-![Hacking Minigame Demo](./public/hacking.gif)
+![Hacking Minigame Demo](./public/gif/hacking.gif)
 
 ---
 
