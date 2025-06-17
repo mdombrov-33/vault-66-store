@@ -3,7 +3,7 @@
 # Vault 66 Store
 
 A Fallout-inspired e-commerce store built with modern full-stack tools and a retro-futuristic UI.  
-Buy Wasteland gear with bottle caps, chat with a terminal–styled AI assistant, and manage store inventory with an intuitive admin dashboard.
+Buy Wasteland gear with bottle caps, chat with a terminal–style AI assistant, and manage store inventory with an intuitive admin dashboard.
 
 ---
 
@@ -41,7 +41,7 @@ Password: vaultcontrol66!
 
 - 🔐 **Clerk Auth Integration**
 
-  - Role-based access with users, main admin, and a test admin
+  - Role-based access with regular users, main admin, and a test admin
   - Route protection handled via `clerkMiddleware`
 
 - 🛒 **E-Commerce Functionality**
@@ -54,7 +54,7 @@ Password: vaultcontrol66!
 - 💳 **Stripe Integration**
 
   - Integrated with Stripe for secure payments
-  - Test mode supported for development/demo
+  - The test admin role is restricted from modifying products they did not create
 
 - 🧠 **AI Assistant**
 
