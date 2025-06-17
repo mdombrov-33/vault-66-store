@@ -139,10 +139,11 @@ model SkillTag {
 }
 
 model ChatMessage {
-  id         String   @id @default(uuid())
-  clerkId    String
-  senderName String
-  content    String
-  sentAt     DateTime @default(now())
-  chatRoomId String   @default("general")
+  id           String   @id @default(uuid())
+  clerkId      String
+  senderName   String
+  content      String
+  sentAt       DateTime @default(now())
+  chatRoomId   String   @default("general")
+  senderAvatar String
 }

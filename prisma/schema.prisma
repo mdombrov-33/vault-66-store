@@ -144,4 +144,5 @@ model ChatMessage{
   content String
   sentAt DateTime @default(now())
   chatRoomId String @default ("general")  
+  senderAvatar String
 }

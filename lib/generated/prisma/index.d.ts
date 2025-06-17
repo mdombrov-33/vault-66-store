@@ -12042,6 +12042,7 @@ export namespace Prisma {
     content: string | null
     sentAt: Date | null
     chatRoomId: string | null
+    senderAvatar: string | null
   }
 
   export type ChatMessageMaxAggregateOutputType = {
@@ -12051,6 +12052,7 @@ export namespace Prisma {
     content: string | null
     sentAt: Date | null
     chatRoomId: string | null
+    senderAvatar: string | null
   }
 
   export type ChatMessageCountAggregateOutputType = {
@@ -12060,6 +12062,7 @@ export namespace Prisma {
     content: number
     sentAt: number
     chatRoomId: number
+    senderAvatar: number
     _all: number
   }
 
@@ -12071,6 +12074,7 @@ export namespace Prisma {
     content?: true
     sentAt?: true
     chatRoomId?: true
+    senderAvatar?: true
   }
 
   export type ChatMessageMaxAggregateInputType = {
@@ -12080,6 +12084,7 @@ export namespace Prisma {
     content?: true
     sentAt?: true
     chatRoomId?: true
+    senderAvatar?: true
   }
 
   export type ChatMessageCountAggregateInputType = {
@@ -12089,6 +12094,7 @@ export namespace Prisma {
     content?: true
     sentAt?: true
     chatRoomId?: true
+    senderAvatar?: true
     _all?: true
   }
 
@@ -12171,6 +12177,7 @@ export namespace Prisma {
     content: string
     sentAt: Date
     chatRoomId: string
+    senderAvatar: string
     _count: ChatMessageCountAggregateOutputType | null
     _min: ChatMessageMinAggregateOutputType | null
     _max: ChatMessageMaxAggregateOutputType | null
@@ -12197,6 +12204,7 @@ export namespace Prisma {
     content?: boolean
     sentAt?: boolean
     chatRoomId?: boolean
+    senderAvatar?: boolean
   }, ExtArgs["result"]["chatMessage"]>
 
   export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12206,6 +12214,7 @@ export namespace Prisma {
     content?: boolean
     sentAt?: boolean
     chatRoomId?: boolean
+    senderAvatar?: boolean
   }, ExtArgs["result"]["chatMessage"]>
 
   export type ChatMessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12215,6 +12224,7 @@ export namespace Prisma {
     content?: boolean
     sentAt?: boolean
     chatRoomId?: boolean
+    senderAvatar?: boolean
   }, ExtArgs["result"]["chatMessage"]>
 
   export type ChatMessageSelectScalar = {
@@ -12224,9 +12234,10 @@ export namespace Prisma {
     content?: boolean
     sentAt?: boolean
     chatRoomId?: boolean
+    senderAvatar?: boolean
   }
 
-  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "senderName" | "content" | "sentAt" | "chatRoomId", ExtArgs["result"]["chatMessage"]>
+  export type ChatMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkId" | "senderName" | "content" | "sentAt" | "chatRoomId" | "senderAvatar", ExtArgs["result"]["chatMessage"]>
 
   export type $ChatMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ChatMessage"
@@ -12238,6 +12249,7 @@ export namespace Prisma {
       content: string
       sentAt: Date
       chatRoomId: string
+      senderAvatar: string
     }, ExtArgs["result"]["chatMessage"]>
     composites: {}
   }
@@ -12667,6 +12679,7 @@ export namespace Prisma {
     readonly content: FieldRef<"ChatMessage", 'String'>
     readonly sentAt: FieldRef<"ChatMessage", 'DateTime'>
     readonly chatRoomId: FieldRef<"ChatMessage", 'String'>
+    readonly senderAvatar: FieldRef<"ChatMessage", 'String'>
   }
     
 
@@ -13192,7 +13205,8 @@ export namespace Prisma {
     senderName: 'senderName',
     content: 'content',
     sentAt: 'sentAt',
-    chatRoomId: 'chatRoomId'
+    chatRoomId: 'chatRoomId',
+    senderAvatar: 'senderAvatar'
   };
 
   export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
@@ -14004,6 +14018,7 @@ export namespace Prisma {
     content?: StringFilter<"ChatMessage"> | string
     sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
     chatRoomId?: StringFilter<"ChatMessage"> | string
+    senderAvatar?: StringFilter<"ChatMessage"> | string
   }
 
   export type ChatMessageOrderByWithRelationInput = {
@@ -14013,6 +14028,7 @@ export namespace Prisma {
     content?: SortOrder
     sentAt?: SortOrder
     chatRoomId?: SortOrder
+    senderAvatar?: SortOrder
   }
 
   export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
@@ -14025,6 +14041,7 @@ export namespace Prisma {
     content?: StringFilter<"ChatMessage"> | string
     sentAt?: DateTimeFilter<"ChatMessage"> | Date | string
     chatRoomId?: StringFilter<"ChatMessage"> | string
+    senderAvatar?: StringFilter<"ChatMessage"> | string
   }, "id">
 
   export type ChatMessageOrderByWithAggregationInput = {
@@ -14034,6 +14051,7 @@ export namespace Prisma {
     content?: SortOrder
     sentAt?: SortOrder
     chatRoomId?: SortOrder
+    senderAvatar?: SortOrder
     _count?: ChatMessageCountOrderByAggregateInput
     _max?: ChatMessageMaxOrderByAggregateInput
     _min?: ChatMessageMinOrderByAggregateInput
@@ -14049,6 +14067,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"ChatMessage"> | string
     sentAt?: DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
     chatRoomId?: StringWithAggregatesFilter<"ChatMessage"> | string
+    senderAvatar?: StringWithAggregatesFilter<"ChatMessage"> | string
   }
 
   export type ProductCreateInput = {
@@ -14851,6 +14870,7 @@ export namespace Prisma {
     content: string
     sentAt?: Date | string
     chatRoomId?: string
+    senderAvatar: string
   }
 
   export type ChatMessageUncheckedCreateInput = {
@@ -14860,6 +14880,7 @@ export namespace Prisma {
     content: string
     sentAt?: Date | string
     chatRoomId?: string
+    senderAvatar: string
   }
 
   export type ChatMessageUpdateInput = {
@@ -14869,6 +14890,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chatRoomId?: StringFieldUpdateOperationsInput | string
+    senderAvatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChatMessageUncheckedUpdateInput = {
@@ -14878,6 +14900,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chatRoomId?: StringFieldUpdateOperationsInput | string
+    senderAvatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChatMessageCreateManyInput = {
@@ -14887,6 +14910,7 @@ export namespace Prisma {
     content: string
     sentAt?: Date | string
     chatRoomId?: string
+    senderAvatar: string
   }
 
   export type ChatMessageUpdateManyMutationInput = {
@@ -14896,6 +14920,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chatRoomId?: StringFieldUpdateOperationsInput | string
+    senderAvatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChatMessageUncheckedUpdateManyInput = {
@@ -14905,6 +14930,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chatRoomId?: StringFieldUpdateOperationsInput | string
+    senderAvatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15538,6 +15564,7 @@ export namespace Prisma {
     content?: SortOrder
     sentAt?: SortOrder
     chatRoomId?: SortOrder
+    senderAvatar?: SortOrder
   }
 
   export type ChatMessageMaxOrderByAggregateInput = {
@@ -15547,6 +15574,7 @@ export namespace Prisma {
     content?: SortOrder
     sentAt?: SortOrder
     chatRoomId?: SortOrder
+    senderAvatar?: SortOrder
   }
 
   export type ChatMessageMinOrderByAggregateInput = {
@@ -15556,6 +15584,7 @@ export namespace Prisma {
     content?: SortOrder
     sentAt?: SortOrder
     chatRoomId?: SortOrder
+    senderAvatar?: SortOrder
   }
 
   export type FavoriteCreateNestedManyWithoutProductInput = {
