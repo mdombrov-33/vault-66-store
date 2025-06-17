@@ -27,3 +27,13 @@ export async function createChatMessage(content: string) {
     renderError(error)
   }
 }
+export async function getAllMessages() {
+  try {
+    const messages = await db.chatMessage.findMany({
+      orderBy: { sentAt: 'asc' },
+    })
+    return messages
+  } catch (error) {
+    renderError(error)
+  }
+}

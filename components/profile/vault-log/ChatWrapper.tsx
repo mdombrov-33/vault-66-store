@@ -3,22 +3,37 @@
 import { useEffect, useRef, useState, useTransition } from 'react'
 import ChatWindow from './ChatWindow'
 import ChatInput from './ChatInput'
-import { createChatMessage } from '@/utils/actions/live-chat'
+import { createChatMessage, getAllMessages } from '@/utils/actions/live-chat'
 import { renderError } from '@/utils/render-error'
+import { ChatWrapperProps, Message } from '@/types/profile'
 
-function ChatWrapper() {
-  const [messages, setMessages] = useState<string[]>([])
+function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }: ChatWrapperProps) {
+  const [messages, setMessages] = useState<Message[]>(initialMessages)
   const bottomRef = useRef<HTMLDivElement>(null)
   const [isPending, startTransition] = useTransition()
 
   const handleSend = (text: string) => {
     if (!text.trim()) return
 
-    setMessages((prev: string[]) => [...prev, `🧑‍💻 You: ${text}`])
+    const optimisticMessage: Message = {
+      id: crypto.randomUUID(),
+      content: text,
+      clerkId: 'optimistic',
+      senderName: displayedName,
+      senderAvatar,
+      sentAt: new Date(),
+      chatRoomId: '',
+    }
+
+    setMessages((prev) => [...prev, optimisticMessage])
 
     startTransition(async () => {
       try {
         await createChatMessage(text)
+        const updatedMessages = await getAllMessages()
+        if (updatedMessages) {
+          setMessages(updatedMessages)
+        }
       } catch (error) {
         renderError(error)
       }
@@ -31,7 +46,7 @@ function ChatWrapper() {
 
   return (
     <section
-      className="flex flex-col h-dvh :max-h-[55dvh] max-h-[60dvh] rounded-xl border p-4 bg-card text-card-foreground "
+      className="flex flex-col h-dvh :max-h-[55dvh] max-h-[60dvh] rounded-xl border p-4 bg-card text-card-foreground mb-28 sm:mb-22"
       role="main"
       aria-label="Live chat window"
     >
