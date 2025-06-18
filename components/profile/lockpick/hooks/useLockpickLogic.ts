@@ -101,10 +101,67 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
     return () => cancelAnimationFrame(animationFrame)
   }, [isTurningLock, isSuccess, isCracked])
 
+  //* Handle mouse movement inside the SVG
+  const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    const svg = svgRef.current
+    if (!svg) return //* Safety check
+    if (isCracked) return
+
+    //* Get SVG bounding box
+    const rect = svg.getBoundingClientRect()
+
+    //* Mouse position relative to SVG
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+
+    //* Lock center coordinates inside SVG (200x200)
+    const centerX = 100
+    const centerY = 100
+
+    //* Vector from center to mouse
+    const dx = mouseX - centerX
+    const dy = mouseY - centerY
+
+    //* Angle in radians between center and mouse pointer
+    const radians = Math.atan2(dy, dx)
+
+    //* Convert to degrees, adjust so 0° points up
+    let degrees = radians * (180 / Math.PI) + 90
+
+    //* === Calculate distance to green zone edges ===
+
+    //* greenZoneStart and greenZoneEnd are available in the closure (state)
+    let distance: number
+    if (degrees < greenZoneStart) {
+      distance = greenZoneStart - degrees
+    } else if (degrees > greenZoneEnd) {
+      distance = degrees - greenZoneEnd
+    } else {
+      distance = 0 //* inside green zone
+    }
+
+    //* Maximum distance for full "no rotation" effect
+    const maxDistance = 90
+
+    //* Calculate rotation strength: 1 = full rotation allowed, 0 = no rotation allowed
+    const strength = Math.max(0, 1 - distance / maxDistance)
+
+    //* Maximum rotation pin can have (full range is 90 degrees left/right)
+    const maxRotation = 90
+
+    //* Calculate allowed rotation range depending on strength
+    const allowedRotation = strength * maxRotation
+
+    //* Clamp degrees to the dynamic allowed range
+    degrees = Math.max(-allowedRotation, Math.min(allowedRotation, degrees))
+
+    //* Save the final angle to state
+    setPinAngle(degrees)
+  }
+
   return {
     svgRef,
     pinAngle,
-    setPinAngle,
     greenZoneStart,
     greenZoneEnd,
     isEngaged,
@@ -112,9 +169,9 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
     screwdriverAngle,
     isTurningLock,
     setIsTurningLock,
-    isCracked,
     setIsCracked,
     isSuccess,
     difficultyModifier,
+    handleMouseMove,
   }
 }
