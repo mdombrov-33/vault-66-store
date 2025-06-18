@@ -53,7 +53,7 @@ export function useLockpickLogic(
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [isEngaged, isCracked]) //* Only add listener when engaged
+  }, [isEngaged, isCracked, brokenPins, bobbyPins]) //* Only add listener when engaged
 
   //* Map lock levels to difficulty modifiers
   const difficultyModifier: Record<LockLevel['lockLevel'], number> = {

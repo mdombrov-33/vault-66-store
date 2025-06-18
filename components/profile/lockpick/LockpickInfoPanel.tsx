@@ -14,7 +14,7 @@ function LockpickInfoPanel({
       {brokenPins >= bobbyPins && (
         <div className="mb-4">
           <Button variant="default" size="lg" className="lg:text-3xl text-xl" onClick={resetGame}>
-            Retry
+            RETRY
           </Button>
         </div>
       )}
