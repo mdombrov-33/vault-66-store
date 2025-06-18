@@ -69,7 +69,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
       aria-label="Live chat window"
     >
       <header className="pb-3 border-b border-muted font-roboto text-3xl">
-        Live Terminal Chat
+        Vault 66 Comms Terminal
       </header>
 
       <ChatWindow messages={messages} bottomRef={bottomRef} />

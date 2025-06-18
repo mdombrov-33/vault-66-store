@@ -1,6 +1,32 @@
+import { emojiData } from '@/data/profile/vault-log/emoji-data'
 import { ChatWindowProps } from '@/types/profile'
 
+const shortcodeToSrc = emojiData.reduce<Record<string, string>>((acc, { shortcode, src }) => {
+  acc[shortcode] = src
+  return acc
+}, {})
+
 export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
+  function renderContentWithEmojis(content: string) {
+    const regex = /(:[a-z0-9]+?:)/g
+
+    const parts = content.split(regex)
+
+    return parts.map((part, i) => {
+      if (part.match(regex) && shortcodeToSrc[part]) {
+        return (
+          <img
+            key={i}
+            src={shortcodeToSrc[part]}
+            alt={part}
+            className="inline-block w-8 h-8 align-text-bottom mx-[2px]"
+          />
+        )
+      }
+      return <span key={i}>{part}</span>
+    })
+  }
+
   return (
     <div
       className="flex-1 overflow-y-auto space-y-2 mt-4 px-1 text-xl font-roboto"
@@ -8,7 +34,7 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
     >
       {messages.map((msg, idx) => (
         <p key={idx} className="whitespace-pre-wrap leading-snug">
-          <span className="text-sm text-muted-foreground mr-2">
+          <span className="text-md text-muted-foreground mr-2">
             {new Date(msg.sentAt).toLocaleTimeString()}
           </span>
           {msg.senderAvatar && (
@@ -18,7 +44,8 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
               className="inline-block w-6 h-6 rounded-full mr-2"
             />
           )}
-          <span className="font-semibold">{msg.senderName}:</span> {msg.content}
+          <span className="font-semibold text-xl">{msg.senderName}:</span>{' '}
+          {renderContentWithEmojis(msg.content)}
         </p>
       ))}
       {bottomRef && <div ref={bottomRef} />}
