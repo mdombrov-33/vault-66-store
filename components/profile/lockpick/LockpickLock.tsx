@@ -17,6 +17,7 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
   })
 
   const [isEngaged, setIsEngaged] = useState(false) //* Track if the lock is engaged
+  const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
   const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
 
   useEffect(() => {
@@ -65,6 +66,24 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
   const greenZoneEnd = greenZoneStart + greenZoneSize //* Calculate end of the green zone
 
   const isSuccess = pinAngle >= greenZoneStart && pinAngle <= greenZoneEnd //* Check if pin is in the green zone
+
+  //* Screwdriver turning animation
+  useEffect(() => {
+    let animationFrame: number
+
+    const update = () => {
+      if (isTurningLock && isSuccess) {
+        setScrewdriverAngle((prev) => Math.min(prev + 1.5, 90)) // Stop at 90°
+      } else {
+        setScrewdriverAngle((prev) => Math.max(prev - 2, 0)) // Return smoothly to 0°
+      }
+      animationFrame = requestAnimationFrame(update)
+    }
+
+    animationFrame = requestAnimationFrame(update)
+
+    return () => cancelAnimationFrame(animationFrame)
+  }, [isTurningLock, isSuccess])
 
   //* Handle mouse movement inside the SVG
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
@@ -188,6 +207,22 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
               strokeLinecap="round"
             />
           </g>
+          {/* Screwdriver */}
+          {isEngaged && (
+            <g transform={`rotate(${screwdriverAngle}, 140, 100)`}>
+              <g transform="translate(140, 100)">
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="40"
+                  stroke="gray"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                />
+              </g>
+            </g>
+          )}
         </svg>
       </div>
       <div className="mt-2 text-xl font-bold text-center">
