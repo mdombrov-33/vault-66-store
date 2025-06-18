@@ -1,3 +1,5 @@
+'use client'
+
 import { LockLevel, LockpickGameProps } from '@/types/profile'
 import LockpickInfoPanel from './LockpickInfoPanel'
 import LockpickForcePanel from './LockpickForcePanel'
