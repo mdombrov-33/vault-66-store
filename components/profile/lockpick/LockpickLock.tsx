@@ -19,15 +19,18 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
   const [isEngaged, setIsEngaged] = useState(false) //* Track if the lock is engaged
   const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
   const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
+  const [isCracked, setIsCracked] = useState(false) //* Track if the lock is cracked
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (isCracked) return
       if (isEngaged && e.key.toLowerCase() === 'a') {
         setIsTurningLock(true) //* Start turning the lock on 'A' key press
       }
     }
 
     const handleKeyUp = (e: KeyboardEvent) => {
+      if (isCracked) return
       if (e.key.toLowerCase() === 'a') {
         setIsTurningLock(false) //* Stop turning the lock on 'A' key release
       }
@@ -40,7 +43,7 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [isEngaged]) //* Only add listener when engaged
+  }, [isEngaged, isCracked]) //* Only add listener when engaged
 
   //* Map lock levels to difficulty modifiers
   const difficultyModifier: Record<LockLevel['lockLevel'], number> = {
@@ -72,23 +75,39 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
     let animationFrame: number
 
     const update = () => {
-      if (isTurningLock && isSuccess) {
-        setScrewdriverAngle((prev) => Math.min(prev + 1.5, 90)) // Stop at 90°
+      if (isCracked) return //* Stop all motion if lock is cracked
+
+      if (isTurningLock) {
+        const maxAngle = isSuccess ? 90 : 20
+        setScrewdriverAngle((prev) => {
+          const next = Math.min(prev + 1.5, maxAngle)
+          if (next === 90 && isSuccess && !isCracked) {
+            setIsCracked(true)
+          }
+          return next
+        })
       } else {
-        setScrewdriverAngle((prev) => Math.max(prev - 2, 0)) // Return smoothly to 0°
+        //* Gradually return to 0° if not turning and not cracked
+        setScrewdriverAngle((prev) => {
+          if (prev > 0) {
+            return Math.max(prev - 2, 0)
+          }
+          return prev
+        })
       }
+
       animationFrame = requestAnimationFrame(update)
     }
 
     animationFrame = requestAnimationFrame(update)
-
     return () => cancelAnimationFrame(animationFrame)
-  }, [isTurningLock, isSuccess])
+  }, [isTurningLock, isSuccess, isCracked])
 
   //* Handle mouse movement inside the SVG
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
     const svg = svgRef.current
     if (!svg) return //* Safety check
+    if (isCracked) return
 
     //* Get SVG bounding box
     const rect = svg.getBoundingClientRect()
@@ -164,9 +183,9 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
 
   return (
     <>
-      {isTurningLock && (
+      {/* {isTurningLock && (
         <div className="mt-2 text-center text-yellow-500 font-semibold">🔧 Turning Lock!</div>
-      )}
+      )} */}
       <div className="flex items-center justify-center max-h-[30dvh]">
         <svg
           ref={svgRef} //* Bind the SVG to the ref so we can access its bounding box
@@ -225,13 +244,13 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
           )}
         </svg>
       </div>
-      <div className="mt-2 text-xl font-bold text-center">
+      {/* <div className="mt-2 text-xl font-bold text-center">
         {isSuccess ? (
           <span className="text-green-500">✅ Unlocked!</span>
         ) : (
           <span className="text-red-500">❌ Not aligned</span>
         )}
-      </div>
+      </div> */}
     </>
   )
 }
