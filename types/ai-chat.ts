@@ -1,43 +1,54 @@
 import React from 'react'
 
-//! FIXME: CLEAN THIS FILE LATER
+export interface SendMessageArgs
+  extends MessagesState,
+    InputState,
+    Pick<LoadingState, 'setIsLoading'> {}
+
+export interface ChatInterfaceProps
+  extends MessagesState,
+    InputState,
+    TypingState,
+    Pick<LoadingState, 'isLoading'> {
+  handleSend: () => Promise<void>
+}
+
+export interface ChatWindowProps extends MessagesState, TypingState {
+  messagesContainerRef: React.RefObject<HTMLDivElement | null>
+}
+
+export interface ChatInputProps
+  extends InputState,
+    Pick<LoadingState, 'isLoading'>,
+    Pick<TypingState, 'isTyping'> {
+  onSend: () => void
+}
+
 export type Message = {
   role: string
   content: string
   hasAnimated?: boolean
 }
 
-export interface SendMessageArgs {
-  input: string
-  setInput: React.Dispatch<React.SetStateAction<string>>
+//* Base types
+type Setter<T> = React.Dispatch<React.SetStateAction<T>>
+
+type MessagesState = {
   messages: Message[]
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setMessages: Setter<Message[]>
 }
 
-export interface ChatInterfaceProps {
-  messages: Message[]
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>
+type InputState = {
+  input: string
+  setInput: Setter<string>
+}
+
+type LoadingState = {
   isLoading: boolean
-  input: string
-  setInput: React.Dispatch<React.SetStateAction<string>>
-  isTyping: boolean
-  setIsTyping: React.Dispatch<React.SetStateAction<boolean>>
-  handleSend: () => Promise<void>
+  setIsLoading: Setter<boolean>
 }
 
-export interface ChatWindowProps {
-  messages: Message[]
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>
+type TypingState = {
   isTyping: boolean
-  setIsTyping: React.Dispatch<React.SetStateAction<boolean>>
-  messagesContainerRef: React.RefObject<HTMLDivElement | null>
-}
-
-export interface ChatInputProps {
-  input: string
-  setInput: React.Dispatch<React.SetStateAction<string>>
-  isLoading: boolean
-  isTyping: boolean
-  onSend: () => void
+  setIsTyping: Setter<boolean>
 }
