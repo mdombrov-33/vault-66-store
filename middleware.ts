@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 //* This middleware protects routes using Clerk authentication.
 
 //* It allows public access to specific routes(listed in the array) and protects all others.
-const isPublicRoute = createRouteMatcher(['/', '/items(.*)', '/about', '/api/chat'])
+const isPublicRoute = createRouteMatcher(['/', '/items(.*)', '/about', '/api/chat', '/sounds(.*)'])
 
 //* It allows access to specific routes marked as admin routes.
 const isAdminRoute = createRouteMatcher(['/admin(.*)'])
