@@ -1,7 +1,7 @@
 'use client'
 
 import { LockLevel, LockpickLockProps } from '@/types/profile'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps) {
   //* State to hold the current angle of the pin in degrees.
@@ -15,6 +15,31 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
   const [greenZoneStart, setGreenZoneStart] = useState(() => {
     return Math.floor(Math.random() * 120 - 60) //* Random start between -60° and 60°
   })
+
+  const [isEngaged, setIsEngaged] = useState(false) //* Track if the lock is engaged
+  const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isEngaged && e.key.toLowerCase() === 'a') {
+        setIsTurningLock(true) //* Start turning the lock on 'A' key press
+      }
+    }
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === 'a') {
+        setIsTurningLock(false) //* Stop turning the lock on 'A' key release
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [isEngaged]) //* Only add listener when engaged
 
   //* Map lock levels to difficulty modifiers
   const difficultyModifier: Record<LockLevel['lockLevel'], number> = {
@@ -120,13 +145,18 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
 
   return (
     <>
+      {isTurningLock && (
+        <div className="mt-2 text-center text-yellow-500 font-semibold">🔧 Turning Lock!</div>
+      )}
       <div className="flex items-center justify-center max-h-[30dvh]">
         <svg
           ref={svgRef} //* Bind the SVG to the ref so we can access its bounding box
           viewBox="0 0 200 200" //* SVG coordinate system from (0,0) to (200,200)
           width="200"
           height="100"
-          onMouseMove={handleMouseMove} // Track mouse movement
+          onMouseMove={handleMouseMove} //* Track mouse movement
+          onMouseEnter={() => setIsEngaged(true)} //* Engage lock on mouse enter
+          onMouseLeave={() => setIsEngaged(false)} //* Disengage lock on mouse leave
           className="cursor-none bg-background rounded-t-full border-2 border-muted-foreground"
         >
           {/* 
