@@ -157,7 +157,7 @@ export async function submitGoatSkillsAction(prevState: any, formData: FormData)
         skill,
       })),
     })
-    return { message: 'You passed the test! Congratulations!' }
+    return { message: 'You passed the test! Congratulations!', srcUrl: '/toaster/HighFive1.gif' }
   } catch (error) {
     return renderError(error)
   }

@@ -187,7 +187,7 @@ export const updateCartItemAction = async ({
 }: {
   amount: number
   cartItemId: string
-}) => {
+}): Promise<{ message: string; srcUrl?: string }> => {
   const user = await getAuthUser()
 
   try {
@@ -210,7 +210,7 @@ export const updateCartItemAction = async ({
 
     revalidatePath('/supply-bin')
 
-    return { message: 'Amount is updated' }
+    return { message: 'Amount is updated', srcUrl: '/toaster/happy-condition.png' }
   } catch (error) {
     return renderError(error)
   }

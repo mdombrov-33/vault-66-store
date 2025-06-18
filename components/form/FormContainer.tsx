@@ -1,11 +1,12 @@
 'use client'
 
 import { useActionState, useEffect } from 'react'
-import { toast } from 'sonner'
 import { actionFunction } from '@/types/form'
+import { showToast } from '@/utils/show-toast'
 
 const initialState = {
   message: '',
+  srcUrl: '',
 }
 
 function FormContainer({
@@ -21,12 +22,12 @@ function FormContainer({
 
   useEffect(() => {
     if (state.message) {
-      toast.success(state.message)
+      showToast(state.message, state.srcUrl)
       if (onSuccess) {
         onSuccess()
       }
     }
-  }, [state.message, onSuccess])
+  }, [state.message, onSuccess, state.srcUrl])
   return <form action={formAction}>{children}</form>
 }
 

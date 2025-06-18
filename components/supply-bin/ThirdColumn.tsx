@@ -7,6 +7,7 @@ import { SubmitButton } from '@/components/form/Buttons'
 import { removeCartItemAction, updateCartItemAction } from '@/utils/actions/cart'
 import { toast } from 'sonner'
 import { useSoundPlayer } from '@/hooks/useSoundPlayer'
+import { showToast } from '@/utils/show-toast'
 
 function ThirdColumn({ quantity, cartItemId }: { quantity: number; cartItemId: string }) {
   const [amount, setAmount] = useState(quantity)
@@ -25,7 +26,8 @@ function ThirdColumn({ quantity, cartItemId }: { quantity: number; cartItemId: s
 
     setAmount(value)
 
-    toast.success(result.message, { id: toastId })
+    showToast(result.message, result.srcUrl)
+    toast.dismiss(toastId)
 
     setIsLoading(false)
   }
