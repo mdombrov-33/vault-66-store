@@ -1,6 +1,6 @@
 {
-  "name": "next-store",
-  "version": "0.1.0",
+  "name": "vault66",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "test": "vitest",
