@@ -1,9 +1,8 @@
 ![CI](https://github.com/mdombrov-33/vault-66-store/actions/workflows/ci.yml/badge.svg) ![Vercel](https://img.shields.io/badge/Powered%20by-Vercel-black?logo=vercel) ![Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?logo=next.js) ![Last Commit](https://img.shields.io/github/last-commit/mdombrov-33/vault-66-store?style=flat-square) ![Languages](https://img.shields.io/github/languages/top/mdombrov-33/vault-66-store?style=flat-square) ![OpenRouter](https://img.shields.io/badge/OpenRouter-GPT%20AI-yellow?style=flat-square) ![Docker](https://img.shields.io/badge/docker-enabled-blue?style=flat-square&logo=docker)
 
-# Vault 66 Store
+# Vault 66
 
-A Fallout-inspired e-commerce store built with modern full-stack tools and a retro-futuristic UI.  
-Buy Wasteland gear with bottle caps, chat with a terminal–style AI assistant, and manage store inventory with an intuitive admin dashboard.
+A full-stack Fallout experience with shopping, AI conversations, lore-driven mini-games, and personalized character progression — all powered by modern tech and Wasteland flavor.
 
 ---
 
