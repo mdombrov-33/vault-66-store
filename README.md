@@ -60,7 +60,7 @@ Password: vaultcontrol66!
 
   - Fallout-style terminal UI powered via OpenRouter API
   - Provides smart, lore-friendly in-universe responses
- 
+
 - 💬 **Live Chat System**
 
   - Real-time, lore-friendly chat with a terminal-inspired UI
