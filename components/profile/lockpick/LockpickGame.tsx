@@ -12,6 +12,8 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     return levels[Math.floor(Math.random() * levels.length)]
   }
 
+  const [brokenPins, setBrokenPins] = useState(0) //* Track number of broken pins
+
   //* Map lock level to fixed bobby pins count
   const attemptsByLockLevel: Record<LockLevel['lockLevel'], number> = {
     Easy: 5,
@@ -23,6 +25,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
 
   //* Bobby pins derived from lock level only
   const bobbyPins = attemptsByLockLevel[lockLevel]
+  const remainingPins = bobbyPins - brokenPins
 
   //* numeric lock level for force chance or other logic
   const numericLockLevel = lockLevel === 'Easy' ? 1 : lockLevel === 'Medium' ? 2 : 3
@@ -31,6 +34,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
 
   const resetGame = () => {
     setLockLevel(getRandomLockLevel())
+    setBrokenPins(0)
   }
 
   return (
@@ -39,13 +43,17 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         lockLevel={lockLevel}
         lockpickSkill={lockpickSkill}
         bobbyPins={bobbyPins}
+        brokenPins={brokenPins}
+        resetGame={resetGame}
+        remainingPins={remainingPins}
       />
       {/* Pass skill and resetGame to lock for green zone and reset control */}
       <LockpickLock
         bobbyPins={bobbyPins}
+        brokenPins={brokenPins}
         lockLevel={lockLevel}
         lockpickSkill={lockpickSkill}
-        resetGame={resetGame}
+        setBrokenPins={setBrokenPins}
       />
       <LockpickForcePanel forceChance={forceChance} />
     </section>

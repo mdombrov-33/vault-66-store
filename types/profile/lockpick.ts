@@ -8,15 +8,24 @@ export type LockLevel = {
 
 export type LockpickGameProps = LockpickSkill
 
-export interface LockpickInfoPanelProps extends LockpickSkill {
-  bobbyPins: number
+type LockpickGameState = {
   lockLevel: LockLevel['lockLevel']
+  resetGame: () => void
 }
 
-export interface LockpickLockProps extends LockpickSkill {
-  resetGame: () => void
-  lockLevel: LockLevel['lockLevel']
+type PinsCount = {
   bobbyPins: number
+  brokenPins: number
+  remainingPins: number
+}
+
+export interface LockpickInfoPanelProps extends LockpickSkill, PinsCount, LockpickGameState {}
+
+export interface LockpickLockProps
+  extends LockpickSkill,
+    Omit<PinsCount, 'remainingPins'>,
+    Pick<LockLevel, 'lockLevel'> {
+  setBrokenPins: React.Dispatch<React.SetStateAction<number>>
 }
 
 export interface LockpickForcePanelProps {

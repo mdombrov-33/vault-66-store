@@ -4,7 +4,13 @@ import { LockpickLockProps } from '@/types/profile'
 import { useLockpickLogic } from './hooks/useLockpickLogic'
 import { describeArc } from '@/utils/geometry'
 
-function LockpickLock({ lockpickSkill, resetGame, lockLevel, bobbyPins }: LockpickLockProps) {
+function LockpickLock({
+  lockpickSkill,
+  lockLevel,
+  setBrokenPins,
+  bobbyPins,
+  brokenPins,
+}: LockpickLockProps) {
   const {
     pinAngle,
     svgRef,
@@ -14,25 +20,10 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel, bobbyPins }: Lockpi
     setIsEngaged,
     screwdriverAngle,
     handleMouseMove,
-    brokenPins,
-  } = useLockpickLogic(lockpickSkill, lockLevel)
-
-  if (brokenPins >= bobbyPins) {
-    return (
-      <div className="col-span-3 text-center text-red-500 font-bold text-xl">
-        💥 You broke all your bobby pins!
-        <button onClick={resetGame} className="mt-4 btn btn-primary">
-          Retry
-        </button>
-      </div>
-    )
-  }
+  } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins)
 
   return (
     <>
-      {/* {isTurningLock && (
-        <div className="mt-2 text-center text-yellow-500 font-semibold">🔧 Turning Lock!</div>
-      )} */}
       <div className="flex items-center justify-center max-h-[30dvh]">
         <svg
           ref={svgRef} //* Bind the SVG to the ref so we can access its bounding box

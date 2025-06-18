@@ -1,7 +1,13 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { LockLevel } from '@/types/profile'
 
-export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lockLevel']) {
+export function useLockpickLogic(
+  lockpickSkill: number,
+  lockLevel: LockLevel['lockLevel'],
+  setBrokenPins: React.Dispatch<React.SetStateAction<number>>,
+  brokenPins: number,
+  bobbyPins: number
+) {
   //* State to hold the current angle of the pin in degrees.
   //* Starts at 0° which means the pin is pointing straight up.
   const [pinAngle, setPinAngle] = useState(0)
@@ -22,10 +28,10 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
   const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
   const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
   const [isCracked, setIsCracked] = useState(false) //* Track if the lock is cracked
-  const [brokenPins, setBrokenPins] = useState(0) //* Track number of broken pins
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (brokenPins >= bobbyPins) return
       if (isCracked) return
       if (isEngaged && e.key.toLowerCase() === 'a') {
         setIsTurningLock(true) //* Start turning the lock on 'A' key press
@@ -33,6 +39,7 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
     }
 
     const handleKeyUp = (e: KeyboardEvent) => {
+      if (brokenPins >= bobbyPins) return
       if (isCracked) return
       if (e.key.toLowerCase() === 'a') {
         setIsTurningLock(false) //* Stop turning the lock on 'A' key release
@@ -137,13 +144,15 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
 
     animationFrame = requestAnimationFrame(update)
     return () => cancelAnimationFrame(animationFrame)
-  }, [isTurningLock, isSuccess, isCracked, getDistanceFromGreenZone, pinAngle])
+  }, [isTurningLock, isSuccess, isCracked, getDistanceFromGreenZone, pinAngle, setBrokenPins])
 
   //* === Handle mouse movement inside the SVG ===
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
-    const svg = svgRef.current
-    if (!svg) return //* Safety check
+    if (brokenPins >= bobbyPins) return
     if (isCracked) return
+
+    const svg = svgRef.current
+    if (!svg) return
 
     //* Get SVG bounding box
     const rect = svg.getBoundingClientRect()
@@ -211,6 +220,5 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
     isSuccess,
     difficultyModifier,
     handleMouseMove,
-    brokenPins,
   }
 }
