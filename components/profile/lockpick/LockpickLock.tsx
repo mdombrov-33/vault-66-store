@@ -4,7 +4,7 @@ import { LockpickLockProps } from '@/types/profile'
 import { useLockpickLogic } from './hooks/useLockpickLogic'
 import { describeArc } from '@/utils/geometry'
 
-function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps) {
+function LockpickLock({ lockpickSkill, resetGame, lockLevel, bobbyPins }: LockpickLockProps) {
   const {
     pinAngle,
     svgRef,
@@ -14,7 +14,19 @@ function LockpickLock({ lockpickSkill, resetGame, lockLevel }: LockpickLockProps
     setIsEngaged,
     screwdriverAngle,
     handleMouseMove,
+    brokenPins,
   } = useLockpickLogic(lockpickSkill, lockLevel)
+
+  if (brokenPins >= bobbyPins) {
+    return (
+      <div className="col-span-3 text-center text-red-500 font-bold text-xl">
+        💥 You broke all your bobby pins!
+        <button onClick={resetGame} className="mt-4 btn btn-primary">
+          Retry
+        </button>
+      </div>
+    )
+  }
 
   return (
     <>

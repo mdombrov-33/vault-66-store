@@ -41,7 +41,12 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         bobbyPins={bobbyPins}
       />
       {/* Pass skill and resetGame to lock for green zone and reset control */}
-      <LockpickLock lockLevel={lockLevel} lockpickSkill={lockpickSkill} resetGame={resetGame} />
+      <LockpickLock
+        bobbyPins={bobbyPins}
+        lockLevel={lockLevel}
+        lockpickSkill={lockpickSkill}
+        resetGame={resetGame}
+      />
       <LockpickForcePanel forceChance={forceChance} />
     </section>
   )

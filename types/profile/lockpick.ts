@@ -16,6 +16,7 @@ export interface LockpickInfoPanelProps extends LockpickSkill {
 export interface LockpickLockProps extends LockpickSkill {
   resetGame: () => void
   lockLevel: LockLevel['lockLevel']
+  bobbyPins: number
 }
 
 export interface LockpickForcePanelProps {

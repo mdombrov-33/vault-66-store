@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { LockLevel } from '@/types/profile'
 
 export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lockLevel']) {
@@ -9,6 +9,10 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
   //* Reference to the SVG element so we can measure its position on the screen
   const svgRef = useRef<SVGSVGElement>(null)
 
+  //* Pressure of the pin pin, which is accumulated as the player turns the lock outside the green zone
+  //* This is used to determine if the pin will break when turning too hard
+  const pressureRef = useRef(0)
+
   //* Randomly generate the start of the green zone (the area where the pin can be turned)
   const [greenZoneStart] = useState(() => {
     return Math.floor(Math.random() * 120 - 60) //* Random start between -60° and 60°
@@ -18,6 +22,7 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
   const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
   const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
   const [isCracked, setIsCracked] = useState(false) //* Track if the lock is cracked
+  const [brokenPins, setBrokenPins] = useState(0) //* Track number of broken pins
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -68,7 +73,17 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
 
   const isSuccess = pinAngle >= greenZoneStart && pinAngle <= greenZoneEnd //* Check if pin is in the green zone
 
-  //* Screwdriver turning animation
+  //* Calculate distance from the green zone edges
+  const getDistanceFromGreenZone = useCallback(
+    (angle: number) => {
+      if (angle < greenZoneStart) return greenZoneStart - angle
+      if (angle > greenZoneEnd) return angle - greenZoneEnd
+      return 0 //* Inside green zone
+    },
+    [greenZoneStart, greenZoneEnd]
+  )
+
+  //* === Screwdriver turning animation ===
   useEffect(() => {
     let animationFrame: number
 
@@ -94,14 +109,37 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
         })
       }
 
+      if (isTurningLock && !isSuccess) {
+        const distance = getDistanceFromGreenZone(pinAngle)
+        const dangerRatio = Math.min(distance / 90, 1) //* Normalized danger level (0 to 1)
+
+        //* Increase pressure based on distance from green zone
+        pressureRef.current += 0.5 + 1.5 * dangerRatio //* Base pressure + danger factor
+        const breakingThreshold = 100 + Math.random() * 50 //*Normalized breaking threshold
+
+        if (pressureRef.current >= breakingThreshold) {
+          console.log('💥 PIN BROKE')
+          setBrokenPins((prev) => prev + 1) //* Increment broken pins count
+          setPinAngle(0) //* Reset pin angle
+          setScrewdriverAngle(0) //* Reset screwdriver angle
+          pressureRef.current = 0 //* Reset pressure
+          return //* Stop further processing if pin broke
+        }
+      }
+
+      if (!isTurningLock || isSuccess) {
+        //* Slowly decay pressure over time to forgive light mistakes
+        pressureRef.current = Math.max(pressureRef.current - 0.8, 0)
+      }
+
       animationFrame = requestAnimationFrame(update)
     }
 
     animationFrame = requestAnimationFrame(update)
     return () => cancelAnimationFrame(animationFrame)
-  }, [isTurningLock, isSuccess, isCracked])
+  }, [isTurningLock, isSuccess, isCracked, getDistanceFromGreenZone, pinAngle])
 
-  //* Handle mouse movement inside the SVG
+  //* === Handle mouse movement inside the SVG ===
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
     const svg = svgRef.current
     if (!svg) return //* Safety check
@@ -173,5 +211,6 @@ export function useLockpickLogic(lockpickSkill: number, lockLevel: LockLevel['lo
     isSuccess,
     difficultyModifier,
     handleMouseMove,
+    brokenPins,
   }
 }
