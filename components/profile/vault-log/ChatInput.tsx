@@ -6,10 +6,14 @@ import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { ChatInputProps } from '@/types/profile'
 import { emojiData } from '@/data/profile/vault-log/emoji-data'
+import { useTypingSounds } from '@/hooks/useTypingSounds'
+import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
 export default function ChatInput({ onSend }: ChatInputProps) {
   const [text, setText] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const { playTypingSound, playEnterSound, playSpacebarSound } = useTypingSounds()
+  const { playClick } = useSoundPlayer()
 
   const insertEmoji = (shortcode: string) => {
     const input = inputRef.current
@@ -24,11 +28,18 @@ export default function ChatInput({ onSend }: ChatInputProps) {
     const newText = before + shortcode + after
     setText(newText)
 
-    // Move cursor to after inserted emoji
     setTimeout(() => {
       input.focus()
       input.setSelectionRange(start + shortcode.length, start + shortcode.length)
     }, 0)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      playEnterSound()
+    } else if (e.key === ' ') {
+      playSpacebarSound()
+    }
   }
 
   return (
@@ -51,16 +62,26 @@ export default function ChatInput({ onSend }: ChatInputProps) {
       <Input
         ref={inputRef}
         value={text}
-        onChange={(e) => setText(e.target.value)}
-        className="flex-1 font-roboto text-xl"
+        onChange={(e) => {
+          setText(e.target.value)
+          playTypingSound()
+        }}
+        onKeyDown={handleKeyDown}
+        className="flex-1 font-[roboto-mono] text-xl"
         placeholder="Input command or message"
         aria-label="Input command or message"
       />
 
       <Popover>
         <PopoverTrigger asChild>
-          <Button type="button" variant="ghost" size="icon" aria-label="Open emoji picker">
-            🙂
+          <Button
+            type="button"
+            className="text-2xl"
+            variant="ghost"
+            size="icon"
+            aria-label="Open emoji picker"
+          >
+            <img src="/icons/vaultboy-love.png" alt="Vault Boy Love Icon" />
           </Button>
         </PopoverTrigger>
 
@@ -82,7 +103,16 @@ export default function ChatInput({ onSend }: ChatInputProps) {
         </PopoverContent>
       </Popover>
 
-      <Button type="submit" variant="default" className="text-3xl">
+      <Button
+        type="submit"
+        variant="default"
+        className="text-3xl"
+        onClick={() => {
+          if (text.trim()) {
+            playClick()
+          }
+        }}
+      >
         Send
       </Button>
     </form>

@@ -19,7 +19,7 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
             key={i}
             src={shortcodeToSrc[part]}
             alt={part}
-            className="inline-block w-8 h-8 align-text-bottom mx-[2px]"
+            className="inline-block w-8 h-8 align-text-bottom mx-[2px] "
           />
         )
       }
@@ -29,12 +29,12 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
 
   return (
     <div
-      className="flex-1 overflow-y-auto space-y-2 mt-4 px-1 text-xl font-roboto"
+      className="flex-1 overflow-y-auto space-y-2 mt-4 px-1 text-xl font-[roboto-mono]"
       aria-live="polite"
     >
       {messages.map((msg, idx) => (
         <p key={idx} className="whitespace-pre-wrap leading-snug">
-          <span className="text-md text-muted-foreground mr-2">
+          <span className="text-sm text-muted-foreground mr-2">
             {new Date(msg.sentAt).toLocaleTimeString()}
           </span>
           {msg.senderAvatar && (
