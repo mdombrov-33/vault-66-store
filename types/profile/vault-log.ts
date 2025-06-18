@@ -30,3 +30,8 @@ export interface ChatInputProps {
   onSend: (message: string) => void
   disabled?: boolean
 }
+
+export type EmojiData = {
+  shortcode: string
+  src: string
+}[]

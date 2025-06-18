@@ -1,6 +1,8 @@
 // utils/emojiMap.ts
 
-export const emojiData = [
+import { EmojiData } from '@/types/profile'
+
+export const emojiData: EmojiData = [
   { shortcode: ':aggressive1:', src: '/icons/aggressive1.png' },
   { shortcode: ':aggressive2:', src: '/icons/aggressive2.png' },
   { shortcode: ':angry1:', src: '/icons/angry1.png' },
