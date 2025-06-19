@@ -25,7 +25,9 @@ function LockpickInfoPanel({
         {/* Lockpick Skill */}
         <div className="flex justify-between w-full text-xl lg:text-3xl text-muted-foreground">
           <span>Lockpick Skill</span>
-          <span className="text-muted-foreground">{lockpickSkill}</span>
+          <span className="text-muted-foreground">
+            {lockpickSkill >= 7 ? lockpickSkill : 'Unknown'}
+          </span>
         </div>
 
         {/* Bobby Pins */}
