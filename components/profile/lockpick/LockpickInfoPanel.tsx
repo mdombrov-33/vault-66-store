@@ -9,6 +9,7 @@ function LockpickInfoPanel({
   remainingPins,
   lockpickSkill,
   lockLevel,
+  totalBrokenPins,
 }: LockpickInfoPanelProps) {
   return (
     <div className="flex flex-col items-center h-full">
@@ -38,6 +39,10 @@ function LockpickInfoPanel({
           <span>Lock Level</span>
           <span className="text-muted-foreground">{lockLevel}</span>
         </div>
+      </div>
+      <div className="flex mt-6 justify-between w-full text-xl lg:text-3xl text-muted-foreground">
+        <span>Total Broken</span>
+        <span className="text-muted-foreground">{totalBrokenPins}</span>
       </div>
     </div>
   )

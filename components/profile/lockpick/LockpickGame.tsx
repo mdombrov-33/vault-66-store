@@ -17,10 +17,26 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     return levels[Math.floor(Math.random() * levels.length)]
   }
 
+  const onPinBroken = () => {
+    setBrokenPins((prev) => prev + 1)
+    setTotalBrokenPins((prev) => {
+      const next = prev + 1
+      localStorage.setItem('vault66_totalBrokenPins', next.toString())
+      return next
+    })
+  }
+
   //* === Component State ===
   const [brokenPins, setBrokenPins] = useState(0) //* Tracks number of broken bobby pins
   const [resetCount, setResetCount] = useState(0) //* Tracks number of game resets
   const [lockLevel, setLockLevel] = useState<Level['lockLevel']>(getRandomLockLevel()) //* Current lock difficulty
+  //* Total broken pins count
+  const [totalBrokenPins, setTotalBrokenPins] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return Number(localStorage.getItem('vault66_totalBrokenPins') ?? '0')
+    }
+    return 0
+  })
 
   //* === Constants and Derived State ===
   //* Bobby pin attempts allowed per lock difficulty level
@@ -65,7 +81,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         icon: <img src="/toaster/happy-condition.png" alt="Success" />,
       })
     } else {
-      setBrokenPins((prev) => prev + 1)
+      onPinBroken()
       playPickBreakSound()
       toast.error('Attempt failed – pin broken.', {
         description: <span className="text-muted-foreground">Pins left: {remainingPins - 1}</span>,
@@ -94,7 +110,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     isBreaking,
     pinId,
     isGameOver,
-  } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins, resetCount)
+  } = useLockpickLogic(lockpickSkill, lockLevel, onPinBroken, brokenPins, bobbyPins, resetCount)
 
   //* === Render ===
   return (
@@ -108,6 +124,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         remainingPins={remainingPins}
         lockpickSkill={lockpickSkill}
         lockLevel={lockLevel}
+        totalBrokenPins={totalBrokenPins}
       />
 
       {/* Main lock UI with pin and screwdriver */}

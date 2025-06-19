@@ -35,6 +35,7 @@ type Pins = {
   bobbyPins: number
   brokenPins: number
   remainingPins: number
+  totalBrokenPins: number
 }
 
 //* Pins update logic, if needed in the future

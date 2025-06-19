@@ -5,7 +5,7 @@ import { useLockpickSounds } from './useLockpickSounds'
 export function useLockpickLogic(
   lockpickSkill: number,
   lockLevel: Level['lockLevel'],
-  setBrokenPins: React.Dispatch<React.SetStateAction<number>>,
+  onPinBroken: () => void,
   brokenPins: number,
   bobbyPins: number,
   resetCount: number
@@ -205,7 +205,7 @@ export function useLockpickLogic(
           playPickBreakSound()
 
           setTimeout(() => {
-            setBrokenPins((prev) => prev + 1)
+            onPinBroken()
             setAttemptCount((prev) => Math.min(prev + 1, maxAttempts))
             setPinAngle(0)
             setScrewdriverAngle(0)
@@ -247,7 +247,7 @@ export function useLockpickLogic(
     isCracked,
     getDistanceFromGreenZone,
     pinAngle,
-    setBrokenPins,
+    onPinBroken,
     startLoopWiggleSound,
     stopLoopWiggleSound,
     playPickBreakSound,
