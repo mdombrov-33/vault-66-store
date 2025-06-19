@@ -254,7 +254,7 @@ The sounds that bring Vault 66 to life come from various public sources, grouped
 Tense clicks and clacks for the lockpick minigame:  
 [Fallout Lockpicking Sounds Repo](https://github.com/afenkurtz/FalloutLockPicking)
 
-### 🎶 Ambient & Global Sounds  
+### 🎶 Global Sounds  
 Typing, UI interactions, notifications, and other global sound effects:  
 [Global Sound Effects Collection](https://github.com/jabbalaci/keysound)
 
