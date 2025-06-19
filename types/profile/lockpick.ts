@@ -3,13 +3,16 @@ export interface LockpickInfoPanelProps extends Pins, Skill, Resettable, Level {
   isCracked: boolean
 }
 
-export interface LockpickLockProps extends Engagement, GreenZone, PinRotation, ScrewdriverRotation {
+//* Extend GreenZone here to see actual green zone arc
+export interface LockpickLockProps extends Engagement, PinRotation, ScrewdriverRotation {
   svgRef: React.RefObject<SVGSVGElement | null>
   handleMouseMove: (e: React.MouseEvent<SVGSVGElement>) => void
+  pressure: number
+  isBreaking: boolean
+  pinId: number
 }
 
 export type LockpickForcePanelProps = Force
-
 export type LockpickGameProps = Skill
 
 //* BASE TYPES
@@ -36,11 +39,11 @@ type Pins = {
 //   setBrokenPins: Setter<number>
 // }
 
-//* Green zone for the pin
-type GreenZone = {
-  greenZoneStart: number
-  greenZoneEnd: number
-}
+//* Green zone for the pin debugging purposes
+// type GreenZone = {
+//   greenZoneStart: number
+//   greenZoneEnd: number
+// }
 
 //* Rotation of the pin
 type PinRotation = {

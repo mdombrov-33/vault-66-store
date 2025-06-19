@@ -1,17 +1,21 @@
 'use client'
 
-import { LockpickLockProps } from '@/types/profile'
-import { describeArc } from '@/utils/geometry'
+// import { describeArc } from '@/utils/geometry' //* Uncomment to see actual green zone arc
 
+import { LockpickLockProps } from '@/types/profile'
+import { motion, useAnimation } from 'framer-motion'
+
+//* Pass  greenZoneStart and  greenZoneEnd as props to see actual green zone arc
 function LockpickLock({
   svgRef,
   isEngaged,
   setIsEngaged,
-  greenZoneStart,
-  greenZoneEnd,
   screwdriverAngle,
   pinAngle,
   handleMouseMove,
+  pressure,
+  isBreaking,
+  pinId,
 }: LockpickLockProps) {
   return (
     <>
@@ -59,26 +63,49 @@ function LockpickLock({
           </g>
 
           {/* Green zone arc overlaid */}
-          <path
+          {/* Uncomment to see actual green zone */}
+          {/* <path
             d={describeArc(100, 100, 85, greenZoneStart, greenZoneEnd)}
             fill="none"
             stroke="lime"
             strokeWidth="6"
             strokeLinecap="round"
-          />
+          /> */}
 
-          {/* Static center pin */}
-          <g transform={`rotate(${pinAngle}, 100, 100)`}>
-            <line
-              x1="100"
-              y1="105"
-              x2="100"
-              y2="45"
-              stroke="var(--foreground)"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </g>
+          {/* Pin */}
+          <motion.g
+            key={pinId}
+            animate={isBreaking ? 'break' : pressure > 50 ? 'shake' : 'idle'}
+            variants={{
+              idle: { rotate: 0, x: 0, y: 0, opacity: 1 },
+              shake: {
+                rotate: [0, 2, -2, 2, -2, 0],
+                x: [0, 1, -1, 1, -1, 0],
+                y: [0, 1, -1, 1, -1, 0],
+                opacity: 1,
+                transition: { repeat: Infinity, duration: 0.2 },
+              },
+              break: {
+                rotate: 60,
+                y: 80,
+                opacity: 0,
+                transition: { duration: 0.4, ease: 'easeOut' },
+              },
+            }}
+            style={{ transformOrigin: '100px 100px' }}
+          >
+            <g transform={`rotate(${pinAngle}, 100, 100)`}>
+              <line
+                x1="100"
+                y1="105"
+                x2="100"
+                y2="45"
+                stroke="var(--foreground)"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            </g>
+          </motion.g>
 
           {/* Screwdriver */}
           {isEngaged && (

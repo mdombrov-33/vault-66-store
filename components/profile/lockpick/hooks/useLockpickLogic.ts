@@ -18,7 +18,8 @@ export function useLockpickLogic(
   const pressureRef = useRef(0) //* Current "danger pressure"
   const hasLoopStartedRef = useRef(false) //* Whether wiggle loop is playing
   const lastVariantPlayRef = useRef(0) //* Last random pick sound timestamp
-  const hasPlayedStartSoundRef = useRef(false) //* Not currently used, but here if needed later
+  const hasPlayedStartSoundRef = useRef(false) //* Whether start sound has been played
+  const isBreakingRef = useRef(false) //* Whether pins are currently breaking
 
   //* ==============================================
   //* SOUND HOOK
@@ -42,6 +43,9 @@ export function useLockpickLogic(
   const [isEngaged, setIsEngaged] = useState(false) //* Has the lock been touched?
   const [isTurningLock, setIsTurningLock] = useState(false) //* Is the screwdriver rotating?
   const [isCracked, setIsCracked] = useState(false) //* Has the lock been successfully opened?
+  const [pressure, setPressure] = useState(0) //* State for shaking pin animation
+  const [isBreaking, setIsBreaking] = useState(false) //* State for broken pins animation
+  const [pinId, setPinId] = useState(0) //* Unique ID for each pin to reset animations state after break
   const isGameOver = brokenPins >= bobbyPins || isCracked //* Is the game over?
 
   //* ==============================================
@@ -186,14 +190,23 @@ export function useLockpickLogic(
         pressureRef.current += 0.5 + 1.5 * dangerRatio
         const breakingThreshold = 180 + Math.random() * 50
 
-        if (pressureRef.current >= breakingThreshold) {
-          setBrokenPins((prev) => prev + 1)
-          setPinAngle(0)
-          setScrewdriverAngle(0)
-          pressureRef.current = 0
-          stopLoopWiggleSound()
-          hasLoopStartedRef.current = false
+        if (pressureRef.current >= breakingThreshold && !isBreakingRef.current) {
+          isBreakingRef.current = true
+          setIsBreaking(true)
           playPickBreakSound()
+
+          setTimeout(() => {
+            setBrokenPins((prev) => prev + 1)
+            setPinAngle(0)
+            setScrewdriverAngle(0)
+            pressureRef.current = 0
+            stopLoopWiggleSound()
+            hasLoopStartedRef.current = false
+            setPinId((prev) => prev + 1)
+            setIsBreaking(false)
+            isBreakingRef.current = false
+          }, 500)
+
           return
         }
       }
@@ -230,6 +243,19 @@ export function useLockpickLogic(
     playUnlockSound,
     isGameOver,
   ])
+
+  //* ==============================================
+  //* FLAVOR ANIMATIONS
+  //* ==============================================
+
+  //* Shake pin based on pressure
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPressure(pressureRef.current)
+    }, 50)
+
+    return () => clearInterval(interval)
+  }, [])
 
   //* ==============================================
   //* MOUSE MOVEMENT: Rotate pin with cursor
@@ -291,5 +317,8 @@ export function useLockpickLogic(
     isSuccess,
     difficultyModifier,
     handleMouseMove,
+    pressure,
+    isBreaking,
+    pinId,
   }
 }

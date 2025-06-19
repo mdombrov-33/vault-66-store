@@ -45,16 +45,19 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
   }
 
   //* === Custom Hook for Lockpick Logic ===
+  //* Extract greenZoneStart and greenZoneEnd to see the actual green zone arc
+
   const {
     pinAngle,
     svgRef,
-    greenZoneStart,
-    greenZoneEnd,
     isEngaged,
     setIsEngaged,
     screwdriverAngle,
     handleMouseMove,
+    pressure,
     isCracked,
+    isBreaking,
+    pinId,
   } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins, resetCount)
 
   //* === Render ===
@@ -72,15 +75,17 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
       />
 
       {/* Main lock UI with pin and screwdriver */}
+      {/* Pass to props greenZoneStart greenZoneEnd to see actual green zone arc */}
       <LockpickLock
         svgRef={svgRef}
         isEngaged={isEngaged}
         setIsEngaged={setIsEngaged}
-        greenZoneStart={greenZoneStart}
-        greenZoneEnd={greenZoneEnd}
         screwdriverAngle={screwdriverAngle}
         pinAngle={pinAngle}
         handleMouseMove={handleMouseMove}
+        pressure={pressure}
+        isBreaking={isBreaking}
+        pinId={pinId}
       />
 
       {/* Force panel showing chance to force lock open */}
