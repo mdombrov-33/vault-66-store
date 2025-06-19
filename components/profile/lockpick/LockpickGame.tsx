@@ -8,38 +8,43 @@ import { useState } from 'react'
 import { useLockpickLogic } from './hooks/useLockpickLogic'
 
 function LockpickGame({ lockpickSkill }: LockpickGameProps) {
+  //* === Helper Functions ===
+  //* Randomly pick a lock difficulty level from predefined options
   const getRandomLockLevel = (): Level['lockLevel'] => {
     const levels: Level['lockLevel'][] = ['Easy', 'Medium', 'Hard']
     return levels[Math.floor(Math.random() * levels.length)]
   }
 
-  const [brokenPins, setBrokenPins] = useState(0) //* Track number of broken pins
-  const [resetCount, setResetCount] = useState(0) //* Track number of resets
+  //* === Component State ===
+  const [brokenPins, setBrokenPins] = useState(0) //* Tracks number of broken bobby pins
+  const [resetCount, setResetCount] = useState(0) //* Tracks number of game resets
+  const [lockLevel, setLockLevel] = useState<Level['lockLevel']>(getRandomLockLevel()) //* Current lock difficulty
 
-  //* Map lock level to fixed bobby pins count
+  //* === Constants and Derived State ===
+  //* Bobby pin attempts allowed per lock difficulty level
   const attemptsByLockLevel: Record<Level['lockLevel'], number> = {
     Easy: 5,
     Medium: 4,
     Hard: 3,
   }
+  const bobbyPins = attemptsByLockLevel[lockLevel] //* Allowed attempts based on difficulty
+  const remainingPins = bobbyPins - brokenPins //* Remaining attempts
 
-  const [lockLevel, setLockLevel] = useState<Level['lockLevel']>(getRandomLockLevel())
-
-  //* Bobby pins derived from lock level only
-  const bobbyPins = attemptsByLockLevel[lockLevel]
-  const remainingPins = bobbyPins - brokenPins
-
-  //* numeric lock level for force chance
+  //* Numeric value representing lock difficulty for force chance calculation
   const numericLockLevel = lockLevel === 'Easy' ? 1 : lockLevel === 'Medium' ? 2 : 3
 
+  //* Player’s chance to force open lock (skill vs difficulty)
   const forceChance = Math.max(0, lockpickSkill - numericLockLevel * 10)
 
+  //* === Game Control Functions ===
+  //* Reset the game state: choose new lock level, reset broken pins and increase reset count
   const resetGame = () => {
     setLockLevel(getRandomLockLevel())
     setResetCount((prev) => prev + 1)
     setBrokenPins(0)
   }
 
+  //* === Custom Hook for Lockpick Logic ===
   const {
     pinAngle,
     svgRef,
@@ -52,8 +57,10 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     isCracked,
   } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins, resetCount)
 
+  //* === Render ===
   return (
-    <section className="grid grid-cols-3 gap-4 w-full h-dvh max-h-[60dvh] pb-22 lg:pb-0 ">
+    <section className="grid grid-cols-3 gap-4 w-full h-dvh max-h-[60dvh] pb-22 lg:pb-0">
+      {/* Info panel showing pins, lock level, and controls */}
       <LockpickInfoPanel
         brokenPins={brokenPins}
         bobbyPins={bobbyPins}
@@ -63,6 +70,8 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         lockpickSkill={lockpickSkill}
         lockLevel={lockLevel}
       />
+
+      {/* Main lock UI with pin and screwdriver */}
       <LockpickLock
         svgRef={svgRef}
         isEngaged={isEngaged}
@@ -73,6 +82,8 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         pinAngle={pinAngle}
         handleMouseMove={handleMouseMove}
       />
+
+      {/* Force panel showing chance to force lock open */}
       <LockpickForcePanel forceChance={forceChance} />
     </section>
   )

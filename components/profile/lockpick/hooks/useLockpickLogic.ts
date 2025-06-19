@@ -42,6 +42,7 @@ export function useLockpickLogic(
   const [isEngaged, setIsEngaged] = useState(false) //* Has the lock been touched?
   const [isTurningLock, setIsTurningLock] = useState(false) //* Is the screwdriver rotating?
   const [isCracked, setIsCracked] = useState(false) //* Has the lock been successfully opened?
+  const isGameOver = brokenPins >= bobbyPins || isCracked //* Is the game over?
 
   //* ==============================================
   //* GREEN ZONE SETUP — based on skill + difficulty
@@ -103,7 +104,8 @@ export function useLockpickLogic(
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (brokenPins >= bobbyPins || isCracked) return
+      if (isGameOver) return
+
       if (isEngaged && e.key.toLowerCase() === 'a' && !isTurningLock) {
         setIsTurningLock(true)
 
@@ -115,7 +117,8 @@ export function useLockpickLogic(
     }
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      if (brokenPins >= bobbyPins || isCracked) return
+      if (isGameOver) return
+
       if (e.key.toLowerCase() === 'a') {
         setIsTurningLock(false)
         hasPlayedStartSoundRef.current = false
@@ -138,6 +141,7 @@ export function useLockpickLogic(
     pinAngle,
     playPickStartSound,
     getDistanceFromGreenZone,
+    isGameOver,
   ])
 
   //* ==============================================
@@ -149,6 +153,13 @@ export function useLockpickLogic(
 
     const update = () => {
       if (isCracked) return
+
+      if (isGameOver) {
+        setIsTurningLock(false)
+        stopLoopWiggleSound()
+        hasLoopStartedRef.current = false
+        return
+      }
 
       if (isTurningLock) {
         const distance = getDistanceFromGreenZone(pinAngle)
@@ -217,6 +228,7 @@ export function useLockpickLogic(
     stopLoopWiggleSound,
     playPickBreakSound,
     playUnlockSound,
+    isGameOver,
   ])
 
   //* ==============================================
