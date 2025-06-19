@@ -104,9 +104,15 @@ Manage user profiles and personalize each experience through Fallout-inspired fe
 - 🧪 **G.O.A.T. Quiz**  
   Vault-Tec–style personality quiz to tag your skills
 
-- 💻 **Hacking Minigame**  
-  Terminal-style word puzzle inspired by Fallout’s hacking mechanic  
-  Offers an immersive mini-game experience within the profile section
+### 🎮 Mini-Games
+
+- 💻 Hacking Minigame  
+Terminal-style word puzzle inspired by Fallout’s hacking mechanic  
+Offers an immersive mini-game experience within the profile section
+
+- 🗝️ **Lockpicking Minigame**  
+  Practice your lockpicking skills with a Fallout-inspired challenge  
+  Use mouse and keyboard controls to find the correct pin angle and crack the lock
 
 ---
 
@@ -240,5 +246,23 @@ Make sure to fill in the following environment variables in your `.env` file:
 
 ---
 
-Thank you for checking out Vault 66 Store!  
+## 🎵 Wasteland Sound & Music Archives
+
+The sounds that bring Vault 66 to life come from various public sources, grouped by their role in the app:
+
+### 🔐 Lockpicking Sounds  
+Tense clicks and clacks for the lockpick minigame:  
+[Fallout Lockpicking Sounds Repo](https://github.com/afenkurtz/FalloutLockPicking)
+
+### 🎶 Ambient & Global Sounds  
+Typing, UI interactions, notifications, and other global sound effects:  
+[Global Sound Effects Collection](https://github.com/jabbalaci/keysound)
+
+### 📻 Fallout Radio Stream  
+An endless Fallout-themed radio broadcast streaming live:  
+[Fallout Radio Station](https://fallout.fm/)
+
+---
+
+Thank you for checking out Vault 66!
 Happy shopping in the Wasteland. 💚
