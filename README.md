@@ -107,8 +107,8 @@ Manage user profiles and personalize each experience through Fallout-inspired fe
 ### 🎮 Mini-Games
 
 - 💻 Hacking Minigame  
-Terminal-style word puzzle inspired by Fallout’s hacking mechanic  
-Offers an immersive mini-game experience within the profile section
+  Terminal-style word puzzle inspired by Fallout’s hacking mechanic  
+  Offers an immersive mini-game experience within the profile section
 
 - 🗝️ **Lockpicking Minigame**  
   Practice your lockpicking skills with a Fallout-inspired challenge  
@@ -250,15 +250,18 @@ Make sure to fill in the following environment variables in your `.env` file:
 
 The sounds that bring Vault 66 to life come from various public sources, grouped by their role in the app:
 
-### 🔐 Lockpicking Sounds  
+### 🔐 Lockpicking Sounds
+
 Tense clicks and clacks for the lockpick minigame:  
 [Fallout Lockpicking Sounds Repo](https://github.com/afenkurtz/FalloutLockPicking)
 
-### 🎶 Global Sounds  
+### 🎶 Global Sounds
+
 Typing, UI interactions, notifications, and other global sound effects:  
 [Global Sound Effects Collection](https://github.com/jabbalaci/keysound)
 
-### 📻 Fallout Radio Stream  
+### 📻 Fallout Radio Stream
+
 An endless Fallout-themed radio broadcast streaming live:  
 [Fallout Radio Station](https://fallout.fm/)
 
