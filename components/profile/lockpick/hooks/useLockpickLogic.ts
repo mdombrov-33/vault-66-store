@@ -251,6 +251,7 @@ export function useLockpickLogic(
     playPickBreakSound,
     playUnlockSound,
     isGameOver,
+    attemptCount,
   ])
 
   //* ==============================================
