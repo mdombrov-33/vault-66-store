@@ -21,6 +21,9 @@ export function useLockpickLogic(
   const hasPlayedStartSoundRef = useRef(false) //* Whether start sound has been played
   const isBreakingRef = useRef(false) //* Whether pins are currently breaking
 
+  const breakingBase = 180 //* Base pressure for breaking pins
+  const breakingRange = 50 //* Random range added to base pressure
+
   //* ==============================================
   //* SOUND HOOK
   //* ==============================================
@@ -46,6 +49,8 @@ export function useLockpickLogic(
   const [pressure, setPressure] = useState(0) //* State for shaking pin animation
   const [isBreaking, setIsBreaking] = useState(false) //* State for broken pins animation
   const [pinId, setPinId] = useState(0) //* Unique ID for each pin to reset animations state after break
+  const [attemptCount, setAttemptCount] = useState(0) // * Number of attempts made for dynamic breaking threshold
+
   const isGameOver = brokenPins >= bobbyPins || isCracked //* Is the game over?
 
   //* ==============================================
@@ -190,7 +195,8 @@ export function useLockpickLogic(
         const dangerRatio = Math.min(distance / 90, 1)
 
         pressureRef.current += 0.5 + 1.5 * dangerRatio
-        const breakingThreshold = 180 + Math.random() * 50
+        const breakingThreshold = breakingBase - attemptCount * 10 + Math.random() * breakingRange
+        setAttemptCount((count) => Math.min(count + 1, 10))
 
         if (pressureRef.current >= breakingThreshold && !isBreakingRef.current) {
           isBreakingRef.current = true
@@ -207,6 +213,7 @@ export function useLockpickLogic(
             setPinId((prev) => prev + 1)
             setIsBreaking(false)
             isBreakingRef.current = false
+            setAttemptCount(0)
           }, 500)
 
           return
@@ -268,6 +275,7 @@ export function useLockpickLogic(
 
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
     if (brokenPins >= bobbyPins || isCracked) return
+    if (isTurningLock) return
 
     const now = Date.now()
     if (now - lastVariantPlayRef.current > 300) {
