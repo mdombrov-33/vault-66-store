@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Level } from '@/types/profile'
+import { useLockpickSounds } from './useLockpickSounds'
 
 export function useLockpickLogic(
   lockpickSkill: number,
@@ -9,26 +10,81 @@ export function useLockpickLogic(
   bobbyPins: number,
   resetCount: number
 ) {
-  //* State to hold the current angle of the pin in degrees.
-  //* Starts at 0° which means the pin is pointing straight up.
-  const [pinAngle, setPinAngle] = useState(0)
+  //* ==============================================
+  //* REFS — persistent, non-reactive values
+  //* ==============================================
 
-  //* Reference to the SVG element so we can measure its position on the screen
-  const svgRef = useRef<SVGSVGElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null) //* SVG element for positioning
+  const pressureRef = useRef(0) //* Current "danger pressure"
+  const hasLoopStartedRef = useRef(false) //* Whether wiggle loop is playing
+  const lastVariantPlayRef = useRef(0) //* Last random pick sound timestamp
+  const hasPlayedStartSoundRef = useRef(false) //* Not currently used, but here if needed later
 
-  //* Pressure of the pin pin, which is accumulated as the player turns the lock outside the green zone
-  //* This is used to determine if the pin will break when turning too hard
-  const pressureRef = useRef(0)
+  //* ==============================================
+  //* SOUND HOOK
+  //* ==============================================
 
-  //* Randomly generate the start of the green zone (the area where the pin can be turned)
-  const [greenZoneStart] = useState(() => {
-    return Math.floor(Math.random() * 90 - 45) //* Random start between -45° and 45°
-  })
+  const {
+    playPickStartSound,
+    playPickBreakSound,
+    playUnlockSound,
+    playRandomPickVariant,
+    startLoopWiggleSound,
+    stopLoopWiggleSound,
+  } = useLockpickSounds()
 
-  const [isEngaged, setIsEngaged] = useState(false) //* Track if the lock is engaged
-  const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
-  const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
-  const [isCracked, setIsCracked] = useState(false) //* Track if the lock is cracked
+  //* ==============================================
+  //* STATE — reactive values
+  //* ==============================================
+
+  const [pinAngle, setPinAngle] = useState(0) //* Lockpick angle in degrees (0 is up)
+  const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Rotation attempt
+  const [isEngaged, setIsEngaged] = useState(false) //* Has the lock been touched?
+  const [isTurningLock, setIsTurningLock] = useState(false) //* Is the screwdriver rotating?
+  const [isCracked, setIsCracked] = useState(false) //* Has the lock been successfully opened?
+
+  //* ==============================================
+  //* GREEN ZONE SETUP — based on skill + difficulty
+  //* ==============================================
+
+  const difficultyModifier: Record<Level['lockLevel'], number> = {
+    Easy: 1,
+    Medium: 0.7,
+    Hard: 0.4,
+  }
+
+  function getGreenZoneSize(skill: number) {
+    const minZone = 8
+    const maxZone = 30
+    const maxSkill = 80
+    const normalizedSkill = Math.min(skill, maxSkill)
+
+    return Math.floor(minZone + (maxZone - minZone) * Math.sqrt(normalizedSkill / maxSkill))
+  }
+
+  const greenZoneBased = getGreenZoneSize(lockpickSkill)
+  const greenZoneSize = greenZoneBased * difficultyModifier[lockLevel]
+  const [greenZoneStart] = useState(() => Math.floor(Math.random() * 90 - 45))
+  const greenZoneEnd = greenZoneStart + greenZoneSize
+
+  const isSuccess = pinAngle >= greenZoneStart && pinAngle <= greenZoneEnd
+
+  //* ==============================================
+  //* UTILITY: distance from green zone
+  //* ==============================================
+
+  const getDistanceFromGreenZone = useCallback(
+    (angle: number) => {
+      if (angle < greenZoneStart) return greenZoneStart - angle
+      if (angle > greenZoneEnd) return angle - greenZoneEnd
+      return 0
+    },
+    [greenZoneStart, greenZoneEnd]
+  )
+
+  //* ==============================================
+  //* RESET on attempt restart
+  //* ==============================================
 
   useEffect(() => {
     setPinAngle(0)
@@ -37,22 +93,32 @@ export function useLockpickLogic(
     setIsTurningLock(false)
     setIsEngaged(false)
     pressureRef.current = 0
+    hasPlayedStartSoundRef.current = false
+    lastVariantPlayRef.current = 0
   }, [resetCount])
+
+  //* ==============================================
+  //* KEYBOARD: turn lock on "A" press
+  //* ==============================================
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (brokenPins >= bobbyPins) return
-      if (isCracked) return
-      if (isEngaged && e.key.toLowerCase() === 'a') {
-        setIsTurningLock(true) //* Start turning the lock on 'A' key press
+      if (brokenPins >= bobbyPins || isCracked) return
+      if (isEngaged && e.key.toLowerCase() === 'a' && !isTurningLock) {
+        setIsTurningLock(true)
+
+        if (!hasPlayedStartSoundRef.current) {
+          playPickStartSound()
+          hasPlayedStartSoundRef.current = true
+        }
       }
     }
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      if (brokenPins >= bobbyPins) return
-      if (isCracked) return
+      if (brokenPins >= bobbyPins || isCracked) return
       if (e.key.toLowerCase() === 'a') {
-        setIsTurningLock(false) //* Stop turning the lock on 'A' key release
+        setIsTurningLock(false)
+        hasPlayedStartSoundRef.current = false
       }
     }
 
@@ -63,99 +129,76 @@ export function useLockpickLogic(
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [isEngaged, isCracked, brokenPins, bobbyPins]) //* Only add listener when engaged
+  }, [
+    isEngaged,
+    isCracked,
+    brokenPins,
+    bobbyPins,
+    isTurningLock,
+    pinAngle,
+    playPickStartSound,
+    getDistanceFromGreenZone,
+  ])
 
-  //* Map lock levels to difficulty modifiers
-  const difficultyModifier: Record<Level['lockLevel'], number> = {
-    Easy: 1,
-    Medium: 0.7,
-    Hard: 0.4,
-  }
+  //* ==============================================
+  //* MAIN ANIMATION LOOP (screwdriver + danger)
+  //* ==============================================
 
-  //* Calculate the size of the green zone based on the lockpick skill
-  function getGreenZoneSize(skill: number) {
-    const minZone = 8
-    const maxZone = 30
-    const maxSkill = 80
-
-    const normalizedSkill = Math.min(skill, maxSkill)
-
-    //* Scale the skill with sqrt for smoothness
-    return Math.floor(minZone + (maxZone - minZone) * Math.sqrt(normalizedSkill / maxSkill))
-  }
-
-  const greenZoneBased = getGreenZoneSize(lockpickSkill)
-  const greenZoneSize = greenZoneBased * difficultyModifier[lockLevel]
-  const greenZoneEnd = greenZoneStart + greenZoneSize //* Calculate end of the green zone
-
-  const isSuccess = pinAngle >= greenZoneStart && pinAngle <= greenZoneEnd //* Check if pin is in the green zone
-
-  //* Calculate distance from the green zone edges
-  const getDistanceFromGreenZone = useCallback(
-    (angle: number) => {
-      if (angle < greenZoneStart) return greenZoneStart - angle
-      if (angle > greenZoneEnd) return angle - greenZoneEnd
-      return 0 //* Inside green zone
-    },
-    [greenZoneStart, greenZoneEnd]
-  )
-
-  //* === Screwdriver turning animation ===
   useEffect(() => {
     let animationFrame: number
 
     const update = () => {
-      if (isCracked) return //* Stop all motion if lock is cracked
+      if (isCracked) return
 
       if (isTurningLock) {
         const distance = getDistanceFromGreenZone(pinAngle)
-        const maxDistance = 90
-
-        //* Create a gradient: the closer to the green zone, the higher the allowed rotation
-        const strength = Math.max(0, 1 - distance / maxDistance)
-        const adjustedStrength = strength * strength //* quadratic falloff
-
-        const maxAngle = 5 + adjustedStrength * 85 //* from 5° to 90°
+        const strength = Math.max(0, 1 - distance / 90)
+        const adjustedStrength = strength ** 2
+        const maxAngle = 5 + adjustedStrength * 85
 
         setScrewdriverAngle((prev) => {
           const next = Math.min(prev + 1.5, maxAngle)
-          // console.log('screwdriverAngle update:', { prev, next, maxAngle, isSuccess, isCracked })
           if (next >= 90 && isSuccess && !isCracked) {
             setIsCracked(true)
+            playUnlockSound()
           }
           return next
         })
       } else {
-        //* Gradually return to 0° if not turning and not cracked
-        setScrewdriverAngle((prev) => {
-          if (prev > 0) {
-            return Math.max(prev - 2, 0)
-          }
-          return prev
-        })
+        setScrewdriverAngle((prev) => (prev > 0 ? Math.max(prev - 2, 0) : 0))
       }
 
       if (isTurningLock && !isSuccess) {
         const distance = getDistanceFromGreenZone(pinAngle)
-        const dangerRatio = Math.min(distance / 90, 1) //* Normalized danger level (0 to 1)
+        const dangerRatio = Math.min(distance / 90, 1)
 
-        //* Increase pressure based on distance from green zone
-        pressureRef.current += 0.5 + 1.5 * dangerRatio //* Base pressure + danger factor
-        const breakingThreshold = 100 + Math.random() * 50 //*Normalized breaking threshold
+        pressureRef.current += 0.5 + 1.5 * dangerRatio
+        const breakingThreshold = 180 + Math.random() * 50
 
         if (pressureRef.current >= breakingThreshold) {
-          console.log('💥 PIN BROKE')
-          setBrokenPins((prev) => prev + 1) //* Increment broken pins count
-          setPinAngle(0) //* Reset pin angle
-          setScrewdriverAngle(0) //* Reset screwdriver angle
-          pressureRef.current = 0 //* Reset pressure
-          return //* Stop further processing if pin broke
+          setBrokenPins((prev) => prev + 1)
+          setPinAngle(0)
+          setScrewdriverAngle(0)
+          pressureRef.current = 0
+          stopLoopWiggleSound()
+          hasLoopStartedRef.current = false
+          playPickBreakSound()
+          return
         }
       }
 
       if (!isTurningLock || isSuccess) {
-        //* Slowly decay pressure over time to forgive light mistakes
         pressureRef.current = Math.max(pressureRef.current - 0.8, 0)
+      }
+
+      if (pressureRef.current >= 70 && !hasLoopStartedRef.current) {
+        startLoopWiggleSound()
+        hasLoopStartedRef.current = true
+      }
+
+      if ((!isTurningLock || pressureRef.current < 50) && hasLoopStartedRef.current) {
+        stopLoopWiggleSound()
+        hasLoopStartedRef.current = false
       }
 
       animationFrame = requestAnimationFrame(update)
@@ -163,67 +206,63 @@ export function useLockpickLogic(
 
     animationFrame = requestAnimationFrame(update)
     return () => cancelAnimationFrame(animationFrame)
-  }, [isTurningLock, isSuccess, isCracked, getDistanceFromGreenZone, pinAngle, setBrokenPins])
+  }, [
+    isTurningLock,
+    isSuccess,
+    isCracked,
+    getDistanceFromGreenZone,
+    pinAngle,
+    setBrokenPins,
+    startLoopWiggleSound,
+    stopLoopWiggleSound,
+    playPickBreakSound,
+    playUnlockSound,
+  ])
 
-  //* === Handle mouse movement inside the SVG ===
+  //* ==============================================
+  //* MOUSE MOVEMENT: Rotate pin with cursor
+  //* ==============================================
+
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
-    if (brokenPins >= bobbyPins) return
-    if (isCracked) return
+    if (brokenPins >= bobbyPins || isCracked) return
+
+    const now = Date.now()
+    if (now - lastVariantPlayRef.current > 300) {
+      playRandomPickVariant()
+      lastVariantPlayRef.current = now
+    }
 
     const svg = svgRef.current
     if (!svg) return
 
-    //* Get SVG bounding box
     const rect = svg.getBoundingClientRect()
-
-    //* Mouse position relative to SVG
     const mouseX = e.clientX - rect.left
     const mouseY = e.clientY - rect.top
 
-    //* Lock center coordinates inside SVG (200x200)
     const centerX = 100
     const centerY = 100
-
-    //* Vector from center to mouse
     const dx = mouseX - centerX
     const dy = mouseY - centerY
 
-    //* Angle in radians between center and mouse pointer
-    const radians = Math.atan2(dy, dx)
+    let degrees = Math.atan2(dy, dx) * (180 / Math.PI) + 90
 
-    //* Convert to degrees, adjust so 0° points up
-    let degrees = radians * (180 / Math.PI) + 90
+    const distance =
+      degrees < greenZoneStart
+        ? greenZoneStart - degrees
+        : degrees > greenZoneEnd
+          ? degrees - greenZoneEnd
+          : 0
 
-    //* === Calculate distance to green zone edges ===
+    const strength = Math.max(0, 1 - distance / 90)
+    const allowedRotation = strength * 90
 
-    //* greenZoneStart and greenZoneEnd are available in the closure (state)
-    let distance: number
-    if (degrees < greenZoneStart) {
-      distance = greenZoneStart - degrees
-    } else if (degrees > greenZoneEnd) {
-      distance = degrees - greenZoneEnd
-    } else {
-      distance = 0 //* inside green zone
-    }
-
-    //* Maximum distance for full "no rotation" effect
-    const maxDistance = 90
-
-    //* Calculate rotation strength: 1 = full rotation allowed, 0 = no rotation allowed
-    const strength = Math.max(0, 1 - distance / maxDistance)
-
-    //* Maximum rotation pin can have (full range is 90 degrees left/right)
-    const maxRotation = 90
-
-    //* Calculate allowed rotation range depending on strength
-    const allowedRotation = strength * maxRotation
-
-    //* Clamp degrees to the dynamic allowed range
     degrees = Math.max(-allowedRotation, Math.min(allowedRotation, degrees))
-
-    //* Save the final angle to state
     setPinAngle(degrees)
   }
+
+  //* ==============================================
+  //* RETURN
+  //* ==============================================
 
   return {
     svgRef,

@@ -42,7 +42,7 @@ export default function BootScreen() {
         background: 'var(--background, black)',
         color: 'var(--foreground, white)',
         fontFamily: 'VT323, monospace',
-        fontSize: '2.5rem',
+        fontSize: '2rem',
         letterSpacing: '1px',
         textTransform: 'uppercase',
         userSelect: 'none',
