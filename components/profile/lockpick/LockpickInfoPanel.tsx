@@ -2,16 +2,17 @@ import { Button } from '@/components/ui/button'
 import { LockpickInfoPanelProps } from '@/types/profile'
 
 function LockpickInfoPanel({
-  lockpickSkill,
-  bobbyPins,
-  lockLevel,
-  resetGame,
   brokenPins,
+  bobbyPins,
+  isCracked,
+  resetGame,
   remainingPins,
+  lockpickSkill,
+  lockLevel,
 }: LockpickInfoPanelProps) {
   return (
     <div className="flex flex-col items-center h-full">
-      {brokenPins >= bobbyPins && (
+      {(brokenPins >= bobbyPins || isCracked) && (
         <div className="mb-4">
           <Button variant="default" size="lg" className="lg:text-3xl text-xl" onClick={resetGame}>
             RETRY

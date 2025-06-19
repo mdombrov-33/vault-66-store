@@ -1,33 +1,71 @@
-type LockpickSkill = {
+//* PROPS
+export interface LockpickInfoPanelProps extends Pins, Skill, Resettable, Level {
+  isCracked: boolean
+}
+
+export interface LockpickLockProps extends Engagement, GreenZone, PinRotation, ScrewdriverRotation {
+  svgRef: React.RefObject<SVGSVGElement | null>
+  handleMouseMove: (e: React.MouseEvent<SVGSVGElement>) => void
+}
+
+export type LockpickForcePanelProps = Force
+
+export type LockpickGameProps = Skill
+
+//* BASE TYPES
+
+//* Current lockpick skill numeric value of the user
+type Skill = {
   lockpickSkill: number
 }
 
-export type LockLevel = {
+//* Union of allowed lock levels by difficulty
+export type Level = {
   lockLevel: 'Easy' | 'Medium' | 'Hard'
 }
 
-export type LockpickGameProps = LockpickSkill
-
-type LockpickGameState = {
-  lockLevel: LockLevel['lockLevel']
-  resetGame: () => void
-}
-
-type PinsCount = {
+//* Pins state and logic
+type Pins = {
   bobbyPins: number
   brokenPins: number
   remainingPins: number
 }
 
-export interface LockpickInfoPanelProps extends LockpickSkill, PinsCount, LockpickGameState {}
+//* Pins update logic, if needed in the future
+// type PinsUpdate = {
+//   setBrokenPins: Setter<number>
+// }
 
-export interface LockpickLockProps
-  extends LockpickSkill,
-    Omit<PinsCount, 'remainingPins'>,
-    Pick<LockLevel, 'lockLevel'> {
-  setBrokenPins: React.Dispatch<React.SetStateAction<number>>
+//* Green zone for the pin
+type GreenZone = {
+  greenZoneStart: number
+  greenZoneEnd: number
 }
 
-export interface LockpickForcePanelProps {
+//* Rotation of the pin
+type PinRotation = {
+  pinAngle: number
+}
+
+type Setter<T> = React.Dispatch<React.SetStateAction<T>>
+
+//* Track engagement state of the lock(are we currently turning it or not)
+type Engagement = {
+  isEngaged: boolean
+  setIsEngaged: Setter<boolean>
+}
+
+//* Track screwdriver rotation angle
+type ScrewdriverRotation = {
+  screwdriverAngle: number
+}
+
+//* Reset game logic
+type Resettable = {
+  resetGame: () => void
+}
+
+//* Force chance based on lockpick skill and lock level
+type Force = {
   forceChance: number
 }

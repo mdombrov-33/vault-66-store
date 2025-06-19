@@ -1,27 +1,18 @@
 'use client'
 
 import { LockpickLockProps } from '@/types/profile'
-import { useLockpickLogic } from './hooks/useLockpickLogic'
 import { describeArc } from '@/utils/geometry'
 
 function LockpickLock({
-  lockpickSkill,
-  lockLevel,
-  setBrokenPins,
-  bobbyPins,
-  brokenPins,
+  svgRef,
+  isEngaged,
+  setIsEngaged,
+  greenZoneStart,
+  greenZoneEnd,
+  screwdriverAngle,
+  pinAngle,
+  handleMouseMove,
 }: LockpickLockProps) {
-  const {
-    pinAngle,
-    svgRef,
-    greenZoneStart,
-    greenZoneEnd,
-    isEngaged,
-    setIsEngaged,
-    screwdriverAngle,
-    handleMouseMove,
-  } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins)
-
   return (
     <>
       <div className="flex items-center justify-center max-h-[30dvh]">

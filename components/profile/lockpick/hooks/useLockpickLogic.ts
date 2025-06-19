@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { LockLevel } from '@/types/profile'
+import { Level } from '@/types/profile'
 
 export function useLockpickLogic(
   lockpickSkill: number,
-  lockLevel: LockLevel['lockLevel'],
+  lockLevel: Level['lockLevel'],
   setBrokenPins: React.Dispatch<React.SetStateAction<number>>,
   brokenPins: number,
   bobbyPins: number
@@ -21,7 +21,7 @@ export function useLockpickLogic(
 
   //* Randomly generate the start of the green zone (the area where the pin can be turned)
   const [greenZoneStart] = useState(() => {
-    return Math.floor(Math.random() * 120 - 60) //* Random start between -60° and 60°
+    return Math.floor(Math.random() * 90 - 45) //* Random start between -45° and 45°
   })
 
   const [isEngaged, setIsEngaged] = useState(false) //* Track if the lock is engaged
@@ -56,7 +56,7 @@ export function useLockpickLogic(
   }, [isEngaged, isCracked, brokenPins, bobbyPins]) //* Only add listener when engaged
 
   //* Map lock levels to difficulty modifiers
-  const difficultyModifier: Record<LockLevel['lockLevel'], number> = {
+  const difficultyModifier: Record<Level['lockLevel'], number> = {
     Easy: 1,
     Medium: 0.7,
     Hard: 0.4,
@@ -98,10 +98,19 @@ export function useLockpickLogic(
       if (isCracked) return //* Stop all motion if lock is cracked
 
       if (isTurningLock) {
-        const maxAngle = isSuccess ? 90 : 20
+        const distance = getDistanceFromGreenZone(pinAngle)
+        const maxDistance = 90
+
+        //* Create a gradient: the closer to the green zone, the higher the allowed rotation
+        const strength = Math.max(0, 1 - distance / maxDistance)
+        const adjustedStrength = strength * strength //* quadratic falloff
+
+        const maxAngle = 5 + adjustedStrength * 85 //* from 5° to 90°
+
         setScrewdriverAngle((prev) => {
           const next = Math.min(prev + 1.5, maxAngle)
-          if (next === 90 && isSuccess && !isCracked) {
+          // console.log('screwdriverAngle update:', { prev, next, maxAngle, isSuccess, isCracked })
+          if (next >= 90 && isSuccess && !isCracked) {
             setIsCracked(true)
           }
           return next
@@ -212,6 +221,7 @@ export function useLockpickLogic(
     greenZoneStart,
     greenZoneEnd,
     isEngaged,
+    isCracked,
     setIsEngaged,
     screwdriverAngle,
     isTurningLock,
