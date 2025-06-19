@@ -161,7 +161,9 @@ export function useLockpickLogic(
       if (isGameOver) {
         setIsTurningLock(false)
         stopLoopWiggleSound()
+        pressureRef.current = 0
         hasLoopStartedRef.current = false
+        setPressure(0)
         return
       }
 
@@ -250,12 +252,15 @@ export function useLockpickLogic(
 
   //* Shake pin based on pressure
   useEffect(() => {
+    if (isGameOver) {
+      setPressure(0)
+      return
+    }
     const interval = setInterval(() => {
       setPressure(pressureRef.current)
     }, 50)
-
     return () => clearInterval(interval)
-  }, [])
+  }, [isGameOver])
 
   //* ==============================================
   //* MOUSE MOVEMENT: Rotate pin with cursor

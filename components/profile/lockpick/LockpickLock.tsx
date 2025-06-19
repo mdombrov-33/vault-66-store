@@ -3,7 +3,7 @@
 // import { describeArc } from '@/utils/geometry' //* Uncomment to see actual green zone arc
 
 import { LockpickLockProps } from '@/types/profile'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 //* Pass  greenZoneStart and  greenZoneEnd as props to see actual green zone arc
 function LockpickLock({
@@ -122,7 +122,7 @@ function LockpickLock({
                     }}
                   >
                     <path
-                      fill="#c28e3b"
+                      fill="#171717"
                       d="M75.72,497.487l-61.208-61.208c-8.745-8.745-8.351-23.039,0.862-31.288L165.34,270.685l75.973,75.973 L107.01,496.625C98.759,505.838,84.465,506.231,75.72,497.487z"
                     />
                     <path
