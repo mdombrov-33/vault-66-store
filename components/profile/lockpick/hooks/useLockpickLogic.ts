@@ -6,7 +6,8 @@ export function useLockpickLogic(
   lockLevel: Level['lockLevel'],
   setBrokenPins: React.Dispatch<React.SetStateAction<number>>,
   brokenPins: number,
-  bobbyPins: number
+  bobbyPins: number,
+  resetCount: number
 ) {
   //* State to hold the current angle of the pin in degrees.
   //* Starts at 0° which means the pin is pointing straight up.
@@ -28,6 +29,15 @@ export function useLockpickLogic(
   const [screwdriverAngle, setScrewdriverAngle] = useState(0) //* Track screwdriver angle
   const [isTurningLock, setIsTurningLock] = useState(false) //* Track if the lock is being turned
   const [isCracked, setIsCracked] = useState(false) //* Track if the lock is cracked
+
+  useEffect(() => {
+    setPinAngle(0)
+    setScrewdriverAngle(0)
+    setIsCracked(false)
+    setIsTurningLock(false)
+    setIsEngaged(false)
+    pressureRef.current = 0
+  }, [resetCount])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

@@ -14,6 +14,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
   }
 
   const [brokenPins, setBrokenPins] = useState(0) //* Track number of broken pins
+  const [resetCount, setResetCount] = useState(0) //* Track number of resets
 
   //* Map lock level to fixed bobby pins count
   const attemptsByLockLevel: Record<Level['lockLevel'], number> = {
@@ -35,6 +36,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
 
   const resetGame = () => {
     setLockLevel(getRandomLockLevel())
+    setResetCount((prev) => prev + 1)
     setBrokenPins(0)
   }
 
@@ -48,7 +50,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     screwdriverAngle,
     handleMouseMove,
     isCracked,
-  } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins)
+  } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins, resetCount)
 
   return (
     <section className="grid grid-cols-3 gap-4 w-full h-dvh max-h-[60dvh] pb-22 lg:pb-0 ">
