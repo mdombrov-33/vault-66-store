@@ -159,6 +159,7 @@ export function useLockpickLogic(
 
   useEffect(() => {
     let animationFrame: number
+    const maxAttempts = lockLevel === 'Hard' ? 6 : lockLevel === 'Medium' ? 8 : 10
 
     const update = () => {
       if (isCracked) return
@@ -205,6 +206,7 @@ export function useLockpickLogic(
 
           setTimeout(() => {
             setBrokenPins((prev) => prev + 1)
+            setAttemptCount((prev) => Math.min(prev + 1, maxAttempts))
             setPinAngle(0)
             setScrewdriverAngle(0)
             pressureRef.current = 0
@@ -252,6 +254,7 @@ export function useLockpickLogic(
     playUnlockSound,
     isGameOver,
     attemptCount,
+    lockLevel,
   ])
 
   //* ==============================================
