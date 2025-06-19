@@ -6,6 +6,8 @@ import LockpickForcePanel from './LockpickForcePanel'
 import LockpickLock from './LockpickLock'
 import { useState } from 'react'
 import { useLockpickLogic } from './hooks/useLockpickLogic'
+import { toast } from 'sonner'
+import { useLockpickSounds } from './hooks/useLockpickSounds'
 
 function LockpickGame({ lockpickSkill }: LockpickGameProps) {
   //* === Helper Functions ===
@@ -30,6 +32,8 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
   const bobbyPins = attemptsByLockLevel[lockLevel] //* Allowed attempts based on difficulty
   const remainingPins = bobbyPins - brokenPins //* Remaining attempts
 
+  const { playUnlockSound, playPickBreakSound } = useLockpickSounds()
+
   //* Numeric value representing lock difficulty for force chance calculation
   const numericLockLevel = lockLevel === 'Easy' ? 1 : lockLevel === 'Medium' ? 2 : 3
 
@@ -44,6 +48,36 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     setBrokenPins(0)
   }
 
+  //* Handle brute-force attempt to open the lock
+  const handleForceAttempt = () => {
+    if (isCracked || isGameOver) return
+
+    const roll = Math.random() * 100
+    if (roll <= forceChance) {
+      setIsCracked(true)
+      playUnlockSound()
+      toast.success('You brute-forced the lock successfully!', {
+        description: <span className="text-muted-foreground">The lock is now open.</span>,
+        action: {
+          label: 'Nice!',
+          onClick: () => {},
+        },
+        icon: <img src="/toaster/happy-condition.png" alt="Success" />,
+      })
+    } else {
+      setBrokenPins((prev) => prev + 1)
+      playPickBreakSound()
+      toast.error('Attempt failed – pin broken.', {
+        description: <span className="text-muted-foreground">Pins left: {remainingPins - 1}</span>,
+        action: {
+          label: 'Bummer',
+          onClick: () => {},
+        },
+        icon: <img src="/toaster/sad-condition.png" alt="Failed" />,
+      })
+    }
+  }
+
   //* === Custom Hook for Lockpick Logic ===
   //* Extract greenZoneStart and greenZoneEnd to see the actual green zone arc
 
@@ -56,8 +90,10 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     handleMouseMove,
     pressure,
     isCracked,
+    setIsCracked,
     isBreaking,
     pinId,
+    isGameOver,
   } = useLockpickLogic(lockpickSkill, lockLevel, setBrokenPins, brokenPins, bobbyPins, resetCount)
 
   //* === Render ===
@@ -89,7 +125,12 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
       />
 
       {/* Force panel showing chance to force lock open */}
-      <LockpickForcePanel forceChance={forceChance} />
+      <LockpickForcePanel
+        isCracked={isCracked}
+        remainingPins={remainingPins}
+        onForceAttempt={handleForceAttempt}
+        forceChance={forceChance}
+      />
     </section>
   )
 }

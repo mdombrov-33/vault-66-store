@@ -12,7 +12,10 @@ export interface LockpickLockProps extends Engagement, PinRotation, ScrewdriverR
   pinId: number
 }
 
-export type LockpickForcePanelProps = Force
+export type LockpickForcePanelProps = Force &
+  Pick<Pins, 'remainingPins'> & {
+    isCracked: boolean
+  }
 export type LockpickGameProps = Skill
 
 //* BASE TYPES
@@ -68,7 +71,8 @@ type Resettable = {
   resetGame: () => void
 }
 
-//* Force chance based on lockpick skill and lock level
+//* Force logic based on lockpick skill and lock level
 type Force = {
   forceChance: number
+  onForceAttempt: () => void
 }

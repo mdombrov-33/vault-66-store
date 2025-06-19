@@ -1,7 +1,13 @@
 import { Button } from '@/components/ui/button'
 import { LockpickForcePanelProps } from '@/types/profile'
 
-function LockpickForcePanel({ forceChance }: LockpickForcePanelProps) {
+function LockpickForcePanel({
+  forceChance,
+  onForceAttempt,
+  remainingPins,
+  isCracked,
+}: LockpickForcePanelProps) {
+  const isDisabled = remainingPins === 0 || isCracked
   return (
     <div className="flex flex-col items-center justify-end">
       <div className="p-4 flex flex-col gap-2 w-full">
@@ -12,7 +18,12 @@ function LockpickForcePanel({ forceChance }: LockpickForcePanelProps) {
         </div>
 
         {/* Force Button */}
-        <Button variant="default" className="w-full mt-4 lg:text-3xl text-xl">
+        <Button
+          variant="default"
+          onClick={onForceAttempt}
+          className="w-full mt-4 lg:text-3xl text-xl"
+          disabled={isDisabled}
+        >
           Force Lock
         </Button>
       </div>

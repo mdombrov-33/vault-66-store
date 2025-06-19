@@ -337,5 +337,6 @@ export function useLockpickLogic(
     pressure,
     isBreaking,
     pinId,
+    isGameOver,
   }
 }
