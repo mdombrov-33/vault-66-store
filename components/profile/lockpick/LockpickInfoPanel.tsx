@@ -19,7 +19,6 @@ function LockpickInfoPanel({
         </div>
       )}
 
-      {/* Push this div to bottom using mt-auto */}
       <div className="border-t-2 border-l-2 border-muted-foreground p-4 flex flex-col gap-2 w-full mt-auto">
         {/* Lockpick Skill */}
         <div className="flex justify-between w-full text-xl lg:text-3xl text-muted-foreground">

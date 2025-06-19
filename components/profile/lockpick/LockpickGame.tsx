@@ -27,7 +27,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
   const bobbyPins = attemptsByLockLevel[lockLevel]
   const remainingPins = bobbyPins - brokenPins
 
-  //* numeric lock level for force chance or other logic
+  //* numeric lock level for force chance
   const numericLockLevel = lockLevel === 'Easy' ? 1 : lockLevel === 'Medium' ? 2 : 3
 
   const forceChance = Math.max(0, lockpickSkill - numericLockLevel * 10)
@@ -47,7 +47,6 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
         resetGame={resetGame}
         remainingPins={remainingPins}
       />
-      {/* Pass skill and resetGame to lock for green zone and reset control */}
       <LockpickLock
         bobbyPins={bobbyPins}
         brokenPins={brokenPins}
