@@ -258,7 +258,7 @@ Tense clicks and clacks for the lockpick minigame:
 ### 🎶 Global Sounds
 
 Typing, UI interactions, notifications, and other global sound effects:  
-[Global Sound Effects Collection](https://github.com/jabbalaci/keysound)
+[Global Sound Effects Repo](https://github.com/jabbalaci/keysound)
 
 ### 📻 Fallout Radio Stream
 
