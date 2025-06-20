@@ -16,12 +16,12 @@ async function ProductsContainer({ layout, search }: { layout: string; search: s
       {/* HEADER */}
       <section>
         <div className="flex justify-between items-center">
-          <h4 className="font-medium text-2xl">
+          <h4 className="font-medium text-2xl uppercase">
             {totalProducts === 0
-              ? '0 items found'
+              ? 'no supplies located'
               : totalProducts === 1
-                ? '1 item found'
-                : `${totalProducts} items found`}
+                ? 'inventory count: [1 item]'
+                : `inventory count: [${totalProducts} items]`}
           </h4>
           <div className="flex gap-x-4">
             <Button variant={layout === 'grid' ? 'default' : 'ghost'} size="icon" asChild>
