@@ -8,7 +8,7 @@ function SpecialPageResults({ specialRecord }: SpecialPageResultsProps) {
       {/* Left Column: SPECIAL Results */}
       <div className="bg-primary/10 rounded-lg shadow-md flex flex-col items-center justify-center ">
         <h1 className="text-3xl font-bold uppercase mb-4 tracking-wider py-6 px-4">
-          S.P.E.C.I.A.L. Results
+          S.P.E.C.I.A.L. ANALYSIS
         </h1>
         <SpecialResultStats specialRecord={specialRecord} />
       </div>

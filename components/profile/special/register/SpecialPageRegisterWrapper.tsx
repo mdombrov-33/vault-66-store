@@ -46,6 +46,7 @@ function SpecialPageWrapper() {
 
             <div className="flex justify-center">
               <SubmitButton
+                loadingText="Submitting..."
                 text="Submit S.P.E.C.I.A.L."
                 className="text-xl sm:text-2xl uppercase w-64 max-w-md"
                 onClick={() => playClick()}
