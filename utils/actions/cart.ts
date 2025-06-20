@@ -216,7 +216,7 @@ export const updateCartItemAction = async ({
 
     revalidatePath('/supply-bin')
 
-    return { message: 'Amount is updated', srcUrl: '/toaster/happy-condition.png' }
+    return { message: 'Inventory update confirmed.', srcUrl: '/toaster/happy-condition.png' }
   } catch (error) {
     return renderError(error)
   }

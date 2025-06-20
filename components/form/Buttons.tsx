@@ -16,7 +16,7 @@ export function SubmitButton({
   text = 'submit',
   size = 'lg',
   disabled = false,
-  loadingText = 'Please wait...',
+  loadingText = 'Purging item from bin...',
   onClick = () => {},
 }: SubmitButtonProps) {
   const { pending } = useFormStatus()

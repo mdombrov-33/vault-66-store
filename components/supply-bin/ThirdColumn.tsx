@@ -17,7 +17,7 @@ function ThirdColumn({ quantity, cartItemId }: { quantity: number; cartItemId: s
   const handleAmountChange = async (value: number) => {
     setIsLoading(true)
 
-    const toastId = toast.loading('Changing amount...')
+    const toastId = toast.loading('Processing inventory update...')
 
     const result = await updateCartItemAction({
       amount: value,
