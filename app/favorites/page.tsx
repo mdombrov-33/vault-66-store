@@ -6,11 +6,11 @@ import { fetchUserFavorites } from '@/utils/actions/favorite'
 //! Probably something to do with component unmounting or with using client components in a server component.
 async function FavoritesPage() {
   const favorites = await fetchUserFavorites()
-  if (!favorites || favorites.length === 0) return <SectionTitle text="No favorites synced" />
+  if (!favorites || favorites.length === 0) return <SectionTitle text=":: NO MARKED SUPPLIES ::" />
 
   return (
     <div>
-      <SectionTitle text="your Favorites" />
+      <SectionTitle text="MARKED SUPPLIES" />
       <ProductsGrid products={favorites.map((favorite) => favorite.product)} />
     </div>
   )
