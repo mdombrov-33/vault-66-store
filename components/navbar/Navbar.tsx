@@ -11,7 +11,7 @@ import { Suspense } from 'react'
 function Navbar() {
   return (
     <nav className="border-b">
-      <Container className="flex flex-col sm:flex-row sm:justify-between sm:items-center flex-wrap py-8 gap-4">
+      <Container className="flex flex-col items-center text-center sm:flex-row sm:justify-between sm:items-center sm:text-left flex-wrap py-8 gap-y-6 sm:gap-y-6 gap-x-4">
         <Logo />
         {/* Use suspense here because of searchParams error.
          If we use searchParams with static pages we won't be able to deploy project at all. 
