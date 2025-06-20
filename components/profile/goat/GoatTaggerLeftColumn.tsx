@@ -38,7 +38,7 @@ function GoatTaggerLeftColumn({
   }
 
   return (
-    <ul role="list" className="space-y-1">
+    <ul role="list">
       {Object.entries(finalSkills).map(([key, value]) => (
         <li
           tabIndex={0}
