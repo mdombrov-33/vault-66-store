@@ -38,19 +38,26 @@ function GoatTaggerLeftColumn({
   }
 
   return (
-    <ul>
+    <ul role="list" className="space-y-1">
       {Object.entries(finalSkills).map(([key, value]) => (
         <li
+          tabIndex={0}
           onClick={() => handleClick(key as keyof typeof finalSkills)}
-          onMouseEnter={() => {
-            handleHover(key as keyof typeof finalSkills)
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              handleClick(key as keyof typeof finalSkills)
+            }
           }}
-          onMouseLeave={() => {
-            setHoveredSkill(null)
-          }}
+          onMouseEnter={() => handleHover(key as keyof typeof finalSkills)}
+          onMouseLeave={() => setHoveredSkill(null)}
           key={key}
           className={cn(
-            'flex justify-between hover:bg-primary hover:text-black px-2',
+            'flex justify-between px-2',
+            'hover:bg-primary hover:text-black',
+            'focus:outline-none',
+            'focus-visible:outline-none',
+            'focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2',
             selectedSkills[key as SkillKeys] ? 'bg-primary text-black' : undefined
           )}
         >

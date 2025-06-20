@@ -258,6 +258,11 @@ body.crt-mode::after {
   color: rgb(55, 48, 25); /* warm yellow text color */
 }
 
+li:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
