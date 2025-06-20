@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { useSoundPlayer } from '@/hooks/useSoundPlayer'
+import Image from 'next/image'
 import Link from 'next/link'
 
 function AboutPage() {
@@ -33,9 +34,11 @@ function AboutPage() {
         <h2 className="text-4xl font-bold uppercase mb-8">Meet the Vault Dwellers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="p-4 bg-primary/20 rounded-lg text-center">
-            <img
+            <Image
               src="https://i.pravatar.cc/100?img=4"
               alt="Commander Lee"
+              width={100}
+              height={100}
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Commander Lee</h3>
@@ -45,21 +48,25 @@ function AboutPage() {
             </p>
           </div>
           <div className="p-4 bg-primary/20 rounded-lg text-center">
-            <img
+            <Image
               src="https://i.pravatar.cc/100?img=7"
               alt="Wanderer Kate"
+              width={100}
+              height={100}
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Wanderer Kate</h3>
             <p className="text-lg italic font-[roboto]">
               Scavenger, scout, and part-time negotiator. Kate ensures our vault stays stocked with
-              pre-War goods and keeps the caps flowing — when she's not dodging Deathclaws.
+              pre-War goods and keeps the caps flowing — when she&#39;s not dodging Deathclaws.
             </p>
           </div>
           <div className="p-4 bg-primary/20 rounded-lg text-center">
-            <img
+            <Image
               src="https://i.pravatar.cc/100?img=15"
               alt="Ironclad"
+              width={100}
+              height={100}
               className="mx-auto rounded-full mb-2"
             />
             <h3 className="font-semibold text-3xl">Ironclad</h3>

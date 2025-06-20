@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -81,7 +82,12 @@ export default function ChatInput({ onSend }: ChatInputProps) {
             size="icon"
             aria-label="Open emoji picker"
           >
-            <img src="/icons/vaultboy-love.png" alt="Vault Boy Love Icon" />
+            <Image
+              src="/icons/vaultboy-love.png"
+              alt="Vault Boy Love Icon"
+              width={32}
+              height={32}
+            />
           </Button>
         </PopoverTrigger>
 
@@ -97,7 +103,7 @@ export default function ChatInput({ onSend }: ChatInputProps) {
               className="hover:scale-110 transition-transform"
               title={shortcode}
             >
-              <img src={src} alt={shortcode} className="w-8 h-8" />
+              <Image src={src} alt={shortcode} width={32} height={32} className="w-8 h-8" />
             </button>
           ))}
         </PopoverContent>

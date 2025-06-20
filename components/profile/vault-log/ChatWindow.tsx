@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { emojiData } from '@/data/profile/vault-log/emoji-data'
 import { ChatWindowProps } from '@/types/profile'
 
@@ -15,11 +16,13 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
     return parts.map((part, i) => {
       if (part.match(regex) && shortcodeToSrc[part]) {
         return (
-          <img
+          <Image
             key={i}
             src={shortcodeToSrc[part]}
             alt={part}
-            className="inline-block w-8 h-8 align-text-bottom mx-[2px] "
+            width={40}
+            height={40}
+            className="inline-block mt-[2px] mx-[2px]"
           />
         )
       }
@@ -38,10 +41,12 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
             {new Date(msg.sentAt).toLocaleTimeString()}
           </span>
           {msg.senderAvatar && (
-            <img
+            <Image
               src={msg.senderAvatar}
               alt={`${msg.senderName}'s avatar`}
-              className="inline-block w-6 h-6 rounded-full mr-2"
+              width={24}
+              height={24}
+              className="inline-block rounded-full mr-2"
             />
           )}
           <span className="font-semibold text-xl">{msg.senderName}:</span>{' '}

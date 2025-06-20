@@ -39,7 +39,7 @@ export function useAutoScroll(
         hasRestoredRef.current = true // mark that we’ve restored scroll already
       })
     }
-  }, [isInitialLoad, messages.length]) // re-run if message count changes while loading
+  }, [isInitialLoad, messages.length, containerRef]) // re-run if message count changes while loading
 
   /**
    *   2. Auto-scroll to bottom when a new message is added
@@ -55,7 +55,7 @@ export function useAutoScroll(
       top: el.scrollHeight,
       behavior: 'smooth',
     })
-  }, [messages, isTyping, isInitialLoad])
+  }, [messages, isTyping, isInitialLoad, containerRef])
 
   /**
    *   3. Smooth scrolling while typing animation plays
@@ -79,7 +79,7 @@ export function useAutoScroll(
 
     // Clean up interval on unmount or when dependencies change
     return () => clearInterval(interval)
-  }, [isTyping, isInitialLoad])
+  }, [isTyping, isInitialLoad, containerRef])
 
   /**
    *   4. Save scroll position on user scroll

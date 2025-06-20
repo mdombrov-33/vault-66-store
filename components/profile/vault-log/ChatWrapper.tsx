@@ -26,7 +26,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
     return () => {
       socket.off('chat message', handleIncoming)
     }
-  }, [])
+  }, [socket])
 
   const handleSend = (text: string) => {
     if (!text.trim()) return
