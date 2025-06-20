@@ -9,11 +9,11 @@ import { IconButton } from '@/components/form/Buttons'
 async function ReviewsPage() {
   const reviews = await fetchProductReviewsByUser()
 
-  if (reviews.length === 0) return <SectionTitle text="Radio silence on reviews" />
+  if (reviews.length === 0) return <SectionTitle text=":: NO FIELD REPORTS FOUND ::" />
 
   return (
     <>
-      <SectionTitle text="Your Reviews" />
+      <SectionTitle text="FIELD REPORTS" />
       <section className="grid md:grid-cols-2 gap-8 mt-4">
         {reviews.map((review) => {
           const { comment, rating } = review
