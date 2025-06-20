@@ -24,7 +24,7 @@ function SubmitReview({ productId }: { productId: string }) {
         className="capitalize mt-4 text-2xl"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
-        leave review
+        submit field report
       </Button>
       {isReviewFormVisible && (
         <Card className="p-8 mt-8">
@@ -33,7 +33,7 @@ function SubmitReview({ productId }: { productId: string }) {
             <input type="hidden" name="authorName" value={user?.firstName || 'user'} />
             <input type="hidden" name="authorImageUrl" value={user?.imageUrl} />
             <RatingInput name="rating" />
-            <TextAreaInput name="comment" labelText="feedback" />
+            <TextAreaInput name="comment" labelText="field notes" />
             <SubmitButton
               className="mt-4 text-3xl"
               text="Submit Field Report"

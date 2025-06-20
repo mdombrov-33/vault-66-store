@@ -25,7 +25,7 @@ function AddToCart({ productId }: { productId: string }) {
           <input type="hidden" name="amount" value={amount} />
           <SubmitButton
             text="add to supply bin"
-            loadingText="adding to the supply bin..."
+            loadingText="committing to supply bin..."
             className="mt-8 text-3xl"
             onClick={playClick}
           />

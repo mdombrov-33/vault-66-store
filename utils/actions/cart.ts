@@ -23,7 +23,10 @@ export const fetchCartItems = async () => {
 }
 
 //* Adds a product to the user's cart.
-export const addToCartAction = async (prevState: any, formData: FormData) => {
+export const addToCartAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string; srcUrl?: string }> => {
   const user = await getAuthUser()
 
   try {
@@ -36,7 +39,10 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
 
     revalidatePath(`/items/${productId}`)
 
-    return { message: `${product.name} is added to the bin` }
+    return {
+      message: `[${product.name}] secured in supply bin.`,
+      srcUrl: '/toaster/happy-condition.png',
+    }
   } catch (error) {
     return renderError(error)
   }
