@@ -6,25 +6,28 @@ import Image from 'next/image'
 function GoatIntro({ handleStart }: GoatIntroProps) {
   const { playClick } = useSoundPlayer()
   return (
-    <section
-      className="flex flex-col items-center justify-center text-center gap-6 pb-20 md:pb-12
-"
-    >
-      <Image
-        src="/images/goat/welcome.png"
-        alt="Vault 66 Welcome"
-        width={400}
-        height={400}
-        className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-lg rounded-lg border border-muted"
-        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
-      />
-      <h2 className="md:text-6xl mt-6 lg:mt-12 text-5xl">Welcome to Vault 66</h2>
-      <p className="md:text-3xl text-lg font-[roboto-mono] text-muted-foreground max-w-2xl">
-        To take part in Vault life, you must pass the Generalized Occupational Aptitude Test
-        (G.O.A.T).
-      </p>
+    <section className="flex flex-col items-center justify-between max-h-[70dvh] py-12 px-6 max-w-xl mx-auto text-center gap-8">
+      <div className="relative w-full max-w-md aspect-square rounded-lg shadow-lg overflow-hidden">
+        <Image
+          src="/images/goat/welcome.png"
+          alt="Vault 66 Welcome"
+          fill
+          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-5xl md:text-6xl font-bold leading-tight">Welcome to Vault 66</h2>
+        <p className="text-lg md:text-2xl font-[roboto-mono] text-muted-foreground leading-relaxed max-w-lg mx-auto">
+          To take part in Vault life, you must pass the Generalized Occupational Aptitude Test
+          (G.O.A.T).
+        </p>
+      </div>
+
       <Button
-        className="text-2xl px-8 py-4"
+        className="text-2xl px-10 py-4"
         onClick={() => {
           playClick()
           handleStart()
