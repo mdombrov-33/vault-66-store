@@ -15,12 +15,12 @@ import { formatDate } from '@/utils/format'
 async function OrdersPage() {
   const orders = await fetchUserOrders()
   if (!orders || orders.length === 0) {
-    return <SectionTitle text="Your supply history is empty" />
+    return <SectionTitle text=":: TRANSACTION LOG EMPTY ::" />
   }
 
   return (
     <>
-      <SectionTitle text="your supply history" />
+      <SectionTitle text="TRANSACTION LOG" />
       <Table>
         <TableCaption className="text-md md:text-xl">
           Logged Transactions: {orders.length}

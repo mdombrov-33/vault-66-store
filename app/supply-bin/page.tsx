@@ -17,7 +17,7 @@ async function CartPage() {
   const { currentCart, cartItems } = await updateCart(previousCart)
 
   if (currentCart.numItemsInCart === 0) {
-    return <SectionTitle text="Your supply bin is empty" />
+    return <SectionTitle text=":: SUPPLY BIN EMPTY ::" />
   }
 
   return (

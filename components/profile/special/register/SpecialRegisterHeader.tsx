@@ -41,7 +41,7 @@ function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) 
         sequence={[
           () => setAnimationStage('second'), //* second animation start
           0, //* wait for first animation to finish visually
-          'Out here, everyone plays a part. Set your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and find your place in Vault 66’s trading network',
+          "Everyone in the wasteland plays a part. Allocate your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and secure your role in Vault 66's trade network.",
           () => setAnimationStage('none'), //* second animation done
         ]}
         wrapper="p"
@@ -55,7 +55,7 @@ function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) 
       </p>
 
       <p className="text-2xl uppercase text-muted-foreground" id="points-available-label">
-        points available
+        points remaining
       </p>
     </div>
   )
