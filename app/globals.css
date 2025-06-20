@@ -193,7 +193,7 @@ body.crt-mode::before {
   top: -30%; /* Start above the screen (start position of animation) */
   left: 0; /* Stretch from the left edge */
   width: 100%; /* Full screen width */
-  height: 80px; /* 🔧 Thickness of the sweep line — increase for a fatter line, decrease for thinner */
+  height: 20px; /* 🔧 Thickness of the sweep line — increase for a fatter line, decrease for thinner */
   pointer-events: none; /* Allows clicking through it */
   background: linear-gradient(
     to bottom,
