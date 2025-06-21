@@ -32,7 +32,7 @@ function NavSearch() {
     <Input
       type="search"
       placeholder=":: SEARCHING DATABASE █"
-      className="max-w-sm dark:bg-muted md:text-xl font-[vt323]"
+      className="max-w-xs dark:bg-muted md:text-xl font-[vt323]"
       value={search}
       onChange={(e) => {
         setSearch(e.target.value)
