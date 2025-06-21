@@ -28,7 +28,7 @@ export const toggleFavoriteAction = async (prevState: {
   productId: string
   favoriteId: string | null
   pathName: string
-}) => {
+}): Promise<{ message: string; srcUrl?: string }> => {
   const user = await getAuthUser()
   const { productId, favoriteId, pathName } = prevState
 
@@ -61,8 +61,9 @@ export const toggleFavoriteAction = async (prevState: {
 
     return {
       message: favoriteId
-        ? `${product?.name} is removed from favorites`
-        : `${product?.name} is added to favorites`,
+        ? `[${product?.name}] removed from favorites`
+        : `[${product?.name}] added to favorites`,
+      srcUrl: '/toaster/happy-condition.png',
     }
   } catch (error) {
     return renderError(error)
