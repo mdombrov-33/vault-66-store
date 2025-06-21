@@ -7,7 +7,7 @@ function GoatIntro({ handleStart }: GoatIntroProps) {
   const { playClick } = useSoundPlayer()
   return (
     <section className="flex flex-col items-center justify-between max-h-[70dvh] py-12 px-6 max-w-xl mx-auto text-center gap-8">
-      <div className="relative w-full max-w-md aspect-square rounded-lg shadow-lg overflow-hidden">
+      <div className="relative w-full max-w-md aspect-square overflow-hidden">
         <Image
           src="/images/goat/welcome.png"
           alt="Vault 66 Welcome"
