@@ -68,7 +68,7 @@ function ChatWrapper({ messages: initialMessages, displayedName, senderAvatar }:
       role="main"
       aria-label="Live chat window"
     >
-      <header className="pb-3 border-b border-foreground font-[roboto-mono] text-3xl">
+      <header className="pb-3 border-b border-foreground font-[roboto-mono] text-2xl md:text-3xl">
         Vault 66 Comms Terminal
       </header>
 

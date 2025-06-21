@@ -49,7 +49,7 @@ export default function ChatWindow({ messages, bottomRef }: ChatWindowProps) {
               className="inline-block rounded-full mr-2"
             />
           )}
-          <span className="font-semibold text-xl">{msg.senderName}:</span>{' '}
+          <span className="font-semibold text-md md:text-xl">{msg.senderName}:</span>{' '}
           {renderContentWithEmojis(msg.content)}
         </p>
       ))}
