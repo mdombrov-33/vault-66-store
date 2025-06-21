@@ -47,7 +47,7 @@ function ChatLauncher() {
           className="fixed sm:bottom-8 bottom-8 right-6 z-50 p-3 rounded-full sm:p-4"
         >
           <TerminalIcon className="w-6 h-6" />
-          <span className="hidden xl:inline text-3xl">Need Help?</span>
+          <span className="hidden xl:inline text-3xl">Terminal</span>
         </Button>
       </DialogTrigger>
 
