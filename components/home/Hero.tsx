@@ -30,7 +30,7 @@ function Hero() {
             5000,
           ]}
           wrapper="p"
-          className="mt-8 min-h-16 max-w-xl md:text-2xl text-xl leading-8 text-muted-foreground uppercase"
+          className="mt-8 min-h-16 max-w-xl md:text-2xl text-lg leading-8 text-muted-foreground uppercase"
           repeat={Infinity}
           speed={90}
           cursor={true}
