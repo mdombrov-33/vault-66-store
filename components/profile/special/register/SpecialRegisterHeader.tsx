@@ -5,7 +5,10 @@ import { useSoundPlayer } from '@/hooks/useSoundPlayer'
 
 function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) {
   const { playTypingLoop, stopTypingLoop } = useSoundPlayer()
-  const [animationStage, setAnimationStage] = useState<'none' | 'first' | 'second'>('none')
+  const [animationStage, setAnimationStage] = useState<'none' | 'first' | 'second' | 'done'>('none')
+
+  const finalText =
+    "Everyone in the wasteland plays a part. Allocate your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and secure your role in Vault 66's trade network."
 
   useEffect(() => {
     if (animationStage === 'first' || animationStage === 'second') {
@@ -13,9 +16,8 @@ function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) 
     } else {
       stopTypingLoop()
     }
-    return () => {
-      stopTypingLoop()
-    }
+
+    return () => stopTypingLoop()
   }, [animationStage, playTypingLoop, stopTypingLoop])
 
   return (
@@ -25,36 +27,43 @@ function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) 
       aria-labelledby="remaining-points-label points-available-label"
     >
       <TypeAnimation
+        key="welcome-animation"
         sequence={[
-          () => setAnimationStage('first'), //* animation start callback
+          () => setAnimationStage('first'),
           'welcome to your S.P.E.C.I.A.L. profile',
-          () => setAnimationStage('second'), //* first animation done
+          () => setAnimationStage('second'),
         ]}
         wrapper="h1"
-        speed={85}
+        speed={80}
         repeat={0}
         className="md:text-6xl text-3xl -mt-6 capitalize"
         cursor={false}
       />
 
-      <TypeAnimation
-        sequence={[
-          () => setAnimationStage('second'), //* second animation start
-          0, //* wait for first animation to finish visually
-          "Everyone in the wasteland plays a part. Allocate your S.P.E.C.I.A.L. stats to unlock the G.O.A.T. Test and secure your role in Vault 66's trade network.",
-          () => setAnimationStage('none'), //* second animation done
-        ]}
-        wrapper="p"
-        speed={80}
-        repeat={0}
-        className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2 font-[roboto-mono]"
-      />
+      {animationStage === 'second' && (
+        <TypeAnimation
+          key="desc-animation"
+          sequence={[() => setAnimationStage('second'), finalText, () => setAnimationStage('done')]}
+          wrapper="p"
+          speed={80}
+          repeat={0}
+          className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2 font-[roboto-mono]"
+          cursor={false}
+        />
+      )}
+
+      {/* Static replacement after typing is done */}
+      {animationStage === 'done' && (
+        <p className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2 font-[roboto-mono]">
+          {finalText}
+        </p>
+      )}
 
       <p className="text-8xl" id="remaining-points-label">
         {remainingPoints}
       </p>
 
-      <p className="text-2xl uppercase text-muted-foreground" id="points-available-label">
+      <p className="text-2xl uppercase text-muted-foreground " id="points-available-label">
         points remaining
       </p>
     </div>
