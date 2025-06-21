@@ -58,9 +58,9 @@ export function useLockpickLogic(
   //* ==============================================
 
   const difficultyModifier: Record<Level['lockLevel'], number> = {
-    Easy: 1,
-    Medium: 0.7,
-    Hard: 0.4,
+    Easy: 0.8,
+    Medium: 0.5,
+    Hard: 0.2,
   }
 
   function getGreenZoneSize(skill: number) {
