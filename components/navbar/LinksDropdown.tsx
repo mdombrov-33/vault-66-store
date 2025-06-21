@@ -31,13 +31,13 @@ async function LinksDropdown() {
         <SignedOut>
           <DropdownMenuItem>
             <SignInButton mode="modal">
-              <button className="w-full text-left text-xl">Login</button>
+              <button className="w-full text-left text-xl">Resume Trading</button>
             </SignInButton>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignUpButton mode="modal">
-              <button className="w-full text-left text-xl">Register</button>
+              <button className="w-full text-left text-xl">Start Trading</button>
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
