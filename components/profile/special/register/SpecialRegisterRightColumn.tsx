@@ -28,7 +28,10 @@ function SpecialRegisterRightColumn({ hoveredStat }: SpecialRegisterRightColumnP
           </p>
         </div>
       ) : (
-        <p className="text-muted-foreground text-2xl"> Hover over a stat to see details.</p>
+        <p className="text-muted-foreground text-2xl font-[roboto-mono]">
+          {' '}
+          Hover over a stat to see details.
+        </p>
       )}
     </div>
   )

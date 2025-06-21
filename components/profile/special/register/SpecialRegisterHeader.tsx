@@ -47,7 +47,7 @@ function SpecialRegisterHeader({ remainingPoints }: SpecialRegisterHeaderProps) 
         wrapper="p"
         speed={80}
         repeat={0}
-        className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2"
+        className="text-base text-muted-foreground sm:text-lg md:text-xl lg:text-lg max-w-xl mt-2 font-[roboto-mono]"
       />
 
       <p className="text-8xl" id="remaining-points-label">

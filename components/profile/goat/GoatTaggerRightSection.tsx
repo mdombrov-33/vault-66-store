@@ -35,7 +35,7 @@ function GoatTaggerRightSection({ hoveredSkill }: GoatTaggerRightSectionProps) {
           </p>
         </div>
       ) : (
-        <p className="text-muted-foreground text-2xl text-center">
+        <p className="text-muted-foreground text-2xl text-center font-[roboto-mono]">
           Hover over a skill to see details.
         </p>
       )}
