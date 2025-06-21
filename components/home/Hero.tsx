@@ -12,11 +12,12 @@ function Hero() {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
-        <h1 className="max-w-2xl font-medium text-4xl tracking-tight text-center lg:text-start sm:text-5xl  uppercase">
+        <h1 className="max-w-2xl font-medium text-4xl sm:text-6xl tracking-tight text-center lg:text-start uppercase">
           Welcome to Vault 66
-          <br />
-          Your Post-Apocalyptic Marketplace
         </h1>
+        <p className="mt-2 max-w-2xl text-2xl sm:text-3xl tracking-tight text-center lg:text-start text-muted-foreground">
+          Your Post-Apocalyptic Marketplace
+        </p>
 
         <TypeAnimation
           sequence={[
