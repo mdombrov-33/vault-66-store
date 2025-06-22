@@ -2,7 +2,7 @@
 
 # Vault 66
 
-A full-stack Fallout experience with shopping, AI conversations, lore-driven mini-games, and personalized character progression — all powered by modern tech and Wasteland flavor.
+A full-stack Fallout experience with shopping, AI conversations, lore-driven mini-games, and personalized character progression - all powered by modern tech and Wasteland flavor.
 
 ---
 
