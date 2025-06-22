@@ -8,6 +8,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import ChatLauncher from '@/components/ai-chat/ChatLauncher'
 import GitHubButton from '@/components/global/GitHubButton'
 import BootScreen from '@/components/global/BootScreen'
+import CrtWrapper from '@/components/global/CrtWrapper'
 
 const vt323 = VT323({
   variable: '--font-vt323',
@@ -32,7 +33,9 @@ export default function RootLayout({
           <BootScreen />
           <Providers>
             <Navbar />
-            <Container className="py-20">{children}</Container>
+            <CrtWrapper>
+              <Container className="py-20">{children}</Container>
+            </CrtWrapper>
             <GitHubButton />
             <ChatLauncher />
           </Providers>
