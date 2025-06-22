@@ -257,7 +257,7 @@ Tense clicks and clacks for the lockpick minigame:
 
 ### 💻 Hacking Sounds
 
-Lore accurate click and hover sounds for hacking minigame:   
+Lore accurate click and hover sounds for hacking minigame:  
 [Fallout Hacking Sounds Repo](https://github.com/smiley/hyper-robco)
 
 ### 🎶 Global Sounds
