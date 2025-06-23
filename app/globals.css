@@ -204,7 +204,7 @@ body.crt-mode::before {
     /* 🔧 Optional darker center line detail */ transparent 100%
       /* 🔧 Fades out to nothing at bottom */
   );
-  animation: sweep-line 7s linear infinite; /* 🔧 Speed of sweep — lower = faster, higher = slower */
+  animation: sweep-line 10s linear infinite; /* 🔧 Speed of sweep — lower = faster, higher = slower */
   z-index: 9999; /* Show above everything else */
   filter: blur(
     1.5px

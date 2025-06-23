@@ -2,7 +2,7 @@
 
 # Vault 66
 
-A full-stack Fallout experience with shopping, AI conversations, lore-driven mini-games, and personalized character progression — all powered by modern tech and Wasteland flavor.
+A full-stack Fallout experience with shopping, AI conversations, lore-driven mini-games, and personalized character progression - all powered by modern tech and Wasteland flavor.
 
 ---
 
@@ -257,7 +257,7 @@ Tense clicks and clacks for the lockpick minigame:
 
 ### 💻 Hacking Sounds
 
-Lore accurate click and hover sounds for hacking minigame:   
+Lore accurate click and hover sounds for hacking minigame:  
 [Fallout Hacking Sounds Repo](https://github.com/smiley/hyper-robco)
 
 ### 🎶 Global Sounds
