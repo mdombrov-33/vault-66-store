@@ -1,4 +1,5 @@
 'use client'
+
 import { ThemeProvider } from './theme-provider'
 import { Toaster } from '@/components/ui/sonner'
 import { NavbarProvider } from '@/components/navbar/context/NavbarContext'

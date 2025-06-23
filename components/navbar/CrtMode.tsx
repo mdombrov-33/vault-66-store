@@ -1,13 +1,15 @@
 'use client'
 
-import { useCrtMode } from '@/components/navbar/hooks/useCrtMode'
 import { Button } from '@/components/ui/button'
 import { TvIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { useGlowClass } from './hooks/useGlowClass'
+import { useTheme } from 'next-themes'
+import { useCrtMode } from './hooks/useCrtMode'
 
 function CrtMode() {
-  const { toggle, isEnabled, resolvedTheme } = useCrtMode()
+  const { resolvedTheme } = useTheme()
+  const { toggle, isEnabled } = useCrtMode()
 
   const glowClass = useGlowClass(isEnabled)
 
@@ -26,7 +28,6 @@ function CrtMode() {
       </Button>
     )
   }
-
   return null
 }
 
