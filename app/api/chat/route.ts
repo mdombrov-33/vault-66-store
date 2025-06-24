@@ -1,10 +1,16 @@
 import { vault66Prompt } from '@/components/ai-chat/prompt'
+import { getAuthUser } from '@/utils/auth/get-user'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
     const body = await req.json()
     const { messages } = body
+    const user = await getAuthUser()
+
+    if (!user?.id) {
+      return NextResponse.json({ error: 'User not authenticated' }, { status: 401 })
+    }
 
     const systemMessage = {
       role: 'system',
@@ -23,6 +29,7 @@ export async function POST(req: Request) {
         model: 'gpt-4o-mini',
         messages: fullMessages,
         max_tokens: 1000,
+        user: user.id,
       }),
     })
 
