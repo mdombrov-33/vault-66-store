@@ -14,7 +14,7 @@ export const goatSkills = [
   {
     name: 'energyWeapons',
     description:
-      'Proficiency with advanced directed-energy systems. The kind of thing that makes scientists nod in approval — and raiders run.',
+      'Proficiency with advanced directed-energy systems. The kind of thing that makes scientists nod in approval - and raiders run.',
     icon: '/images/goat/skills/energyWeapons.png',
   },
   {
@@ -26,13 +26,13 @@ export const goatSkills = [
   {
     name: 'lockpick',
     description:
-      'The subtle art of opening things that weren’t meant to be opened — useful for maintenance. Or finding where the lunch rations are kept.',
+      'The subtle art of opening things that weren’t meant to be opened - useful for maintenance. Or finding where the lunch rations are kept.',
     icon: '/images/goat/skills/lockpick.png',
   },
   {
     name: 'medicine',
     description:
-      "Knowledge of how bodies break — and how to put them back together. Vault medics prefer candidates who know stimpaks aren't candy.",
+      "Knowledge of how bodies break - and how to put them back together. Vault medics prefer candidates who know stimpaks aren't candy.",
     icon: '/images/goat/skills/medicine.png',
   },
   {
@@ -44,7 +44,7 @@ export const goatSkills = [
   {
     name: 'repair',
     description:
-      'Your ability to fix what others break. Elevators, toasters, fusion cores — everything eventually needs someone like you.',
+      'Your ability to fix what others break. Elevators, toasters, fusion cores - everything eventually needs someone like you.',
     icon: '/images/goat/skills/repair.png',
   },
   {
@@ -74,7 +74,7 @@ export const goatSkills = [
   {
     name: 'survival',
     description:
-      'How well you handle the less comfortable parts of life — like eating iguana bits or sleeping in a tent full of radroaches.',
+      'How well you handle the less comfortable parts of life - like eating iguana bits or sleeping in a tent full of radroaches.',
     icon: '/images/goat/skills/survival.png',
   },
   {

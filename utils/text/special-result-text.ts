@@ -71,27 +71,27 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
     luck >= 3 &&
     luck <= 6
   ) {
-    return 'A well-rounded person — maybe not exceptional, but definitely adaptable.'
+    return 'A well-rounded person - maybe not exceptional, but definitely adaptable.'
   }
 
   //* Intelligence + Perception high combo
   if (intelligence >= 7 && perception >= 7) {
-    return 'Smart and sharp-eyed — you’re the ultimate scout and thinker.'
+    return 'Smart and sharp-eyed - you’re the ultimate scout and thinker.'
   }
 
   //* Charisma + Luck high combo
   if (charisma >= 7 && luck >= 7) {
-    return 'Charm and fortune favor you — a smooth talker who always catches a break.'
+    return 'Charm and fortune favor you - a smooth talker who always catches a break.'
   }
 
   //* Strength + Endurance high combo
   if (strength >= 7 && endurance >= 7) {
-    return 'Built like a tank — strong and tough enough to take a beating.'
+    return 'Built like a tank - strong and tough enough to take a beating.'
   }
 
   //* Agility + Luck high combo
   if (agility >= 7 && luck >= 7) {
-    return 'Quick on your feet and lucky to boot — hard to pin down and easy to get ahead.'
+    return 'Quick on your feet and lucky to boot - hard to pin down and easy to get ahead.'
   }
 
   //* Medium charisma + low perception + low intelligence
@@ -101,7 +101,7 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
 
   //* High endurance, low agility and luck
   if (endurance >= 7 && agility <= 4 && luck <= 4) {
-    return 'Slow and steady wins the race — you can take hits, but don’t expect quick reflexes or lucky breaks.'
+    return 'Slow and steady wins the race - you can take hits, but don’t expect quick reflexes or lucky breaks.'
   }
 
   //* Low charisma + high perception + moderate intelligence
@@ -111,12 +111,12 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
 
   //* Strength + Intelligence combo — brawler with brains
   if (strength >= 6 && intelligence >= 6 && charisma <= 5) {
-    return 'Brains and brawn combine in you — a force to be reckoned with.'
+    return 'Brains and brawn combine in you - a force to be reckoned with.'
   }
 
   //* Medium agility + medium luck + low endurance
   if (agility >= 5 && agility <= 7 && luck >= 5 && luck <= 7 && endurance <= 3) {
-    return 'Fast and fortunate, but fragile — keep moving or get knocked down.'
+    return 'Fast and fortunate, but fragile - keep moving or get knocked down.'
   }
 
   //* High charisma + medium intelligence + low strength
@@ -133,7 +133,7 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
     perception >= 4 &&
     perception <= 6
   ) {
-    return 'Not lucky, but tough and alert — you survive through sheer grit.'
+    return 'Not lucky, but tough and alert - you survive through sheer grit.'
   }
 
   //* Medium stats all around except high luck
@@ -157,17 +157,17 @@ export const getCombinedSpecialText = (special: SpecialRecord) => {
 
   //* Agility + perception + intelligence high combo
   if (agility >= 7 && perception >= 7 && intelligence >= 7) {
-    return 'Fast, sharp, and smart — a stealthy genius in the Wastes.'
+    return 'Fast, sharp, and smart - a stealthy genius in the Wastes.'
   }
 
   //* Low charisma + low agility + low luck
   if (charisma <= 3 && agility <= 3 && luck <= 3) {
-    return 'You struggle to charm, move quickly, or catch a break — but maybe there’s other strengths to lean on.'
+    return 'You struggle to charm, move quickly, or catch a break - but maybe there’s other strengths to lean on.'
   }
 
   //* Strength + endurance + luck medium-high combo
   if (strength >= 5 && endurance >= 6 && luck >= 5) {
-    return 'Strong, tough, and a bit lucky — you can survive the worst and come out ahead.'
+    return 'Strong, tough, and a bit lucky - you can survive the worst and come out ahead.'
   }
 
   //* High charisma + perception + luck combo (3 stats)

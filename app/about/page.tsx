@@ -25,7 +25,7 @@ function AboutPage() {
         <p className="text-2xl leading-relaxed text-muted-foreground font-[roboto]">
           As a uniquely commerce-enabled vault, Vault 66 operates under the guiding principles of
           Vault-Tec’s Experimental Market Regulation Program (EMRP). Our dedicated dwellers manage
-          inventory, conduct trade negotiations, and occasionally fend off raiders — all while
+          inventory, conduct trade negotiations, and occasionally fend off raiders - all while
           upholding Vault-Tec’s gold standard of semi-ethical capitalism.
         </p>
       </div>
@@ -58,7 +58,7 @@ function AboutPage() {
             <h3 className="font-semibold text-3xl">Wanderer Kate</h3>
             <p className="text-lg italic font-[roboto]">
               Scavenger, scout, and part-time negotiator. Kate ensures our vault stays stocked with
-              pre-War goods and keeps the caps flowing — when she&#39;s not dodging Deathclaws.
+              pre-War goods and keeps the caps flowing - when she&#39;s not dodging Deathclaws.
             </p>
           </div>
           <div className="p-4 bg-primary/20 rounded-lg text-center">
@@ -72,7 +72,7 @@ function AboutPage() {
             <h3 className="font-semibold text-3xl">Ironclad</h3>
             <p className="text-lg italic font-[roboto]">
               Veteran of multiple supply runs and master of power armor maintenance. Ironclad keeps
-              our perimeter secure — and our enemies at a generous distance.
+              our perimeter secure - and our enemies at a generous distance.
             </p>
           </div>
         </div>

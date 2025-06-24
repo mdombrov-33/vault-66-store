@@ -22,13 +22,13 @@ export const specialRegisterData = [
   {
     name: 'endurance',
     description:
-      'Your stamina and resilience. A higher rating suggests you’ll last longer on long shifts — or longer expeditions beyond the Vault.',
+      'Your stamina and resilience. A higher rating suggests you’ll last longer on long shifts - or longer expeditions beyond the Vault.',
     icon: EnduranceIcon,
   },
   {
     name: 'charisma',
     description:
-      'Measures your social presence. Perfect for bartering, leading group activities, or persuading Overseers — if that’s your thing.',
+      'Measures your social presence. Perfect for bartering, leading group activities, or persuading Overseers - if that’s your thing.',
     icon: CharismaIcon,
   },
   {

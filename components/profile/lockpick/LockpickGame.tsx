@@ -83,7 +83,7 @@ function LockpickGame({ lockpickSkill }: LockpickGameProps) {
     } else {
       onPinBroken()
       playPickBreakSound()
-      toast.error('Attempt failed – pin broken.', {
+      toast.error('Attempt failed - pin broken.', {
         description: <span className="text-muted-foreground">Pins left: {remainingPins - 1}</span>,
         action: {
           label: 'Bummer',
