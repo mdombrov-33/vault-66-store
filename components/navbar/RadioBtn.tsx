@@ -7,7 +7,7 @@ import { cn } from '@/utils/cn'
 import { useGlowClass } from './hooks/useGlowClass'
 import { useNavbarContext } from './context/NavbarContext'
 
-const RADIO_SOURCE = 'https://fallout.fm:8444/falloutfm1.ogg'
+const RADIO_SOURCE = 'https://vault66-radio.onrender.com/radio'
 
 function RadioBtn() {
   const { isRadioEnabled, setIsRadioEnabled } = useNavbarContext()
