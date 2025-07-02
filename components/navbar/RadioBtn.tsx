@@ -1,33 +1,29 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Radio, Cog } from 'lucide-react'
-import { useState } from 'react'
+import { Radio } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { useGlowClass } from './hooks/useGlowClass'
 import { useNavbarContext } from './context/NavbarContext'
+import { FakeRadioPlayer } from './FakeRadioPlayer'
 
-const RADIO_SOURCE = 'https://vault66-radio.onrender.com/radio'
+//* PROXY RADIO SOURCE, NOT USED RIGHT NOW BECAUSE OF THE SOURCE TIMEOUT ISSUE
+//* Initially proxied to avoid ssl issues with the radio source
+//* Instead of using a proxy, we use a fake radio player that simulates the radio experience 🔧📻🧠💀
+// const RADIO_SOURCE = 'https://vault66-radio.onrender.com/radio'
 
 function RadioBtn() {
   const { isRadioEnabled, setIsRadioEnabled } = useNavbarContext()
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = () => {
     if (!isRadioEnabled) {
-      setIsLoading(true)
       setIsRadioEnabled(true)
     } else {
       setIsRadioEnabled(false)
-      setIsLoading(false)
     }
   }
 
-  const handleCanPlay = () => {
-    setIsLoading(false)
-  }
-
-  const isRadioOn = isRadioEnabled && !isLoading
+  const isRadioOn = isRadioEnabled
   const glowClass = useGlowClass(isRadioOn)
   return (
     <>
@@ -39,17 +35,13 @@ function RadioBtn() {
         aria-pressed={isRadioEnabled}
         aria-label="Toggle Radio"
       >
-        {isLoading ? <Cog className="animate-spin" aria-hidden="true" /> : <Radio />}
+        {<Radio />}
       </Button>
 
       {isRadioEnabled && (
-        <audio
-          src={RADIO_SOURCE}
-          autoPlay
-          onPlaying={handleCanPlay}
+        <FakeRadioPlayer
           onError={() => {
             setIsRadioEnabled(false)
-            setIsLoading(false)
           }}
         />
       )}
