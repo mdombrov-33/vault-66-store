@@ -2,9 +2,9 @@ import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
 //* Helper function to get the current authenticated user.
-export const getAuthUser = async () => {
+export const getAuthUser = async (redirectIfMissing = true) => {
   const user = await currentUser()
-  if (!user) redirect('/')
+  if (!user && redirectIfMissing) redirect('/')
   return user
 }
 
