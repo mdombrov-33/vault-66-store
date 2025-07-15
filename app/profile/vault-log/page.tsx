@@ -4,7 +4,7 @@ import { getAuthUser } from '@/utils/auth/get-user'
 
 async function VaultLogPage() {
   const user = await getAuthUser()
-  const displayedName = user.firstName || user.username || 'Unknown'
+  const displayedName = user.firstName || user?.username || 'Unknown'
   const senderAvatar = user.imageUrl || ''
 
   const messages = (await getAllMessages()) ?? []
