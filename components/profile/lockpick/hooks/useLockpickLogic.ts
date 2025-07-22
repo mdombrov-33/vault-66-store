@@ -115,7 +115,7 @@ export function useLockpickLogic(
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isGameOver) return
 
-      if (isEngaged && e.key.toLowerCase() === 'a' && !isTurningLock) {
+      if (isEngaged && e.code === 'KeyA' && !isTurningLock) {
         setIsTurningLock(true)
 
         if (!hasPlayedStartSoundRef.current) {
@@ -128,7 +128,7 @@ export function useLockpickLogic(
     const handleKeyUp = (e: KeyboardEvent) => {
       if (isGameOver) return
 
-      if (e.key.toLowerCase() === 'a') {
+      if (e.code === 'KeyA') {
         setIsTurningLock(false)
         hasPlayedStartSoundRef.current = false
       }
