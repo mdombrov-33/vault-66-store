@@ -1,3 +1,5 @@
+'use client'
+
 import { Label } from '../ui/label'
 import { Textarea } from '../ui/textarea'
 import { TextAreaInputProps } from '@/types/form'
